@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//route for login view page
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+
+//route for getData function in UserController
+Route::get('users', [UserController::class, 'getData']);
