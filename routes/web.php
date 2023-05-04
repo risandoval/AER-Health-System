@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 //route for login view page
 Route::get('/', function () {
-    return view('login');
+    return view('pages/login');
 });
 
 // //route for navbar

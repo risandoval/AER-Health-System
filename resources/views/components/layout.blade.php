@@ -10,16 +10,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>AER Health System</title>
     <script>
-        const BASE_PATH = '{{ url("/") }}';
+        // const BASE_PATH = '{{ url("/") }}';
     </script>
     @vite('resources/css/app.css')
     @vite('resources/js/main.js')
-    @vite('resources/js/toast.js')
-
 </head>
 
 <body>
-    <x-navbar/>
+    <x-navbar />
     {{ $slot }}
 </body>
 
