@@ -19,5 +19,8 @@ Route::get('/', function () {
     return view('login');
 });
 
+// //route for navbar
+// Route::view('/', 'navbar');
+
 //route for getData function in UserController
 Route::get('users', [UserController::class, 'getData']);

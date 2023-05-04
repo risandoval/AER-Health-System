@@ -4,17 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     @vite('resources/css/app.css')
     <title>Login</title>
 </head>
 <body>
+  {{-- NAVBAR --}}
+  <nav class="p-5 bg-primary shadow md:flex md:items-center md:justify-between text-light">
+    <div class="flex justify-between items-center">
+      <span class="text-2xl">
+        <a href="#">
+          <img class="h-10 inline " src="https://png.pngtree.com/png-vector/20190225/ourmid/pngtree-circuit-logo-template-vector-png-image_704226.jpg" alt="logo">
+          SystemName
+        </a>
+      </span>
+      <span class="text-3xl cursor-pointer mx-2 md:hidden block ">
+        <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+      </span>
+    </div>
+
+    <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-primary text-light w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-400">
+      <li class="mx-4 my-6 md:my-0">
+        <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">Home</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">User Accounts</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">1st Encounter</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">2nd Encounter</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">Profile</a>
+      </li>
+
+      <button class="bg-secondary text-light duration-400 px-6 py-2 mx-4 hover:bg-light hover:text-primary rounded">
+        <a href="#" class="text-xl duration-400">Logout</a>
+      </button>
+    </ul>
+  </nav>
+
+  <script>
+    function Menu(e) {
+      let list = document.querySelector('ul');
+
+      e.name === 'menu' ? (e.name = 'close', list.classList.add('top-[80px]'), list.classList.add('opacity-100')) : 
+        (e.name = 'menu', list.classList.remove('top-[80px]'), list.classList.remove('opacity-100'));
+    }
+  </script>
+
   <section class="bg-light min-h-screen flex items-center justify-center">
     <!-- login container -->
     <div class="bg-gray-100 flex rounded-lg shadow-lg max-w-3xl items-center">
       <!-- form -->
-      <div class="md:w-1/2 px-8 md:px-16">
+      <div class="md:w-1/2 px-8 md:px-16 py-5" >
         <h2 class="font-bold text-2xl text-black">Log in to SystemName</h2>
-        <p class="text-xs mt-1 text-[#002D74]">Welcome! Please enter your details</p>
+        <p class="text-xs mt-1 text-black">Welcome! Please enter your details</p>
   
         <form action="" class="flex flex-col mt-3">
           {{-- USERNAME --}}
