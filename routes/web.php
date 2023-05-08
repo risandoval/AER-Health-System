@@ -19,8 +19,12 @@ Route::get('/', function () {
     return view('pages/login');
 });
 
-// //route for navbar
-// Route::view('/', 'navbar');
+//route for dashboard
+Route::get('dashboard', function () {
+    return view('pages/dashboard');
+});
 
-//route for getData function in UserController
-Route::get('users', [UserController::class, 'getData']);
+//route for profile page
+Route::get('profile', function () {
+    return view('pages/profile');
+});
