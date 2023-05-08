@@ -24,3 +24,7 @@ Route::get('/', function () {
 
 //route for getData function in UserController
 Route::get('users', [UserController::class, 'getData']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
