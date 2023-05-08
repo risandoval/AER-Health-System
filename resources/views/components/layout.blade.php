@@ -8,18 +8,18 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>AER Health System</title>
     <script>
-        const BASE_PATH = '{{ url("/") }}';
+        // const BASE_PATH = '{{ url("/") }}';
     </script>
     @vite('resources/css/app.css')
     @vite('resources/js/main.js')
-    @vite('resources/js/toast.js')
-
 </head>
 
 <body>
-    <x-navbar/>
+    <x-navbar />
     {{ $slot }}
 </body>
 

@@ -16,15 +16,18 @@ use Illuminate\Support\Facades\Route;
 
 //route for login view page
 Route::get('/', function () {
-    return view('login');
+    return view('pages/login');
 });
 
-// //route for navbar
-// Route::view('/', 'navbar');
+//route for dashboard
+Route::get('dashboard', function () {
+    return view('pages/dashboard');
+});
 
-//route for getData function in UserController
-Route::get('users', [UserController::class, 'getData']);
-
+//route for profile page
+Route::get('profile', function () {
+    return view('pages/profile');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
