@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      padding: {
+        'navbar' : '80px'
+      },
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],
       },
@@ -19,6 +22,8 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
 

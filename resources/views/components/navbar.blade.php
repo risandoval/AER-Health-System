@@ -29,12 +29,12 @@
       </li>
 
       <form action="/logout" method="POST">
-        @csrf
-      <button class="bg-secondary text-light duration-400 px-6 py-2 mx-4 hover:bg-light hover:text-primary rounded">
-        {{-- <a href="/" class="text-xl duration-400">Logout</a> --}}
-        Logout
-      </button>
-    </form>
+      @csrf
+        <button class="bg-secondary text-light duration-400 px-6 py-2 mx-4 hover:bg-light hover:text-primary rounded">
+          {{-- <a href="/" class="text-xl duration-400">Logout</a> --}}
+          Logout
+        </button>
+      </form>
     </ul>
 </nav>
 

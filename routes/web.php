@@ -24,6 +24,14 @@ Route::get('dashboard', function () {
     return view('pages/dashboard');
 });
 
+Route::get('/users', function () {
+    return view('pages/userAccounts/user-accounts');
+});
+
+Route::get('/users/add', function () {
+    return view('pages/userAccounts/add-user-account');
+});
+
 //route for profile page
 // Route::get('profile', function () {
 //     return view('pages/profile');
@@ -31,7 +39,7 @@ Route::get('dashboard', function () {
 
 
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/login/process', [App\Http\Controllers\UserController::class, 'process']);
@@ -58,4 +66,4 @@ Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profilePage
 // Route::middleware(['auth','user-role:admin'])->group(function(){
 
 //route for getData function in UserController
-Route::get('users', [UserController::class, 'getData']);
+// Route::get('users', [UserController::class, 'getData']);

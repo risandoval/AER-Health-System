@@ -1,3 +1,4 @@
+const body = document.querySelector('body')
 const modalBackground = document.querySelector('#modal-background');
 const modals = document.querySelectorAll('.modal');
 const editButtons = document.querySelectorAll('#edit');
@@ -13,6 +14,7 @@ editButtons.forEach(editButton => {
         modalBackground.classList.toggle('hidden');
         editModalBody.classList.toggle('hidden');
         editModalBody.classList.add('open');
+        body.classList.add('overflow-hidden');
     });
 });
 
@@ -22,6 +24,7 @@ archiveButtons.forEach(archiveButton => {
         modalBackground.classList.toggle('hidden');
         archiveModalBody.classList.toggle('hidden');
         archiveModalBody.classList.add('open');
+        body.classList.add('overflow-hidden');
     });
 });
 
@@ -36,6 +39,7 @@ modalBackground.addEventListener('click', (e) => {
                 modal.classList.toggle('hidden');
             }
         });
+        body.classList.remove('overflow-hidden');
     }
     e.stopPropagation();
 });
@@ -50,6 +54,7 @@ closeButtons.forEach(closeButton => {
                 modal.classList.toggle('hidden');
             }
         });
+        body.classList.remove('overflow-hidden');
     });
 });
 
