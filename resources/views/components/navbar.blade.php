@@ -16,7 +16,7 @@
         <a href="/dashboard" class="text-xl hover:border-b-2 hover:pb-1 duration-400">Home</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">User Accounts</a>
+        <a href="{{url('/users')}}" class="text-xl hover:border-b-2 hover:pb-1 duration-400">User Accounts</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
         <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">1st Encounter</a>

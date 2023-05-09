@@ -57,5 +57,5 @@ Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profilePage
 // //Admin Route
 // Route::middleware(['auth','user-role:admin'])->group(function(){
 
-//     Route::get('/admin/home', [HomeController::class,'adminHome'])->name('home.admin');
-// });
+//route for getData function in UserController
+Route::get('users', [UserController::class, 'getData']);
