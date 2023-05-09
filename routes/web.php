@@ -19,8 +19,17 @@ Route::get('/', function () {
     return view('pages/login');
 });
 
+
+// routes for user accounts
+Route::get('/users', function () {
+    return view('pages/userAccounts/user-accounts');
+});
+
+// routes for user accounts
+
 // //route for navbar
 // Route::view('/', 'navbar');
 
+
 //route for getData function in UserController
-Route::get('users', [UserController::class, 'getData']);
+// Route::get('users', [UserController::class, 'getData']);

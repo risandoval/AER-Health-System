@@ -16,7 +16,7 @@
     @vite('resources/js/main.js')
 </head>
 
-<body>
+<body class="relative font-poppins">
     <x-navbar />
     {{ $slot }}
 </body>

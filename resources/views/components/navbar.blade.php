@@ -1,4 +1,4 @@
-<nav class="p-5 bg-primary shadow md:flex md:items-center md:justify-between text-light">
+<nav class="absolute top-0 left-0 w-full p-5 bg-primary shadow md:flex md:items-center md:justify-between text-light">
     <div class="flex justify-between items-center">
       <span class="text-2xl">
         <a href="#">
@@ -16,7 +16,7 @@
         <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">Home</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">User Accounts</a>
+        <a href="{{url('/users')}}" class="text-xl hover:border-b-2 hover:pb-1 duration-400">User Accounts</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
         <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">1st Encounter</a>
