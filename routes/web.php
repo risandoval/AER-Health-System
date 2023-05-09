@@ -25,13 +25,20 @@ Route::get('dashboard', function () {
 });
 
 //route for profile page
-Route::get('profile', function () {
-    return view('pages/profile');
-});
+// Route::get('profile', function () {
+//     return view('pages/profile');
+// });
+
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/login/process', [App\Http\Controllers\UserController::class, 'process']);
+Route::post('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout');
+Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profilePage'])->middleware('auth');
+// Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profilePage'])->middleware('user-role:admin');
+
 
 
 

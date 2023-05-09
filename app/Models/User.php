@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected function role(): Attribute{
+
+        return new Attribute(
+            get: fn($value) => ["user","editor","admin"][$value],
+        );
+    }
 }

@@ -26,7 +26,7 @@ class UserRoleMiddleware
         }
 
         else{
-            dd($request->all(), $role);
+            dd(Auth::check(), $role);
             // return response()->json(["You don't have permission to access this page"]);
         }
 

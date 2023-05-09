@@ -14,6 +14,15 @@ class UserController extends Controller
         return "Form Data";
     }
 
+    public function logout(Request $request){
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('message', 'Logout Successful');
+    }
+
     public function process(Request $request){
         $validated = $request->validate([
             "email" => ['required','email'],
@@ -23,7 +32,7 @@ class UserController extends Controller
         if(auth()->attempt($validated)){
             $request->session()->regenerate();
 
-            return redirect('/login')->with('message', 'Welcome Back');
+            return redirect('/profile')->with('message', 'Welcome Back');
         }
 
     }

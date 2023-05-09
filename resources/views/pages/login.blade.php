@@ -1,5 +1,5 @@
 <x-layout>
-
+  <x-messages />
   <section class="bg-light min-h-screen flex items-center justify-center">
     <!-- login container -->
     <div class="bg-gray-100 flex rounded-lg shadow-lg max-w-3xl items-center">
@@ -8,10 +8,11 @@
         <h2 class="font-bold text-2xl text-black">Log in to SystemName</h2>
         <p class="text-xs mt-1 text-black">Welcome! Please enter your details</p>
   
-        <form action="" class="flex flex-col mt-3">
+        <form action="/login/process" method="POST" class="flex flex-col mt-3">
+          @csrf
           {{-- USERNAME --}}
           <label class="mt-3 block text-xs font-semibold">Username</label>
-          <input class="mt-2 p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" name="username" placeholder="Enter your username">
+          <input class="mt-2 p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" name="email" placeholder="Enter your username">
           {{-- PASSWORD --}}
           <label class="mt-3 block text-xs font-semibold">Password</label>
           <div class="relative mt-2">
@@ -22,7 +23,8 @@
             <a href="#">Forgot password?</a>
           </div>
           {{-- LOGIN BTN --}}
-          <a href="/dashboard" class="bg-primary mt-5 rounded-xl text-white text-center py-2 hover:scale-105 duration-300">Sign in</a>
+          <button type="submit" class="bg-purple-600">Login </button>
+          {{-- <a href="/dashboard" class="bg-primary mt-5 rounded-xl text-white text-center py-2 hover:scale-105 duration-300">Sign in</a> --}}
         </form>
   
         {{-- <div class="mt-6 grid grid-cols-3 items-center text-gray-400">

@@ -1,61 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    @vite('resources/css/app.css')
-    <title>Login</title>
-</head>
-<body>
-  {{-- NAVBAR --}}
-  <nav class="p-5 bg-primary shadow md:flex md:items-center md:justify-between text-light">
-    <div class="flex justify-between items-center">
-      <span class="text-2xl">
-        <a href="#">
-          <img class="h-10 inline " src="https://png.pngtree.com/png-vector/20190225/ourmid/pngtree-circuit-logo-template-vector-png-image_704226.jpg" alt="logo">
-          SystemName
-        </a>
-      </span>
-      <span class="text-3xl cursor-pointer mx-2 md:hidden block ">
-        <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
-      </span>
-    </div>
-
-    <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-primary text-light w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-400">
-      <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">Home</a>
-      </li>
-      <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">User Accounts</a>
-      </li>
-      <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">1st Encounter</a>
-      </li>
-      <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">2nd Encounter</a>
-      </li>
-      <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">Profile</a>
-      </li>
-
-      <button class="bg-secondary text-light duration-400 px-6 py-2 mx-4 hover:bg-light hover:text-primary rounded">
-        <a href="#" class="text-xl duration-400">Logout</a>
-      </button>
-    </ul>
-  </nav>
-
-  <script>
-    function Menu(e) {
-      let list = document.querySelector('ul');
-
-      e.name === 'menu' ? (e.name = 'close', list.classList.add('top-[80px]'), list.classList.add('opacity-100')) : 
-        (e.name = 'menu', list.classList.remove('top-[80px]'), list.classList.remove('opacity-100'));
-    }
-  </script>
-
+<x-layout>
+  <x-messages />
   <section class="bg-light min-h-screen flex items-center justify-center">
     <!-- login container -->
     <div class="bg-gray-100 flex rounded-lg shadow-lg max-w-3xl items-center">
@@ -64,62 +8,23 @@
         <h2 class="font-bold text-2xl text-black">Log in to SystemName</h2>
         <p class="text-xs mt-1 text-black">Welcome! Please enter your details</p>
   
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div class="row mb-3">
-                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                <div class="col-md-6">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                <div class="col-md-6">
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                    @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-6 offset-md-4">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                        <label class="form-check-label" for="remember">
-                            {{ __('Remember Me') }}
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mb-0">
-                <div class="col-md-8 offset-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        {{ __('Login') }}
-                    </button>
-
-                    {{-- @if (Route::has('password.request'))
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
-                        </a>
-                    @endif --}}
-                </div>
-            </div>
+        <form action="/login/process" method="POST" class="flex flex-col mt-3">
+          @csrf
+          {{-- USERNAME --}}
+          <label class="mt-3 block text-xs font-semibold">Username</label>
+          <input class="mt-2 p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" name="email" placeholder="Enter your username">
+          {{-- PASSWORD --}}
+          <label class="mt-3 block text-xs font-semibold">Password</label>
+          <div class="relative mt-2">
+            <input class="p-2 rounded-xl border w-full border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" name="password" placeholder="*****">
+          </div>
+          {{-- FORGOT PASSWORD --}}
+          <div class="text-xs mt-2 text-primary">
+            <a href="#">Forgot password?</a>
+          </div>
+          {{-- LOGIN BTN --}}
+          <button type="submit" class="bg-purple-600">Login </button>
+          {{-- <a href="/dashboard" class="bg-primary mt-5 rounded-xl text-white text-center py-2 hover:scale-105 duration-300">Sign in</a> --}}
         </form>
   
         {{-- <div class="mt-6 grid grid-cols-3 items-center text-gray-400">
@@ -150,6 +55,5 @@
       </div>
     </div>
   </section>
-    
-</body>
-</html>
+
+</x-layout>
