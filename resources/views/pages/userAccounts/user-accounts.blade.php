@@ -171,8 +171,8 @@
                             <td class="text-left py-3">{{$value['role']}}</td>
                             <td class="text-left py-3">
                                 <div class="flex gap-[6px]">
-                                    <button id="edit" class="text-white bg-secondary px-4 py-1.5 rounded-full">Edit</button>
-                                    <button id="archive" class="text-white bg-red px-4 py-1.5 rounded-full">Archive</button>
+                                    <button id="edit" class="text-white bg-secondary px-4 py-2 rounded-full">Edit</button>
+                                    <button id="archive" class="text-white bg-red px-4 py-2 rounded-full">Archive</button>
                                 </div>
                             </td>
                         </tr>
