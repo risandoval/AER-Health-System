@@ -1,7 +1,7 @@
 <x-layout>
     <div class="flex flex-wrap justify-around mt-20 p-2 bg-light">
         {{-- profile card --}}
-        <div class="w-full h-screen lg:w-[25%] bg-white rounded-lg drop-shadow-lg m-2">
+        <div class="w-full min-h-screen lg:w-[25%] bg-white rounded-lg drop-shadow-lg m-2">
             <div class="flex justify-center text-black">
                 <div class="w-full">
                     <div class="">
