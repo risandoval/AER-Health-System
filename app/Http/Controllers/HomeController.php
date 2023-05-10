@@ -29,6 +29,7 @@ class HomeController extends Controller
 
     public function profilePage()
     {
+        //pagpapasa ng values sa view
         $user = Auth::user();
         return view('pages/profile', compact('user'));
     }
