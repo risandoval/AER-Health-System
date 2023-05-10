@@ -23,7 +23,7 @@
             <a href="#">Forgot password?</a>
           </div>
           {{-- LOGIN BTN --}}
-          <button type="submit" class="bg-purple-600">Login </button>
+          <button type="submit" class="bg-primary mt-5 rounded-xl text-white text-center py-2 hover:scale-105 duration-300">Login </button>
           {{-- <a href="/dashboard" class="bg-primary mt-5 rounded-xl text-white text-center py-2 hover:scale-105 duration-300">Sign in</a> --}}
         </form>
   

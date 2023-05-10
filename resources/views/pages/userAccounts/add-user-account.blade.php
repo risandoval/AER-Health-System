@@ -1,6 +1,6 @@
 <x-layout>
-    <section class="flex flex-col gap-12 bg-light w-full min-h-screen items-center justify-center">
-        <div  class="bg-white rounded-xl w-[800px] min-h-[600px] drop-shadow-lg">
+    <section class="flex flex-col gap-12 bg-light w-full min-h-screen items-center justify-center pt-navbar pb-10">
+        <div  class="bg-white rounded-xl w-[800px] min-h-[600px] drop-shadow-lg mt-12">
             <div class="px-6 py-4">
                 <h2 class="text-xl"><strong>Add User Account</strong></h2>
             </div>
@@ -42,8 +42,8 @@
             </div>
             
             <div class="flex gap-3 justify-end p-3">
-                <a href="{{url('/users')}}" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-1 font-bold">Cancel</a>
-                <button type="button" class="bg-secondary text-white text-sm rounded-full px-5 py-1 font-bold">Add User</button>
+                <a href="{{url('/users')}}" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 font-bold">Cancel</a>
+                <button type="button" class="bg-secondary text-white text-sm rounded-full px-5 py-2 font-bold">Add User</button>
             </div>
         </div>
     </section>
