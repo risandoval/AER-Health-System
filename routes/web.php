@@ -44,9 +44,8 @@ Route::get('/users/add', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/login/process', [App\Http\Controllers\UserController::class, 'process']);
 Route::post('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout');
-Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profilePage'])->middleware('auth');
-// Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profilePage'])->middleware('user-role:admin');
-
+// Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profilePage'])->middleware('auth');
+//Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profilePage'])->middleware('user-role:admin');
 
 
 
@@ -62,8 +61,11 @@ Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profilePage
 //     Route::get('/editor/home', [HomeController::class,'editorHome'])->name('home.editor');
 // });
 
-// //Admin Route
-// Route::middleware(['auth','user-role:admin'])->group(function(){
+//Admin Route
+Route::middleware(['auth','user-role:admin'])->group(function(){
 
-//route for getData function in UserController
-// Route::get('users', [UserController::class, 'getData']);
+    Route::get('/profile', [App\Http\Controllers\HomeController::class,'profilePage'])->name('profile');
+    
+});
+
+

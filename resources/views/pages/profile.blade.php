@@ -43,7 +43,7 @@
                                 Role
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                System Administrator
+                                {{ $user->role }}
                             </dd>
                         </div>
                         {{-- If admin, doctor, and other health professional --}}
@@ -69,7 +69,7 @@
                                 Email address
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                juandlcruz@example.com
+                                {{ $user->email }}
                             </dd>
                         </div>
                         <div class="bg-gray-100 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -92,9 +92,6 @@
                 </div>
             </div>
         </div>
-        
-
-        
     </div>
 
 </x-layout>
