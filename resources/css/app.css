@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .nav-link {
+        @apply relative text-xl hover:border-b-2 hover:pb-1 whitespace-nowrap;
+    }
+
+    .nav-link-active {
+        @apply after:-bottom-2 after:left-0 after:min-h-[2px] after:min-w-[100%] after:bg-white after:absolute;
+    }
+}

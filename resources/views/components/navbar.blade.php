@@ -13,16 +13,16 @@
 
     <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-primary text-light w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-400">
       <li class="mx-4 my-6 md:my-0">
-        <a href="/dashboard" class="text-xl hover:border-b-2 hover:pb-1 duration-400">Home</a>
+        <a href="/dashboard" class="nav-link">Home</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="{{url('/users')}}" class="text-xl hover:border-b-2 hover:pb-1 duration-400">User Accounts</a>
+        <a href="{{url('/users')}}" class="nav-link">User Accounts</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">1st Encounter</a>
+        <a href="#" class="nav-link">1st Encounter</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:border-b-2 hover:pb-1 duration-400">2nd Encounter</a>
+        <a href="#" class="nav-link">2nd Encounter</a>
       </li>
       {{-- <li class="mx-4 my-6 md:my-0">
         <a href="/profile" class="text-xl hover:border-b-2 hover:pb-1 duration-400">Profile</a>
