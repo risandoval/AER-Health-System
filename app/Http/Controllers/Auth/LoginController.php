@@ -62,14 +62,12 @@ class LoginController extends Controller
                 
         }
         else{
-                dd(auth()->attempt() ,$input["email"], $input["password"]);
-                // dd($input["email"], $input["password"]);
+            // dd(auth()->attempt() ,$input["email"], $input["password"]);
+            // dd($input["email"], $input["password"]);
             // dd($input["email"]);
-           
-            // return view('welcome');
-
-        //     return redirect()->route("login")->with("error", 'Incorrect email of password.');
-         }
+            return view('welcome');
+            //return redirect()->route("login")->with("error", 'Incorrect email of password.');
+        }
 
     }
 }

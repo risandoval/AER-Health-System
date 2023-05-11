@@ -20,14 +20,14 @@ class UserRoleMiddleware
     {
         if(Auth::check() && Auth::user()->role == $role){
             
-             return $next($request);
+            return $next($request);
             // dd($request->all(), $role);
 
         }
 
         else{
-            dd(Auth::check(), $role);
-            // return response()->json(["You don't have permission to access this page"]);
+            // dd(Auth::check(), $role);
+            return response()->json(["You don't have permission to access this page"]);
         }
 
         
