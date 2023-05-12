@@ -2,72 +2,84 @@
     $users = [
         '1' => [
             'id' => '1',
-            'username' => 'user1',
+            'fullName' => 'Juan Carlo M. dela Cruz III',
+            'username' => 'J001',
             'dateCreated' => '05/06/23',
-            'role' => 'Super Admin',
+            'role' => 'Admin',
         ],
         '2' => [
-            'id' => '2',
+            'id' => '12',
+            'fullName' => 'Jane Doe',
             'username' => 'user2',
             'dateCreated' => '05/07/23',
-            'role' => 'Admin',
+            'role' => 'Physician',
         ],
         '3' => [
-            'id' => '2',
+            'id' => '112',
+            'fullName' => 'Jane Doe',
             'username' => 'user2',
             'dateCreated' => '05/07/23',
-            'role' => 'Admin',
+            'role' => 'BHW',
         ],
         '4' => [
-            'id' => '2',
+            'id' => '1112',
+            'fullName' => 'Jane Doe',
             'username' => 'user2',
             'dateCreated' => '05/07/23',
-            'role' => 'Admin',
+            'role' => 'Nurse',
         ],
         '5' => [
             'id' => '2',
+            'fullName' => 'Jane Doe',
             'username' => 'user2',
             'dateCreated' => '05/07/23',
             'role' => 'Admin',
         ],
         '6' => [
             'id' => '2',
+            'fullName' => 'Jane Doe',
             'username' => 'user2',
             'dateCreated' => '05/07/23',
             'role' => 'Admin',
         ],
         '7' => [
             'id' => '2',
+            'fullName' => 'Jane Doe',
             'username' => 'user2',
             'dateCreated' => '05/07/23',
             'role' => 'Admin',
         ],
         '8' => [
             'id' => '2',
+            'fullName' => 'Jane Doe',
             'username' => 'user2',
             'dateCreated' => '05/07/23',
             'role' => 'Admin',
         ],
         '9' => [
             'id' => '2',
+            'fullName' => 'Jane Doe',
             'username' => 'user2',
             'dateCreated' => '05/07/23',
             'role' => 'Admin',
         ],
         '10' => [
             'id' => '2',
+            'fullName' => 'Jane Doe',
             'username' => 'user2',
             'dateCreated' => '05/07/23',
             'role' => 'Admin',
         ],
         '11' => [
             'id' => '2',
+            'fullName' => 'Jane Doe',
             'username' => 'user2',
             'dateCreated' => '05/07/23',
             'role' => 'Admin',
         ],
         '12' => [
             'id' => '2',
+            'fullName' => 'Jane Doe',
             'username' => 'user2',
             'dateCreated' => '05/07/23',
             'role' => 'Admin',
@@ -146,31 +158,34 @@
                         </a>
                     </div>
                 </div>
-                <a  href="{{url('users/add')}}" class="flex justify-center items-center bg-secondary rounded-xl text-white py-[7px] px-4 gap-1">
-                    <i class='bx bxs-plus-circle text-xl'></i><p class="whitespace-nowrap">Add New User</p>
+                <a href="{{url('users/add')}}" class="flex justify-center items-center bg-secondary rounded-xl text-white py-[7px] px-4 gap-1">
+                    <i class='bx bxs-plus-circle text-xl'></i><p class="whitespace-nowrap hidden md:inline-block">Add New User</p>
                 </a>
             </div>
         </div>
-        <div class="bg-white flex flex-col h-fit rounded-xl drop-shadow-lg justify-center w-3/4 py-8 px-6 gap-8">
+        <div class="bg-white flex flex-col h-fit rounded-xl drop-shadow-lg justify-center overflow-x-auto w-3/4 py-8 px-6 gap-8">
             <table class="w-full">
                 <thead>
                     <tr class="border-2 border-transparent border-b-light-gray">
-                        <th class="text-center py-3">ID#</th>
-                        <th class="text-left py-3">Username</th>
-                        <th class="text-left py-3">Date Created</th>
-                        <th class="text-left py-3">Role</th>
-                        <th class="text-left py-3">Action</th>
+                        <th class="text-left px-6 py-3">ID</th>
+                        <th class="text-left lg:px-6 py-3">Full Name</th>
+                        <th class="text-left px-6 py-3">Username</th>
+                        <th class="text-left px-6 py-3">Date Created</th>
+                        <th class="text-left px-6 py-3">Role</th>
+                        <th class="text-left px-6 py-3">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($users as $user => $value)
                         <tr class="border border-transparent y-10 {{!($loop->last) ? "border-b-light-gray" : ""}}">
-                            <td class="text-center py-3">{{$value['id']}}</td>
-                            <td class="text-left py-3">{{$value['username']}}</td>
-                            <td class="text-left py-3">{{$value['dateCreated']}}</td>
-                            <td class="text-left py-3">{{$value['role']}}</td>
-                            <td class="text-left py-3">
+                            <td class="text-left px-6 py-3">{{$value['id']}}</td>
+                            <td class="text-left lg:px-6 py-3">{{$value['fullName']}}</td>
+                            <td class="text-left px-6 py-3">{{$value['username']}}</td>
+                            <td class="text-left px-6 py-3">{{$value['dateCreated']}}</td>
+                            <td class="text-left px-6 py-3">{{$value['role']}}</td>
+                            <td class="text-left px-6 py-3">
                                 <div class="flex gap-[6px]">
+                                    <button id="view" class="text-white bg-primary px-4 py-2 rounded-full">View</button>
                                     <button id="edit" class="text-white bg-secondary px-4 py-2 rounded-full">Edit</button>
                                     <button id="archive" class="text-white bg-red px-4 py-2 rounded-full">Archive</button>
                                 </div>
