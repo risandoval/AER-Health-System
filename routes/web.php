@@ -32,11 +32,11 @@ Route::get('/users/add', function () {
     return view('pages/userAccounts/add-user-account');
 });
 
-//route for profile page
-// Route::get('profile', function () {
-//     return view('pages/profile');
-// });
+//store function in UserController
+Route::post('/users/add', [UserController::class, 'store'])->name('add-user-account.store');
 
+//userData function in UserController
+Route::post('/users/add', [UserController::class, 'userData']);
 
 
 // Auth::routes();

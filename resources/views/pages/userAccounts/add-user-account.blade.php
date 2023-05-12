@@ -5,46 +5,73 @@
                 <h2 class="text-xl"><strong>Add User Account</strong></h2>
             </div>
 
-            <div class="grid grid-cols-4 border-y p-10 gap-6 items-center">                  
-                <label for="first_name" class="col-span-1 whitespace-nowrap">First Name:</label>
-                <input type="text" name="first_name" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3">
-
-                <label for="last_name" class="col-span-1 whitespace-nowrap">Last Name:</label>
-                <input type="text" name="last_name" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3">
-
-                <label for="username" class="col-span-1 whitespace-nowrap">Username:</label>
-                <input type="text" name="username" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3">
-
-                <label for="password" class="col-span-1 whitespace-nowrap">Password:</label>
-                <input type="password" name="password" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3">
-
-                <label for="confirm_password" class="col-span-1 whitespace-nowrap">Confirm Password:</label>
-                <input type="password" name="confirm_password" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3">
-
-                <label for="role" class="col-span-1 whitespace-nowrap">Role:</label>
-                <input type="text" name="role" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3">
-
-                <label for="position" class="col-span-1 whitespace-nowrap">Position:</label>
-                <select name="position" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3">
-                    <option value="Admin">Admin</option>
-                    <option value="Admin">Doctor</option>
-                    <option value="Admin">Barangay Health Workers (BHW)</option>
-                </select>
-
-                <label for="birthdate" class="col-span-1 whitespace-nowrap">Birthdate:</label>
-                <input type="date" name="birthdate" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3" max="9999-12-31">
-
-                <label for="contact" class="col-span-1 whitespace-nowrap">Contact No:</label>
-                <input type="text" name="contact" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3">
-
-                <label for="email" class="col-span-1 whitespace-nowrap">Email Address:</label>
-                <input type="text" name="email" class="rounded-xl border outline-[0.5px] outline-secondary w-full focus:ring-0 border-gray-300 col-span-3">
-            </div>
             
-            <div class="flex gap-3 justify-end p-3">
-                <a href="{{url('/users')}}" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 font-bold">Cancel</a>
-                <button type="button" class="bg-secondary text-white text-sm rounded-full px-5 py-2 font-bold">Add User</button>
-            </div>
+            <form action="/users/add" method="POST">
+                <div class="grid grid-cols-4 border-y p-10 gap-6 items-center">    
+                    @csrf              
+                    <label for="first_name" class="col-span-1 whitespace-nowrap -mb-6">First Name:</label>
+                    <input type="text" name="first_name" id="first_name" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3 -mb-6">
+                    <p class="col-start-2 col-span-3 text-sm text-red -mb-2"> @error ('first_name'){{$message}} @enderror </p>                    
+
+                    <label for="first_name" class="col-span-1 whitespace-nowrap -mb-6">Middle Name:</label>
+                    <input type="text" name="middle_name" id="middle_name" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3 -mb-6">
+                    <p class="col-start-2 col-span-3 text-sm text-red -mb-2"> @error ('middle_name'){{$message}} @enderror </p>  
+
+                    <label for="last_name" class="col-span-1 whitespace-nowrap -mb-6">Last Name:</label>
+                    <input type="text" name="last_name" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3 -mb-6">
+                    <p class="col-start-2 col-span-3 text-sm text-red -mb-2"> @error ('last_name'){{$message}} @enderror </p>  
+
+                    <label for="username" class="col-span-1 whitespace-nowrap -mb-6">Username:</label>
+                    <input type="text" name="username" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3 -mb-6">
+                    <p class="col-start-2 col-span-3 text-sm text-red -mb-2"> @error ('username'){{$message}} @enderror </p>  
+
+                    <label for="role" class="col-span-1 whitespace-nowrap -mb-6">Role:</label>
+                    <select name="role" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3 -mb-6">
+                        <option value="" selected hidden>select..</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Doctor">Doctor</option>
+                        <option value="BHW">Barangay Health Workers (BHW)</option>
+                    </select>
+                    <p class="col-start-2 col-span-3 text-sm text-red -mb-2"> @error ('role'){{$message}} @enderror </p> 
+
+                    <label for="specialization" class="col-span-1 whitespace-nowrap -mb-6">Specialization:</label>
+                    <select name="specialization" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3 -mb-6">
+                        <option value="" selected hidden>select..</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Doctor">Doctor</option>
+                        <option value="BHW">Barangay Health Workers (BHW)</option>
+                    </select>
+                    <p class="col-start-2 col-span-3 text-sm text-red -mb-2"> @error ('specialization'){{$message}} @enderror </p> 
+
+                    <label for="birthdate" class="col-span-1 whitespace-nowrap -mb-6">Birthdate:</label>
+                    <input type="date" name="birthdate" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3 -mb-6" max="9999-12-31" >
+                    <p class="col-start-2 col-span-3 text-sm text-red -mb-2"> @error ('birthdate'){{$message}} @enderror </p> 
+
+                    <label for="contact" class="col-span-1 whitespace-nowrap -mb-6">Mobile No:</label>
+                    <input type="text" name="contact" id="contact" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3 -mb-6" placeholder="Enter 11 digit number">
+                    <p class="col-start-2 col-span-3 text-sm text-red -mb-2"> @error ('contact'){{$message}} @enderror </p>
+
+                    <label for="email" class="col-span-1 whitespace-nowrap -mb-6">Email Address:</label>
+                    <input type="text" name="email" class="rounded-xl border outline-[0.5px] outline-secondary w-full focus:ring-0 border-gray-300 col-span-3 -mb-6">
+                    <p class="col-start-2 col-span-3 text-sm text-red -mb-2"> @error ('email'){{$message}} @enderror </p>
+
+                    <label for="password" class="col-span-1 whitespace-nowrap -mb-6">Password:</label>
+                    <input type="password" name="password" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3 -mb-6">
+                    <p class="col-start-2 col-span-3 text-sm text-red -mb-2"> @error ('password'){{$message}} @enderror </p>
+
+                    <label for="confirm_password" class="col-span-1 whitespace-nowrap -mb-6">Confirm Password:</label>
+                    <input type="password" name="confirm_password"class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3 -mb-6">
+                    <p class="col-start-2 col-span-3 text-sm text-red -mb-2"> @error ('confirm_password'){{$message}} @enderror </p>
+
+                    
+                </div>
+            
+            
+                <div class="flex gap-3 justify-end p-3">
+                    <a href="{{url('/users')}}" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 font-bold">Cancel</a>
+                    <button type="submit" class="bg-secondary text-white text-sm rounded-full px-5 py-2 font-bold">Add User</button>
+                </div>
+            </form>
         </div>
     </section>
 
