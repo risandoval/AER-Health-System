@@ -34,9 +34,10 @@ class HomeController extends Controller
         return view('pages/profile', compact('user'));
     }
 
-    public function userHome()
+    public function login()
     {
-        return view('home',["msg"=>"I am User role"]);
+        return view('pages/login');
+
     }
 
     public function editorHome()

@@ -26,8 +26,9 @@ class UserRoleMiddleware
         }
 
         else{
-            // dd(Auth::check(), $role);
-            return response()->json(["You don't have permission to access this page"]);
+            //Redirecting shit
+            return redirect('/')->with('message', 'Logout Successful');
+            // return response()->json(["You don't have permission to access this page"]);
         }
 
         
