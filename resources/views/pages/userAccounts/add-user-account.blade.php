@@ -4,7 +4,6 @@
             <div class="px-6 py-4">
                 <h2 class="text-xl"><strong>Add User Account</strong></h2>
             </div>
-
             
             <form action="/users/add" method="POST">
                 <div class="grid grid-cols-4 border-y p-10 gap-6 items-center">    
@@ -62,10 +61,7 @@
                     <label for="confirm_password" class="col-span-1 whitespace-nowrap -mb-6">Confirm Password:</label>
                     <input type="password" name="confirm_password"class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3 -mb-6">
                     <p class="col-start-2 col-span-3 text-sm text-red -mb-2"> @error ('confirm_password'){{$message}} @enderror </p>
-
-                    
                 </div>
-            
             
                 <div class="flex gap-3 justify-end p-3">
                     <a href="{{url('/users')}}" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 font-bold">Cancel</a>
