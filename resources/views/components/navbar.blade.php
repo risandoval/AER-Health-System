@@ -2,7 +2,7 @@
     <div class="flex justify-between items-center">
       <span class="text-2xl">
         <a href="/dashboard">
-          <img class="h-10 inline " src="https://png.pngtree.com/png-vector/20190225/ourmid/pngtree-circuit-logo-template-vector-png-image_704226.jpg" alt="logo">
+          <img class="h-10 inline" src="{{url('/images/logo.png')}}" alt="logo">
           SystemName
         </a>
       </span>
