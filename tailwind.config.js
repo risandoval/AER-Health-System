@@ -19,7 +19,9 @@ module.exports = {
         "light": "#EFEFEF",
         "red": "#DE3838",
         "light-gray": "#E0E0E0",
-      }
+        "disabled-text": "#535353",
+        "disabled-bg": "#EDEEF1"
+      },
     },
   },
   plugins: [

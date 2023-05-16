@@ -26,7 +26,7 @@
         <h2 class="font-bold text-2xl text-black">Log in to SystemName</h2>
         <p class="text-xs mt-1 text-black">Welcome! Please enter your details</p>
   
-        <form action="/login/process" method="POST" class="flex flex-col mt-3">
+        <form action="{{url('/login/process')}}" method="POST" class="flex flex-col mt-3">
           @csrf
           {{-- USERNAME --}}
           <label class="mt-3 block text-xs font-semibold">Username</label>

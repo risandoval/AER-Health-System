@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer components {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
     .nav-link {
         @apply relative text-xl hover:border-b-2 hover:pb-1 whitespace-nowrap;
     }
