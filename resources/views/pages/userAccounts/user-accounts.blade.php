@@ -147,7 +147,10 @@
                 <h2 class="text-xl"><strong>View Account Details</strong></h2>
             </div>
     
-            <div class="grid grid-cols-4 border-y p-10 gap-6 items-center">                  
+            <div class="grid grid-cols-4 border-y p-10 pt-6 gap-6 items-center">
+                <div class="col-span-4">
+                    <img class="w-40 h-40 border-4 border-primary rounded-full mx-auto" src="https://i.pinimg.com/564x/81/79/8d/81798d8b882d04f4ab59ba9c39fc5244.jpg" alt="Profile picture">
+                </div>                  
                 <label for="first_name" class="col-span-1 whitespace-nowrap">First Name:</label>
                 <input type="text" name="first_name" id="first_name" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg" disabled value="Juan Carlo">
                 

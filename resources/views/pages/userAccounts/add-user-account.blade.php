@@ -1,6 +1,6 @@
 <x-layout>
     <section class="flex flex-col gap-12 bg-light w-full min-h-screen items-center justify-center pt-navbar pb-10">
-        <div  class="bg-white rounded-xl min-h-[600px] drop-shadow-lg mt-12 mx-4">
+        <div  class="bg-white rounded-xl max-w-[800px] min-h-[600px] drop-shadow-lg mt-12 mx-4">
             <div class="px-6 py-4">
                 <h2 class="text-xl"><strong>Add User Account</strong></h2>
             </div>

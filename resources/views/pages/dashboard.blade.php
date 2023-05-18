@@ -71,7 +71,7 @@
                             <div class="text-center text-sm font-semibold mb-2">
                                 <p>System Administrator</p>
                             </div>
-                            <button id="edit" class="w-max px-6 mb-8 self-center  bg-primary text-light hover:bg-secondary rounded duration-400">
+                            <button id="edit" class="w-max px-6 mb-8 self-center bg-primary text-light hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 rounded duration-400">
                                 <a href="#" class="text-sm duration-400">Edit Profile</a>
                             </button>
                             <div class="relative cursor-pointer px-6 mb-3">
