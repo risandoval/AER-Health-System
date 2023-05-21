@@ -1,4 +1,4 @@
-@php
+{{-- @php
     $users = [
         '1' => [
             'id' => '1',
@@ -73,7 +73,7 @@
             'role' => 'Admin',
         ],
     ];
-@endphp
+@endphp --}}
 
 <x-layout>
     
@@ -97,10 +97,11 @@
                 <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-[10%] hover:cursor-pointer'></i>
                 <h2 class="text-xl"><strong>Edit Account Details</strong></h2>
             </div>
-
-            <div class="grid grid-cols-4 border-y p-10 gap-6 items-center">                  
+      
+            <div class="grid grid-cols-4 border-y p-10 gap-6 items-center">
+                             
                 <label for="first_name" class="col-span-1 whitespace-nowrap">First Name:</label>
-                <input type="text" name="first_name" class="rounded-xl border w-full focus:ring-0 focus:ring-secondary border-gray-300 col-span-3">
+                <input type="text" name="first_name" value="Hello" class="rounded-xl border w-full focus:ring-0 focus:ring-secondary border-gray-300 col-span-3">
 
                 <label for="last_name" class="col-span-1 whitespace-nowrap">Last Name:</label>
                 <input type="text" name="last_name" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3">
@@ -127,6 +128,7 @@
                 <label for="email" class="col-span-1 whitespace-nowrap">Email Address:</label>
                 <input type="text" name="email" class="rounded-xl border outline-[0.5px] w-full focus:ring-0 border-gray-300 col-span-3">
             </div>
+  
             
             <div class="flex gap-3 justify-end p-3">
                 <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-1 font-bold">Close</button>
@@ -159,20 +161,32 @@
                         <th class="text-left py-3">Username</th>
                         <th class="text-left py-3">Date Created</th>
                         <th class="text-left py-3">Role</th>
+                        <th class="text-left py-3">Status</th>
                         <th class="text-left py-3">Action</th>
+                      
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $user => $value)
+                    @foreach ($user as $users)
                         <tr class="border border-transparent y-10 {{!($loop->last) ? "border-b-light-gray" : ""}}">
-                            <td class="text-center py-3">{{$value['id']}}</td>
-                            <td class="text-left py-3">{{$value['username']}}</td>
-                            <td class="text-left py-3">{{$value['dateCreated']}}</td>
-                            <td class="text-left py-3">{{$value['role']}}</td>
+                            <td class="text-center py-3">{{$users->id}}</td>
+                            <td class="text-left py-3">{{$users->username}}</td>
+                            <td class="text-left py-3">{{$users->created_at}}</td>
+                            <td class="text-left py-3">{{$users->role}}</td>
+                            <td class="text-left py-3">{{$users->status}}</td>
                             <td class="text-left py-3">
                                 <div class="flex gap-[6px]">
-                                    <button id="edit" class="text-white bg-secondary px-4 py-2 rounded-full">Edit</button>
-                                    <button id="archive" class="text-white bg-red px-4 py-2 rounded-full">Archive</button>
+                                    <a href="/user/{{$users->id}}">
+                                    {{-- <button id="edit" class="text-white bg-secondary px-4 py-2 rounded-full">Edit</button> --}}
+                                    <button class="text-white bg-secondary px-4 py-2 rounded-full">Edit</button>
+                                    </a>
+                                    
+                                    <form action="/user/{{$users->id}}" method="POST" class="flex flex-col">
+                                        @method('put')   
+                                        @csrf
+                                    <button type="submit" class="text-white bg-red px-4 py-2 rounded-full">Archive</button>
+                                    </form>
+
                                 </div>
                             </td>
                         </tr>
@@ -188,3 +202,26 @@
 </x-layout>
 
 @vite('resources/js/modal.js')
+
+<script>
+    var modal = document.getElementById('edit-modal-body');
+    var btn = document.getElementById('edit');
+    var span = document.getElementsByClassName('close')[0];
+
+    // Open the modal when the button is clicked
+    btn.onclick = function() {
+        modal.style.display = "block";
+    };
+
+    // Close the modal when the close button is clicked
+    span.onclick = function() {
+        modal.style.display = "none";
+    };
+
+    // Close the modal when the user clicks outside of it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+</script>
