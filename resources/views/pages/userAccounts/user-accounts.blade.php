@@ -84,8 +84,8 @@
                 <p>Are you sure you want to archive this account?</p>
             </div>
             <div class="flex gap-2 justify-end p-3">
-                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Cancel</button>
-                <button type="button" class="bg-red text-white text-sm rounded-full px-4 py-2 font-bold hover:bg-white hover:text-red hover:ring-red hover:ring-1">Archive </button>
+                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white duration-100">Cancel</button>
+                <button type="button" class="bg-red text-white text-sm rounded-full px-4 py-2 font-bold hover:bg-white hover:text-red hover:ring-red hover:ring-1 duration-100 ease-in-out">Archive </button>
             </div>
         </div>
 
@@ -135,8 +135,8 @@
             </div>
             
             <div class="flex gap-2 justify-end p-3">
-                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-2 hover:bg-black hover:text-white">Cancel</button>
-                <button type="button" class="bg-secondary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-secondary hover:ring-secondary hover:ring-1">Save</button>
+                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-2 hover:bg-black hover:text-white duration-100">Cancel</button>
+                <button type="button" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">Save</button>
             </div>
         </div>
 
@@ -185,7 +185,7 @@
             </div>
             
             <div class="flex gap-2 justify-end p-3">
-                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-2 hover:bg-black hover:text-white">Close</button>
+                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-2 hover:bg-black hover:text-white duration-100">Close</button>
             </div>
         </div>
     </div>
@@ -196,14 +196,14 @@
             <div class="flex flex-row rounded-lg items-center text-right w-full">
                 <div class="flex w-full">
                     <div class="relative flex flex-row w-[60%]">
-                        <input class="rounded-l-xl focus:ring-0 border border-gray-400 pl-4 pr-2 w-full" type="text" placeholder="Search">
-                        <a href="" class="absolute -right-[50px] ring-0 ring-gray-400 h-full flex justify-center items-center rounded-r-xl bg-secondary w-[50px]">
-                            <i class='bx bx-search-alt-2 text-white text-xl'></i>
+                        <input class="rounded-l-full focus:ring-0 border border-gray-400 pl-4 pr-2 w-full" type="text" placeholder="Search">
+                        <a href="" class="absolute -right-[50px] ring-0 ring-gray-400 h-full flex justify-center items-center rounded-r-full bg-primary w-[50px]">
+                            <i class='bx bx-search-alt-2 text-white text-lg'></i>
                         </a>
                     </div>
                 </div>
-                <a href="{{url('users/add')}}" class="flex justify-center items-center bg-secondary rounded-xl text-white py-[7px] px-4 gap-1 hover:text-secondary hover:bg-white hover:ring-1 hover:ring-secondary">
-                    <i class='bx bxs-plus-circle text-xl'></i><p class="whitespace-nowrap hidden md:inline-block">Add New User</p>
+                <a href="{{url('users/add')}}" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary duration-100">
+                    <i class='bx bxs-plus-circle text-lg'></i><p class="whitespace-nowrap hidden md:inline-block">Add New User</p>
                 </a>
             </div>
         </div>
@@ -229,9 +229,9 @@
                             <td class="text-left px-6 py-3">{{$value['role']}}</td>
                             <td class="text-left px-6 py-3">
                                 <div class="flex gap-2">
-                                    <button id="view" class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1">View</button>
-                                    <button id="edit" class="text-white bg-secondary px-4 py-2 rounded-full hover:bg-white hover:text-secondary hover:ring-secondary hover:ring-1">Edit</button>
-                                    <button id="archive" class="text-white bg-red px-4 py-2 rounded-full hover:bg-white hover:text-red hover:ring-red hover:ring-1">Archive</button>
+                                    <button id="view" class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">View</button>
+                                    <button id="edit" class="text-white bg-secondary px-4 py-2 rounded-full hover:bg-white hover:text-secondary hover:ring-secondary hover:ring-1 duration-100">Edit</button>
+                                    <button id="archive" class="text-white bg-red px-4 py-2 rounded-full hover:bg-white hover:text-red hover:ring-red hover:ring-1 duration-100">Archive</button>
                                 </div>
                             </td>
                         </tr>

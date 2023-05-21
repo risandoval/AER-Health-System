@@ -27,7 +27,7 @@ class UserController extends Controller {
         if(auth()->attempt($validated)){
             $request->session()->regenerate();
 
-            return redirect('/profile')->with('message', 'Welcome Back');
+            return redirect('/dashboard')->with('message', 'Welcome Back');
         }
 
     }
