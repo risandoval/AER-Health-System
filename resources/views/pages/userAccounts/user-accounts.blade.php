@@ -159,34 +159,35 @@
             <table class="w-full">
                 <thead>
                     <tr class="border-2 border-transparent border-b-light-gray">
-                        <th class="text-center py-3">ID#</th>
-                        <th class="text-left py-3">Username</th>
-                        <th class="text-left py-3">Date Created</th>
-                        <th class="text-left py-3">Role</th>
-                        <th class="text-left py-3">Status</th>
-                        <th class="text-left py-3">Action</th>
+                        <th class="text-left px-6 py-3">ID</th>
+                        <th class="text-left lg:px-6 py-3 sticky left-0 bg-white p-6 whitespace-nowrap">Full Name</th>
+                        <th class="text-left px-6 py-3">Username</th>
+                        <th class="text-left px-6 py-3 whitespace-nowrap">Date Created</th>
+                        <th class="text-left px-6 py-3">Role</th>
+                        <th class="text-left px-6 py-3">Status</th>
+                        <th class="text-left px-6 py-3">Action</th>
                       
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($user as $users)
                         <tr class="border border-transparent y-10 {{!($loop->last) ? "border-b-light-gray" : ""}}">
-                            <td class="text-center py-3">{{$users->id}}</td>
-                            <td class="text-left py-3">{{$users->username}}</td>
-                            <td class="text-left py-3">{{$users->created_at}}</td>
-                            <td class="text-left py-3">{{$users->role}}</td>
-                            <td class="text-left py-3">{{$users->status}}</td>
-                            <td class="text-left py-3">
+                            <td class="text-left px-6 py-3">{{$users->id}}</td>
+                            <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">{{$users->firstname}} {{$users->lastname}}</td>
+                            <td class="text-left px-6 py-3">{{$users->username}}</td>
+                            <td class="text-left px-6 py-3">{{$users->created_at}}</td>
+                            <td class="text-left px-6 py-3">{{$users->role}}</td>
+                            <td class="text-left px-6 py-3">{{$users->status}}</td>
+                            <td class="text-left px-6 py-3">
                                 <div class="flex gap-[6px]">
+                                    <button id="view" class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1">View</button>
                                     <a href="/user/{{$users->id}}">
-                                    {{-- <button id="edit" class="text-white bg-secondary px-4 py-2 rounded-full">Edit</button> --}}
-                                    <button class="text-white bg-secondary px-4 py-2 rounded-full">Edit</button>
+                                        <button class="text-white bg-secondary px-4 py-2 rounded-full hover:bg-white hover:text-secondary hover:ring-secondary hover:ring-1">Edit</button>
                                     </a>
-                                    
                                     <form action="/user/{{$users->id}}" method="POST" class="flex flex-col">
                                         @method('put')   
                                         @csrf
-                                    <button type="submit" class="text-white bg-red px-4 py-2 rounded-full">Archive</button>
+                                        <button type="submit" class="text-white bg-red px-4 py-2 rounded-full hover:bg-white hover:text-red hover:ring-red hover:ring-1">Archive</button>
                                     </form>
 
                                 </div>
