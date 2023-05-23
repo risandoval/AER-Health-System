@@ -48,29 +48,32 @@ class UserController extends Controller {
 
     // }
 
-
+    //ADD USER ACCOUNT
     public function store(Request $request)
     {
+        // dd($request->all());
         $validated = $request->validate([
-            "first_name" => ['required'],
-            "last_name" => ['required'],
-            "username" => ['required', Rule::unique('users', 'username')],
-            'password' => ['required'],
-            'confirm_password' => ['required', 'same:password'], // Validate if confirm_password is the same as password
+            "first_name" => ['required', new Alpha_spaces],
+            'middle_name' => [new Alpha_spaces],
+            "last_name" => ['required', new Alpha_spaces],
+            // "username" => [Rule::unique('users', 'username')],
+            // 'password' => ['required'],
+            // 'confirm_password' => ['required', 'same:password'], // Validate if confirm_password is the same as password
             "role" => ['required'],
             "position" => ['required'],
             "birthday" => ['required'],
-            "contact" => ['required'],
-            "email" => ['required', 'email', Rule::unique('users', 'email')],
+            "contact" => 'required|numeric|digits:11|starts_with:09',
+            "email" => ['email', Rule::unique('users', 'email')],
         ]);
-    
+        
+        
         $validated['status'] = 'Active';
-        $validated['password'] = bcrypt($validated['password']);
+        // $validated['password'] = bcrypt($validated['password']);
     
         $user = new User($validated);
         $user->save();
         
-        return redirect('/users/add')->with('message', 'New Student Added Successfully');
+        return redirect('/users/add')->with('message', 'New User Added Successfully');
     }
     
     
@@ -81,26 +84,29 @@ class UserController extends Controller {
 
     }
 
+    //VIEW USER ACCOUNT (TABLE)
     public function show($id){
-
         $editUser = User::findOrFail($id);
         // dd($editUser);
         return view('pages/edit',  compact('editUser'));
 
-
     }
 
+    //EDIT USER ACCOUNT
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            "first_name" => ['required', 'min:4'],
-            "last_name" => ['required', 'min:4'],
-            "username" => ['required'],
+            "first_name" => ['required', new Alpha_spaces],
+            'middle_name' => [new Alpha_spaces],
+            "last_name" => ['required', new Alpha_spaces],
+            // "username" => ['required', Rule::unique('users', 'username')],
+            // 'password' => ['required'],
+            // 'confirm_password' => ['required', 'same:password'], // Validate if confirm_password is the same as password
             "role" => ['required'],
             "position" => ['required'],
             "birthday" => ['required'],
-            "contact" => ['required'],
-            "email" => ['required', 'email'],
+            "contact" => 'required|numeric|digits:11|starts_with:09',
+            "email" => ['email', Rule::unique('users', 'email')],
         ]);
     
         $user = User::find($id);
@@ -195,5 +201,7 @@ class UserController extends Controller {
             'confirm_password' => 'required|same:password'
         ]);
         return $request;
+
+
     }
 }

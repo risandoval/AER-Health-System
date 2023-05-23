@@ -15,19 +15,19 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 'barangay health worker',
+                'username' => 'barangay health worker',
                 'email' => 'bhw@gmail.com',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', //password
                 'role_id' => '2'
             ],
             [
-                'name' => 'Doctor',
+                'username' => 'Doctor',
                 'email' => 'doctor@gmail.com',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'role_id' => '3'
             ],
             [
-                'name' => 'Admin',
+                'username' => 'Admin',
                 'email' => 'admin@gmail.com',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'role_id' => '1'
