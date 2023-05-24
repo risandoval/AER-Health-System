@@ -13,7 +13,7 @@ class UserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,8 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('id');
+        // dd($id);
         return [
             "first_name" => ['required', new Alpha_spaces],
             'middle_name' => [new Alpha_spaces],
@@ -34,7 +36,7 @@ class UserRequest extends FormRequest
             "position" => ['required'],
             "birthday" => ['required'],
             "contact" => 'required|numeric|digits:11|starts_with:09',
-            "email" => ['email', Rule::unique('users', 'email')],
+            "email" => "email|unique:users,email,$id",
         ];
     }
 }

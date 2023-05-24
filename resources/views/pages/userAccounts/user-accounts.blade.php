@@ -212,8 +212,8 @@
             <table class="w-full">
                 <thead>
                     <tr class="border-2 border-transparent border-b-light-gray">
-                        <th class="text-left px-6 py-3">ID</th>
-                        <th class="text-left lg:px-6 py-3 sticky left-0 bg-white p-6 whitespace-nowrap">Full Name</th>
+                        <th class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">ID</th>
+                        <th class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">Full Name</th>
                         <th class="text-left px-6 py-3">Username</th>
                         <th class="text-left px-6 py-3 whitespace-nowrap">Date Created</th>
                         <th class="text-left px-6 py-3">Role</th>
@@ -225,7 +225,7 @@
                 <tbody>
                     @foreach ($user as $users)
                         <tr class="border border-transparent y-10 {{!($loop->last) ? "border-b-light-gray" : ""}}">
-                            <td class="text-left px-6 py-3">{{$users->id}}</td>
+                            <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">{{$users->id}}</td>
                             <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$users->first_name}} {{substr($users->middle_name, 0, 1)}}. {{$users->last_name}} </td>
                             <td class="text-left px-6 py-3">{{$users->username}}</td>
                             <td class="text-left px-6 py-3">{{$users->created_at}}</td>
@@ -233,8 +233,10 @@
                             <td class="text-left px-6 py-3">{{$users->status}}</td>
                             <td class="text-left px-6 py-3">
                                 <div class="flex gap-[6px]">
-                                    <button id="view" class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1">View</button>
-                                    <a href="/user/{{$users->id}}">
+                                    <a href="/user/view/{{$users->id}}">
+                                        <button class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1">View</button>
+                                    </a>
+                                    <a href="/user/edit/{{$users->id}}">
                                         <button class="text-white bg-secondary px-4 py-2 rounded-full hover:bg-white hover:text-secondary hover:ring-secondary hover:ring-1">Edit</button>
                                     </a>
                                     <form action="/user/{{$users->id}}" method="POST" class="flex flex-col">

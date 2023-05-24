@@ -41,16 +41,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post('/login/process', [App\Http\Controllers\UserController::class, 'process']);
 Route::post('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout');
 Route::post('/store', [App\Http\Controllers\UserController::class, 'store'])->name('store');
-Route::get('/add/user', [App\Http\Controllers\UserController::class, 'create'])->name('create');
-Route::get('/user/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('show');
-Route::put('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('update');
+Route::get('/user/view/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('show'); //show view user
+Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('edit'); //show edit user
+Route::put('/user/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('update'); //edit user
 Route::delete('/user/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('delete');
 Route::put('/user/{id}', [App\Http\Controllers\UserController::class, 'archive'])->name('archive');
 
 Route::middleware(['auth','user-role:admin'])->group(function(){
-    
     Route::get('/profile', [App\Http\Controllers\HomeController::class,'profilePage'])->name('profile');
-    
 });
 
 

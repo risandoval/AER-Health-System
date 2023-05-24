@@ -46,7 +46,7 @@ class UserController extends Controller {
         // $validated['password'] = bcrypt($validated['password']);
     
         $user = new User($validated);
-        User::create($validated);
+        // User::create($validated);
         $user->save();
         
         return redirect('/users/add')->with('message', 'New User Added Successfully');
@@ -54,10 +54,16 @@ class UserController extends Controller {
 
     //VIEW USER ACCOUNT (TABLE)
     public function show($id){
-        $editUser = User::findOrFail($id);
-        // dd($editUser);
-        return view('pages/edit',  compact('editUser'));
+        $viewUser = User::findOrFail($id);
+        // dd($id);
+        return view('pages/userAccounts/view-user',  compact('viewUser'));
+    }
 
+    //show data in edit
+    public function edit($id){
+        $editUser = User::findOrFail($id);
+        // dd($id);
+        return view('pages/userAccounts/edit',  compact('editUser'));
     }
 
     //EDIT USER ACCOUNT
@@ -65,16 +71,10 @@ class UserController extends Controller {
     {
         // gets all request
         $validated = $request->validated();
-    
+        
         $user = User::find($id);
-    
-        if (!$user) {
-            // User not found, handle the error accordingly
-            return back()->with('error', 'User not found');
-        }
-    
+        
         $user->update($validated);
-    
         return back()->with('message', 'Data was successfully updated');
     }
     

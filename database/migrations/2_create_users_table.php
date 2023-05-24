@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('specialization')->nullable(); //doctor
             $table->string('barangay')->nullable(); //BHW
             $table->date('birthday');
-            $table->bigInteger('contact');
-            $table->string('email')->unique();
+            $table->string('contact');
+            $table->string('email')->nullable()->unique();
             
             $table->string('password')->default(bcrypt('password'));
             $table->foreignId('role_id')->nullable()->constrained('roles');
