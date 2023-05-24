@@ -25,6 +25,23 @@ class UserController extends Controller {
     {
         $validated = $request->validated();
         
+        //first letter of names changed to uppercase
+        $validated['first_name'] = ucfirst($validated['first_name']);
+        $validated['middle_name'] = ucfirst($validated['middle_name']);
+        $validated['last_name'] = ucfirst($validated['last_name']);
+        //username gets the first letter of last name then add a 4 digit number (e.g. J0001)
+        $validated['username'] = substr($validated['last_name'], 0, 1) . sprintf("%04d", rand(1, 9999));
+        //role id will depend on the role name
+        if($validated['role'] == 'Admin'){
+            $validated['role_id'] = 1;
+        } elseif($validated['role'] == 'Barangay Health Worker'){
+            $validated['role_id'] = 2;
+        } elseif($validated['role'] == 'Doctor'){
+            $validated['role_id'] = 3;
+        }
+        //password would be birthday as default
+        $validated['password'] = bcrypt($validated['birthday']);
+        //active status as default data
         $validated['status'] = 'Active';
         // $validated['password'] = bcrypt($validated['password']);
     

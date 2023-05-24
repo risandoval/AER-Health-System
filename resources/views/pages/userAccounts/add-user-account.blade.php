@@ -37,7 +37,7 @@
                         <option value="" selected hidden>select..</option>
                         <option value="Admin">Admin</option>
                         <option value="Doctor">Doctor</option>
-                        <option value="BHW">Barangay Health Workers (BHW)</option>
+                        <option value="Barangay Health Worker">Barangay Health Workers (BHW)</option>
                     </select>
                     <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('role'){{$message}} @enderror </p>
 
