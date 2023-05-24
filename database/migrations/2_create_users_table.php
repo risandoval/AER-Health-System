@@ -29,6 +29,7 @@ return new class extends Migration
             $table->foreignId('role_id')->nullable()->constrained('roles');
             $table->timestamps();
             $table->string('status')->nullable();
+            $table->softDeletes();
         });
     }
 

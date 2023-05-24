@@ -27,15 +27,7 @@ Route::get('dashboard', function () {
     return view('pages/dashboard');
 });
 
-// Route::get('/users', function () {
-//     return view('pages/userAccounts/user-accounts');
-// });
-
-
 Route::get('/users', [App\Http\Controllers\HomeController::class, 'listOfUsers'])->name('listOfUsers');
-
-
-
 
 Route::get('/users/add', function () {
     return view('pages/userAccounts/add-user-account');
@@ -44,7 +36,6 @@ Route::get('/users/add', function () {
 
 //userData function in UserController
 Route::post('/users/add', [UserController::class, 'userData']);
-
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/login/process', [App\Http\Controllers\UserController::class, 'process']);
@@ -56,11 +47,8 @@ Route::put('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'upda
 Route::delete('/user/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('delete');
 Route::put('/user/{id}', [App\Http\Controllers\UserController::class, 'archive'])->name('archive');
 
-
-Auth::routes();
-
 Route::middleware(['auth','user-role:admin'])->group(function(){
-
+    
     Route::get('/profile', [App\Http\Controllers\HomeController::class,'profilePage'])->name('profile');
     
 });

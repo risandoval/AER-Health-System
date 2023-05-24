@@ -22,7 +22,7 @@ class UserRoleMiddleware
             
             return $next($request);
             // dd($request->all(), $role);
-
+            
         }
 
         else{

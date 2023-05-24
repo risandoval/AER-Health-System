@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Rules\Alpha_spaces;
 use Illuminate\Http\Request;
 use App\Rules\Validation;
@@ -19,69 +20,19 @@ class UserController extends Controller {
         return redirect('/')->with('message', 'Logout Successful');
     }
 
-    // public function store(Request $request){
-
-    //     // dd($request);
-
-    //     $validated = $request->validate([
-    //         "first_name" => ['required', 'min:4'],
-    //         "last_name" => ['required', 'min:4'],
-    //         // "username" => ['required', 'min:4'],
-    //          "username" => ['required', Rule::unique('users', 'username')],
-    //         // 'password' => 'required|confirmed|min:6',
-    //         'password' => 'required',
-    //         "role" => ['required'],
-    //         "position" => ['required'],
-    //         "birthday" => ['required'],
-    //         "contact" => ['required'],
-    //         // "email" => ['required'],
-    //         "email" => ['required', 'email', Rule::unique('users', 'email')],
-           
-    //     ]);
-
-        
-    //     $validated['password'] = bcrypt($validated['password']);
-
-    //     User::create($validated);
-        
-    //     return redirect('/users/add')->with('message', 'New Student Added Successfully');
-
-    // }
-
     //ADD USER ACCOUNT
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        // dd($request->all());
-        $validated = $request->validate([
-            "first_name" => ['required', new Alpha_spaces],
-            'middle_name' => [new Alpha_spaces],
-            "last_name" => ['required', new Alpha_spaces],
-            // "username" => [Rule::unique('users', 'username')],
-            // 'password' => ['required'],
-            // 'confirm_password' => ['required', 'same:password'], // Validate if confirm_password is the same as password
-            "role" => ['required'],
-            "position" => ['required'],
-            "birthday" => ['required'],
-            "contact" => 'required|numeric|digits:11|starts_with:09',
-            "email" => ['email', Rule::unique('users', 'email')],
-        ]);
-        
+        $validated = $request->validated();
         
         $validated['status'] = 'Active';
         // $validated['password'] = bcrypt($validated['password']);
     
         $user = new User($validated);
+        User::create($validated);
         $user->save();
         
         return redirect('/users/add')->with('message', 'New User Added Successfully');
-    }
-    
-    
-
-    public function create(Request $request){
-       
-
-
     }
 
     //VIEW USER ACCOUNT (TABLE)
@@ -93,21 +44,10 @@ class UserController extends Controller {
     }
 
     //EDIT USER ACCOUNT
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        $validated = $request->validate([
-            "first_name" => ['required', new Alpha_spaces],
-            'middle_name' => [new Alpha_spaces],
-            "last_name" => ['required', new Alpha_spaces],
-            // "username" => ['required', Rule::unique('users', 'username')],
-            // 'password' => ['required'],
-            // 'confirm_password' => ['required', 'same:password'], // Validate if confirm_password is the same as password
-            "role" => ['required'],
-            "position" => ['required'],
-            "birthday" => ['required'],
-            "contact" => 'required|numeric|digits:11|starts_with:09',
-            "email" => ['email', Rule::unique('users', 'email')],
-        ]);
+        // gets all request
+        $validated = $request->validated();
     
         $user = User::find($id);
     
@@ -131,45 +71,31 @@ class UserController extends Controller {
             $user->delete();
             // Optionally, you can perform any additional actions here
             // For example, you can return a success message
-          
+        
         } else {
             // Handle the case when the user does not exist
             
         }
 
         return back()->with('message', 'Data was successfully updated');
-}
+    }
 
 
-        public function archive(Request $request, $id)
-        {   
-            $user = User::find($id);
+    public function archive(Request $request, $id)
+    {   
+        $user = User::find($id);
 
-            if ($user) {
-                $user->status = 'Inactive';
-                $user->save();
-                // Optionally, you can perform any additional actions here
-                // For example, you can return a success message
-            } else {
-                // Handle the case when the user does not exist
-            }
-
-            return back()->with('message', 'Data was successfully updated');
+        if ($user) {
+            $user->status = 'Inactive';
+            $user->save();
+            // Optionally, you can perform any additional actions here
+            // For example, you can return a success message
+        } else {
+            // Handle the case when the user does not exist
         }
 
-        
-    
-        // if (!$user) {
-        //     // User not found, handle the error accordingly
-        //     return back()->with('error', 'User not found');
-        // }
-    
-        // $user->update($validated);
-    
-        // return back()->with('message', 'Data was successfully updated');
-    
-
-
+        return back()->with('message', 'Data was successfully updated');
+    }
 
     public function process(Request $request){
         $validated = $request->validate([
@@ -180,28 +106,8 @@ class UserController extends Controller {
         if(auth()->attempt($validated)){
             $request->session()->regenerate();
 
-            return redirect('/profile')->with('message', 'Welcome Back');
+            return redirect('/dashboard')->with('message', 'Welcome Back');
         }
-
-    }
-
-    //add user form validation
-    public function userData(Request $request) {
-        $request->validate([
-            'first_name' => ['required', new Alpha_spaces],
-            'middle-name' => [new Alpha_spaces],
-            'last_name' => ['required', new Alpha_spaces],
-            // 'username' => [Rule::unique('users')],
-            'role' => 'required',
-            'specialization' => 'required',
-            'birthdate' => 'required',
-            'contact' => 'required|numeric|digits:11|starts_with:09',
-            // 'email' => 'email',
-            'password' => 'required|min:8',
-            'confirm_password' => 'required|same:password'
-        ]);
-        return $request;
-
 
     }
 }
