@@ -24,7 +24,7 @@ class UserController extends Controller {
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('message', 'Logout Successful');
+        return redirect('/login')->with('message', 'Logout Successful');
     }
 
     //ADD USER ACCOUNT
@@ -59,6 +59,10 @@ class UserController extends Controller {
     }
 
     //VIEW USER ACCOUNT (TABLE)
+    public function add(){
+        return view('pages/userAccounts/add-user');
+    }
+
     public function show($id){
         $viewUser = User::findOrFail($id);
         // dd($id);
@@ -114,19 +118,5 @@ class UserController extends Controller {
         }
 
         return back()->with('message', 'Data was successfully updated');
-    }
-
-    public function process(Request $request){
-        $validated = $request->validate([
-            "email" => ['required','email'],
-            'password' => ['required']
-        ]);
-
-        if(auth()->attempt($validated)){
-            $request->session()->regenerate();
-
-            return redirect('/dashboard')->with('message', 'Welcome Back');
-        }
-
     }
 }

@@ -1,6 +1,6 @@
 <x-layout>
     {{-- MODAL --}}
-    <div id="modal-background" class="hidden absolute z-10 top-0 left-0 h-full w-full bg-black bg-opacity-30 items-center justify-center">
+    <div id="modal-background" class="hidden absolute z-10 top-[-10%] left-0 h-full w-full bg-black bg-opacity-30 items-center justify-center">
         {{-- MESSAGE MODAL --}}
         <div id="message-modal-body" class="modal hidden fixed top-[40%] bg-white rounded-xl w-[400px] drop-shadow-lg px-10 pt-6 pb-4">
             <div class="flex flex-col">
@@ -11,9 +11,8 @@
                 <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-1 font-bold">Close</button>
             </div>
         </div>
-
         {{-- EDIT MODAL --}}
-        <div id="edit-modal-body" class="modal hidden fixed top-[15%] bg-white rounded-xl w-[600px] min-h-[600px] drop-shadow-lg overflow-hidden">
+        <div id="edit-modal-body" class="modal hidden fixed top-[10%] bg-white rounded-xl w-[600px] min-h-[600px] drop-shadow-lg overflow-hidden">
             <div class="relative px-6 py-4">
                 <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-[10%] hover:cursor-pointer'></i>
                 <h2 class="text-xl"><strong>Edit Account Details</strong></h2>
@@ -21,37 +20,44 @@
 
             <div class="grid grid-cols-4 border-y p-10 gap-6 items-center">                  
                 <label for="first_name" class="col-span-1 whitespace-nowrap">First Name:</label>
-                <input type="text" name="first_name" class="rounded-xl border w-full focus:ring-0 focus:ring-secondary border-gray-300 col-span-3">
+                <input type="text" name="first_name" class="rounded-xl border w-full focus:ring-0 focus:ring-secondary border-gray-300 col-span-3" value={{auth()->user()->first_name}}>
+
+                <label for="middle_name" class="col-span-1 whitespace-nowrap">Middle Name:</label>
+                <input type="text" name="middle_name" class="rounded-xl border w-full focus:ring-0 focus:ring-secondary border-gray-300 col-span-3" value={{auth()->user()->middle_name}}>
 
                 <label for="last_name" class="col-span-1 whitespace-nowrap">Last Name:</label>
-                <input type="text" name="last_name" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3">
+                <input type="text" name="last_name" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3" value={{auth()->user()->last_name}}>
 
                 <label for="username" class="col-span-1 whitespace-nowrap">Username:</label>
-                <input type="text" name="username" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3">
+                <input type="text" name="username" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3" value={{auth()->user()->username}}>
 
                 <label for="role" class="col-span-1 whitespace-nowrap">Role:</label>
-                <input type="text" name="role" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3">
+                <select name="role" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3">
+                    <option value="Admin" {{auth()->user()->role == 'Admin' ? 'selected' : ''}}>Admin</option>
+                    <option value="Doctor" {{auth()->user()->role == 'Doctor' ? 'selected' : ''}}>Doctor</option>
+                    <option value="Barangay Health Worker" {{auth()->user()->role == 'Barangay Health Worker' ? 'selected' : ''}}>Barangay Health Worker</option>
+                </select>
 
-                <label for="position" class="col-span-1 whitespace-nowrap">Position:</label>
+                <label for="position" class="col-span-1 whitespace-nowrap">Specialization:</label>
                 <select name="position" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3">
-                    <option value="Admin">Admin</option>
-                    <option value="Admin">Doctor</option>
-                    <option value="Admin">Barangay Health Workers (BHW)</option>
+                    <option value="Admin" {{auth()->user()->role == 'Admin' ? 'selected' : ''}}>Admin</option>
+                    <option value="Doctor" {{auth()->user()->role == 'Doctor' ? 'selected' : ''}}>Doctor</option>
+                    <option value="Barangay Health Worker" {{auth()->user()->role == 'Barangay Health Worker' ? 'selected' : ''}}>Barangay Health Worker</option>
                 </select>
 
                 <label for="birthdate" class="col-span-1 whitespace-nowrap">Birthdate:</label>
-                <input type="date" name="birthdate" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3" max="9999-12-31">
+                <input type="date" name="birthdate" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3" max="9999-12-31" value={{auth()->user()->birthday}}>
 
                 <label for="contact" class="col-span-1 whitespace-nowrap">Contact No:</label>
-                <input type="text" name="contact" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3">
+                <input type="text" name="contact" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3" value={{auth()->user()->contact}}>
 
                 <label for="email" class="col-span-1 whitespace-nowrap">Email Address:</label>
-                <input type="text" name="email" class="rounded-xl border outline-[0.5px] w-full focus:ring-0 border-gray-300 col-span-3">
+                <input type="text" name="email" class="rounded-xl border outline-[0.5px] w-full focus:ring-0 border-gray-300 col-span-3" value={{auth()->user()->email}}>
             </div>
             
             <div class="flex gap-3 justify-end p-3">
-                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-1 font-bold">Close</button>
-                <button type="button" id="save" class="bg-secondary text-white text-sm rounded-full px-5 py-1 font-bold">Save</button>
+                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Close</button>
+                <button type="button" id="save" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Save</button>
             </div>
         </div>
     </div>
@@ -67,11 +73,11 @@
                             <img class="w-40 h-40 mt-10 border-4 border-primary rounded-full mx-auto" src="https://i.pinimg.com/564x/81/79/8d/81798d8b882d04f4ab59ba9c39fc5244.jpg" alt="Profile picture">
                         </div>
                         <div class="mt-4 flex flex-col">
-                            <h3 class="text-center text-2xl font-medium leading-8">Juan Carlo M. dela Cruz III</h3>
+                            <h3 class="text-center text-2xl font-medium leading-8">{{auth()->user()->first_name.' '.auth()->user()->last_name}}</h3>
                             <div class="text-center text-sm font-semibold mb-2">
-                                <p>System Administrator</p>
+                                <p>{{auth()->user()->role}}</p>
                             </div>
-                            <button id="edit" class="w-max px-6 mb-8 self-center bg-primary text-light hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 rounded duration-400">
+                            <button id="edit" class="w-max px-6 py-1 mb-8 self-center bg-primary text-light hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 rounded duration-100">
                                 <a href="#" class="text-sm duration-400">Edit Profile</a>
                             </button>
                             <div class="relative cursor-pointer px-6 mb-3">
@@ -80,7 +86,7 @@
                                         <h3 class="text-lg font-bold">Username</h3>
                                     </div>
                                     <p class="text-gray-600 pl-2">
-                                        J001
+                                        {{auth()->user()->username}}
                                     </p>
                                 </div>
                             </div>
@@ -91,7 +97,7 @@
                                         <h3 class="text-lg font-bold">Role</h3>
                                     </div>
                                     <p class="text-gray-600 pl-2">
-                                        System Administrator
+                                        {{auth()->user()->role}}
                                     </p>
                                 </div>
                             </div>
@@ -102,7 +108,7 @@
                                         <h3 class="text-lg font-bold">Specialization</h3>
                                     </div>
                                     <p class="text-gray-600 pl-2">
-                                        Secretary
+                                        {{ auth()->user()->specialization ? auth()->user()->specialization : 'N/A' }}
                                     </p>
                                 </div>
                             </div>
@@ -113,7 +119,7 @@
                                         <h3 class="text-lg font-bold">Email address</h3>
                                     </div>
                                     <p class="text-gray-600 pl-2">
-                                        juan@example.com
+                                        {{auth()->user()->email ? auth()->user()->email : 'N/A'}}
                                     </p>
                                 </div>
                             </div>
@@ -124,7 +130,7 @@
                                         <h3 class="text-lg font-bold">Birthday</h3>
                                     </div>
                                     <p class="text-gray-600 pl-2">
-                                        1978-08-23
+                                        {{auth()->user()->birthday}}
                                     </p>
                                 </div>
                             </div>
@@ -135,7 +141,7 @@
                                         <h3 class="text-lg font-bold">Mobile number</h3>
                                     </div>
                                     <p class="text-gray-600 pl-2">
-                                        09123456789
+                                        {{auth()->user()->contact ? auth()->user()->contact : 'N/A'}}
                                     </p>
                                 </div>
                             </div>

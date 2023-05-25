@@ -25,29 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages/login');
+
+        return view('pages/dashboard');
     }
 
-    public function profilePage()
-    {
-        //pagpapasa ng values sa view
-        $user = Auth::user();
-        return view('pages/profile', compact('user'));
-    }
-
-    public function login()
-    {
-        return view('pages/login');
-
-    }
-
-    public function editorHome()
-    {
-        return view('home',["msg"=>"I am Editor role"]);
-    }
-
-    public function adminHome()
-    {
-        return view('home',["msg"=>"I am Admin role"]);
-    }
+    // public function profilePage()
+    // {
+    //     //pagpapasa ng values sa view
+    //     $user = Auth::user();
+    //     return view('pages/profile', compact('user'));
+    // }
 }

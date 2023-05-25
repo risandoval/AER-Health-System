@@ -4,7 +4,7 @@
             <div class="px-6 py-4">
                 <h2 class="text-xl"><strong>Add User Account</strong></h2>
             </div>
-            <form action="/store" method="POST">
+            <form action="{{url('users/store')}}" method="POST">
                 @csrf
                 {{-- @method('POST')              --}}
                 <div class="lg:grid lg:grid-cols-4 border-y p-10 gap-6 items-center">    

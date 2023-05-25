@@ -9,7 +9,7 @@
             {{-- profile pic --}}
             <div class="flex flex-col mx-8">
                 <div class="flex flex-col sm:flex-row w-full text-center sm:text-left">
-                    <img class="flex-shrink-0 m-4 w-40 h-40 rounded-full bg-gray-400 self-center -mt-10 border-4 border-primary rounded-full overflow-hidden" src="https://tailwindcss.com/_next/static/media/ryan-florence.3af9c9d9.jpg" alt="Profile Picture"  loading="lazy" decoding="async">
+                    <img class="flex-shrink-0 m-4 w-40 h-40 bg-gray-400 self-center -mt-10 border-4 border-primary rounded-full overflow-hidden" src="https://tailwindcss.com/_next/static/media/ryan-florence.3af9c9d9.jpg" alt="Profile Picture"  loading="lazy" decoding="async">
                     <div class="flex flex-col py-2 pr-2">
                         <h4 class="text-3xl font-medium text-black">{{ $user->name }}</h4>
                         {{-- <p class="text-sm font-hairline">System Administrator </p> --}}

@@ -39,29 +39,44 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request){
+    public function index()
+    {
+        return view('pages/login');
+    }
 
-        $input = $request->all();
-        $this->validate($request,[
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+    // public function login(Request $request){
         
-        if(auth()->attempt(['email'=>$input["email"], 'password' =>$input['password']])){
+    //     if(auth()->attempt(['email'=>$input["email"], 'password' =>$input['password']])){
             
-            if(auth()->user()->role == 'admin'){
-                 return redirect()->route('home.admin'); 
-            }
-            else if(auth()->user()->role == 'editor'){
-                return redirect()->route('home.editor');
-            }
-            else{
-                return redirect()->route('home.user');
-           }
+    //         if(auth()->user()->role == 'admin'){
+    //              return redirect()->route('home.admin'); 
+    //         }
+    //         else if(auth()->user()->role == 'doctor'){
+    //             return redirect()->route('home.editor');
+    //         }
+    //         else{
+    //             return redirect()->route('home.user');
+    //         }
                 
-        }
-        else{
-            return view('welcome');
+    //     }
+    //     else{
+    //         return view('welcome');
+    //     }
+    // }
+
+    public function process(Request $request){
+        $input = $request->all();
+
+        $validated = $request->validate([
+            "username" => ['required'],
+            'password' => ['required']
+        ]); 
+
+        if (auth()->attempt(['username' => $input['username'], 'password' => $input['password']])) {
+            $request->session()->regenerate();
+            return redirect('/dashboard')->with('message', 'Login success.');
+        } else {
+            return redirect('/login');
         }
     }
 }

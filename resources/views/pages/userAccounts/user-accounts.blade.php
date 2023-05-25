@@ -198,13 +198,13 @@
                 <div class="flex w-full">
                     <div class="relative flex flex-row w-[60%]">
                         <input class="rounded-l-full focus:ring-0 border border-gray-400 pl-4 pr-2 w-full" type="text" placeholder="Search">
-                        <a href="" class="absolute -right-[50px] ring-0 ring-gray-400 h-full flex justify-center items-center rounded-r-full bg-primary w-[50px]">
-                            <i class='bx bx-search-alt-2 text-white text-xl'></i>
+                        <a href="" class="absolute -right-[50px] text-white ring-0 ring-gray-400 h-full flex justify-center items-center rounded-r-full bg-primary hover:text-secondary w-[50px] duration-100">
+                            <i class='bx bx-search-alt-2 text-xl'></i>
                         </a>
                     </div>
                 </div>
                 <a href="{{url('users/add')}}" class="flex justify-center items-center bg-primary rounded-full text-white py-[7px] px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary">
-                    <i class='bx bxs-plus-circle text-xl'></i><p class="whitespace-nowrap hidden md:inline-block">Add New User</p>
+                    <i class='bx bxs-plus-circle text-xl'></i><p class="whitespace-nowrap hidden md:inline-block duration-100">Add New User</p>
                 </a>
             </div>
         </div>
@@ -233,16 +233,16 @@
                             <td class="text-left px-6 py-3">{{$users->status}}</td>
                             <td class="text-left px-6 py-3">
                                 <div class="flex gap-[6px]">
-                                    <a href="/user/view/{{$users->id}}">
-                                        <button class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1">View</button>
+                                    <a href="{{url("/users/view/$users->id")}}">
+                                        <button class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">View</button>
                                     </a>
-                                    <a href="/user/edit/{{$users->id}}">
-                                        <button class="text-white bg-secondary px-4 py-2 rounded-full hover:bg-white hover:text-secondary hover:ring-secondary hover:ring-1">Edit</button>
+                                    <a href="{{url("/users/edit/$users->id")}}">
+                                        <button class="text-white bg-secondary px-4 py-2 rounded-full hover:bg-white hover:text-secondary hover:ring-secondary hover:ring-1 duration-100">Edit</button>
                                     </a>
-                                    <form action="/user/{{$users->id}}" method="POST" class="flex flex-col">
+                                    <form action="{{url("/users/user/$users->id")}}" method="POST" class="flex flex-col">
                                         @method('put')   
                                         @csrf
-                                        <button type="submit" class="text-white bg-red px-4 py-2 rounded-full hover:bg-white hover:text-red hover:ring-red hover:ring-1">Archive</button>
+                                        <button type="submit" class="text-white bg-red px-4 py-2 rounded-full hover:bg-white hover:text-red hover:ring-red hover:ring-1 duration-100">Archive</button>
                                     </form>
 
                                 </div>
@@ -252,7 +252,7 @@
                 </tbody>
             </table>
             <div class="sticky left-0 px-6">
-                <p>Showing <strong>8</strong> out of <strong>50</strong> entries</p>
+                <p>Showing <strong>{{$users->count()}}</strong> out of <strong>{{$users->count()}}</strong> entries</p>
             </div>
         </div>
     </section>
@@ -260,26 +260,3 @@
 </x-layout>
 
 @vite('resources/js/modal.js')
-
-<script>
-    var modal = document.getElementById('edit-modal-body');
-    var btn = document.getElementById('edit');
-    var span = document.getElementsByClassName('close')[0];
-
-    // Open the modal when the button is clicked
-    btn.onclick = function() {
-        modal.style.display = "block";
-    };
-
-    // Close the modal when the close button is clicked
-    span.onclick = function() {
-        modal.style.display = "none";
-    };
-
-    // Close the modal when the user clicks outside of it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    };
-</script>
