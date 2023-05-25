@@ -33,7 +33,7 @@ class UserRequest extends FormRequest
             // 'password' => ['required'],
             // 'confirm_password' => ['required', 'same:password'], // Validate if confirm_password is the same as password
             "role" => ['required'],
-            "position" => ['required'],
+            "specialization" => ['required'],
             "birthday" => ['required'],
             "contact" => 'required|numeric|digits:11|starts_with:09',
             "email" => "email|unique:users,email,$id",

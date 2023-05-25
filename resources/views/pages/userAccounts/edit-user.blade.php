@@ -47,12 +47,12 @@
                     </select>
                     <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('role'){{$message}} @enderror </p>
 
-                    <label for="specialization" class="col-span-1 whitespace-nowrap">Position:</label>
+                    <label for="specialization" class="col-span-1 whitespace-nowrap">Specialization:</label>
                     <select name="specialization" class="rounded-xl border outline-secondary w-full focus:ring-0 border-gray-300 col-span-3 mb-2 lg:-mb-6">
                         <option value="" selected hidden>select..</option>
-                        <option value="Admin" {{$editUser->role == 'Admin' ? 'selected' : ''}}>Admin</option>
-                        <option value="Doctor" {{$editUser->role == 'Doctor' ? 'selected' : ''}}>Doctor</option>
-                        <option value="Barangay Health Worker" {{$editUser->role == 'Barangay Health Worker' ? 'selected' : ''}}>Barangay Health Workers (BHW)</option>
+                        <option value="Admin" {{$editUser->specialization == 'Admin' ? 'selected' : ''}}>Admin</option>
+                        <option value="Doctor" {{$editUser->specialization == 'Doctor' ? 'selected' : ''}}>Doctor</option>
+                        <option value="Barangay Health Worker" {{$editUser->specialization == 'Barangay Health Worker' ? 'selected' : ''}}>Barangay Health Workers (BHW)</option>
                     </select>
                     <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('position'){{$message}} @enderror </p>
 

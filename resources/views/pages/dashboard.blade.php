@@ -40,9 +40,9 @@
 
                 <label for="position" class="col-span-1 whitespace-nowrap">Specialization:</label>
                 <select name="position" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3">
-                    <option value="Admin" {{auth()->user()->role == 'Admin' ? 'selected' : ''}}>Admin</option>
-                    <option value="Doctor" {{auth()->user()->role == 'Doctor' ? 'selected' : ''}}>Doctor</option>
-                    <option value="Barangay Health Worker" {{auth()->user()->role == 'Barangay Health Worker' ? 'selected' : ''}}>Barangay Health Worker</option>
+                    <option value="Admin" {{auth()->user()->specialization == 'Admin' ? 'selected' : ''}}>Admin</option>
+                    <option value="Doctor" {{auth()->user()->specialization == 'Doctor' ? 'selected' : ''}}>Doctor</option>
+                    <option value="Barangay Health Worker" {{auth()->user()->specialization == 'Barangay Health Worker' ? 'selected' : ''}}>Barangay Health Worker</option>
                 </select>
 
                 <label for="birthdate" class="col-span-1 whitespace-nowrap">Birthdate:</label>
