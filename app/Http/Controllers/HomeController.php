@@ -35,14 +35,6 @@ class HomeController extends Controller
         return view('pages/profile', compact('user'));
     }
 
-    public function listOfUsers()
-    {
-        //pagpapasa ng values sa view
-        $user = User::all();
-        // dd($data);
-        return view('pages/userAccounts/user-accounts',  compact('user'));
-    }
-
     public function login()
     {
         return view('pages/login');

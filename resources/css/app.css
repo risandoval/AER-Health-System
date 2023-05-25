@@ -10,7 +10,7 @@
     }
 
     .nav-link {
-        @apply relative text-xl hover:border-b-2 hover:pb-1 whitespace-nowrap;
+        @apply relative text-lg hover:border-b-2 hover:pb-1 hover:border-secondary whitespace-nowrap hover:text-secondary;
     }
 
     .nav-link-active {

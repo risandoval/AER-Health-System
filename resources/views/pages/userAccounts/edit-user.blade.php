@@ -71,8 +71,8 @@
                 </div>
             
                 <div class="flex gap-3 justify-end p-3">
-                    <a href="{{url('/users')}}" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 font-bold">Cancel</a>
-                    <button type="submit" class="bg-secondary text-white text-sm rounded-full px-5 py-2 font-bold">Update User</button>
+                    <a href="{{url('/users')}}" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Cancel</a>
+                    <button type="submit" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Update User</button>
                 </div>
             </form>
         </div>

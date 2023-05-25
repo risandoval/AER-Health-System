@@ -11,6 +11,13 @@ use App\Models\User; // Import the User model
 
 class UserController extends Controller {
 
+    public function index()
+    {   
+        $user = User::all();
+        // dd($data);
+        return view('pages/userAccounts/user-accounts',  compact('user'));
+    }
+
     public function logout(Request $request){
         auth()->logout();
 
@@ -46,7 +53,6 @@ class UserController extends Controller {
         // $validated['password'] = bcrypt($validated['password']);
     
         $user = new User($validated);
-        // User::create($validated);
         $user->save();
         
         return redirect('/users/add')->with('message', 'New User Added Successfully');
@@ -59,14 +65,12 @@ class UserController extends Controller {
         return view('pages/userAccounts/view-user',  compact('viewUser'));
     }
 
-    //show data in edit
+    //EDIT USER ACCOUNT
     public function edit($id){
         $editUser = User::findOrFail($id);
         // dd($id);
-        return view('pages/userAccounts/edit',  compact('editUser'));
-    }
-
-    //EDIT USER ACCOUNT
+        return view('pages/userAccounts/edit-user',  compact('editUser'));
+    } 
     public function update(UserRequest $request, $id)
     {
         // gets all request
@@ -77,6 +81,7 @@ class UserController extends Controller {
         $user->update($validated);
         return back()->with('message', 'Data was successfully updated');
     }
+    //EDIT USER ACCOUNT
     
     public function destroy(Request $request, $id)
     {   
@@ -88,12 +93,9 @@ class UserController extends Controller {
             $user->delete();
             // Optionally, you can perform any additional actions here
             // For example, you can return a success message
-        
         } else {
             // Handle the case when the user does not exist
-            
         }
-
         return back()->with('message', 'Data was successfully updated');
     }
 

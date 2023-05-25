@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        {{-- EDIT MODAL --}}
+        {{-- EDIT MODAL
         <div id="edit-modal-body" class="modal hidden fixed top-[15%] bg-white rounded-xl w-[600px] min-h-[600px] drop-shadow-lg overflow-hidden">
             <div class="relative px-6 py-4">
                 <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-[10%] hover:cursor-pointer'></i>
@@ -138,10 +138,10 @@
                 <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-2 hover:bg-black hover:text-white">Cancel</button>
                 <button type="button" class="bg-secondary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-secondary hover:ring-secondary hover:ring-1">Save</button>
             </div>
-        </div>
+        </div> --}}
 
         {{-- VIEW MODAL --}}
-        <div id="view-modal-body" class="modal hidden fixed top-[15%] bg-white rounded-xl w-[600px] min-h-[600px] drop-shadow-lg overflow-hidden">
+        {{-- <div id="view-modal-body" class="modal hidden fixed top-[15%] bg-white rounded-xl w-[600px] min-h-[600px] drop-shadow-lg overflow-hidden">
             <div class="relative px-6 py-4">
                 <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-[10%] hover:cursor-pointer'></i>
                 <h2 class="text-xl"><strong>View Account Details</strong></h2>
@@ -188,7 +188,7 @@
             <div class="flex gap-2 justify-end p-3">
                 <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-2 hover:bg-black hover:text-white">Close</button>
             </div>
-        </div>
+        </div> --}}
     </div>
     
     {{-- MAIN CONTAINER --}}
@@ -197,13 +197,13 @@
             <div class="flex flex-row rounded-lg items-center text-right w-full">
                 <div class="flex w-full">
                     <div class="relative flex flex-row w-[60%]">
-                        <input class="rounded-l-xl focus:ring-0 border border-gray-400 pl-4 pr-2 w-full" type="text" placeholder="Search">
-                        <a href="" class="absolute -right-[50px] ring-0 ring-gray-400 h-full flex justify-center items-center rounded-r-xl bg-secondary w-[50px]">
+                        <input class="rounded-l-full focus:ring-0 border border-gray-400 pl-4 pr-2 w-full" type="text" placeholder="Search">
+                        <a href="" class="absolute -right-[50px] ring-0 ring-gray-400 h-full flex justify-center items-center rounded-r-full bg-primary w-[50px]">
                             <i class='bx bx-search-alt-2 text-white text-xl'></i>
                         </a>
                     </div>
                 </div>
-                <a href="{{url('users/add')}}" class="flex justify-center items-center bg-secondary rounded-xl text-white py-[7px] px-4 gap-1 hover:text-secondary hover:bg-white hover:ring-1 hover:ring-secondary">
+                <a href="{{url('users/add')}}" class="flex justify-center items-center bg-primary rounded-full text-white py-[7px] px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary">
                     <i class='bx bxs-plus-circle text-xl'></i><p class="whitespace-nowrap hidden md:inline-block">Add New User</p>
                 </a>
             </div>

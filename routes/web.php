@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,25 +28,24 @@ Route::get('dashboard', function () {
     return view('pages/dashboard');
 });
 
-Route::get('/users', [App\Http\Controllers\HomeController::class, 'listOfUsers'])->name('listOfUsers');
+Route::get('/users', [UserController::class, 'index'])->name('index ');
+Route::post('/users/add', [UserController::class, 'userData']);
+Route::post('/store', [UserController::class, 'store'])->name('store');
+Route::get('/user/view/{id}', [UserController::class, 'show'])->name('show'); //show view user
+Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('edit'); //show edit user
+Route::put('/user/update/{id}', [UserController::class, 'update'])->name('update'); //edit user
+Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('delete');
+Route::put('/user/{id}', [UserController::class, 'archive'])->name('archive');
 
-Route::get('/users/add', function () {
-    return view('pages/userAccounts/add-user-account');
+Route::prefix('users')->group(function () {
+
 });
 
-
 //userData function in UserController
-Route::post('/users/add', [UserController::class, 'userData']);
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/login/process', [App\Http\Controllers\UserController::class, 'process']);
 Route::post('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout');
-Route::post('/store', [App\Http\Controllers\UserController::class, 'store'])->name('store');
-Route::get('/user/view/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('show'); //show view user
-Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('edit'); //show edit user
-Route::put('/user/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('update'); //edit user
-Route::delete('/user/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('delete');
-Route::put('/user/{id}', [App\Http\Controllers\UserController::class, 'archive'])->name('archive');
+
 
 Route::middleware(['auth','user-role:admin'])->group(function(){
     Route::get('/profile', [App\Http\Controllers\HomeController::class,'profilePage'])->name('profile');
