@@ -172,7 +172,7 @@ class UserController extends Controller
 
     public function process(Request $request){
         $validated = $request->validate([
-            "email" => ['required','email'],
+            "username" => ['required'],
             'password' => ['required']
         ]);
 

@@ -30,7 +30,7 @@
           @csrf
           {{-- USERNAME --}}
           <label class="mt-3 block text-xs font-semibold">Username</label>
-          <input class="mt-2 p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" name="email" placeholder="Enter your username">
+          <input class="mt-2 p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" name="username" placeholder="Enter your username">
           {{-- PASSWORD --}}
           <label class="mt-3 block text-xs font-semibold">Password</label>
           <div class="relative mt-2">

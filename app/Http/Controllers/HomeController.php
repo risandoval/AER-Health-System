@@ -35,6 +35,13 @@ class HomeController extends Controller
         return view('pages/profile', compact('user'));
     }
 
+    public function dashboard()
+    {
+        //pagpapasa ng values sa view
+        $user = Auth::user();
+        return view('pages/profile', compact('user'));
+    }
+
     public function listOfUsers()
     {
         //pagpapasa ng values sa view
