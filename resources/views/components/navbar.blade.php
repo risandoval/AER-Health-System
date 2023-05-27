@@ -2,7 +2,7 @@
     <div class="flex justify-between items-center">
       <span class="text-2xl">
         <a href="/dashboard">
-          <img class="h-10 inline " src="https://png.pngtree.com/png-vector/20190225/ourmid/pngtree-circuit-logo-template-vector-png-image_704226.jpg" alt="logo">
+          <img class="h-10 inline" src="{{url('/images/logo.png')}}" alt="logo">
           SystemName
         </a>
       </span>
@@ -30,7 +30,7 @@
 
       <form action="/logout" method="POST">
       @csrf
-        <button class="bg-secondary text-light duration-400 px-6 py-2 mx-4 hover:bg-light hover:text-primary rounded">
+        <button class="bg-secondary text-white text-lg duration px-6 py-1 mx-4 hover:bg-white hover:text-secondary rounded-full duration-100">
           {{-- <a href="/" class="text-xl duration-400">Logout</a> --}}
           Logout
         </button>

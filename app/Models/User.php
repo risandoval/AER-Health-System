@@ -18,16 +18,19 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        // 'name',
         'first_name',
+        'middle_name',
         'last_name',
         'username',
         'role',
         'position',
+        'specialization',
+        'barangay',
         'birthday',
         'contact',
         'email',
         'password',
+        'status'
     ];
 
     /**
@@ -49,10 +52,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected function role(): Attribute{
+    // protected function role(): Attribute{
 
-        return new Attribute(
-            get: fn($value) => ["user","editor","admin"][$value],
-        );
-    }
+    //     return new Attribute(
+    //         get: fn($value) => ["user","editor","admin"][$value],
+    //     );
+    // }
 }

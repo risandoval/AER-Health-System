@@ -1,11 +1,25 @@
 const body = document.querySelector('body')
 const modalBackground = document.querySelector('#modal-background');
 const modals = document.querySelectorAll('.modal');
+const viewButtons = document.querySelectorAll('#view');
+const viewModalBody = document.querySelector('#view-modal-body');
 const editButtons = document.querySelectorAll('#edit');
 const editModalBody = document.querySelector('#edit-modal-body');
 const archiveButtons = document.querySelectorAll('#archive');
 const archiveModalBody = document.querySelector('#archive-modal-body');
+const saveButtons = document.querySelectorAll('#save');
+const saveMessageModalBody = document.querySelector('#message-modal-body');
 const closeButtons = document.querySelectorAll('.close-btn');
+
+viewButtons.forEach(viewButton => {
+    viewButton.addEventListener('click', () => {
+        modalBackground.classList.toggle('flex');
+        modalBackground.classList.toggle('hidden');
+        viewModalBody.classList.toggle('hidden');
+        viewModalBody.classList.add('open');
+        body.classList.add('overflow-hidden');
+    });
+});
 
 // opens edit modal
 editButtons.forEach(editButton => {
@@ -25,6 +39,16 @@ archiveButtons.forEach(archiveButton => {
         archiveModalBody.classList.toggle('hidden');
         archiveModalBody.classList.add('open');
         body.classList.add('overflow-hidden');
+    });
+});
+
+// hide edit modal when save button is clicked then open save message modal
+saveButtons.forEach(saveButton => {
+    saveButton.addEventListener('click', () => {
+        editModalBody.classList.toggle('hidden');
+        editModalBody.classList.remove('open');
+        saveMessageModalBody.classList.toggle('hidden');
+        saveMessageModalBody.classList.add('open');
     });
 });
 

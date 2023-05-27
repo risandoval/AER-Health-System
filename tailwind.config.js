@@ -14,12 +14,14 @@ module.exports = {
         'poppins': ['Poppins', 'sans-serif'],
       },
       colors: {
-        "primary": "#0078AA",
-        "secondary": "#19A7CE",
+        "primary": "#277BC0",
+        "secondary": "#FFB200",
         "light": "#EFEFEF",
         "red": "#DE3838",
         "light-gray": "#E0E0E0",
-      }
+        "disabled-text": "#535353",
+        "disabled-bg": "#EDEEF1"
+      },
     },
   },
   plugins: [
