@@ -24,7 +24,6 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         $id = $this->route('id');
-        // dd($id);
         return [
             "first_name" => ['required', new Alpha_spaces],
             'middle_name' => [new Alpha_spaces],

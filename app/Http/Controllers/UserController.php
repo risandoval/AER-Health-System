@@ -79,7 +79,6 @@ class UserController extends Controller {
     {
         // gets all request
         $validated = $request->validated();
-        
         $user = User::find($id);
         
         $user->update($validated);
@@ -89,8 +88,6 @@ class UserController extends Controller {
     
     public function destroy(Request $request, $id)
     {   
-        // dd($request);
-
         $user = User::find($id);
 
         if ($user) {
