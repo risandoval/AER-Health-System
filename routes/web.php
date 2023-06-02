@@ -17,15 +17,20 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 //route for login view page
-Route::get('/', function () {
-    return view('pages/login');
-});
+Route::get('/', function () { return view('pages/login'); });
+
+//route for forgot password
+Route::get('/validation', [UserController::class, 'stepOne']);
+Route::get('/security-question', [UserController::class, 'stepTwo']);
+Route::get('/change-password', [UserController::class, 'stepThree']);
+Route::post('/validateStepOne', [UserController::class, 'validateStepOne'])->name('validateStepOne');
+Route::post('/validateStepTwo', [UserController::class, 'validateStepTwo'])->name('validateStepTwo');
+Route::post('/validateStepThree', [UserController::class, 'validateStepThree'])->name('validateStepThree');
+
 
 //route for dashboard
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('dashboard', function () {
-    return view('pages/dashboard');
-});
+Route::get('dashboard', function () { return view('pages/dashboard'); });
 
 // User Accounts routes
 Route::prefix('users')->group(function () {
@@ -37,6 +42,7 @@ Route::prefix('users')->group(function () {
     Route::put('/update/{id}', [UserController::class, 'update'])->name('update'); //edit user
     Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
     Route::put('/archive/{id}', [UserController::class, 'archive'])->name('archive');
+    Route::put('/unarchive/{id}', [UserController::class, 'unarchive'])->name('unarchive');
 });
 
 // Login Routes

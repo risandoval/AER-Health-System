@@ -19,15 +19,8 @@
 </head>
 
 <body class="relative font-poppins">
-    <x-navbar />
+    
     {{ $slot }}
 </body>
-
-<!-- from node_modules -->
-<script src="node_modules/@material-tailwind/html/scripts/tabs.js"></script>
-<!-- from cdn -->
-<script src="https://unpkg.com/@material-tailwind/html@latest/scripts/tabs.js"></script>
-{{-- table with tabs --}}
-<script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
 
 </html>

@@ -30,7 +30,7 @@ class UserRequest extends FormRequest
             "last_name" => ['required', new Alpha_spaces],
             // "username" => ['required', Rule::unique('users', 'username')],
             // 'password' => ['required'],
-            // 'confirm_password' => ['required', 'same:password'], // Validate if confirm_password is the same as password
+            // 'confirm_password' => ['required', 'same:password'],
             "role" => ['required'],
             "specialization" => ['required'],
             "birthday" => ['required'],
