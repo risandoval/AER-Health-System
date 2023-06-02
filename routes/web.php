@@ -18,6 +18,8 @@ use App\Http\Controllers\Auth\LoginController;
 
 //route for login view page
 Route::get('/', function () { return view('pages/login'); });
+Route::get('/first-login', [UserController::class, 'firstLogin']);
+Route::post('/validateFirstLogin', [UserController::class, 'validateFirstLogin'])->name('validateFirstLogin');
 
 //route for forgot password
 Route::get('/validation', [UserController::class, 'stepOne']);

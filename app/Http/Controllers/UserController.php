@@ -128,7 +128,27 @@ class UserController extends Controller {
         return back()->with('message', 'Data was successfully updated');
     }
 
-    //step 1-3 view (forgot password)
+    //FIRST TIME LOGIN VIEW
+    public function firstLogin() {   
+        return view('pages/first-login');
+    }
+
+    //FIRST TIME LOGIN VALIDATION
+    public function validateFirstLogin(Request $request) {   
+        $validated = $request->validate([
+            'password' => 'required',
+            'confirm_password' => ['required', 'same:password'], 
+        ]);
+
+        //update password in database
+        // $user = User::find(auth()->user()->id);
+        // $user->password = bcrypt($validated['password']);
+        // $user->save();
+
+        return redirect('/dashboard'); 
+    }
+
+    //STEP 1-3 VIEW (forgot password)
     public function stepOne() {   
         return view('pages/forgotPassword/step-one');
     }
@@ -139,7 +159,7 @@ class UserController extends Controller {
         return view('pages/forgotPassword/step-three');
     }
 
-    //step 1-3 validations (forgot password)
+    //STEP 1-3 VALIDATIONS (forgot password)
     public function validateStepOne(Request $request) {
         $validated = $request->validate([
             'username' => ['required'],
