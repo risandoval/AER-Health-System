@@ -20,15 +20,22 @@ use Illuminate\Support\Facades\Redirect;
 */
 
 //route for login view page
-Route::get('/', function () {
-    return view('pages/login');
-})->name('login');
+Route::get('/', function () { return view('pages/login'); });
+Route::get('/first-login', [UserController::class, 'firstLogin']);
+Route::post('/validateFirstLogin', [UserController::class, 'validateFirstLogin'])->name('validateFirstLogin');
+
+//route for forgot password
+Route::get('/validation', [UserController::class, 'stepOne']);
+Route::get('/security-question', [UserController::class, 'stepTwo']);
+Route::get('/change-password', [UserController::class, 'stepThree']);
+Route::post('/validateStepOne', [UserController::class, 'validateStepOne'])->name('validateStepOne');
+Route::post('/validateStepTwo', [UserController::class, 'validateStepTwo'])->name('validateStepTwo');
+Route::post('/validateStepThree', [UserController::class, 'validateStepThree'])->name('validateStepThree');
+
 
 //route for dashboard
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('dashboard', function () {
-    return view('pages/dashboard');
-})->middleware('auth');
+Route::get('dashboard', function () { return view('pages/dashboard'); })->middleware('auth');
 
 // User Accounts routes
 Route::prefix('users')->middleware('auth')->group(function () {
@@ -40,6 +47,7 @@ Route::prefix('users')->middleware('auth')->group(function () {
     Route::put('/update/{id}', [UserController::class, 'update'])->name('update'); //edit user
     Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
     Route::put('/archive/{id}', [UserController::class, 'archive'])->name('archive');
+    Route::put('/unarchive/{id}', [UserController::class, 'unarchive'])->name('unarchive');
     Route::put('/update/password/{id}', [UserController::class, 'updatePassword'])->name('password');
 });
 
