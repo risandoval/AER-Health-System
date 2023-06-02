@@ -44,31 +44,11 @@ class LoginController extends Controller
         return view('pages/login');
     }
 
-    // public function login(Request $request){
-        
-    //     if(auth()->attempt(['email'=>$input["email"], 'password' =>$input['password']])){
-            
-    //         if(auth()->user()->role == 'admin'){
-    //              return redirect()->route('home.admin'); 
-    //         }
-    //         else if(auth()->user()->role == 'doctor'){
-    //             return redirect()->route('home.editor');
-    //         }
-    //         else{
-    //             return redirect()->route('home.user');
-    //         }
-                
-    //     }
-    //     else{
-    //         return view('welcome');
-    //     }
-    // }
-
     public function process(Request $request){
         $input = $request->all();
 
         $validated = $request->validate([
-            "username" => ['required'],
+            'username' => ['required'],
             'password' => ['required']
         ]); 
 

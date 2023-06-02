@@ -11,7 +11,7 @@
     }
 
     input[readonly][disabled] {
-        @apply cursor-default rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg mb-2 lg:-mb-6;
+        @apply cursor-default text-disabled-text bg-disabled-bg lg:-mb-6;
     }
 
     .nav-link {
@@ -23,7 +23,7 @@
     }
 
     .form-input {
-        @apply rounded-xl border outline-secondary w-full border-gray-300 col-span-3 mb-2 lg:-mb-6
+        @apply rounded-xl border w-full border-gray-300 col-span-3 mb-2 lg:mb-0 
         focus:ring-0;
     }
 }

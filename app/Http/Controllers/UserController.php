@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PasswordRequest;
 use App\Http\Requests\UserRequest;
 use App\Rules\Alpha_spaces;
 use Illuminate\Http\Request;
 use App\Rules\Validation;
 use Illuminate\Validation\Rule;
 use App\Models\User; // Import the User model
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller {
 
     public function index()
     {   
         $user = User::all();
-        // dd($data);
         return view('pages/userAccounts/user-accounts',  compact('user'));
     }
 
@@ -115,5 +117,25 @@ class UserController extends Controller {
         }
 
         return back()->with('message', 'Data was successfully updated');
+    }
+
+    // update password function
+    public function updatePassword(PasswordRequest $request, $id) 
+    {
+        {
+            // compares current password in the input field to the authenticated user's password
+            if (!Hash::check($request->current_password, auth()->user()->password)) {
+                return redirect('/dashboard')->with('error', 'Incorrect password. Please try again.');
+            }
+            
+            $validated = $request->validated();
+            $user = User::find($id); // find the user using the user id passed in the url parameter
+
+            $user->password = bcrypt($validated['confirm_password']);
+
+            $user->save(); // save the changes to the user
+
+            return redirect('/dashboard')->with('success', 'Password successfully changed.');
+        }
     }
 }
