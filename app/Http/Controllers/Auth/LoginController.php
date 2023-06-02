@@ -39,35 +39,24 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request){
+    public function index()
+    {
+        return view('pages/login');
+    }
 
+    public function process(Request $request){
         $input = $request->all();
-        $this->validate($request,[
 
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-        
-        if(auth()->attempt(['email'=>$input["email"], 'password' =>$input['password']])){
-            
-            if(auth()->user()->role == 'admin'){
-                 return redirect()->route('home.admin'); 
-            }
-            else if(auth()->user()->role == 'editor'){
-                return redirect()->route('home.editor');
-            }
-            else{
-                return redirect()->route('home.user');
-           }
-                
-        }
-        else{
-            // dd(auth()->attempt() ,$input["email"], $input["password"]);
-            // dd($input["email"], $input["password"]);
-            // dd($input["email"]);
-            return view('welcome');
-            //return redirect()->route("login")->with("error", 'Incorrect email of password.');
-        }
+        $validated = $request->validate([
+            'username' => ['required'],
+            'password' => ['required']
+        ]); 
 
+        if (auth()->attempt(['username' => $input['username'], 'password' => $input['password']])) {
+            $request->session()->regenerate();
+            return redirect('/dashboard')->with('message', 'Login success.');
+        } else {
+            return redirect('/login');
+        }
     }
 }

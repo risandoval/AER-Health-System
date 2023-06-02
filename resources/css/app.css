@@ -3,17 +3,27 @@
 @tailwind utilities;
 
 @layer components {
+
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
 
-    .nav-link {
-        @apply relative text-lg hover:border-b-2 hover:pb-1 whitespace-nowrap;
+    input[readonly][disabled] {
+        @apply cursor-default text-disabled-text bg-disabled-bg lg:-mb-6;
     }
 
-    .nav-link-active {
-        @apply after:-bottom-2 after:left-0 after:min-h-[2px] after:min-w-[100%] after:bg-white after:absolute;
+    .nav-link {
+        @apply relative text-lg whitespace-nowrap hover:border-b-2 hover:pb-1 hover:border-secondary hover:text-secondary;
+    }
+
+    .nav-link::after {
+        @apply -bottom-2 left-0 min-h-[2px] min-w-[100%] bg-white absolute;
+    }
+
+    .form-input {
+        @apply rounded-xl border w-full border-gray-300 col-span-3 mb-2 lg:mb-0 
+        focus:ring-0;
     }
 }

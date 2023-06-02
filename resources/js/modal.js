@@ -42,16 +42,6 @@ archiveButtons.forEach(archiveButton => {
     });
 });
 
-// hide edit modal when save button is clicked then open save message modal
-saveButtons.forEach(saveButton => {
-    saveButton.addEventListener('click', () => {
-        editModalBody.classList.toggle('hidden');
-        editModalBody.classList.remove('open');
-        saveMessageModalBody.classList.toggle('hidden');
-        saveMessageModalBody.classList.add('open');
-    });
-});
-
 // closes modal when clicked outside
 modalBackground.addEventListener('click', (e) => { 
     if (e.target == modalBackground) {

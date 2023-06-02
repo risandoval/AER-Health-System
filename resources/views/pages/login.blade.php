@@ -17,7 +17,7 @@
   @vite('resources/css/app.css')
   @vite('resources/js/main.js')
 </head>
-  
+{{-- {{dd(auth()->user())}} --}}
   <section class="bg-light min-h-screen flex items-center justify-center">
     <!-- login container -->
     <div class="bg-gray-100 flex rounded-lg shadow-lg max-w-3xl items-center">
@@ -29,12 +29,14 @@
         <form action="{{url('/login/process')}}" method="POST" class="flex flex-col mt-3">
           @csrf
           {{-- USERNAME --}}
-          <label class="mt-3 block text-xs font-semibold">Username</label>
-          <input class="mt-2 p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" name="email" placeholder="Enter your username">
+          <label for="username" class="mt-3 block text-xs font-semibold">Username</label>
+          <input class="mt-2 p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" id="username" name="username" placeholder="Enter your username">
+          <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('username'){{$message}} @enderror </p>
           {{-- PASSWORD --}}
-          <label class="mt-3 block text-xs font-semibold">Password</label>
+          <label for="password" class="mt-3 block text-xs font-semibold">Password</label>
           <div class="relative mt-2">
-            <input class="p-2 rounded-xl border w-full border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" name="password" placeholder="*****">
+            <input class="p-2 rounded-xl border w-full border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" id="password" name="password" placeholder="*****">
+            <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('password'){{$message}} @enderror </p>
           </div>
           {{-- FORGOT PASSWORD --}}
           <div class="text-xs mt-2 text-primary">

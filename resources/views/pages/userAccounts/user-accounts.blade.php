@@ -1,3 +1,78 @@
+{{-- @php
+    $users = [
+        '1' => [
+            'id' => '1',
+            'fullName' => 'Juan Carlo M. Dela Cruz III',
+            'username' => 'J001',
+            'dateCreated' => '05/06/23',
+            'role' => 'Admin',
+        ],
+        '2' => [
+            'id' => '12',
+            'fullName' => 'Jane Doe',
+            'username' => 'user2',
+            'dateCreated' => '05/07/23',
+            'role' => 'Physician',
+        ],
+        '3' => [
+            'id' => '112',
+            'fullName' => 'Jane Doe',
+            'username' => 'user2',
+            'dateCreated' => '05/07/23',
+            'role' => 'BHW',
+        ],
+        '4' => [
+            'id' => '1112',
+            'fullName' => 'Jane Doe',
+            'username' => 'user2',
+            'dateCreated' => '05/07/23',
+            'role' => 'Nurse',
+        ],
+        '5' => [
+            'id' => '2',
+            'fullName' => 'Jane Doe',
+            'username' => 'user2',
+            'dateCreated' => '05/07/23',
+            'role' => 'Admin',
+        ],
+        '6' => [
+            'id' => '2',
+            'fullName' => 'Jane Doe',
+            'username' => 'user2',
+            'dateCreated' => '05/07/23',
+            'role' => 'Admin',
+        ],
+        '7' => [
+            'id' => '2',
+            'fullName' => 'Jane Doe',
+            'username' => 'user2',
+            'dateCreated' => '05/07/23',
+            'role' => 'Admin',
+        ],
+        '8' => [
+            'id' => '2',
+            'fullName' => 'Jane Doe',
+            'username' => 'user2',
+            'dateCreated' => '05/07/23',
+            'role' => 'Admin',
+        ],
+        '9' => [
+            'id' => '2',
+            'fullName' => 'Jane Doe',
+            'username' => 'user2',
+            'dateCreated' => '05/07/23',
+            'role' => 'Admin',
+        ],
+        '10' => [
+            'id' => '2',
+            'fullName' => 'Jane Doe',
+            'username' => 'user2',
+            'dateCreated' => '05/07/23',
+            'role' => 'Admin',
+        ],
+    ];
+@endphp --}}
+
 <x-layout>
     
     {{-- MODAL --}}
@@ -14,7 +89,7 @@
             </div>
         </div>
 
-        {{-- EDIT MODAL --}}
+        {{-- EDIT MODAL
         <div id="edit-modal-body" class="modal hidden fixed top-[15%] bg-white rounded-xl w-[600px] min-h-[600px] drop-shadow-lg overflow-hidden">
             <div class="relative px-6 py-4">
                 <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-[10%] hover:cursor-pointer'></i>
@@ -63,22 +138,22 @@
                 <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-2 hover:bg-black hover:text-white duration-100">Cancel</button>
                 <button type="button" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">Save</button>
             </div>
-        </div>
+        </div> --}}
 
         {{-- VIEW MODAL --}}
-        <div id="view-modal-body" class="modal hidden fixed top-[15%] bg-white rounded-xl w-[600px] min-h-[600px] drop-shadow-lg overflow-hidden">
+        {{-- <div id="view-modal-body" class="modal hidden fixed top-[15%] bg-white rounded-xl w-[600px] min-h-[600px] drop-shadow-lg overflow-hidden">
             <div class="relative px-6 py-4">
                 <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-[10%] hover:cursor-pointer'></i>
                 <h2 class="text-xl"><strong>View Account Details</strong></h2>
             </div>
     
-            <div class="grid grid-cols-4 border-y p-10 gap-6 items-center">                  
+            <div class="grid grid-cols-4 border-y p-10 pt-6 gap-6 items-center">
+                <div class="col-span-4">
+                    <img class="w-40 h-40 border-4 border-primary rounded-full mx-auto" src="https://i.pinimg.com/564x/81/79/8d/81798d8b882d04f4ab59ba9c39fc5244.jpg" alt="Profile picture">
+                </div>                  
                 <label for="first_name" class="col-span-1 whitespace-nowrap">First Name:</label>
-                <input type="text" name="first_name" id="first_name" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg" disabled value="Juan Carlo">
-                
-                <label for="middle_name" class="col-span-1 whitespace-nowrap">Middle Name:</label>
-                <input type="text" name="middle_name" id="middle_name" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg" disabled value="Malakas">
-    
+                <input type="text" name="first_name" value="Hello" class="rounded-xl border w-full focus:ring-0 focus:ring-secondary border-gray-300 col-span-3">
+
                 <label for="last_name" class="col-span-1 whitespace-nowrap">Last Name:</label>
                 <input type="text" name="last_name" id="last_name" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg" disabled value="Dela Cruz">
     
@@ -108,11 +183,12 @@
                 <label for="email" class="col-span-1 whitespace-nowrap">Email Address:</label>
                 <input type="text" name="email" id="email" class="rounded-xl border outline-[0.5px] w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg" disabled value="admin@gmail.com">
             </div>
+  
             
             <div class="flex gap-2 justify-end p-3">
                 <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-2 hover:bg-black hover:text-white duration-100">Close</button>
             </div>
-        </div>
+        </div> --}}
     </div>
     
     {{-- MAIN CONTAINER --}}
@@ -122,13 +198,13 @@
                 <div class="flex w-full">
                     <div class="relative flex flex-row w-[60%]">
                         <input class="rounded-l-full focus:ring-0 border border-gray-400 pl-4 pr-2 w-full" type="text" placeholder="Search">
-                        <a href="" class="absolute -right-[50px] ring-0 ring-gray-400 h-full flex justify-center items-center rounded-r-full bg-primary w-[50px]">
-                            <i class='bx bx-search-alt-2 text-white text-lg'></i>
+                        <a href="" class="absolute -right-[50px] text-white ring-0 ring-gray-400 h-full flex justify-center items-center rounded-r-full bg-primary hover:text-secondary w-[50px] duration-100">
+                            <i class='bx bx-search-alt-2 text-xl'></i>
                         </a>
                     </div>
                 </div>
-                <a href="{{url('users/add')}}" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary duration-100">
-                    <i class='bx bxs-plus-circle text-lg'></i><p class="whitespace-nowrap hidden md:inline-block">Add New User</p>
+                <a href="{{url('users/add')}}" class="flex justify-center items-center bg-primary rounded-full text-white py-[7px] px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary">
+                    <i class='bx bxs-plus-circle text-xl'></i><p class="whitespace-nowrap hidden md:inline-block duration-100">Add New User</p>
                 </a>
             </div>
         </div>
@@ -136,27 +212,39 @@
             <table class="w-full">
                 <thead>
                     <tr class="border-2 border-transparent border-b-light-gray">
-                        <th class="text-left px-6 py-3">ID</th>
-                        <th class="text-left lg:px-6 py-3 sticky left-0 bg-white p-6 whitespace-nowrap">Full Name</th>
+                        <th class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">ID</th>
+                        <th class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">Full Name</th>
                         <th class="text-left px-6 py-3">Username</th>
                         <th class="text-left px-6 py-3 whitespace-nowrap">Date Created</th>
                         <th class="text-left px-6 py-3">Role</th>
+                        <th class="text-left px-6 py-3">Status</th>
                         <th class="text-left px-6 py-3">Action</th>
+                      
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $user => $value)
+                    @foreach ($user as $users)
                         <tr class="border border-transparent y-10 {{!($loop->last) ? "border-b-light-gray" : ""}}">
-                            <td class="text-left px-6 py-3">{{$value['id']}}</td>
-                            <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">{{$value['fullName']}}</td>
-                            <td class="text-left px-6 py-3">{{$value['username']}}</td>
-                            <td class="text-left px-6 py-3">{{$value['dateCreated']}}</td>
-                            <td class="text-left px-6 py-3">{{$value['role']}}</td>
+                            <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">{{$users->id}}</td>
+                            <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$users->first_name}} {{substr($users->middle_name, 0, 1)}}. {{$users->last_name}} </td>
+                            <td class="text-left px-6 py-3">{{$users->username}}</td>
+                            <td class="text-left px-6 py-3">{{$users->created_at}}</td>
+                            <td class="text-left px-6 py-3">{{$users->role}}</td>
+                            <td class="text-left px-6 py-3">{{$users->status}}</td>
                             <td class="text-left px-6 py-3">
-                                <div class="flex gap-2">
-                                    <button id="view" class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">View</button>
-                                    <button id="edit" class="text-white bg-secondary px-4 py-2 rounded-full hover:bg-white hover:text-secondary hover:ring-secondary hover:ring-1 duration-100">Edit</button>
-                                    <button id="archive" class="text-white bg-red px-4 py-2 rounded-full hover:bg-white hover:text-red hover:ring-red hover:ring-1 duration-100">Archive</button>
+                                <div class="flex gap-[6px]">
+                                    <a href="{{url("/users/view/$users->id")}}">
+                                        <button class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">View</button>
+                                    </a>
+                                    <a href="{{url("/users/edit/$users->id")}}">
+                                        <button class="text-white bg-secondary px-4 py-2 rounded-full hover:bg-white hover:text-secondary hover:ring-secondary hover:ring-1 duration-100">Edit</button>
+                                    </a>
+                                    <form action="{{url("/users/user/$users->id")}}" method="POST" class="flex flex-col">
+                                        @method('put')   
+                                        @csrf
+                                        <button type="submit" class="text-white bg-red px-4 py-2 rounded-full hover:bg-white hover:text-red hover:ring-red hover:ring-1 duration-100">Archive</button>
+                                    </form>
+
                                 </div>
                             </td>
                         </tr>
@@ -164,7 +252,7 @@
                 </tbody>
             </table>
             <div class="sticky left-0 px-6">
-                <p>Showing <strong>8</strong> out of <strong>50</strong> entries</p>
+                <p>Showing <strong>{{$users->count()}}</strong> out of <strong>{{$users->count()}}</strong> entries</p>
             </div>
         </div>
     </section>

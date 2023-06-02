@@ -5,8 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Auth;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 class UserRoleMiddleware
@@ -22,12 +22,13 @@ class UserRoleMiddleware
             
             return $next($request);
             // dd($request->all(), $role);
-
+            
         }
 
         else{
-            // dd(Auth::check(), $role);
-            return response()->json(["You don't have permission to access this page"]);
+            //Redirecting shit
+            return redirect('/')->with('message', 'Logout Successful');
+            // return response()->json(["You don't have permission to access this page"]);
         }
 
         

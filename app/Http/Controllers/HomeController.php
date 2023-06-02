@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User; 
 
 class HomeController extends Controller
 {
@@ -24,28 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        return view('pages/dashboard');
     }
 
-    public function profilePage()
-    {
-        //pagpapasa ng values sa view
-        $user = Auth::user();
-        return view('pages/profile', compact('user'));
-    }
-
-    public function userHome()
-    {
-        return view('home',["msg"=>"I am User role"]);
-    }
-
-    public function editorHome()
-    {
-        return view('home',["msg"=>"I am Editor role"]);
-    }
-
-    public function adminHome()
-    {
-        return view('home',["msg"=>"I am Admin role"]);
-    }
+    // public function profilePage()
+    // {
+    //     //pagpapasa ng values sa view
+    //     $user = Auth::user();
+    //     return view('pages/profile', compact('user'));
+    // }
 }
