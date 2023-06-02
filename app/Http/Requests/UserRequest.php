@@ -13,7 +13,7 @@ class UserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return auth()->check();
     }
 
     /**
@@ -24,14 +24,13 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         $id = $this->route('id');
-        // dd($id);
         return [
             "first_name" => ['required', new Alpha_spaces],
             'middle_name' => [new Alpha_spaces],
             "last_name" => ['required', new Alpha_spaces],
             // "username" => ['required', Rule::unique('users', 'username')],
             // 'password' => ['required'],
-            // 'confirm_password' => ['required', 'same:password'], // Validate if confirm_password is the same as password
+            // 'confirm_password' => ['required', 'same:password'],
             "role" => ['required'],
             "specialization" => ['required'],
             "birthday" => ['required'],
