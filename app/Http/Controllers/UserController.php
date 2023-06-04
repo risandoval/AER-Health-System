@@ -16,8 +16,10 @@ class UserController extends Controller {
 
     public function index()
     {   
-        $user = User::all();
-        return view('pages/userAccounts/user-accounts',  compact('user'));
+        $activeUser = User::where('status', 'active')->get();
+        $inactiveUser = User::where('status', 'inactive')->get();
+        // dd($data);
+        return view('pages/userAccounts/user-accounts',  compact('activeUser', 'inactiveUser'));
     }
 
     public function logout(Request $request){
@@ -34,13 +36,10 @@ class UserController extends Controller {
     {
         $validated = $request->validated();
         
-        //first letter of names changed to uppercase
         $validated['first_name'] = ucfirst($validated['first_name']);
         $validated['middle_name'] = ucfirst($validated['middle_name']);
         $validated['last_name'] = ucfirst($validated['last_name']);
-        //username gets the first letter of last name then add a 4 digit number (e.g. J0001)
         $validated['username'] = substr($validated['last_name'], 0, 1) . sprintf("%04d", rand(1, 9999));
-        //role id will depend on the role name
         if($validated['role'] == 'Admin'){
             $validated['role_id'] = 1;
         } elseif($validated['role'] == 'Barangay Health Worker'){
@@ -48,11 +47,8 @@ class UserController extends Controller {
         } elseif($validated['role'] == 'Doctor'){
             $validated['role_id'] = 3;
         }
-        //password would be birthday as default
         $validated['password'] = bcrypt($validated['birthday']);
-        //active status as default data
         $validated['status'] = 'Active';
-        // $validated['password'] = bcrypt($validated['password']);
     
         $user = new User($validated);
         $user->save();
@@ -117,6 +113,89 @@ class UserController extends Controller {
         }
 
         return back()->with('message', 'Data was successfully updated');
+    }
+
+    public function unarchive(Request $request, $id)
+    {
+
+        $user = User::find($id);
+
+        if ($user) {
+            $user->status = 'Active';
+            $user->save();
+
+        } else {
+            // Handle the case when the user does not exist
+        }
+
+        return back()->with('message', 'Data was successfully updated');
+    }
+
+    //FIRST TIME LOGIN VIEW
+    public function firstLogin() {   
+        return view('pages/first-login');
+    }
+
+    //FIRST TIME LOGIN VALIDATION
+    public function validateFirstLogin(Request $request) {   
+        $validated = $request->validate([
+            'password' => 'required',
+            'confirm_password' => ['required', 'same:password'], 
+        ]);
+
+        //update password in database
+        // $user = User::find(auth()->user()->id);
+        // $user->password = bcrypt($validated['password']);
+        // $user->save();
+
+        return redirect('/dashboard'); 
+    }
+
+    //STEP 1-3 VIEW (forgot password)
+    public function stepOne() {   
+        return view('pages/forgotPassword/step-one');
+    }
+    public function stepTwo() {   
+        return view('pages/forgotPassword/step-two');
+    }
+    public function stepThree() {   
+        return view('pages/forgotPassword/step-three');
+    }
+
+    //STEP 1-3 VALIDATIONS (forgot password)
+    public function validateStepOne(Request $request) {
+        $validated = $request->validate([
+            'username' => ['required'],
+        ]);
+
+        // check yung username - pag nageexist saka magpproceed sa step 2
+        // pag di nag eexist may message na di nageexist
+
+        return redirect('/security-question');
+    }
+
+    public function validateStepTwo(Request $request) {   
+        $validated = $request->validate([
+            'answer' => ['required']
+        ]);
+
+        // check kung magmatch yung sagot saka magproceed sa step 3
+
+        return redirect('/change-password');
+    }
+
+    public function validateStepThree(Request $request) {   
+        $validated = $request->validate([
+            'password' => 'required',
+            'confirm_password' => ['required', 'same:password'], 
+        ]);
+
+        //update password in database
+        // $user = User::find(auth()->user()->id);
+        // $user->password = bcrypt($validated['password']);
+        // $user->save();
+
+        return redirect('/login'); 
     }
 
     // update password function
