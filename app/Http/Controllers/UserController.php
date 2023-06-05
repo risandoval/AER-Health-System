@@ -165,9 +165,11 @@ class UserController extends Controller {
             'username' => ['required'],
         ]);
 
-        // check yung username - pag nageexist saka magpproceed sa step 2
-        // pag di nag eexist may message na di nageexist
-
+        $user = User::where('username', $validated['username'])->first();
+        if(!$user){
+            return back()->with('error', 'Username does not exist');
+        }
+        
         return redirect('/security-question');
     }
 

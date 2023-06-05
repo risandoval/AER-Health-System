@@ -228,12 +228,6 @@
                                         <td class="text-left px-6 py-3">{{$users->status}}</td>
                                         <td class="text-left px-6 py-3">
                                             <div class="flex gap-[6px]">
-                                                <a href="{{url("/users/view/$users->id")}}">
-                                                    <button class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">View</button>
-                                                </a>
-                                                <a href="{{url("/users/edit/$users->id")}}">
-                                                    <button class="text-white bg-secondary px-4 py-2 rounded-full hover:bg-white hover:text-secondary hover:ring-secondary hover:ring-1 duration-100">Edit</button>
-                                                </a>
                                                 <form action="{{url("/users/unarchive/$users->id")}}" method="POST" class="flex flex-col">
                                                     @method('put')   
                                                     @csrf
