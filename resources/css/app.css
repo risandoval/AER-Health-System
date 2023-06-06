@@ -10,7 +10,7 @@
         margin: 0;
     }
 
-    input[readonly][disabled] {
+    input[readonly], input[disabled] {
         @apply cursor-default text-disabled-text bg-disabled-bg lg:-mb-6;
     }
 

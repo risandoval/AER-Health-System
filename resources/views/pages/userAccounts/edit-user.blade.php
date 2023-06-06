@@ -15,7 +15,7 @@
                 <div class="lg:grid lg:grid-cols-4 border-y p-10 gap-6 items-center">    
                 
                     <label for="first_name" class="col-span-1 whitespace-nowrap -mb-6">First Name:</label>
-                    <input type="text" name="first_name" value="{{$editUser->first_name}}" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 mb-2 lg:-mb-6">
+                    <input type="text" name="first_name" value="{{$editUser->first_name}}" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 mb-2 lg:-mb-6 bg-light" :disabled="!isEditable">
                     <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('first_name'){{$message}} @enderror </p>
 
                     <label for="first_name" class="col-span-1 whitespace-nowrap -mb-6">Middle Name:</label>
@@ -72,7 +72,9 @@
             
                 <div class="flex gap-3 justify-end p-3">
                     <a href="{{url('/users')}}" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Cancel</a>
-                    <button type="submit" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Update User</button>
+                    {{-- <button type="submit" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Update User</button> --}}
+                    {{-- <button type="submit" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Edit</button> --}}
+                   
                 </div>
             </form>
         </div>
@@ -81,3 +83,14 @@
    
 
 </x-layout>
+
+{{-- when edit button is clicked, input fields should be editable --}}
+<script>
+    function editUser() {
+        var x = document.getElementById("editUser");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].disabled = false;
+        }
+    }
+</script>

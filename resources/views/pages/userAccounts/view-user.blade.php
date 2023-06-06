@@ -2,20 +2,19 @@
     <section class="flex flex-col gap-12 bg-light w-full min-h-screen items-center justify-center pt-navbar pb-10">
         <div  class="bg-white rounded-xl max-w-[800px] min-h-[600px] drop-shadow-lg mt-12 mx-4">
             <div class="px-6 py-4">
-                <h2 class="text-xl"><strong>View User Account</strong></h2>
+                <h2 id="userTitle" class="text-xl"><strong>User Information</strong></h2>
                 @if(session('error'))
                     <p class="text-red text-xs p-1">
                         {{ session('error') }}  
                     </p>
                 @endif
             </div>
-            <form action="/user/view/{{$viewUser->id}}" method="POST">
+            <form action="/users/update/{{$viewUser->id}}" method="POST" id="userForm">
                 @csrf
-                @method('PUT')             
+                @method('PUT')      
                 <div class="lg:grid lg:grid-cols-4 border-y p-10 gap-6 items-center">    
-                
                     <label for="first_name" class="col-span-1 whitespace-nowrap -mb-6">First Name:</label>
-                    <input type="text" name="first_name" value="{{$viewUser->first_name}}" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg mb-2 lg:-mb-6" disabled>
+                    <input type="text" name="first_name" value="{{$viewUser->first_name}}" disabled class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg mb-2 lg:-mb-6">
                     <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('first_name'){{$message}} @enderror </p>
 
                     <label for="first_name" class="col-span-1 whitespace-nowrap -mb-6">Middle Name:</label>
@@ -26,34 +25,27 @@
                     <input type="text" name="last_name" value="{{$viewUser->last_name}}" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg mb-2 lg:-mb-6" disabled>
                     <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('last_name'){{$message}} @enderror </p>
 
-                    {{-- <label for="username" class="col-span-1 whitespace-nowrap -mb-6">Username:</label>
-                    <input type="text" name="username" value="{{$viewUser->username}}" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg mb-2 lg:-mb-6">
-                    <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('username'){{$message}} @enderror </p> --}}
-
-                    {{-- <label for="password" class="col-span-1 whitespace-nowrap -mb-6">Password:</label>
-                    <input type="password" name="password" value="{{$viewUser->password}}" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg mb-2 lg:-mb-6">
-                    <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('password'){{$message}} @enderror </p> --}}
-
-                    {{-- <label for="confirm_password" class="col-span-1 whitespace-nowrap -mb-6">Confirm Password:</label>
-                    <input type="password" name="confirm_password" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg mb-2 lg:-mb-6">
-                    <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('confirm_password'){{$message}} @enderror </p> --}}
+                    <label for="username" class="col-span-1 whitespace-nowrap">Username:</label>
+                    <input type="text" value="{{$viewUser->username}}" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg" disabled>
 
                     <label for="role" class="col-span-1 whitespace-nowrap -mb-6">Role:</label>
-                    <select name="role" value="{{$viewUser->role}}" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 bg-disabled-bg mb-2 lg:-mb-6" disabled>
+                    <input type="text" value="{{$viewUser->role}}" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg mb-2 lg:-mb-6" disabled>
+                    {{-- <select name="role" value="{{$viewUser->role}}" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 bg-disabled-bg mb-2 lg:-mb-6" disabled>
                         <option value="" selected hidden>select..</option>
                         <option value="Admin" {{$viewUser->role == 'Admin' ? 'selected' : ''}}>Admin</option>
                         <option value="Doctor" {{$viewUser->role == 'Doctor' ? 'selected' : ''}}>Doctor</option>
                         <option value="BHW" {{$viewUser->role == 'Barangay Health Worker' ? 'selected' : ''}}>Barangay Health Workers (BHW)</option>
-                    </select>
+                    </select> --}}
                     <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('role'){{$message}} @enderror </p>
 
-                    <label for="specialization" class="col-span-1 whitespace-nowrap">Specialization:</label>
-                    <select name="specialization" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 bg-disabled-bg mb-2 lg:-mb-6" disabled>
+                    <label for="specialization" class="col-span-1 whitespace-nowrap -mb-6">Specialization:</label>
+                    <input type="text" value="{{$viewUser->specialization}}" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg mb-2 lg:-mb-6" disabled>
+                    {{-- <select name="specialization" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 bg-disabled-bg mb-2 lg:-mb-6" disabled>
                         <option value="" selected hidden>select..</option>
                         <option value="Admin" {{$viewUser->specialization == 'Admin' ? 'selected' : ''}}>Admin</option>
                         <option value="Doctor" {{$viewUser->specialization == 'Doctor' ? 'selected' : ''}}>Doctor</option>
                         <option value="Barangay Health Worker" {{$viewUser->specialization == 'Barangay Health Worker' ? 'selected' : ''}}>Barangay Health Workers (BHW)</option>
-                    </select>
+                    </select> --}}
                     <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('position'){{$message}} @enderror </p>
 
                     <label for="birthday" class="col-span-1 whitespace-nowrap -mb-6">Birthday:</label>
@@ -68,15 +60,18 @@
                     <input type="text" value="{{$viewUser->email}}" name="email" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg mb-2 lg:-mb-6" disabled>
                     <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('email'){{$message}} @enderror </p>
 
+                    <input type="text" name="editing" id="editing" value="false" hidden>
+
                 </div>
             
                 <div class="flex gap-3 justify-end p-3">
-                    <a href="{{url('/users')}}" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Back</a>
+                    {{-- <a href="{{url('/users')}}" id="closeButton" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Close</a> --}}
+                    <button id="closeButton" type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Close</button>
+                    <button id="editButton" class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">Edit</button>
                 </div>
             </form>
         </div>
-    
     </section>
-   
-
 </x-layout>
+
+@vite('resources/js/form.js')

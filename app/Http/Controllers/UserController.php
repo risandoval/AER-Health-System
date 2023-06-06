@@ -75,14 +75,26 @@ class UserController extends Controller {
     } 
     public function update(UserRequest $request, $id)
     {
+        // dd($request->editing);
         // gets all request
+        // $newRequest = $request;
+        // if ($request->editing) {
+        //     $viewUser = User::find($id);
+        //     return view('pages/userAccounts/view-user', compact('viewUser', 'newRequest') );
+        // }
+
         $validated = $request->validated();
-        $user = User::find($id);
+        $validationPassed = true;
+        if ($validationPassed == true) {
+            $viewUser = User::find($id);
+            return view('pages/userAccounts/view-user', compact('viewUser', 'newRequest') );
+        }
         
+        
+        $user = User::find($id);
         $user->update($validated);
-        return back()->with('message', 'Data was successfully updated');
+        return redirect()->back()->withInput()->with('message', 'Data was successfully updated');
     }
-    //EDIT USER ACCOUNT
     
     public function destroy(Request $request, $id)
     {   
