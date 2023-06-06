@@ -31,9 +31,8 @@
       <form action="/logout" method="POST">
       @csrf
         <button class="bg-secondary text-white text-lg duration px-6 py-1 mx-4 hover:bg-white hover:text-secondary rounded-full duration-100">
-          {{-- <a href="/" class="text-xl duration-400">Logout</a> --}}
-          <button class="nav-link hover:border-b-red">Logout</button>
-        </li>
+          Logout
+        </button>
       </form>
     </ul>
 </nav>

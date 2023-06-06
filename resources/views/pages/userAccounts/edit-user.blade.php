@@ -13,7 +13,7 @@
                 @csrf
                 @method('PUT')             
                 <div class="lg:grid lg:grid-cols-4 border-y p-10 gap-6 items-center">    
-                
+
                     <label for="first_name" class="col-span-1 whitespace-nowrap -mb-6">First Name:</label>
                     <input type="text" name="first_name" value="{{$editUser->first_name}}" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 mb-2 lg:-mb-6">
                     <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('first_name'){{$message}} @enderror </p>
@@ -39,7 +39,7 @@
                     <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('confirm_password'){{$message}} @enderror </p> --}}
 
                     <label for="role" class="col-span-1 whitespace-nowrap -mb-6">Role:</label>
-                    <select name="role" value="{{$editUser->role}}" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 mb-2 lg:-mb-6">
+                    <select id="role-input" name="role" value="{{$editUser->role}}" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 mb-2 lg:-mb-6">
                         <option value="" selected hidden>select..</option>
                         <option value="Admin" {{$editUser->role == 'Admin' ? 'selected' : ''}}>Admin</option>
                         <option value="Doctor" {{$editUser->role == 'Doctor' ? 'selected' : ''}}>Doctor</option>
@@ -48,7 +48,7 @@
                     <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('role'){{$message}} @enderror </p>
 
                     <label for="specialization" class="col-span-1 whitespace-nowrap">Specialization:</label>
-                    <select name="specialization" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 mb-2 lg:-mb-6">
+                    <select id="specialization-input" name="specialization" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 mb-2 lg:-mb-6">
                         <option value="" selected hidden>select..</option>
                         <option value="Admin" {{$editUser->specialization == 'Admin' ? 'selected' : ''}}>Admin</option>
                         <option value="Doctor" {{$editUser->specialization == 'Doctor' ? 'selected' : ''}}>Doctor</option>
@@ -81,3 +81,5 @@
    
 
 </x-layout>
+
+@vite('resources/js/role.js')

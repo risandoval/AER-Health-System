@@ -38,7 +38,7 @@
             
                 <div class="flex gap-3 justify-end p-3 w-full">
                     <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Close</button>
-                    <button type="submit" id="save" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Save</button>
+                    <button type="submit" class="save-btn bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Save</button>
                 </div>
             </form>
         </div>
@@ -71,10 +71,10 @@
                         <input type="text" name="username" class="form-input" value={{auth()->user()->username}} readonly>
                         
                         <label for="role" class="col-span-1 whitespace-nowrap">Role:</label>
-                        <input type="text" name="role" class="form-input" value={{auth()->user()->role}} readonly>
-    
+                        <input id="role-input" type="text" name="role" class="form-input" value={{auth()->user()->role}} readonly>
+                        
                         <label for="specialization" class="col-span-1 whitespace-nowrap">Specialization:</label>
-                        <select name="specialization" class="form-input">
+                        <select id="specialization-input" name="specialization" class="form-input">
                             <option value="Admin" {{auth()->user()->specialization == 'Admin' ? 'selected' : ''}}>Admin</option>
                             <option value="Doctor" {{auth()->user()->specialization == 'Doctor' ? 'selected' : ''}}>Doctor</option>
                             <option value="Barangay Health Worker" {{auth()->user()->specialization == 'Barangay Health Worker' ? 'selected' : ''}}>Barangay Health Worker</option>
@@ -97,7 +97,7 @@
                 </div>
                 <div class="flex gap-3 justify-end p-3 w-full">
                     <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Close</button>
-                    <button type="submit" id="save" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Save</button>
+                    <button type="submit" class="save-btn bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Save</button>
                 </div>
             </form>
         </div>
@@ -207,3 +207,4 @@
 </x-layout>
 
 @vite('resources/js/dashboard.js')
+@vite('resources/js/role.js')
