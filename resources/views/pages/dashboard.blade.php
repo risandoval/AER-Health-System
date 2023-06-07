@@ -2,14 +2,6 @@
     {{-- MODAL --}}
     {{-- {{dd("url("users/update/".auth()->user()->id)")}} --}}
     <div id="modal-background" class="hidden absolute z-10 top-[-10%] left-0 h-full w-full bg-black bg-opacity-30 items-center justify-center">
-        {{-- MESSAGE MODAL --}}
-        <div id="message-modal-body" class="modal hidden fixed top-[40%] bg-white text-green-700 rounded-xl w-[400px] drop-shadow-lg px-10 pt-6 pb-6">
-            <div class="flex flex-col">
-                <h2><strong>Checking Profile Information</strong></h2>
-                <p>Saving changes...</p>
-            </div>
-        </div>
-
         {{-- CHANGE PASSWORD MODAL --}}
         <div id="change-password-modal-body" class="modal hidden fixed top-[30%] bg-white rounded-xl max-w-[600px] drop-shadow-lg overflow-hidden">
             
@@ -35,10 +27,9 @@
                     @error ('confirm_password') <p class="col-start-4 col-span-5 text-sm text-red -mt-2 mb-2 lg:-mt-4 lg:mb-0"> {{$message}} </p> @enderror
                 </div>
             
-            
                 <div class="flex gap-3 justify-end p-3 w-full">
                     <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Close</button>
-                    <button type="submit" id="save" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Save</button>
+                    <button type="submit" class="save-btn bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Save</button>
                 </div>
             </form>
         </div>
@@ -71,10 +62,10 @@
                         <input type="text" name="username" class="form-input" value={{auth()->user()->username}} readonly>
                         
                         <label for="role" class="col-span-1 whitespace-nowrap">Role:</label>
-                        <input type="text" name="role" class="form-input" value={{auth()->user()->role}} readonly>
-    
+                        <input id="role-input" type="text" name="role" class="form-input" value={{auth()->user()->role}} readonly>
+                        
                         <label for="specialization" class="col-span-1 whitespace-nowrap">Specialization:</label>
-                        <select name="specialization" class="form-input">
+                        <select id="specialization-input" name="specialization" class="form-input">
                             <option value="Admin" {{auth()->user()->specialization == 'Admin' ? 'selected' : ''}}>Admin</option>
                             <option value="Doctor" {{auth()->user()->specialization == 'Doctor' ? 'selected' : ''}}>Doctor</option>
                             <option value="Barangay Health Worker" {{auth()->user()->specialization == 'Barangay Health Worker' ? 'selected' : ''}}>Barangay Health Worker</option>
@@ -97,7 +88,7 @@
                 </div>
                 <div class="flex gap-3 justify-end p-3 w-full">
                     <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Close</button>
-                    <button type="submit" id="save" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Save</button>
+                    <button type="submit" class="save-btn bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Save</button>
                 </div>
             </form>
         </div>
@@ -207,3 +198,4 @@
 </x-layout>
 
 @vite('resources/js/dashboard.js')
+@vite('resources/js/role.js')

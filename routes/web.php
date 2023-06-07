@@ -42,7 +42,6 @@ Route::prefix('users')->middleware('auth')->group(function () {
     Route::get('', [UserController::class, 'index'])->name('index');
     Route::get('add', [UserController::class, 'add'])->name('add'); // add user view
     Route::get('/view/{id}', [UserController::class, 'show'])->name('show'); //individual user view
-    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit'); //edit user view
     Route::post('/store', [UserController::class, 'store'])->name('store'); //store user details
     Route::put('/update/{id}', [UserController::class, 'update'])->name('update'); //edit user
     Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('delete');

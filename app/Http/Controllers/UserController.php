@@ -55,42 +55,19 @@ class UserController extends Controller {
         
         return redirect('/users/add')->with('message', 'New User Added Successfully');
     }
-
-    //VIEW USER ACCOUNT (TABLE)
     public function add(){
         return view('pages/userAccounts/add-user');
     }
 
+    //VIEW USER ACCOUNT (TABLE)
     public function show($id){
         $viewUser = User::findOrFail($id);
-        // dd($id);
-        return view('pages/userAccounts/view-user',  compact('viewUser'));
+        return view('pages/userAccounts/view-user', compact('viewUser'));
     }
 
-    //EDIT USER ACCOUNT
-    public function edit($id){
-        $editUser = User::findOrFail($id);
-        // dd($id);
-        return view('pages/userAccounts/edit-user',  compact('editUser'));
-    } 
     public function update(UserRequest $request, $id)
     {
-        // dd($request->editing);
-        // gets all request
-        // $newRequest = $request;
-        // if ($request->editing) {
-        //     $viewUser = User::find($id);
-        //     return view('pages/userAccounts/view-user', compact('viewUser', 'newRequest') );
-        // }
-
         $validated = $request->validated();
-        $validationPassed = true;
-        if ($validationPassed == true) {
-            $viewUser = User::find($id);
-            return view('pages/userAccounts/view-user', compact('viewUser', 'newRequest') );
-        }
-        
-        
         $user = User::find($id);
         $user->update($validated);
         return redirect()->back()->withInput()->with('message', 'Data was successfully updated');

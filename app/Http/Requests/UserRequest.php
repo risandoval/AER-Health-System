@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use App\Rules\Alpha_spaces;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -22,15 +24,16 @@ class UserRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
     public function rules(): array
-    {
+    {   
+        
         $id = $this->route('id');
         return [
             "first_name" => ['required', new Alpha_spaces],
             'middle_name' => [new Alpha_spaces],
             "last_name" => ['required', new Alpha_spaces],
-            // "username" => ['required', Rule::unique('users', 'username')],
-            // 'password' => ['required'],
-            // 'confirm_password' => ['required', 'same:password'],
+            "username" => ['sometimes', 'required', Rule::unique('users', 'username')],
+            'password' => ['sometimes', 'required'],
+            'confirm_password' => ['sometimes', 'required', 'same:password'],
             "role" => 'sometimes|required',
             "specialization" => 'sometimes|required',
             "birthday" => ['required'],
