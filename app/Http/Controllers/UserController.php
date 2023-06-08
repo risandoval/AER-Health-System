@@ -16,9 +16,8 @@ class UserController extends Controller {
 
     public function index()
     {   
-        $activeUser = User::where('status', 'active')->get();
-        $inactiveUser = User::where('status', 'inactive')->get();
-        // dd($data);
+        $activeUser = User::where('status', 'active')->paginate(3);
+        $inactiveUser = User::where('status', 'inactive')->paginate(3);
         return view('pages/userAccounts/user-accounts',  compact('activeUser', 'inactiveUser'));
     }
 
