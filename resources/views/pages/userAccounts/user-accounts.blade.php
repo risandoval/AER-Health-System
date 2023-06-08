@@ -11,8 +11,8 @@
                 <p>Are you sure you want to archive this account?</p>
             </div>
             <div class="flex gap-2 justify-end p-3">
-                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Cancel</button>
-                <button type="button" class="bg-red text-white text-sm rounded-full px-4 py-2 font-bold hover:bg-white hover:text-red hover:ring-red hover:ring-1">Archive </button>
+                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white duration-100">Cancel</button>
+                <button type="button" class="bg-red text-white text-sm rounded-full px-4 py-2 font-bold hover:bg-white hover:text-red hover:ring-red hover:ring-1 duration-100 ease-in-out">Archive </button>
             </div>
         </div>
 
@@ -62,8 +62,8 @@
             </div>
             
             <div class="flex gap-2 justify-end p-3">
-                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-2 hover:bg-black hover:text-white">Cancel</button>
-                <button type="button" class="bg-secondary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-secondary hover:ring-secondary hover:ring-1">Save</button>
+                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-2 hover:bg-black hover:text-white duration-100">Cancel</button>
+                <button type="button" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">Save</button>
             </div>
         </div> --}}
 
@@ -113,7 +113,7 @@
   
             
             <div class="flex gap-2 justify-end p-3">
-                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-2 hover:bg-black hover:text-white">Close</button>
+                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-2 hover:bg-black hover:text-white duration-100">Close</button>
             </div>
         </div> --}}
     </div>

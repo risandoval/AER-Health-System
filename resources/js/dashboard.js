@@ -5,7 +5,7 @@ const editButton = document.querySelector('#edit');
 const editModalBody = document.querySelector('#edit-modal-body');
 const changePassword = document.querySelector('#change-password');
 const changePasswordModalBody = document.querySelector('#change-password-modal-body');
-const saveButtons = document.querySelectorAll('#save');
+const saveButtons = document.querySelectorAll('.save-btn');
 const closeButtons = document.querySelectorAll('.close-btn');
 const saveMessageModalBody = document.querySelector('#message-modal-body');
 
