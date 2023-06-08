@@ -34,19 +34,19 @@
 
                     <div class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
                         <label for="username" class="md:col-span-2 whitespace-nowrap">Username:</label>
-                        <input type="text" name="username" value="{{$viewUser->username}}" readonly class="form-input md:col-start-4 md:col-span-10 focus:ring-0 text-disabled-text bg-disabled-bg read-only:mb-0">
+                        <input type="text" name="username" value="{{$viewUser->username}}" readonly class="form-input md:col-start-4 md:col-span-10 focus:ring-0:mb-0">
                         {{-- @error ('username') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror --}}
                     </div>
 
                     <div class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
                         <label for="role" class="md:col-span-2 whitespace-nowrap">Role:</label>
-                        <input type="text" name="role" value="{{$viewUser->role}}" readonly class="form-input md:col-start-4 md:col-span-10 focus:ring-0 text-disabled-text bg-disabled-bg read-only:mb-0">
+                        <input type="text" name="role" value="{{$viewUser->role}}" readonly class="form-input md:col-start-4 md:col-span-10 focus:ring-0:mb-0">
                         {{-- @error ('role') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror --}}
                     </div>
 
                     <div class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
                         <label for="specialization" class="md:col-span-2 whitespace-nowrap">Specialization:</label>
-                        <input type="text" name="specialization" value="{{$viewUser->specialization}}" readonly class="form-input md:col-start-4 md:col-span-10 focus:ring-0 text-disabled-text bg-disabled-bg read-only:mb-0">
+                        <input type="text" name="specialization" value="{{$viewUser->specialization}}" readonly class="form-input md:col-start-4 md:col-span-10 focus:ring-0:mb-0">
                         {{-- @error ('role') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror --}}
                     </div>
 
@@ -64,7 +64,7 @@
 
                     <div class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
                         <label for="email" class="md:col-span-2 whitespace-nowrap">Email Address:</label>
-                        <input type="text" name="email" value="{{$viewUser->email}}" class="form-input md:col-start-4 md:col-span-10 focus:ring-0 text-disabled-text bg-disabled-bg disabled:mb-0">
+                        <input type="text" name="email" value="{{$viewUser->email}}" {{$errors->any() ? '' : 'disabled'}} class="form-input md:col-start-4 md:col-span-10 focus:ring-0:mb-0">
                         @error ('email') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror
                     </div>
                 </div>
