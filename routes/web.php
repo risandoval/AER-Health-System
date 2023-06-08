@@ -22,15 +22,15 @@ use Illuminate\Support\Facades\Redirect;
 //route for login view page
 Route::get('/', function () { return view('pages/login'); });
 Route::get('/first-login', [UserController::class, 'firstLogin']);
-Route::post('/validateFirstLogin', [UserController::class, 'validateFirstLogin'])->name('validateFirstLogin');
+Route::post('/validateFirstLogin/{id}', [UserController::class, 'validateFirstLogin'])->name('validateFirstLogin');
 
 //route for forgot password
 Route::get('/validation', [UserController::class, 'stepOne']);
 Route::get('/security-question', [UserController::class, 'stepTwo']);
 Route::get('/change-password', [UserController::class, 'stepThree']);
 Route::post('/validateStepOne', [UserController::class, 'validateStepOne'])->name('validateStepOne');
-Route::post('/validateStepTwo', [UserController::class, 'validateStepTwo'])->name('validateStepTwo');
-Route::post('/validateStepThree', [UserController::class, 'validateStepThree'])->name('validateStepThree');
+Route::post('/validateStepTwo/{id}', [UserController::class, 'validateStepTwo'])->name('validateStepTwo');
+Route::post('/validateStepThree/{id}', [UserController::class, 'validateStepThree'])->name('validateStepThree');
 
 
 //route for dashboard
@@ -48,6 +48,7 @@ Route::prefix('users')->middleware('auth')->group(function () {
     Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
     Route::put('/archive/{id}', [UserController::class, 'archive'])->name('archive');
     Route::put('/unarchive/{id}', [UserController::class, 'unarchive'])->name('unarchive');
+    Route::put('/reset/{id}', [UserController::class, 'reset'])->name('reset');
     Route::put('/update/password/{id}', [UserController::class, 'updatePassword'])->name('password');
 });
 

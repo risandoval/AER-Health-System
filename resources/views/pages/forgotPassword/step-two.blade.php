@@ -56,12 +56,13 @@
                 </li>
             </ol>
         </div>
-        
+      
+    
         {{-- STEP FORM --}}
-        <form action="{{url('/validateStepTwo')}}" method="POST" class="flex flex-col mt-3">
+        <form action="{{ url('/validateStepTwo/' . $userId) }}" method="POST" class="flex flex-col mt-3">
             @csrf
             
-            <label for="question" class="mt-3 block text-xs font-semibold">Put here the question from db?</label>
+            <label for="question" class="mt-3 block text-xs font-semibold">Enter your security question answer:</label>
             <input class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" id="answer" name="answer" placeholder="Enter your answer">
             <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('answer'){{$message}} @enderror </p>
 
