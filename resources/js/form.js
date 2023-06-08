@@ -28,16 +28,13 @@ editButton.addEventListener('click', function() {
             field.classList.add('bg-white');
         });
 
-        editing.setAttribute("value", true);
+        // editing.setAttribute("value", true);
         userTitle.textContent = 'Edit User Information';
         closeButton.textContent = 'Cancel';
         editButton.textContent = 'Save';
     }
     else if (editButton.textContent === 'Save') {
-        if (validationPassed === 'true') {
-            userForm.submit();
-        }
-        
+        userForm.submit();
     }
 });
 

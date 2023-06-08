@@ -1,7 +1,7 @@
 <x-layout>
     {{-- MODAL --}}
     {{-- {{dd("url("users/update/".auth()->user()->id)")}} --}}
-    <div id="modal-background" class="hidden absolute z-10 top-[-10%] left-0 h-full w-full bg-black bg-opacity-30 items-center justify-center">
+    <div id="modal-background" class="overflow-y-auto hidden absolute z-10 top-[-10%] left-0 h-full w-full bg-black bg-opacity-30 items-center justify-center">
         {{-- MESSAGE MODAL --}}
         <div id="message-modal-body" class="modal hidden fixed top-[40%] bg-white text-green-700 rounded-xl w-[400px] drop-shadow-lg px-10 pt-6 pb-6">
             <div class="flex flex-col">
@@ -11,32 +11,36 @@
         </div>
 
         {{-- CHANGE PASSWORD MODAL --}}
-        <div id="change-password-modal-body" class="modal hidden fixed top-[30%] bg-white rounded-xl max-w-[600px] drop-shadow-lg overflow-hidden">
-            
-            <div class="relative px-6 py-4">
-                <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-[10%] hover:cursor-pointer'></i>
+        <div id="change-password-modal-body" class="flex flex-col modal hidden top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">            
+            <div class="items-center px-6 mb-2">
+                <i class="close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-3 hover:cursor-pointer"></i>
                 <h2 class="text-xl"><strong>Change Password</strong></h2>
             </div>
 
             <form action="{{url('users/update/password/'.auth()->user()->id)}}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="grid grid-cols-8 p-10 gap-x-6 gap-y-4 items-center border-y">
-                    <label for="current_password" class="col-span-3 whitespace-nowrap">Current Password:</label>
-                    <input type="password" name="current_password" class="form-input col-span-5" placeholder="********">
-                    @error ('password') <p class="col-start-4 col-span-5 text-sm text-red -mt-2 mb-2 lg:-mt-4 lg:mb-0"> {{$message}} </p> @enderror
+                <div class="flex flex-col px-6 py-8 border-y">
+                    <div class="items-center grid grid-cols-8 mt-3">
+                        <label for="current_password" class="col-span-8 sm:col-span-3">Current Password:</label>
+                        <input type="password" name="current_password" class="form-input col-span-8 sm:col-span-5" placeholder="********">
+                        @error ('password') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                    </div>
 
-                    <label for="new_password" class="col-span-3 whitespace-nowrap">New Password:</label>
-                    <input type="password" name="new_password" class="form-input col-span-5" placeholder="********">
-                    @error ('new_password') <p class="col-start-4 col-span-5 text-sm text-red -mt-2 mb-2 lg:-mt-4 lg:mb-0"> {{$message}} </p> @enderror
-
-                    <label for="confirm_password" class="col-span-3 whitespace-nowrap">Confirm New Password:</label>
-                    <input type="password" name="confirm_password" class="form-input col-span-5" placeholder="********">
-                    @error ('confirm_password') <p class="col-start-4 col-span-5 text-sm text-red -mt-2 mb-2 lg:-mt-4 lg:mb-0"> {{$message}} </p> @enderror
+                    <div class="items-center grid grid-cols-8 mt-3">
+                        <label for="new_password" class="col-span-8 sm:col-span-3">New Password:</label>
+                        <input type="password" name="new_password" class="form-input col-span-8 sm:col-span-5" placeholder="********">
+                        @error ('new_password') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                    </div>
+                    
+                    <div class="items-center grid grid-cols-8 mt-3 mb-1">
+                        <label for="confirm_password" class="col-span-8 sm:col-span-3">Confirm Password:</label>
+                        <input type="password" name="confirm_password" class="form-input col-span-8 sm:col-span-5" placeholder="********">
+                        @error ('confirm_password') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                    </div>
                 </div>
             
-            
-                <div class="flex gap-3 justify-end p-3 w-full">
+                <div class="flex items-center gap-2 justify-end w-full px-3 pt-3">
                     <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Close</button>
                     <button type="submit" id="save" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Save</button>
                 </div>
@@ -44,58 +48,76 @@
         </div>
         
         {{-- EDIT MODAL --}}
-        <div id="edit-modal-body" class="modal hidden fixed top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden">
-            <div class="relative px-6 py-4">
-                <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-[10%] hover:cursor-pointer'></i>
+        <div id="edit-modal-body" class="flex flex-col modal hidden top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">
+            <div class="items-center px-6 mb-2">
+                <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-3 hover:cursor-pointer'></i>
                 <h2 class="text-xl"><strong>Edit Profile</strong></h2>
             </div>
 
             <form action="{{url('users/update/'.auth()->user()->id)}}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="flex flex-col w-full h-[500px] overflow-y-scroll border lg:min-h-[600px]">
-                    <div class="lg:grid lg:grid-cols-4 p-10 gap-x-6 gap-y-6 items-center">                  
-                        <label for="first_name" class="col-span-1 whitespace-nowrap">First Name:</label>
-                        <input type="text" name="first_name" class="form-input" value={{auth()->user()->first_name}}>
-                        @error ('first_name') <p class="col-start-2 col-span-3 text-sm text-red -mt-2 mb-2 lg:-mt-4 lg:mb-0"> {{$message}} </p> @enderror
-    
-                        <label for="middle_name" class="col-span-1 whitespace-nowrap">Middle Name:</label>
-                        <input type="text" name="middle_name" class="form-input" value={{auth()->user()->middle_name}}>
-                        @error ('middle_name') <p class="col-start-2 col-span-3 text-sm text-red -mt-2 mb-2 lg:-mt-4 lg:mb-0"> {{$message}} </p> @enderror
-    
-                        <label for="last_name" class="col-span-1 whitespace-nowrap">Last Name:</label>
-                        <input type="text" name="last_name" class="form-input" value={{auth()->user()->last_name}}>
-                        @error ('last_name') <p class="col-start-2 col-span-3 text-sm text-red -mt-2 mb-2 lg:-mt-4 lg:mb-0"> {{$message}} </p> @enderror 
-    
-                        <label for="username" class="col-span-1 whitespace-nowrap">Username:</label>
-                        <input type="text" name="username" class="form-input" value={{auth()->user()->username}} readonly>
+                <div class="flex flex-col w-full h-[500px] border border-y overflow-y-scroll px-6 py-8">
+                    {{-- <div class="items-center lg:grid lg:grid-cols-4 "> --}}
+                        <div class="items-center grid grid-cols-8">
+                            <label for="first_name" class="col-span-8 sm:col-span-2">First Name:</label>
+                            <input type="text" name="first_name" class="form-input col-span-8 sm:col-span-6" value={{auth()->user()->first_name}}>
+                            @error ('first_name') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror    
+                        </div>                 
                         
-                        <label for="role" class="col-span-1 whitespace-nowrap">Role:</label>
-                        <input type="text" name="role" class="form-input" value={{auth()->user()->role}} readonly>
+                        <div class="items-center grid grid-cols-8 mt-3">
+                            <label for="middle_name" class="col-span-8 sm:col-span-2">Middle Name:</label>
+                            <input type="text" name="middle_name" class="form-input col-span-8 sm:col-span-6" value={{auth()->user()->middle_name}}>
+                            @error ('middle_name') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror    
+                        </div>         
     
-                        <label for="specialization" class="col-span-1 whitespace-nowrap">Specialization:</label>
-                        <select name="specialization" class="form-input">
-                            <option value="Admin" {{auth()->user()->specialization == 'Admin' ? 'selected' : ''}}>Admin</option>
-                            <option value="Doctor" {{auth()->user()->specialization == 'Doctor' ? 'selected' : ''}}>Doctor</option>
-                            <option value="Barangay Health Worker" {{auth()->user()->specialization == 'Barangay Health Worker' ? 'selected' : ''}}>Barangay Health Worker</option>
-                        </select>
-                        @error ('specialization') <p class="col-start-2 col-span-3 text-sm text-red -mt-2 mb-2 lg:-mt-4 lg:mb-0"> {{$message}} </p> @enderror
+                        <div class="items-center grid grid-cols-8 mt-3">
+                            <label for="last_name" class="col-span-8 sm:col-span-2">Last Name:</label>
+                            <input type="text" name="last_name" class="form-input col-span-8 sm:col-span-6" value={{auth()->user()->last_name}}>
+                            @error ('last_name') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                        </div>
     
-                        <label for="birthday" class="col-span-1 whitespace-nowrap">Birthdate:</label>
-                        <input type="date" name="birthday" class="form-input" max="9999-12-31" value={{auth()->user()->birthday}}>
-                        @error ('birthday') <p class="col-start-2 col-span-3 text-sm text-red -mt-2 mb-2 lg:-mt-4 lg:mb-0"> {{$message}} </p> @enderror
+                        <div class="items-center grid grid-cols-8 mt-3">
+                            <label for="username" class="col-span-8 sm:col-span-2">Username:</label>
+                            <input type="text" name="username" class="form-input col-span-8 sm:col-span-6 read-only:mb-0" value={{auth()->user()->username}} readonly>
+                        </div>
+                        
+                        <div class="items-center grid grid-cols-8 mt-3">
+                            <label for="role" class="col-span-8 sm:col-span-2">Role:</label>
+                            <input type="text" name="role" class="form-input col-span-8 sm:col-span-6 read-only:mb-0" value={{auth()->user()->role}} readonly>
+                        </div>
     
-                        <label for="contact" class="col-span-1 whitespace-nowrap">Mobile No:</label>
-                        <input type="text" name="contact" class="form-input" value={{auth()->user()->contact}}>
-                        @error ('contact') <p class="col-start-2 col-span-3 text-sm text-red -mt-2 mb-2 lg:-mt-4 lg:mb-0"> {{$message}} </p> @enderror
-    
-                        <label for="email" class="col-span-1 whitespace-nowrap">Email Address:</label>
-                        <input type="text" name="email" class="form-input" value={{auth()->user()->email}}>
-                        @error ('email') <p class="col-start-2 col-span-3 text-sm text-red -mt-2 mb-2 lg:-mt-4 lg:mb-0"> {{$message}} </p> @enderror
-                    </div>
+                        <div class="items-center grid grid-cols-8 mt-3">
+                            <label for="specialization" class="col-span-8 sm:col-span-2">Specialization:</label>
+                            <select name="specialization" class="form-input col-span-8 sm:col-span-6">
+                                <option value="Admin" {{auth()->user()->specialization == 'Admin' ? 'selected' : ''}}>Admin</option>
+                                <option value="Doctor" {{auth()->user()->specialization == 'Doctor' ? 'selected' : ''}}>Doctor</option>
+                                <option value="Barangay Health Worker" {{auth()->user()->specialization == 'Barangay Health Worker' ? 'selected' : ''}}>Barangay Health Worker</option>
+                            </select>
+                            @error ('specialization') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                        </div>
+
+                        <div class="items-center grid grid-cols-8 mt-3">
+                            <label for="birthday" class="col-span-8 sm:col-span-2">Birthdate:</label>
+                            <input type="date" name="birthday" class="form-input col-span-8 sm:col-span-6" max="9999-12-31" value={{auth()->user()->birthday}}>
+                            @error ('birthday') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                        </div>
+
+                        <div class="items-center grid grid-cols-8 mt-3">
+                            <label for="contact" class="col-span-8 sm:col-span-2">Mobile No:</label>
+                            <input type="text" name="contact" class="form-input col-span-8 sm:col-span-6" value={{auth()->user()->contact}}>
+                            @error ('contact') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                        </div>
+
+                        <div class="items-center grid grid-cols-8 mt-3">
+                            <label for="email" class="col-span-8 sm:col-span-2">Email Address:</label>
+                            <input type="text" name="email" class="form-input col-span-8 sm:col-span-6" value={{auth()->user()->email}}>
+                            @error ('email') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                        </div>
+                    {{-- </div> --}}
 
                 </div>
-                <div class="flex gap-3 justify-end p-3 w-full">
+                <div class="flex gap-2 justify-end w-full px-3 pt-3">
                     <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Close</button>
                     <button type="submit" id="save" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Save</button>
                 </div>

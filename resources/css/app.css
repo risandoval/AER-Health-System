@@ -23,7 +23,7 @@
     }
 
     .form-input {
-        @apply rounded-xl border w-full border-gray-300 col-span-3 mb-2 lg:mb-0 
+        @apply rounded-xl border w-full border-gray-300 col-span-3
         focus:ring-0;
     }
 }

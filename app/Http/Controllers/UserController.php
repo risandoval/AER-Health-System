@@ -77,20 +77,8 @@ class UserController extends Controller {
     {
         // dd($request->editing);
         // gets all request
-        // $newRequest = $request;
-        // if ($request->editing) {
-        //     $viewUser = User::find($id);
-        //     return view('pages/userAccounts/view-user', compact('viewUser', 'newRequest') );
-        // }
-
         $validated = $request->validated();
-        $validationPassed = true;
-        if ($validationPassed == true) {
-            $viewUser = User::find($id);
-            return view('pages/userAccounts/view-user', compact('viewUser', 'newRequest') );
-        }
-        
-        
+
         $user = User::find($id);
         $user->update($validated);
         return redirect()->back()->withInput()->with('message', 'Data was successfully updated');
