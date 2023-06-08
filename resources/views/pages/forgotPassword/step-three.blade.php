@@ -1,7 +1,10 @@
 <x-noNavbar-layout>
     <x-form>
-        <p class="text-md text-black text-center font-bold mt-1 ">Follow the three steps to recover your account.</p>
-        <p class="text-xs mt-1 text-black text-center mb-4">Enter a new and strong password to protect your account.</p>
+        <div class="text-center mt-1 mb-4">
+            <p class="text-md font-bold">Follow the three steps to recover your account.</p>
+            <p class="text-xs mt-1 text-black text-center mb-4">Enter a new and strong password to protect your account.</p>
+        </div>
+        
         
         {{-- STEPPER --}}
         <div class="mb-4">
@@ -52,16 +55,21 @@
         <form action="{{url('/validateStepThree')}}" method="POST" class="flex flex-col mt-3">
             @csrf
             
-            <label for="password" class="mt-3 block text-xs font-semibold">New Password</label>
-            <input class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" id="password" name="password" placeholder="****">
-            <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('password'){{$message}} @enderror </p>
-
-            <label for="confirm_password" class="mt-3 block text-xs font-semibold">Confirm Password</label>
-            <input class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" id="confirm_password" name="confirm_password" placeholder="****">
-            <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('confirm_password'){{$message}} @enderror </p>
+            <div class="relative mt-3">
+                <label for="password" class="block text-xs font-semibold">New Password</label>
+                <input class="mt-1 p-2 rounded-xl w-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" id="password" name="password" placeholder="****">
+                <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('password'){{$message}} @enderror </p>
+            </div>
+            
+            <div class="relative mt-5">
+                <label for="confirm_password" class="block text-xs font-semibold">Confirm Password</label>
+                <input class="mt-1 p-2 rounded-xl w-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" id="confirm_password" name="confirm_password" placeholder="****">
+                <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('confirm_password'){{$message}} @enderror </p>
+            </div>
+            
 
             <div class="flex gap-2 justify-end p-3 mt-6">
-                <a href="/security-question" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Previous</a>
+                <a href="/" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Cancel</a>
                 <button type="submit" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-primary hover:ring-1">Next</button>
             </div>
         </form>

@@ -18,7 +18,7 @@
     @vite('resources/js/main.js')
 </head>
 
-<body class="relative font-poppins">
+<body {{$attributes->merge(['class' => 'relative font-poppins'])}}>
     <x-navbar />
     {{ $slot }}
 </body>

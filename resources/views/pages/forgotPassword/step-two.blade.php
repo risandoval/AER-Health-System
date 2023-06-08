@@ -1,15 +1,18 @@
 <x-noNavbar-layout>
     <x-form>
-        <p class="text-md text-black text-center font-bold mt-1 ">Follow the three steps to recover your account.</p>
-        <p class="text-xs mt-1 text-black text-center">Answer your security question to change your password. You have 3 attempt(s).</p>
+        <div class="max-w-md text-center mt-1 mb-4">
+            <p class="text-md text-black text-center font-bold mt-1 ">Follow the three steps to recover your account.</p>
+            <p class="text-xs mt-1 text-black text-center">Answer your security question to change your password. You only have 3 attempt(s). In case you used up all your attempts, we will automatically request a password reset from your admin.</p>
+        </div>
+        
         {{-- lalabas dapat to pag 0 attempt na --}}
-        <div class="max-w-md">
+        {{-- <div class="max-w-md">
             <p class="text-xs mt-1 text-red text-center">
                 You have used up yor attempts. It seems that you do not recall your answer. 
                 Click <a href="#" class="underline">here</a> to request a reset password to the admin.
                 You may also contact your admin that you have requested a reset.
             </p>
-        </div>
+        </div> --}}
         
         
         {{-- STEPPER --}}
@@ -61,9 +64,12 @@
         <form action="{{url('/validateStepTwo')}}" method="POST" class="flex flex-col mt-3">
             @csrf
             
-            <label for="question" class="mt-3 block text-xs font-semibold">Put here the question from db?</label>
-            <input class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" id="answer" name="answer" placeholder="Enter your answer">
-            <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('answer'){{$message}} @enderror </p>
+            <div class="relative mt-3">
+                <label for="question" class="block text-xs font-semibold">Put here the question from db?</label>
+                <input class="mt-1 p-2 rounded-xl w-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" id="answer" name="answer" placeholder="Enter your answer">
+                <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('answer'){{$message}} @enderror </p>
+            </div>
+            
 
             <div class="flex gap-2 justify-end p-3 mt-6">
                 <a href="/validation" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Previous</a>
