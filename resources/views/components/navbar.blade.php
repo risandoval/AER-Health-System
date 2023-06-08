@@ -13,7 +13,7 @@
 
     <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-primary text-light w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-400">
       <li class="mx-4 my-6 md:my-0">
-        <a href="/dashboard" class="nav-link">Home</a>
+        <a href="{{url('/dashboard')}}" class="nav-link">Home</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
         <a href="{{url('/users')}}" class="nav-link">User Accounts</a>
@@ -31,7 +31,6 @@
       <form action="/logout" method="POST">
       @csrf
         <button class="bg-secondary text-white text-lg duration px-6 py-1 mx-4 hover:bg-white hover:text-secondary rounded-full duration-100">
-          {{-- <a href="/" class="text-xl duration-400">Logout</a> --}}
           Logout
         </button>
       </form>

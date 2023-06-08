@@ -52,7 +52,7 @@
         </div>
         
         {{-- STEP FORM --}}
-        <form action="{{url('/validateStepThree')}}" method="POST" class="flex flex-col mt-3">
+        <form action="{{ url('/validateStepThree/' . $userId) }}" method="POST" class="flex flex-col mt-3">
             @csrf
             
             <div class="relative mt-3">

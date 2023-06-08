@@ -25,7 +25,10 @@ return new class extends Migration
             $table->date('birthday');
             $table->string('contact');
             $table->string('email')->nullable()->unique();
-            
+            $table->string('security_question')->nullable();
+            $table->string('security_answer')->nullable();
+            $table->string('password_request')->default('No');
+            $table->string('first_login')->default('Yes');
             $table->string('password')->default(bcrypt('password'));
             $table->foreignId('role_id')->nullable()->constrained('roles');
             $table->string('status')->nullable();

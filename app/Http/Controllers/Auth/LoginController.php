@@ -52,10 +52,28 @@ class LoginController extends Controller
             'password' => ['required']
         ]); 
 
-        if (auth()->attempt(['username' => $input['username'], 'password' => $input['password']])) {
+        if (auth()->attempt(['username' => $input['username'], 'password' => $input['password'], 'first_login' => 'Yes'])) {
+            $request->session()->regenerate();
+
+
+        //accessing the value of the id
+        //  dd(auth()->user()->id);
+        
+        $id = auth()->user()->id;
+        return redirect('/first-login')->with('message', 'Login success.')->with('id', $id);
+
+        //  return view('pages/first-login',  compact('id'));
+        
+            // return redirect('/first-login')->with('message', 'Login success.');
+        } 
+        
+        else if(auth()->attempt(['username' => $input['username'], 'password' => $input['password'], 'first_login' => 'No'])){
             $request->session()->regenerate();
             return redirect('/dashboard')->with('message', 'Login success.');
-        } else {
+
+        }
+
+        else {
             return redirect('/login');
         }
     }

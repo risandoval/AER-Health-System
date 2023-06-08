@@ -11,14 +11,17 @@ use Illuminate\Validation\Rule;
 use App\Models\User; // Import the User model
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller {
 
     public function index()
     {   
         $activeUser = User::where('status', 'active')->paginate(3);
-        $inactiveUser = User::where('status', 'inactive')->paginate(3);
-        return view('pages/userAccounts/user-accounts',  compact('activeUser', 'inactiveUser'));
+        $inactiveUser = User::where('status', 'inactive')->get();
+        $passwordRequest = User::where('password_request', 'Yes')->paginate(3);
+        // dd($data);
+        return view('pages/userAccounts/user-accounts',  compact('activeUser', 'inactiveUser', 'passwordRequest'));
     }
 
     public function logout(Request $request){
@@ -103,6 +106,24 @@ class UserController extends Controller {
         return back()->with('message', 'Data was successfully updated');
     }
 
+    public function reset(Request $request, $id)
+    {
+        $user = User::find($id);
+        if ($user) {
+        $new_pw = $user->birthday;
+        $user->password = bcrypt($new_pw);
+        $user->password_request = 'No';
+        $user->save();
+
+        } else {
+            // Handle the case when the user does not exist
+        }
+       
+
+        return back()->with('message', 'Data was successfully updated');
+    }
+
+
     public function unarchive(Request $request, $id)
     {
 
@@ -124,23 +145,33 @@ class UserController extends Controller {
         return view('pages/first-login');
     }
 
-    //FIRST TIME LOGIN VALIDATION
-    public function validateFirstLogin(Request $request) {   
+    public function validateFirstLogin(Request $request, $id) {
         $validated = $request->validate([
             'password' => 'required',
-            'confirm_password' => ['required', 'same:password'], 
+            'confirm_password' => ['required', 'same:password'],
+            'question' => 'required',
+            'answer' => 'required',
         ]);
-
-        //update password in database
-        // $user = User::find(auth()->user()->id);
-        // $user->password = bcrypt($validated['password']);
-        // $user->save();
-
+    
+        $user = User::find($id);
+    
+        $user->password = bcrypt($validated['password']);
+        $user->security_question = $validated['question'];
+        $user->security_answer = ($validated['answer']);
+        $user->first_login = 'No';
+        $user->save();
+    
+        // return back()->with('message', 'Data was successfully updated');
         return redirect('/dashboard'); 
     }
-
+    
     //STEP 1-3 VIEW (forgot password)
-    public function stepOne() {   
+    public function stepOne(Request $request) {   
+
+        Session::invalidate(); // Invalidate the current session
+        $request->session()->regenerate(); // Regenerate the session ID
+        $request->session()->put('answer_attempts', 0);
+
         return view('pages/forgotPassword/step-one');
     }
     public function stepTwo() {   
@@ -156,34 +187,103 @@ class UserController extends Controller {
             'username' => ['required'],
         ]);
 
-        $user = User::where('username', $validated['username'])->first();
-        if(!$user){
-            return back()->with('error', 'Username does not exist');
+        // Retrieve the validated username from the request
+        $username = $validated['username'];
+
+        $user = User::where('username', $username)->first();
+
+        if (!$user) {
+            // Username does not exist, handle the error
+            return redirect('/validation')->withErrors(['username' => 'Username does not exist.']);
         }
-        
-        return redirect('/security-question');
+
+        $userId = $user->id;
+
+        return view('pages/forgotPassword/step-two', ['userId' => $userId]);
+        // return redirect("/security-question")->with('userId', $userId);
     }
 
-    public function validateStepTwo(Request $request) {   
+    // public function validateStepTwo(Request $request, $id) {   
+        
+    //     $validated = $request->validate([
+    //         'answer' => ['required']
+    //     ]);
+
+    //     $user = User::find($id);
+
+    //     if( $user->security_answer == $validated['answer']){
+
+    //         return view('pages/forgotPassword/step-three', ['userId' => $id]);
+    //         // return redirect('/change-password');
+    //     }
+
+    //     else{
+
+    //         return view('pages.forgotPassword.step-two')->with(['userId' => $id])->withErrors(['answer' => 'Answer does not exist.']);
+
+    //     }
+           
+    // }
+
+    public function validateStepTwo(Request $request, $id)
+    {
+        $maxAttempts = 3;
+        $attemptedAnswers = $request->session()->get('answer_attempts', 0);
+    
+        if ($attemptedAnswers >= $maxAttempts) {
+            Session::invalidate(); // Invalidate the current session
+            $request->session()->regenerate(); // Regenerate the session ID
+            $request->session()->put('answer_attempts', 0); // Reset the answer_attempts counter to 0
+            $user = User::find($id);
+            $user->password_request = 'Yes';
+            $user->save();
+            return redirect('/login')->withErrors(['reset' => 'Maximum answer validation attempts exceeded'. "\n" . 'The system will automatically send a password reset request to the admin']);
+        
+        }
+    
         $validated = $request->validate([
             'answer' => ['required']
         ]);
-
-        // check kung magmatch yung sagot saka magproceed sa step 3
-
-        return redirect('/change-password');
+    
+        $user = User::find($id);
+    
+        if ($user->security_answer == $validated['answer']) {
+            return view('pages/forgotPassword/step-three', ['userId' => $id]);
+            // return redirect('/change-password');
+        }
+    
+        // Increment the answer_attempts counter
+        $attemptedAnswers++;
+        $request->session()->put('answer_attempts', $attemptedAnswers);
+    
+        // Check if this is the final attempt
+        if ($attemptedAnswers >= $maxAttempts) {
+            $user = User::find($id);
+            $user->password_request = 'Yes';
+            $user->save();
+            return redirect('/login')->withErrors(['reset' => 'Maximum answer validation attempts exceeded.'. "\n" . 'The system will automatically send a password reset request to the admin']);
+        }
+    
+        return view('pages/forgotPassword/step-two')->with([
+            'userId' => $id,
+            'remainingAttempts' => $maxAttempts - $attemptedAnswers,
+            'errorMessage' => 'Answer does not exist.'
+        ]);
     }
+    
 
-    public function validateStepThree(Request $request) {   
+    public function validateStepThree(Request $request, $id) {   
         $validated = $request->validate([
             'password' => 'required',
             'confirm_password' => ['required', 'same:password'], 
         ]);
 
-        //update password in database
-        // $user = User::find(auth()->user()->id);
-        // $user->password = bcrypt($validated['password']);
-        // $user->save();
+        $user = User::find($id);
+    
+        $user->password = bcrypt($validated['password']);
+        
+        $user->first_login = 'No';
+        $user->save();
 
         return redirect('/login'); 
     }

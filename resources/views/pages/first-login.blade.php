@@ -6,8 +6,12 @@
         </div>
         
         {{-- FIRST TIME LOGIN FORM --}}
-        <form action="{{url('/validateFirstLogin')}}" method="POST" class="flex flex-col mt-3">
+        <form action="{{ url('/validateFirstLogin/' . session('id')) }}" method="POST" class="flex flex-col mt-3">
             @csrf
+
+            {{-- <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('reset'){{$message}} @enderror </p> --}}
+            {{-- <input class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="hidden" id="password" name="id" value={{ session('id')}}> --}}
+
 
             <label for="password" class="mt-3 block text-xs font-semibold">New Password</label>
             <input class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" id="password" name="password" placeholder="****">
