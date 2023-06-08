@@ -32,6 +32,9 @@
                 
                 <form action="{{url('/login/process')}}" method="POST" class="flex flex-col w-full mt-3">
                     @csrf
+
+          <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('reset'){{$message}} @enderror </p>
+          
                     <div class="relative mt-3">
                         <label for="username" class="block text-xs font-semibold">Username</label>
                         <input class="mt-1 p-2 rounded-xl w-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" id="username" name="username" placeholder="Enter your username">

@@ -243,8 +243,54 @@
                     </div>
 
                     {{-- PASSWORD RESET REQUEST TAB --}}
-                    <div class="bg-white -mt-2 rounded-lg dark:bg-gray-800 hidden" id="pass-reset-request" role="tabpanel" aria-labelledby="pass-reset-request-tab">
-                        <p class="text-gray-500 dark:text-gray-400 text-sm">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">pass-reset-request tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+                    <div class="bg-gray-50 -mt-2 rounded-lg dark:bg-gray-800 hidden" id="pass-reset-request" role="tabpanel" aria-labelledby="pass-reset-request-tab">
+                       
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-2 border-transparent border-b-light-gray">
+                                    <th class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">ID</th>
+                                    <th class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">Full Name</th>
+                                    <th class="text-left px-6 py-3">Username</th>
+                                    <th class="text-left px-6 py-3 whitespace-nowrap">Date Created</th>
+                                    <th class="text-left px-6 py-3">Role</th>
+                                    <th class="text-left px-6 py-3">Status</th>
+                                    <th class="text-left px-6 py-3">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($passwordRequest as $users)
+                                    <tr class="border border-transparent y-10 {{!($loop->last) ? "border-b-light-gray" : ""}}">
+                                        <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">{{$users->id}}</td>
+                                        <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$users->first_name}} {{substr($users->middle_name, 0, 1)}}. {{$users->last_name}} </td>
+                                        <td class="text-left px-6 py-3">{{$users->username}}</td>
+                                        <td class="text-left px-6 py-3">{{$users->created_at}}</td>
+                                        <td class="text-left px-6 py-3">{{$users->role}}</td>
+                                        <td class="text-left px-6 py-3">{{$users->status}}</td>
+                                        <td class="text-left px-6 py-3">
+                                            <div class="flex gap-[6px]">
+                                                {{-- <a href="{{url("/users/view/$users->id")}}">
+                                                    <button class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">View</button>
+                                                </a>
+                                                <a href="{{url("/users/edit/$users->id")}}">
+                                                    <button class="text-white bg-secondary px-4 py-2 rounded-full hover:bg-white hover:text-secondary hover:ring-secondary hover:ring-1 duration-100">Edit</button>
+                                                </a> --}}
+                                                <form action="{{url("/users/reset/$users->id")}}" method="POST" class="flex flex-col">
+                                                    @method('put')   
+                                                    @csrf
+                                                    <button type="submit" class="text-white bg-red px-4 py-2 rounded-full hover:bg-white hover:text-red hover:ring-red hover:ring-1 duration-100">Reset Password</button>
+                                                </form>
+            
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="sticky left-0 px-6 mt-3">
+                            <p>Showing <strong>{{$users->count()}}</strong> out of <strong>{{$users->count()}}</strong> entries</p>
+                        </div>
+                    </div>
+
                     </div>
                 </div>
             </div>

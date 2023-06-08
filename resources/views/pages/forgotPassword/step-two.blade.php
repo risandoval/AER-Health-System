@@ -59,9 +59,10 @@
                 </li>
             </ol>
         </div>
-        
+      
+    
         {{-- STEP FORM --}}
-        <form action="{{url('/validateStepTwo')}}" method="POST" class="flex flex-col mt-3">
+        <form action="{{ url('/validateStepTwo/' . $userId) }}" method="POST" class="flex flex-col mt-3">
             @csrf
             
             <div class="relative mt-3">
