@@ -3,7 +3,7 @@
       <span class="text-2xl">
         <a href="/dashboard">
           <img class="h-10 inline" src="{{url('/images/logo.png')}}" alt="logo">
-          SystemName
+          Tolosa Health System
         </a>
       </span>
       <span class="text-3xl cursor-pointer mx-2 md:hidden block ">
