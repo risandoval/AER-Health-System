@@ -234,9 +234,9 @@ class UserController extends Controller {
             Session::invalidate(); // Invalidate the current session
             $request->session()->regenerate(); // Regenerate the session ID
             $request->session()->put('answer_attempts', 0); // Reset the answer_attempts counter to 0
-            
             $user = User::find($id);
             $user->password_request = 'Yes';
+            $user->save();
             return redirect('/login')->withErrors(['reset' => 'Maximum answer validation attempts exceeded'. "\n" . 'The system will automatically send a password reset request to the admin']);
         
         }
@@ -258,6 +258,9 @@ class UserController extends Controller {
     
         // Check if this is the final attempt
         if ($attemptedAnswers >= $maxAttempts) {
+            $user = User::find($id);
+            $user->password_request = 'Yes';
+            $user->save();
             return redirect('/login')->withErrors(['reset' => 'Maximum answer validation attempts exceeded.'. "\n" . 'The system will automatically send a password reset request to the admin']);
         }
     
