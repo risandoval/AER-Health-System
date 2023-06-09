@@ -29,7 +29,7 @@
                     <div class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
                         <label for="role" class="md:col-span-2 whitespace-nowrap">Role: <span class="text-red">*</span></label>
                         <select name="role" class="form-input md:col-start-4 md:col-span-10">
-                            <option value="" selected hidden>select..</option>
+                            <option value="" selected hidden>Select Role</option>
                             <option value="Admin">Admin</option>
                             <option value="Doctor">Doctor</option>
                             <option value="Barangay Health Worker">Barangay Health Workers (BHW)</option>
@@ -37,10 +37,10 @@
                         @error ('role') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror
                     </div>
 
-                    <div class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
+                    <div id="specialization-field" class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
                         <label for="specialization" class="md:col-span-2 whitespace-nowrap">Specialization: <span class="text-red">*</span></label>
                         <select name="specialization" class="form-input md:col-start-4 md:col-span-10">
-                            <option value="" selected hidden>select..</option>
+                            <option value="" selected hidden>Select Specialization</option>
                             <option value="Admin">Admin</option>
                             <option value="Doctor">Doctor</option>
                             <option value="Barangay Health Worker">Barangay Health Workers (BHW)</option>

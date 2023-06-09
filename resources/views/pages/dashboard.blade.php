@@ -3,7 +3,7 @@
     {{-- {{dd("url("users/update/".auth()->user()->id)")}} --}}
     <div id="modal-background" class="hidden absolute z-10 top-[-10%] left-0 h-full w-full bg-black bg-opacity-30 items-center justify-center">
         {{-- CHANGE PASSWORD MODAL --}}
-        <div id="change-password-modal-body" class="flex flex-col modal hidden top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">            
+        <div id="change-password-modal-body" class="flex-col modal hidden top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">            
             <div class="items-center px-6 mb-2">
                 <i class="close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-3 hover:cursor-pointer"></i>
                 <h2 class="text-xl"><strong>Change Password</strong></h2>
@@ -40,7 +40,7 @@
         </div>
         
         {{-- EDIT MODAL --}}
-        <div id="edit-modal-body" class="flex flex-col modal hidden top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">
+        <div id="edit-modal-body" class="flex-col modal hidden top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">
             <div class="items-center px-6 mb-2">
                 <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-3 hover:cursor-pointer'></i>
                 <h2 class="text-xl"><strong>Edit Profile</strong></h2>
@@ -53,57 +53,88 @@
                     {{-- <div class="items-center lg:grid lg:grid-cols-4 "> --}}
                         <div class="items-center grid grid-cols-8">
                             <label for="first_name" class="col-span-8 sm:col-span-2">First Name:</label>
-                            <input type="text" name="first_name" class="form-input col-span-8 sm:col-span-6" value={{auth()->user()->first_name}}>
+                            <input type="text" name="first_name" class="form-input col-span-8 sm:col-span-6" value="{{auth()->user()->first_name}}">
                             @error ('first_name') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror    
                         </div>                 
                         
                         <div class="items-center grid grid-cols-8 mt-3">
                             <label for="middle_name" class="col-span-8 sm:col-span-2">Middle Name:</label>
-                            <input type="text" name="middle_name" class="form-input col-span-8 sm:col-span-6" value={{auth()->user()->middle_name}}>
+                            <input type="text" name="middle_name" class="form-input col-span-8 sm:col-span-6" value="{{auth()->user()->middle_name}}">
                             @error ('middle_name') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror    
                         </div>         
     
                         <div class="items-center grid grid-cols-8 mt-3">
                             <label for="last_name" class="col-span-8 sm:col-span-2">Last Name:</label>
-                            <input type="text" name="last_name" class="form-input col-span-8 sm:col-span-6" value={{auth()->user()->last_name}}>
+                            <input type="text" name="last_name" class="form-input col-span-8 sm:col-span-6" value="{{auth()->user()->last_name}}">
                             @error ('last_name') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
                         </div>
     
                         <div class="items-center grid grid-cols-8 mt-3">
                             <label for="username" class="col-span-8 sm:col-span-2">Username:</label>
-                            <input type="text" name="username" class="form-input col-span-8 sm:col-span-6 read-only:mb-0" value={{auth()->user()->username}} readonly>
-                        </div>
-                        
-                        <div class="items-center grid grid-cols-8 mt-3">
-                            <label for="role" class="col-span-8 sm:col-span-2">Role:</label>
-                            <input type="text" name="role" class="form-input col-span-8 sm:col-span-6 read-only:mb-0" value={{auth()->user()->role}} readonly>
-                        </div>
-    
-                        <div class="items-center grid grid-cols-8 mt-3">
-                            <label for="specialization" class="col-span-8 sm:col-span-2">Specialization:</label>
-                            <select name="specialization" class="form-input col-span-8 sm:col-span-6">
-                                <option value="Admin" {{auth()->user()->specialization == 'Admin' ? 'selected' : ''}}>Admin</option>
-                                <option value="Doctor" {{auth()->user()->specialization == 'Doctor' ? 'selected' : ''}}>Doctor</option>
-                                <option value="Barangay Health Worker" {{auth()->user()->specialization == 'Barangay Health Worker' ? 'selected' : ''}}>Barangay Health Worker</option>
-                            </select>
-                            @error ('specialization') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                            <input type="text" name="username" class="form-input col-span-8 sm:col-span-6 read-only:mb-0" value="{{auth()->user()->username}}" readonly>
                         </div>
 
                         <div class="items-center grid grid-cols-8 mt-3">
+                            <label for="role" class="col-span-8 sm:col-span-2">Role:</label>
+                            <input type="text" name="role" class="form-input col-span-8 sm:col-span-6 read-only:mb-0 whitespace-nowrap" value="{{auth()->user()->role}}" readonly>
+                        </div>
+
+                        @if (!(auth()->user()->role == 'Admin'))
+                            @if (auth()->user()->role == 'Doctor')
+                                <div id="specialization-field" class="items-center grid grid-cols-8 mt-3">
+                                    <label for="specialization" class="col-span-8 sm:col-span-2">Specialization:</label>
+                                    <select name="specialization" class="form-input col-span-8 sm:col-span-6">
+                                        <option value="Pediatrics" {{auth()->user()->specialization == 'Pediatrics' ? 'selected' : ''}}>Pediatrics</option>
+                                        <option value="Geriatrics" {{auth()->user()->specialization == 'Geriatrics' ? 'selected' : ''}}>Geriatrics</option>
+                                        <option value="Orthopedics" {{auth()->user()->specialization == 'Orthopedics' ? 'selected' : ''}}>Orthopedics</option>
+                                        <option value="Anesthesiology" {{auth()->user()->specialization == 'Anesthesiology' ? 'selected' : ''}}>Anesthesiology</option>
+                                        <option value="Cardiology" {{auth()->user()->specialization == 'Cardiology' ? 'selected' : ''}}>Cardiology</option>
+                                        <option value="Dermatology" {{auth()->user()->specialization == 'Dermatology' ? 'selected' : ''}}>Dermatology</option>
+                                        <option value="Urology" {{auth()->user()->specialization == 'Urology' ? 'selected' : ''}}>Urology</option>
+                                        <option value="Neurology" {{auth()->user()->specialization == 'Neurology' ? 'selected' : ''}}>Neurology</option>
+                                        <option value="Radiology" {{auth()->user()->specialization == 'Neurology' ? 'selected' : ''}}>Radiology</option>
+                                    </select>
+                                    @error ('specialization') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                                </div>
+                            @else
+                                <div id="barangay-field" class="items-center grid grid-cols-8 mt-3">
+                                    <label for="barangay" class="col-span-8 sm:col-span-2">Barangay:</label>
+                                    <select name="barangay" class="form-input col-span-8 sm:col-span-6">
+                                        <option value="Burak" {{auth()->user()->barangay == 'Burak' ? 'selected' : ''}}>Burak</option>
+                                        <option value="Canmogsay" {{auth()->user()->barangay == 'Canmogsay' ? 'selected' : ''}}>Canmogsay</option>
+                                        <option value="Cantariwis" {{auth()->user()->barangay == 'Cantariwis' ? 'selected' : ''}}>Cantariwis</option>
+                                        <option value="Capangihan" {{auth()->user()->barangay == 'Capangihan' ? 'selected' : ''}}>Capangihan</option>
+                                        <option value="Doña Brigida" {{auth()->user()->barangay == 'Doña Brigida' ? 'selected' : ''}}>Doña Brigida</option>
+                                        <option value="Imelda" {{auth()->user()->barangay == 'Imelda' ? 'selected' : ''}}>Imelda</option>
+                                        <option value="Malbog" {{auth()->user()->barangay == 'Malbog' ? 'selected' : ''}}>Malbog</option>
+                                        <option value="Olot" {{auth()->user()->barangay == 'Olot' ? 'selected' : ''}}>Olot</option>
+                                        <option value="Opong" {{auth()->user()->barangay == 'Opong' ? 'selected' : ''}}>Opong</option>
+                                        <option value="Poblacion" {{auth()->user()->barangay == 'Poblacion' ? 'selected' : ''}}>Poblacion</option>
+                                        <option value="Quilao" {{auth()->user()->barangay == 'Quilao' ? 'selected' : ''}}>Quilao</option>
+                                        <option value="San Roque" {{auth()->user()->barangay == 'San Roque' ? 'selected' : ''}}>San Roque</option>
+                                        <option value="San Vicente" {{auth()->user()->barangay == 'San Vicente' ? 'selected' : ''}}>San Vicente</option>
+                                        <option value="Tanghas" {{auth()->user()->barangay == 'Tanghas' ? 'selected' : ''}}>Tanghas</option>
+                                    </select>
+                                    @error ('specialization') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                                </div>
+                            @endif              
+                        @endif
+
+                        <div class="items-center grid grid-cols-8 mt-3">
                             <label for="birthday" class="col-span-8 sm:col-span-2">Birthdate:</label>
-                            <input type="date" name="birthday" class="form-input col-span-8 sm:col-span-6" max="9999-12-31" value={{auth()->user()->birthday}}>
+                            <input type="date" name="birthday" class="form-input col-span-8 sm:col-span-6" max="9999-12-31" value="{{auth()->user()->birthday}}">
                             @error ('birthday') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
                         </div>
 
                         <div class="items-center grid grid-cols-8 mt-3">
                             <label for="contact" class="col-span-8 sm:col-span-2">Mobile No:</label>
-                            <input type="text" name="contact" class="form-input col-span-8 sm:col-span-6" value={{auth()->user()->contact}}>
+                            <input type="text" name="contact" class="form-input col-span-8 sm:col-span-6" value="{{auth()->user()->contact}}">
                             @error ('contact') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
                         </div>
 
                         <div class="items-center grid grid-cols-8 mt-3">
                             <label for="email" class="col-span-8 sm:col-span-2">Email Address:</label>
-                            <input type="text" name="email" class="form-input col-span-8 sm:col-span-6" value={{auth()->user()->email}}>
+                            <input type="text" name="email" class="form-input col-span-8 sm:col-span-6" value="{{auth()->user()->email}}">
                             @error ('email') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
                         </div>
                     {{-- </div> --}}
@@ -221,4 +252,3 @@
 </x-layout>
 
 @vite('resources/js/dashboard.js')
-@vite('resources/js/role.js')

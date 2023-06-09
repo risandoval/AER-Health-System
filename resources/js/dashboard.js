@@ -34,8 +34,6 @@ saveButtons.forEach(saveButton => {
                 modal.classList.toggle('hidden');
             }
         });
-        saveMessageModalBody.classList.toggle('hidden');
-        saveMessageModalBody.classList.add('open');
     });
 });
 

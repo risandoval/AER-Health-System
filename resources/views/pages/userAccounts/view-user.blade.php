@@ -40,15 +40,52 @@
 
                     <div class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
                         <label for="role" class="md:col-span-2 whitespace-nowrap">Role:</label>
-                        <input type="text" name="role" value="{{$viewUser->role}}" readonly class="form-input md:col-start-4 md:col-span-10 focus:ring-0:mb-0">
+                        <input id="role-input" type="text" name="role" value="{{$viewUser->role}}" readonly class="form-input md:col-start-4 md:col-span-10 focus:ring-0:mb-0">
                         {{-- @error ('role') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror --}}
                     </div>
-
-                    <div class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
-                        <label for="specialization" class="md:col-span-2 whitespace-nowrap">Specialization:</label>
-                        <input type="text" name="specialization" value="{{$viewUser->specialization}}" readonly class="form-input md:col-start-4 md:col-span-10 focus:ring-0:mb-0">
-                        {{-- @error ('role') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror --}}
-                    </div>
+                    
+                    @if (!($viewUser->role == 'Admin'))
+                        @if ($viewUser->role == 'Doctor')
+                            <div id="specialization-field" class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
+                                <label for="specialization" class="md:col-span-2 whitespace-nowrap">Specialization:</label>
+                                <input type="text" name="specialization" value="{{$viewUser->specialization}}" readonly {{$errors->any() ? 'hidden' : ''}} class="display-input form-input md:col-start-4 md:col-span-10 focus:ring-0:mb-0">
+                                <select type="text" name="specialization" {{$errors->any() ? '' : 'disabled'}} {{$errors->any() ? '' : 'hidden'}} class="form-input md:col-start-4 md:col-span-10 focus:ring-0:mb-0">
+                                    <option value="Pediatrics" {{$viewUser->specialization == 'Pediatrics' ? 'selected' : ''}}>Pediatrics</option>
+                                    <option value="Geriatrics" {{$viewUser->specialization == 'Geriatrics' ? 'selected' : ''}}>Geriatrics</option>
+                                    <option value="Orthopedics" {{$viewUser->specialization == 'Orthopedics' ? 'selected' : ''}}>Orthopedics</option>
+                                    <option value="Anesthesiology" {{$viewUser->specialization == 'Anesthesiology' ? 'selected' : ''}}>Anesthesiology</option>
+                                    <option value="Cardiology" {{$viewUser->specialization == 'Cardiology' ? 'selected' : ''}}>Cardiology</option>
+                                    <option value="Dermatology" {{$viewUser->specialization == 'Dermatology' ? 'selected' : ''}}>Dermatology</option>
+                                    <option value="Urology" {{$viewUser->specialization == 'Urology' ? 'selected' : ''}}>Urology</option>
+                                    <option value="Neurology" {{$viewUser->specialization == 'Neurology' ? 'selected' : ''}}>Neurology</option>
+                                    <option value="Radiology" {{$viewUser->specialization == 'Neurology' ? 'selected' : ''}}>Radiology</option>
+                                </select>
+                                @error ('specialization') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror
+                            </div>
+                        @else
+                        <div id="barangay-field" class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
+                            <label for="barangay" class="md:col-span-2 whitespace-nowrap">Barangay:</label>
+                            <input type="text" name="barangay" value="{{$viewUser->barangay}}" readonly {{$errors->any() ? 'hidden' : ''}} class="display-input form-input md:col-start-4 md:col-span-10 focus:ring-0:mb-0" >
+                            <select type="text" name="barangay" {{$errors->any() ? '' : 'disabled'}} {{$errors->any() ? '' : 'hidden'}} class="form-input md:col-start-4 md:col-span-10 focus:ring-0:mb-0" >
+                                <option value="Burak" {{$viewUser->barangay == 'Burak' ? 'selected' : ''}}>Burak</option>
+                                <option value="Canmogsay" {{$viewUser->barangay == 'Canmogsay' ? 'selected' : ''}}>Canmogsay</option>
+                                <option value="Cantariwis" {{$viewUser->barangay == 'Cantariwis' ? 'selected' : ''}}>Cantariwis</option>
+                                <option value="Capangihan" {{$viewUser->barangay == 'Capangihan' ? 'selected' : ''}}>Capangihan</option>
+                                <option value="Doña Brigida" {{$viewUser->barangay == 'Doña Brigida' ? 'selected' : ''}}>Doña Brigida</option>
+                                <option value="Imelda" {{$viewUser->barangay == 'Imelda' ? 'selected' : ''}}>Imelda</option>
+                                <option value="Malbog" {{$viewUser->barangay == 'Malbog' ? 'selected' : ''}}>Malbog</option>
+                                <option value="Olot" {{$viewUser->barangay == 'Olot' ? 'selected' : ''}}>Olot</option>
+                                <option value="Opong" {{$viewUser->barangay == 'Opong' ? 'selected' : ''}}>Opong</option>
+                                <option value="Poblacion" {{$viewUser->barangay == 'Poblacion' ? 'selected' : ''}}>Poblacion</option>
+                                <option value="Quilao" {{$viewUser->barangay == 'Quilao' ? 'selected' : ''}}>Quilao</option>
+                                <option value="San Roque" {{$viewUser->barangay == 'San Roque' ? 'selected' : ''}}>San Roque</option>
+                                <option value="San Vicente" {{$viewUser->barangay == 'San Vicente' ? 'selected' : ''}}>San Vicente</option>
+                                <option value="Tanghas" {{$viewUser->barangay == 'Tanghas' ? 'selected' : ''}}>Tanghas</option>
+                            </select>
+                            @error ('barangay') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror
+                        </div>
+                        @endif
+                    @endif
 
                     <div class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
                         <label for="birthday" class="md:col-span-2 whitespace-nowrap">Birthday:</label>

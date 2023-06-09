@@ -10,7 +10,7 @@
         margin: 0;
     }
 
-    input[readonly], input[disabled] {
+    input[readonly], input[disabled], select[disabled] {
         @apply cursor-default text-disabled-text bg-disabled-bg;
     }
 
