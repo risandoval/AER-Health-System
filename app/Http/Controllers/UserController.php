@@ -17,8 +17,8 @@ class UserController extends Controller {
 
     public function index()
     {   
-        $activeUser = User::where('status', 'active')->paginate(3);
-        $inactiveUser = User::where('status', 'inactive')->paginate(3);
+        $activeUser = User::where('status', 'active')->paginate(5);
+        $inactiveUser = User::where('status', 'inactive')->paginate(5);
         $passwordRequest = User::where('password_request', 'Yes')->get();
         // dd($data);
         return view('pages/userAccounts/user-accounts',  compact('activeUser', 'inactiveUser', 'passwordRequest'));
@@ -187,9 +187,7 @@ class UserController extends Controller {
             'username' => ['required'],
         ]);
 
-        // Retrieve the validated username from the request
-        $username = $validated['username'];
-
+        $username = $validated['username']; // Retrieve the validated username from the request
         $user = User::where('username', $username)->first();
 
         if (!$user) {
