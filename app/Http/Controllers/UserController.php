@@ -17,9 +17,9 @@ class UserController extends Controller {
 
     public function index()
     {   
-        $activeUser = User::where('status', 'active')->paginate(5);
-        $inactiveUser = User::where('status', 'inactive')->paginate(5);
-        $passwordRequest = User::where('password_request', 'Yes')->get();
+        $activeUser = User::where('status', 'active')->paginate(2);
+        $inactiveUser = User::where('status', 'inactive')->paginate(2);
+        $passwordRequest = User::where('password_request', 'Yes')->paginate(2);
         // dd($data);
         return view('pages/userAccounts/user-accounts',  compact('activeUser', 'inactiveUser', 'passwordRequest'));
     }
