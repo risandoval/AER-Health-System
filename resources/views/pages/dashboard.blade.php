@@ -1,9 +1,9 @@
 <x-layout>
     {{-- MODAL --}}
     {{-- {{dd("url("users/update/".auth()->user()->id)")}} --}}
-    <div id="modal-background" class="hidden absolute z-10 top-[-10%] left-0 h-full w-full bg-black bg-opacity-30 items-center justify-center">
+    {{-- <div id="modal-background" class="{{$errors->any() ? 'flex' : 'hidden'}} absolute z-10 top-[-10%] left-0 h-full w-full bg-black bg-opacity-30 items-center justify-center"> --}}
         {{-- CHANGE PASSWORD MODAL --}}
-        <div id="change-password-modal-body" class="flex-col modal hidden top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">            
+        <div id="change-password-modal-body" class="{{($errors->any() && !(session()->has('changePassSuccess'))) ? 'flex' : 'hidden'}} flex-col modal top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">            
             <div class="items-center px-6 mb-2">
                 <i class="close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-3 hover:cursor-pointer"></i>
                 <h2 class="text-xl"><strong>Change Password</strong></h2>
@@ -16,19 +16,19 @@
                     <div class="items-center grid grid-cols-8 mt-3">
                         <label for="current_password" class="col-span-8 sm:col-span-3">Current Password:</label>
                         <input type="password" name="current_password" class="form-input col-span-8 sm:col-span-5" placeholder="********">
-                        @error ('password') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                        @error ('password') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                     </div>
 
                     <div class="items-center grid grid-cols-8 mt-3">
                         <label for="new_password" class="col-span-8 sm:col-span-3">New Password:</label>
                         <input type="password" name="new_password" class="form-input col-span-8 sm:col-span-5" placeholder="********">
-                        @error ('new_password') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                        @error ('new_password') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                     </div>
                     
                     <div class="items-center grid grid-cols-8 mt-3 mb-1">
                         <label for="confirm_password" class="col-span-8 sm:col-span-3">Confirm Password:</label>
                         <input type="password" name="confirm_password" class="form-input col-span-8 sm:col-span-5" placeholder="********">
-                        @error ('confirm_password') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                        @error ('confirm_password') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                     </div>
                 </div>
             
@@ -40,7 +40,7 @@
         </div>
         
         {{-- EDIT MODAL --}}
-        <div id="edit-modal-body" class="flex-col modal hidden top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">
+        <div id="edit-modal-body" class=" {{($errors->any() && session()->has('success')) ? 'flex' : 'hidden'}} flex-col modal top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">
             <div class="items-center px-6 mb-2">
                 <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-3 hover:cursor-pointer'></i>
                 <h2 class="text-xl"><strong>Edit Profile</strong></h2>
@@ -50,23 +50,22 @@
                 @csrf
                 @method('PUT')
                 <div class="flex flex-col w-full h-[500px] border border-y overflow-y-scroll px-6 py-8">
-                    {{-- <div class="items-center lg:grid lg:grid-cols-4 "> --}}
                         <div class="items-center grid grid-cols-8">
                             <label for="first_name" class="col-span-8 sm:col-span-2">First Name:</label>
                             <input type="text" name="first_name" class="form-input col-span-8 sm:col-span-6" value="{{auth()->user()->first_name}}">
-                            @error ('first_name') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror    
-                        </div>                 
+                            @error ('first_name') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror    
+                        </div>           
                         
                         <div class="items-center grid grid-cols-8 mt-3">
                             <label for="middle_name" class="col-span-8 sm:col-span-2">Middle Name:</label>
                             <input type="text" name="middle_name" class="form-input col-span-8 sm:col-span-6" value="{{auth()->user()->middle_name}}">
-                            @error ('middle_name') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror    
+                            @error ('middle_name') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror    
                         </div>         
     
                         <div class="items-center grid grid-cols-8 mt-3">
                             <label for="last_name" class="col-span-8 sm:col-span-2">Last Name:</label>
                             <input type="text" name="last_name" class="form-input col-span-8 sm:col-span-6" value="{{auth()->user()->last_name}}">
-                            @error ('last_name') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                            @error ('last_name') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                         </div>
     
                         <div class="items-center grid grid-cols-8 mt-3">
@@ -94,7 +93,7 @@
                                         <option value="Neurology" {{auth()->user()->specialization == 'Neurology' ? 'selected' : ''}}>Neurology</option>
                                         <option value="Radiology" {{auth()->user()->specialization == 'Neurology' ? 'selected' : ''}}>Radiology</option>
                                     </select>
-                                    @error ('specialization') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                                    @error ('specialization') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                                 </div>
                             @else
                                 <div id="barangay-field" class="items-center grid grid-cols-8 mt-3">
@@ -115,7 +114,7 @@
                                         <option value="San Vicente" {{auth()->user()->barangay == 'San Vicente' ? 'selected' : ''}}>San Vicente</option>
                                         <option value="Tanghas" {{auth()->user()->barangay == 'Tanghas' ? 'selected' : ''}}>Tanghas</option>
                                     </select>
-                                    @error ('specialization') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                                    @error ('specialization') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                                 </div>
                             @endif              
                         @endif
@@ -123,22 +122,20 @@
                         <div class="items-center grid grid-cols-8 mt-3">
                             <label for="birthday" class="col-span-8 sm:col-span-2">Birthdate:</label>
                             <input type="date" name="birthday" class="form-input col-span-8 sm:col-span-6" max="9999-12-31" value="{{auth()->user()->birthday}}">
-                            @error ('birthday') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                            @error ('birthday') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                         </div>
 
                         <div class="items-center grid grid-cols-8 mt-3">
                             <label for="contact" class="col-span-8 sm:col-span-2">Mobile No:</label>
                             <input type="text" name="contact" class="form-input col-span-8 sm:col-span-6" value="{{auth()->user()->contact}}">
-                            @error ('contact') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                            @error ('contact') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                         </div>
 
                         <div class="items-center grid grid-cols-8 mt-3">
                             <label for="email" class="col-span-8 sm:col-span-2">Email Address:</label>
                             <input type="text" name="email" class="form-input col-span-8 sm:col-span-6" value="{{auth()->user()->email}}">
-                            @error ('email') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red -mt-2 sm:mt-0"> {{$message}} </p> @enderror
+                            @error ('email') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                         </div>
-                    {{-- </div> --}}
-
                 </div>
                 <div class="flex gap-2 justify-end w-full px-3 pt-3">
                     <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Close</button>
@@ -146,10 +143,39 @@
                 </div>
             </form>
         </div>
-    </div>
+    {{-- </div> --}}
+
+    
 
     {{-- HOME PAGE --}}
     <div class="flex flex-wrap justify-around mt-20 p-2 bg-light">
+        {{-- SUCCESS/FAIL MESSAGE --}}
+        @if (session()->has('success'))
+            <div id="successMessage" class="z-20 bg-white rounded-xl drop-shadow-lg absolute w-[410px] text-green-700 px-4 py-3" role="alert">
+                <strong class="font-bold">Success!</strong>
+                <span class="block sm:inline">Your account details have been saved.</span>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    <svg id="msgCloseButton" class="fill-current h-6 w-6 text-green-700" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <title>Close</title>
+                        <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/>
+                    </svg>
+                </span>
+                <div id="timerBar" class="bg-green-300 h-1 mt-2"></div>
+            </div>
+        @elseif ($errors->any())
+            <div id="successMessage" class="z-20 bg-white rounded-xl drop-shadow-lg absolute w-[410px] text-red px-4 py-3" role="alert">
+                <strong class="font-bold">Error!</strong>
+                <span class="block sm:inline">Your account details has failed to update.</span>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    <svg id="msgCloseButton" class="fill-current h-6 w-6 text-red" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <title>Close</title>
+                        <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/>
+                    </svg>
+                </span>
+                <div id="timerBar" class="bg-red h-1 mt-2"></div>
+            </div>
+        @endif
+
         {{-- profile card --}}
         <div class="w-full min-h-screen lg:w-[25%] bg-white rounded-lg drop-shadow-lg m-2">
             <div class="flex justify-center text-black">
@@ -194,16 +220,33 @@
                                 </div>
                             </div>
 
-                            <div class="relative cursor-pointer px-6 mb-3">
-                                <div class="relative p-2 px-4 bg-white shadow-sm shadow-gray-500/30 hover:scale-105 transition duration-500">
-                                    <div class="flex items-center">
-                                        <h3 class="text-lg font-bold">Specialization</h3>
+                            @if (!(auth()->user()->role == 'Admin'))
+                                @if (auth()->user()->role == 'Doctor')
+                                    <div class="relative cursor-pointer px-6 mb-3">
+                                        <div class="relative p-2 px-4 bg-white shadow-sm shadow-gray-500/30 hover:scale-105 transition duration-500">
+                                            <div class="flex items-center">
+                                                <h3 class="text-lg font-bold">Specialization</h3>
+                                            </div>
+                                            <p class="text-gray-600 pl-2">
+                                                {{ auth()->user()->specialization ? auth()->user()->specialization : 'N/A' }}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <p class="text-gray-600 pl-2">
-                                        {{ auth()->user()->specialization ? auth()->user()->specialization : 'N/A' }}
-                                    </p>
-                                </div>
-                            </div>
+                                @else
+                                    <div class="relative cursor-pointer px-6 mb-3">
+                                        <div class="relative p-2 px-4 bg-white shadow-sm shadow-gray-500/30 hover:scale-105 transition duration-500">
+                                            <div class="flex items-center">
+                                                <h3 class="text-lg font-bold">Barangay</h3>
+                                            </div>
+                                            <p class="text-gray-600 pl-2">
+                                                {{ auth()->user()->barangay ? auth()->user()->barangay : 'N/A' }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endif 
+                            @endif
+
+                            
 
                             <div class="relative cursor-pointer px-6 mb-3">
                                 <div class="relative p-2 px-4 bg-white shadow-sm shadow-gray-500/30 hover:scale-105 transition duration-500">

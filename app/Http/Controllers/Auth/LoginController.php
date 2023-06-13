@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -34,17 +34,15 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest')->except('logout');
     }
 
-    public function index()
-    {
+    public function index() {
         return view('pages/login');
     }
 
-    public function process(Request $request){
+    public function process(Request $request) {
         $input = $request->all();
 
         $validated = $request->validate([
@@ -53,28 +51,25 @@ class LoginController extends Controller
         ]); 
 
         if (auth()->attempt(['username' => $input['username'], 'password' => $input['password'], 'first_login' => 'Yes'])) {
+            //authentication success for first time users
             $request->session()->regenerate();
-
-
-        //accessing the value of the id
-        //  dd(auth()->user()->id);
-        
-        $id = auth()->user()->id;
-        return redirect('/first-login')->with('message', 'Login success.')->with('id', $id);
-
-        //  return view('pages/first-login',  compact('id'));
-        
-            // return redirect('/first-login')->with('message', 'Login success.');
+            $id = auth()->user()->id; //accessing the value of the id
+            return redirect('/first-login')->with('message', 'Login success.')->with('id', $id);
         } 
         
         else if(auth()->attempt(['username' => $input['username'], 'password' => $input['password'], 'first_login' => 'No'])){
+            //authentication success for users who have already logged in
             $request->session()->regenerate();
             return redirect('/dashboard')->with('message', 'Login success.');
-
         }
 
-        else {
-            return redirect('/login');
+        else { 
+            //authentication failed
+            if (!User::where('username', $input['username'])->exists()) {
+                return redirect('/login')->withErrors(['username' => 'Username does not exist.']);
+            } else {
+                return redirect('/login')->withErrors(['password' => 'Incorrect password.']);
+            }
         }
     }
 }

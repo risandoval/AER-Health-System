@@ -72,7 +72,7 @@ class UserController extends Controller {
         $validated = $request->validated();
         $user = User::find($id);
         $user->update($validated);
-        return redirect()->back()->withInput()->with('message', 'Data was successfully updated');
+        return redirect()->back()->withInput()->with('success', 'Data was successfully updated');
     }
     
     public function destroy(Request $request, $id)
@@ -292,7 +292,7 @@ class UserController extends Controller {
         {
             // compares current password in the input field to the authenticated user's password
             if (!Hash::check($request->current_password, auth()->user()->password)) {
-                return redirect('/dashboard')->with('error', 'Incorrect password. Please try again.');
+                return redirect('/dashboard')->withErrors(['password' =>'Incorrect password. Please try again.']);
             }
             
             $validated = $request->validated();
@@ -302,7 +302,7 @@ class UserController extends Controller {
 
             $user->save(); // save the changes to the user
 
-            return redirect('/dashboard')->with('success', 'Password successfully changed.');
+            return redirect('/dashboard')->with('changePassSuccess', 'Password successfully changed.');
         }
     }
 }
