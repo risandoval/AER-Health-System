@@ -72,6 +72,7 @@ class UserController extends Controller {
         $validated = $request->validated();
         $user = User::find($id);
         $user->update($validated);
+        
         return redirect()->back()->withInput()->with('success', 'Data was successfully updated');
     }
     
@@ -302,7 +303,7 @@ class UserController extends Controller {
 
             $user->save(); // save the changes to the user
 
-            return redirect('/dashboard')->with('changePassSuccess', 'Password successfully changed.');
+            return redirect('/dashboard')->with('success', 'Password successfully changed.');
         }
     }
 }

@@ -1,9 +1,11 @@
 <x-layout>
     {{-- MODAL --}}
-    {{-- {{dd("url("users/update/".auth()->user()->id)")}} --}}
-    {{-- <div id="modal-background" class="{{$errors->any() ? 'flex' : 'hidden'}} absolute z-10 top-[-10%] left-0 h-full w-full bg-black bg-opacity-30 items-center justify-center"> --}}
+    <div id="modal-background" class="{{$errors->any() ? 'flex' : 'hidden'}} absolute z-10 top-[-10%] left-0 h-full w-full bg-black bg-opacity-30 items-center justify-center">
         {{-- CHANGE PASSWORD MODAL --}}
-        <div id="change-password-modal-body" class="{{($errors->any() && !(session()->has('changePassSuccess'))) ? 'flex' : 'hidden'}} flex-col modal top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">            
+        <div id="change-password-modal-body" 
+            class="{{($errors->has('password') || $errors->has('new_password') || $errors->has('confirm_password')) ? 'flex' : 'hidden'}} 
+                    flex-col modal top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">     
+
             <div class="items-center px-6 mb-2">
                 <i class="close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-3 hover:cursor-pointer"></i>
                 <h2 class="text-xl"><strong>Change Password</strong></h2>
@@ -40,7 +42,10 @@
         </div>
         
         {{-- EDIT MODAL --}}
-        <div id="edit-modal-body" class=" {{($errors->any() && session()->has('success')) ? 'flex' : 'hidden'}} flex-col modal top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">
+        <div id="edit-modal-body" 
+            class=" {{$errors->any() && !($errors->has('password') || $errors->has('new_password') || $errors->has('confirm_password')) ? 'flex' : 'hidden'}} 
+                    flex-col modal top-[10%] bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">
+
             <div class="items-center px-6 mb-2">
                 <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-3 hover:cursor-pointer'></i>
                 <h2 class="text-xl"><strong>Edit Profile</strong></h2>
@@ -143,13 +148,14 @@
                 </div>
             </form>
         </div>
-    {{-- </div> --}}
+    </div>
 
     
 
     {{-- HOME PAGE --}}
     <div class="flex flex-wrap justify-around mt-20 p-2 bg-light">
-        {{-- SUCCESS/FAIL MESSAGE --}}
+
+        {{-- success/fail message --}}
         @if (session()->has('success'))
             <div id="successMessage" class="z-20 bg-white rounded-xl drop-shadow-lg absolute w-[410px] text-green-700 px-4 py-3" role="alert">
                 <strong class="font-bold">Success!</strong>
