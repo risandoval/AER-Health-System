@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
-use App\Models\User;
 
 
 class LoginController extends Controller
@@ -36,21 +35,16 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest')->except('logout');
     }
 
-    public function index()
-    {
+    public function index() {
         return view('pages/login');
     }
 
-
-
-    public function process(Request $request)
-{
-    $input = $request->all();
+    public function process(Request $request) {
+        $input = $request->all();
 
     $validated = $request->validate([
         'username' => ['required'],
@@ -78,9 +72,15 @@ class LoginController extends Controller
         } else {
             return redirect('/dashboard')->with('message', 'Login success.');
         }
-    } else {
-        // Incorrect password
-        return redirect('/login')->withErrors(['password' => 'Incorrect password.']);
+
+        else { 
+            //authentication failed
+            if (!User::where('username', $input['username'])->exists()) {
+                return redirect('/login')->withErrors(['username' => 'Username does not exist.']);
+            } else {
+                return redirect('/login')->withErrors(['password' => 'Incorrect password.']);
+            }
+        }
     }
 }
 

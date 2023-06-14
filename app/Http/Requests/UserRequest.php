@@ -36,6 +36,7 @@ class UserRequest extends FormRequest
             // 'confirm_password' => ['sometimes', 'required', 'same:password'],
             "role" => 'sometimes|required',
             "specialization" => 'sometimes|required',
+            "barangay" => 'sometimes|required',
             "birthday" => ['required'],
             "contact" => 'required|numeric|digits:11|starts_with:09',
             "email" => "email|unique:users,email,$id",

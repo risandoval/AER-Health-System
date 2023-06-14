@@ -195,8 +195,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="sticky left-0 px-6 mt-3">
-                            <p>Showing <strong>{{$users->count()}}</strong> out of <strong>{{$users->count()}}</strong> entries</p>
+                        {{-- active users - pagination --}}
+                        <div class="sticky left-0 px-6 mt-8">
+                            {{ $activeUser->links('pagination::tailwind') }}
                         </div>
                     </div>
 
@@ -237,13 +238,14 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="sticky left-0 px-6 mt-3">
-                            <p>Showing <strong>{{$users->count()}}</strong> out of <strong>{{$users->count()}}</strong> entries</p>
+                        {{-- archived users - pagination --}}
+                        <div class="sticky left-0 px-6 mt-8">
+                            {{ $inactiveUser->links('pagination::tailwind') }}
                         </div>
                     </div>
 
                     {{-- PASSWORD RESET REQUEST TAB --}}
-                    <div class="bg-gray-50 -mt-2 rounded-lg dark:bg-gray-800 hidden" id="pass-reset-request" role="tabpanel" aria-labelledby="pass-reset-request-tab">
+                    <div class="bg-white -mt-2 rounded-lg dark:bg-gray-800 hidden" id="pass-reset-request" role="tabpanel" aria-labelledby="pass-reset-request-tab">
                        
                         <table class="w-full">
                             <thead>
@@ -286,8 +288,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="sticky left-0 px-6 mt-3">
-                            <p>Showing <strong>{{$users->count()}}</strong> out of <strong>{{$users->count()}}</strong> entries</p>
+                        {{-- password reset request - pagination --}}
+                        <div class="sticky left-0 px-6 mt-8">
+                            {{ $passwordRequest->links('pagination::tailwind') }}
                         </div>
                     </div>
 

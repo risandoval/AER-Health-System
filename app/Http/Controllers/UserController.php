@@ -17,9 +17,9 @@ class UserController extends Controller {
 
     public function index()
     {   
-        $activeUser = User::where('status', 'active')->get();
-        $inactiveUser = User::where('status', 'inactive')->get();
-        $passwordRequest = User::where('password_request', 'Yes')->get();
+        $activeUser = User::where('status', 'active')->paginate(2);
+        $inactiveUser = User::where('status', 'inactive')->paginate(2);
+        $passwordRequest = User::where('password_request', 'Yes')->paginate(2);
         // dd($data);
         return view('pages/userAccounts/user-accounts',  compact('activeUser', 'inactiveUser', 'passwordRequest'));
     }
@@ -72,7 +72,8 @@ class UserController extends Controller {
         $validated = $request->validated();
         $user = User::find($id);
         $user->update($validated);
-        return redirect()->back()->withInput()->with('message', 'Data was successfully updated');
+        
+        return redirect()->back()->withInput()->with('success', 'Data was successfully updated');
     }
     
     public function destroy(Request $request, $id)
@@ -187,9 +188,7 @@ class UserController extends Controller {
             'username' => ['required'],
         ]);
 
-        // Retrieve the validated username from the request
-        $username = $validated['username'];
-
+        $username = $validated['username']; // Retrieve the validated username from the request
         $user = User::where('username', $username)->first();
 
         if (!$user) {
@@ -315,7 +314,7 @@ class UserController extends Controller {
         {
             // compares current password in the input field to the authenticated user's password
             if (!Hash::check($request->current_password, auth()->user()->password)) {
-                return redirect('/dashboard')->with('error', 'Incorrect password. Please try again.');
+                return redirect('/dashboard')->withErrors(['password' =>'Incorrect password. Please try again.']);
             }
             
             $validated = $request->validated();

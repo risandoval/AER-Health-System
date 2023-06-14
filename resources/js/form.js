@@ -3,11 +3,8 @@ const userTitle = document.getElementById('userTitle');
 const editButton = document.getElementById('editButton');
 const closeButton = document.getElementById('closeButton');
 const inputFields = document.querySelectorAll('input');
+const roleInput = document.querySelector('#role-input');
 const userForm = document.getElementById('userForm');
-
-window.addEventListener('load', () => {
-  console.log(inputFields);
-});
 
 userForm.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission behavior
@@ -15,11 +12,20 @@ userForm.addEventListener('submit', function(event) {
 
 editButton.addEventListener('click', function() {
     if (editButton.textContent === 'Edit') {
-        inputFields.forEach(function(field) {
-          if (field.readOnly == false) {
-            field.removeAttribute('disabled');
+        inputFields.forEach(function (inputField) {
+          if (inputField.readOnly == false) {
+            inputField.removeAttribute('disabled');
           }
         });
+
+        if(roleInput.value != 'Admin') {
+          const displayInput = document.querySelector('.display-input');
+          const selectField = document.querySelector('select'); 
+          
+          displayInput.setAttribute('hidden', true);
+          selectField.removeAttribute('disabled');
+          selectField.removeAttribute('hidden')
+        }
 
         userTitle.textContent = 'Edit User Information';
         closeButton.textContent = 'Cancel';

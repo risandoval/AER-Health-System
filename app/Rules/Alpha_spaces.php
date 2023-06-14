@@ -14,9 +14,9 @@ class Alpha_spaces implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        //should only accept letters and space
-        if (!preg_match('/^[a-zA-Z ]+$/', $value)) {
-            $fail('validation.alpha')->translate();
+        //should only accept letters and space, and blank
+        if (!preg_match('/^[a-zA-Z ]*$/', $value)) {
+            $fail(__('validation.alpha_spaces', ['attribute' => $attribute]));
         }
     }
 }
