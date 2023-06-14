@@ -73,15 +73,18 @@ class LoginController extends Controller
             return redirect('/dashboard')->with('message', 'Login success.');
         }
 
-        else { 
-            //authentication failed
-            if (!User::where('username', $input['username'])->exists()) {
-                return redirect('/login')->withErrors(['username' => 'Username does not exist.']);
-            } else {
-                return redirect('/login')->withErrors(['password' => 'Incorrect password.']);
-            }
+       
+    }
+
+    else { 
+        //authentication failed
+        if (!User::where('username', $input['username'])->exists()) {
+            return redirect('/login')->withErrors(['username' => 'Username does not exist.']);
+        } else {
+            return redirect('/login')->withErrors(['password' => 'Incorrect password.']);
         }
     }
+
 }
 
 
