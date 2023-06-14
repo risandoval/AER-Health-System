@@ -2,7 +2,8 @@
     <x-form>
         <div class="max-w-md text-center mt-1 mb-4">
             <p class="text-md text-black text-center font-bold mt-1 ">Follow the three steps to recover your account.</p>
-            <p class="text-xs mt-1 text-black text-center">Answer your security question to change your password. You only have 3 attempt(s). In case you used up all your attempts, we will automatically request a password reset from your admin.</p>
+            <p class="text-xs mt-1 text-black text-center">Answer your security question to change your password. You only have {{ $remainingAttempts }} attempt(s). In case you used up all your attempts, we will automatically request a password reset from your admin.</p>
+
         </div>
         
         {{-- lalabas dapat to pag 0 attempt na --}}
@@ -64,18 +65,40 @@
         {{-- STEP FORM --}}
         <form action="{{ url('/validateStepTwo/' . $userId) }}" method="POST" class="flex flex-col mt-3">
             @csrf
-            
+        
             <div class="relative mt-3">
-                <label for="question" class="block text-xs font-semibold">Put here the question from db?</label>
-                <input class="mt-1 p-2 rounded-xl w-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" id="answer" name="answer" placeholder="Enter your answer">
-                <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('answer'){{$message}} @enderror </p>
+                <label for="question" class="mt-6 block text-xs font-semibold">Security Question:</label>
+                <select name="question" class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" required>
+                    <option value="" selected hidden>select your question..</option>
+                    <option value="What is the street name of the house you grew up in?">What is the street name of the house you grew up in?</option>
+                    <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+                    <option value="What was the name of your first school?">What was the name of your first school?</option>
+                    <option value="What is the first name of your oldest sibling?">What is the first name of your oldest sibling?</option>
+                    <option value="What is the name of a college you applied to but did not attend?">What is the name of a college you applied to but did not attend?</option>
+                </select>
+                <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2">
+                    @error('question')
+                        {{ $message }}
+                    @enderror
+                </p>
             </div>
-            
-
+        
+            <div class="relative mt-3">
+                <label for="question" class="block text-xs font-semibold">Answer:</label>
+                <input class="mt-1 p-2 rounded-xl w-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" id="answer" name="answer" placeholder="Enter your answer" required>
+                <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2">
+                    @error('answer')
+                        {{ $message }}
+                    @enderror
+                </p>
+            </div>
+        
+        
             <div class="flex gap-2 justify-end p-3 mt-6">
                 <a href="/validation" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Previous</a>
                 <button type="submit" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-primary hover:ring-1">Next</button>
             </div>
         </form>
+        
     </x-form>
 </x-noNavbar-layout>

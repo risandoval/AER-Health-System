@@ -199,7 +199,15 @@ class UserController extends Controller {
 
         $userId = $user->id;
 
-        return view('pages/forgotPassword/step-two', ['userId' => $userId]);
+        // return view('pages/forgotPassword/step-two', ['userId' => $userId]);
+
+        return view('pages/forgotPassword/step-two', [
+            'userId' => $userId,
+            'remainingAttempts' => 3,
+        ]);
+        
+
+        
         // return redirect("/security-question")->with('userId', $userId);
     }
 
@@ -227,6 +235,12 @@ class UserController extends Controller {
 
     public function validateStepTwo(Request $request, $id)
     {
+        $validated = $request->validate([
+            'answer' => ['required'],
+            'question' => ['required'],
+        ]);
+    
+
         $maxAttempts = 3;
         $attemptedAnswers = $request->session()->get('answer_attempts', 0);
     
@@ -241,13 +255,10 @@ class UserController extends Controller {
         
         }
     
-        $validated = $request->validate([
-            'answer' => ['required']
-        ]);
-    
+      
         $user = User::find($id);
     
-        if ($user->security_answer == $validated['answer']) {
+        if ($user->security_question == $validated['question'] && $user->security_answer == $validated['answer']) {
             return view('pages/forgotPassword/step-three', ['userId' => $id]);
             // return redirect('/change-password');
         }
@@ -263,12 +274,22 @@ class UserController extends Controller {
             $user->save();
             return redirect('/login')->withErrors(['reset' => 'Maximum answer validation attempts exceeded.'. "\n" . 'The system will automatically send a password reset request to the admin']);
         }
-    
-        return view('pages/forgotPassword/step-two')->with([
+
+        $data = [
             'userId' => $id,
             'remainingAttempts' => $maxAttempts - $attemptedAnswers,
-            'errorMessage' => 'Answer does not exist.'
-        ]);
+            'errorMessage' => 'Answer does not exist.',
+            'answer' => 'Answer does not exist.',
+            'question' => 'Invalid Security Question.',
+        ];
+        
+        return view('pages/forgotPassword/step-two', $data);
+
+        // return view('pages/forgotPassword/step-two')->with([
+        //     'userId' => $id,
+        //     'remainingAttempts' => $maxAttempts - $attemptedAnswers,
+        //     'errorMessage' => 'Answer does not exist.'
+        // ]);
     }
     
 
