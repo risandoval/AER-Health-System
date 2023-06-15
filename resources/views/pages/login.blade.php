@@ -34,7 +34,8 @@
                     @csrf
                     
                     <div class="max-w-[350px] text-center">    
-                        <p class="text-sm text-red"> @error ('reset'){{$message}} @enderror </p>                    
+                        <p class="text-sm text-red"> @error ('reset'){{$message}} @enderror </p>   
+                        <p class="text-sm text-red"> @error ('status'){{$message}} @enderror </p>                 
                     </div>
                     
                     <div class="relative mt-3">

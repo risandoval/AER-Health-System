@@ -11,7 +11,7 @@
             <form action="{{url('users/store')}}" method="POST">
                 @csrf
                 {{-- @method('POST') --}}
-                <div class="flex flex-wrap border-y gap-5 px-6 py-8">    
+                <div id="main-container" class="flex flex-wrap border-y gap-5 px-6 py-8">    
                     <div class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
                         <label for="first_name" class="md:col-span-2 whitespace-nowrap">First Name: <span class="text-red">*</span></label>
                         <input type="text" name="first_name" class="form-input md:col-start-4 md:col-span-10" placeholder="ex. Juan">
@@ -30,9 +30,9 @@
                         @error ('last_name') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror
                     </div>
             
-                    <div class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
+                    <div id="role-field" class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
                         <label for="role" class="md:col-span-2 whitespace-nowrap">Role: <span class="text-red">*</span></label>
-                        <select name="role" class="form-input md:col-start-4 md:col-span-10">
+                        <select id="role-input" name="role" class="form-input md:col-start-4 md:col-span-10" required=true  >
                             <option value="" selected hidden>Select Role</option>
                             <option value="Admin">Admin</option>
                             <option value="Doctor">Doctor</option>
@@ -41,18 +41,17 @@
                         @error ('role') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror
                     </div>
 
-                    <div id="specialization-field" class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
-                        <label for="specialization" class="md:col-span-2 whitespace-nowrap">Specialization: <span class="text-red">*</span></label>
-                        <select name="specialization" class="form-input md:col-start-4 md:col-span-10">
-                            <option value="" selected hidden>Select Specialization</option>
-                            <option value="Admin">Admin</option>
-                            <option value="Doctor">Doctor</option>
-                            <option value="Barangay Health Worker">Barangay Health Workers (BHW)</option>
-                        </select>
+                    {{-- <div id="specialization-field" class="hidden max-h-0 flex-wrap items-center md:grid md:grid-cols-12 w-full">
+
                         @error ('specialization') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror
                     </div>
 
-                    <div class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
+                    <div id="barangay-field" class="hidden flex-wrap items-center md:grid md:grid-cols-12 w-full">
+                        
+                        @error ('barangay') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror
+                    </div> --}}
+                    
+                    <div id="birthday-field" class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
                         <label for="birthday" class="md:col-span-2 whitespace-nowrap">Birthday: <span class="text-red">*</span></label>
                         <input type="date" name="birthday" class="form-input md:col-start-4 md:col-span-10" max="9999-12-31">
                         @error ('birthday') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror
@@ -84,3 +83,4 @@
 
 </x-layout>
 
+@vite('resources/js/roleToggle.js')

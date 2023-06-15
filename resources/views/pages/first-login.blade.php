@@ -14,15 +14,15 @@
 
 
             <label for="password" class="mt-3 block text-xs font-semibold">New Password</label>
-            <input class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" id="password" name="password" placeholder="****">
+            <input class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" id="password" name="password" placeholder="****" required>
             <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('password'){{$message}} @enderror </p>
 
             <label for="confirm_password" class="mt-6 block text-xs font-semibold">Confirm Password</label>
-            <input class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" id="confirm_password" name="confirm_password" placeholder="****">
+            <input class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" id="confirm_password" name="confirm_password" placeholder="****" required>
             <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('confirm_password'){{$message}} @enderror </p>
 
             <label for="question" class="mt-6 block text-xs font-semibold">Security Question:</label>
-            <select name="question" class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary">
+            <select name="question" class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" required>
                 <option value="" selected hidden>select your question..</option>
                 <option value="What is the street name of the house you grew up in?">What is the street name of the house you grew up in?</option>
                 <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
@@ -33,7 +33,7 @@
             <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('role'){{$message}} @enderror </p>
 
             <label for="answer" class="mt-6 block text-xs font-semibold">Answer</label>
-            <input class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" id="answer" name="answer" placeholder="Enter your answer">
+            <input class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" id="answer" name="answer" placeholder="Enter your answer" required>
             <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('username'){{$message}} @enderror </p>
 
             <div class="flex gap-2 justify-end p-3 mt-6">
