@@ -25,6 +25,7 @@ return new class extends Migration
             $table->date('birthday');
             $table->string('contact');
             $table->string('email')->nullable()->unique();
+            $table->string('profile_picture');
             $table->string('security_question')->nullable();
             $table->string('security_answer')->nullable();
             $table->string('password_request')->default('No');

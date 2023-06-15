@@ -17,9 +17,9 @@ class UserController extends Controller {
 
     public function index()
     {   
-        $activeUser = User::where('status', 'active')->paginate(2);
-        $inactiveUser = User::where('status', 'inactive')->paginate(2);
-        $passwordRequest = User::where('password_request', 'Yes')->paginate(2);
+        $activeUser = User::where('status', 'active')->paginate(5);
+        $inactiveUser = User::where('status', 'inactive')->paginate(5);
+        $passwordRequest = User::where('password_request', 'Yes')->paginate(5);
         // dd($data);
         return view('pages/userAccounts/user-accounts',  compact('activeUser', 'inactiveUser', 'passwordRequest'));
     }
@@ -37,11 +37,11 @@ class UserController extends Controller {
     public function store(UserRequest $request)
     {
         $validated = $request->validated();
-        
+
+        $validated['profile_picture'] = 'default-profile.jpg';
         $validated['first_name'] = ucfirst($validated['first_name']);
         $validated['middle_name'] = ucfirst($validated['middle_name']);
         $validated['last_name'] = ucfirst($validated['last_name']);
-        $validated['username'] = substr($validated['last_name'], 0, 1) . sprintf("%04d", rand(1, 9999));
         if($validated['role'] == 'Admin'){
             $validated['role_id'] = 1;
         } elseif($validated['role'] == 'Barangay Health Worker'){
@@ -51,11 +51,25 @@ class UserController extends Controller {
         }
         $validated['password'] = bcrypt($validated['birthday']);
         $validated['status'] = 'Active';
+
+        //retrieve the latest username from database
+        $latestUsername = User::latest('id')->first();
+        if ($latestUsername) {
+            $lastNumber = intval(substr($latestUsername->username, 1)); // Extract the number portion of the last username
+        } else {
+            $lastNumber = 0; // No existing usernames found, start from 0
+        }
+        
+        // Increment the last assigned number and format it as a four-digit string
+        $nextNumber = sprintf("%04d", $lastNumber + 1);
+        
+        // Combine the letter and the incremented number to form the final username
+        $validated['username'] = $validated['last_name'][0] . $nextNumber;
     
         $user = new User($validated);
         $user->save();
         
-        return redirect('/users/add')->with('message', 'New User Added Successfully');
+        return redirect('/users/add')->with('success', 'New User Added Successfully');
     }
     public function add(){
         return view('pages/userAccounts/add-user');
@@ -70,11 +84,20 @@ class UserController extends Controller {
     public function update(UserRequest $request, $id)
     {
         $validated = $request->validated();
+
+        if ($request->hasFile('profile_picture')) {
+            $uploadedFile = $request->file('profile_picture');
+            $imageName = time().'.'.$uploadedFile->extension();
+            $imagePath = $uploadedFile->storeAs('', $imageName, 'profile_pic_folder');
+            $validated['profile_picture'] = $imagePath;
+        }
+
         $user = User::find($id);
         $user->update($validated);
-        
+
         return redirect()->back()->withInput()->with('success', 'Data was successfully updated');
     }
+
     
     public function destroy(Request $request, $id)
     {   
@@ -104,7 +127,7 @@ class UserController extends Controller {
             // Handle the case when the user does not exist
         }
 
-        return back()->with('message', 'Data was successfully updated');
+        return back()->with('archiveSuccess', 'Account was successfully archived');
     }
 
     public function reset(Request $request, $id)

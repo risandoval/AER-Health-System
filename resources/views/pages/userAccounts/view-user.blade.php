@@ -1,5 +1,9 @@
 <x-layout class="bg-light">
     <section class="flex justify-center w-full pt-navbar pb-10">
+        {{-- success/fail message --}}
+        <x-messages class="absolute w-[410px] top-[85px]">
+        </x-messages>
+        
         <div  class="flex flex-col bg-white min-w-[400px] md:w-[570px] min-h-[600px] rounded-xl drop-shadow-lg mt-12 mx-4">
             <div class="px-6 py-4">
                 <h2 class="text-xl"><strong id="userTitle">{{$errors->any() ? 'Edit User Information' : 'User Information'}}</strong></h2>

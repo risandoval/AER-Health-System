@@ -29,6 +29,7 @@ class User extends Authenticatable
         'birthday',
         'contact',
         'email',
+        'profile_picture',
         'password',
         'status',
         'login_first',

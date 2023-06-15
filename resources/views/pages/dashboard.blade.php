@@ -18,19 +18,19 @@
                     <div class="items-center grid grid-cols-8 mt-3">
                         <label for="current_password" class="col-span-8 sm:col-span-3">Current Password:</label>
                         <input type="password" name="current_password" class="form-input col-span-8 sm:col-span-5" placeholder="********">
-                        @error ('password') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
+                        @error ('password') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                     </div>
 
                     <div class="items-center grid grid-cols-8 mt-3">
                         <label for="new_password" class="col-span-8 sm:col-span-3">New Password:</label>
                         <input type="password" name="new_password" class="form-input col-span-8 sm:col-span-5" placeholder="********">
-                        @error ('new_password') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
+                        @error ('new_password') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                     </div>
                     
                     <div class="items-center grid grid-cols-8 mt-3 mb-1">
                         <label for="confirm_password" class="col-span-8 sm:col-span-3">Confirm Password:</label>
                         <input type="password" name="confirm_password" class="form-input col-span-8 sm:col-span-5" placeholder="********">
-                        @error ('confirm_password') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
+                        @error ('confirm_password') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                     </div>
                 </div>
             
@@ -51,7 +51,7 @@
                 <h2 class="text-xl"><strong>Edit Profile</strong></h2>
             </div>
 
-            <form action="{{url('users/update/'.auth()->user()->id)}}" method="POST">
+            <form action="{{url('users/update/'.auth()->user()->id)}}" enctype="multipart/form-data" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="flex flex-col w-full h-[500px] border border-y overflow-y-scroll px-6 py-8">
@@ -141,6 +141,12 @@
                             <input type="text" name="email" class="form-input col-span-8 sm:col-span-6" value="{{auth()->user()->email}}">
                             @error ('email') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                         </div>
+
+                        <div class="items-center grid grid-cols-8 mt-3">
+                            <label for="profile_picture" class="col-span-8 sm:col-span-2">Profile Picture:</label>
+                            <input type="file" name="profile_picture" class="form-input col-span-8 sm:col-span-6" value="{{ asset('storage/profile-pic/' . auth()->user()->profile_picture) }}">
+                            @error ('profile_picture') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
+                        </div>
                 </div>
                 <div class="flex gap-2 justify-end w-full px-3 pt-3">
                     <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Close</button>
@@ -154,33 +160,9 @@
 
     {{-- HOME PAGE --}}
     <div class="flex flex-wrap justify-around mt-20 p-2 bg-light">
-
         {{-- success/fail message --}}
-        @if (session()->has('success'))
-            <div id="successMessage" class="z-20 bg-white rounded-xl drop-shadow-lg absolute w-[410px] text-green-700 px-4 py-3" role="alert">
-                <strong class="font-bold">Success!</strong>
-                <span class="block sm:inline">Your account details have been saved.</span>
-                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                    <svg id="msgCloseButton" class="fill-current h-6 w-6 text-green-700" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <title>Close</title>
-                        <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/>
-                    </svg>
-                </span>
-                <div id="timerBar" class="bg-green-300 h-1 mt-2"></div>
-            </div>
-        @elseif ($errors->any())
-            <div id="successMessage" class="z-20 bg-white rounded-xl drop-shadow-lg absolute w-[410px] text-red px-4 py-3" role="alert">
-                <strong class="font-bold">Error!</strong>
-                <span class="block sm:inline">Your account details has failed to update.</span>
-                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                    <svg id="msgCloseButton" class="fill-current h-6 w-6 text-red" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <title>Close</title>
-                        <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/>
-                    </svg>
-                </span>
-                <div id="timerBar" class="bg-red h-1 mt-2"></div>
-            </div>
-        @endif
+        <x-messages>
+        </x-messages>
 
         {{-- profile card --}}
         <div class="w-full min-h-screen lg:w-[25%] bg-white rounded-lg drop-shadow-lg m-2">
@@ -188,7 +170,7 @@
                 <div class="w-full">
                     <div class="">
                         <div class="photo-wrapper">
-                            <img class="w-40 h-40 mt-10 border-4 border-primary rounded-full mx-auto" src="https://i.pinimg.com/564x/81/79/8d/81798d8b882d04f4ab59ba9c39fc5244.jpg" alt="Profile picture">
+                            <img class="w-40 h-40 mt-10 border-4 border-primary rounded-full mx-auto" src="{{ asset('storage/profile-pic/' . auth()->user()->profile_picture) }}" alt="Profile picture">
                         </div>
                         <div class="mt-4 flex flex-col">
                             <h3 class="text-center text-2xl font-medium leading-8">{{auth()->user()->first_name.' '.auth()->user()->last_name}}</h3>
