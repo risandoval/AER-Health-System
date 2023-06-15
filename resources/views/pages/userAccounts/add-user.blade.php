@@ -32,7 +32,7 @@
             
                     <div id="role-field" class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
                         <label for="role" class="md:col-span-2 whitespace-nowrap">Role: <span class="text-red">*</span></label>
-                        <select id="role-input" name="role" class="form-input md:col-start-4 md:col-span-10" required=true  >
+                        <select id="role-input" name="role" class="form-input md:col-start-4 md:col-span-10" required=true>
                             <option value="" selected hidden>Select Role</option>
                             <option value="Admin">Admin</option>
                             <option value="Doctor">Doctor</option>
