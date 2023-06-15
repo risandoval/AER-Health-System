@@ -169,8 +169,8 @@
             <div class="flex justify-center text-black">
                 <div class="w-full">
                     <div class="">
-                        <div class="photo-wrapper">
-                            <img class="w-40 h-40 mt-10 border-4 border-primary rounded-full mx-auto" src="{{ asset('storage/profile-pic/' . auth()->user()->profile_picture) }}" alt="Profile picture">
+                        <div class="photo-wrapper ">
+                            <img class="w-40 h-40 mt-10 object-cover border-4 border-primary rounded-full mx-auto" src="{{ asset('storage/profile-pic/' . auth()->user()->profile_picture) }}" alt="Profile picture">
                         </div>
                         <div class="mt-4 flex flex-col">
                             <h3 class="text-center text-2xl font-medium leading-8">{{auth()->user()->first_name.' '.auth()->user()->last_name}}</h3>
