@@ -220,11 +220,13 @@ class UserController extends Controller {
         }
 
         $userId = $user->id;
+        $question = $user->security_question;
 
         // return view('pages/forgotPassword/step-two', ['userId' => $userId]);
 
         return view('pages/forgotPassword/step-two', [
             'userId' => $userId,
+            'security_question' => $question,
             'remainingAttempts' => 3,
         ]);
         
@@ -259,7 +261,7 @@ class UserController extends Controller {
     {
         $validated = $request->validate([
             'answer' => ['required'],
-            'question' => ['required'],
+            // 'question' => ['required'],
         ]);
     
 
@@ -280,7 +282,7 @@ class UserController extends Controller {
       
         $user = User::find($id);
     
-        if ($user->security_question == $validated['question'] && $user->security_answer == $validated['answer']) {
+        if ($user->security_question && $user->security_answer == $validated['answer']) {
             return view('pages/forgotPassword/step-three', ['userId' => $id]);
             // return redirect('/change-password');
         }

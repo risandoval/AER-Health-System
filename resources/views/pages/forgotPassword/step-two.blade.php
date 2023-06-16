@@ -66,7 +66,7 @@
         <form action="{{ url('/validateStepTwo/' . $userId) }}" method="POST" class="flex flex-col mt-3">
             @csrf
         
-            <div class="relative mt-3">
+            {{-- <div class="relative mt-3">
                 <label for="question" class="mt-6 block text-xs font-semibold">Security Question:</label>
                 <select name="question" class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" required>
                     <option value="" selected hidden>select your question..</option>
@@ -81,10 +81,10 @@
                         {{ $message }}
                     @enderror
                 </p>
-            </div>
+            </div> --}}
         
             <div class="relative mt-3">
-                <label for="question" class="block text-xs font-semibold">Answer:</label>
+                <label for="question" class="block text-sm font-semibold">{{ $security_question }}</label>
                 <input class="mt-1 p-2 rounded-xl w-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" id="answer" name="answer" placeholder="Enter your answer" required>
                 <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2">
                     @error('answer')

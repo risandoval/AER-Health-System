@@ -46,46 +46,39 @@ class LoginController extends Controller
     public function process(Request $request) {
         $input = $request->all();
 
-    $validated = $request->validate([
-        'username' => ['required'],
-        'password' => ['required']
-    ]);
+        $validated = $request->validate([
+            'username' => ['required'],
+            'password' => ['required']
+        ]);
 
-    $user = User::where('username', $input['username'])->first();
+        $user = User::where('username', $validated['username'])->first();
+        // dd($user);
 
-    if (!$user) {
-        // Username does not exist
-        return redirect('/login')->withErrors(['username' => 'Username does not exist.']);
-    }
-
-    if ($user->status == 'Inactive') {
-        // User is inactive, cannot login
-        return redirect('/login')->withErrors(['status' => 'Your account is inactive.']);
-    }
-
-    if (auth()->attempt(['username' => $input['username'], 'password' => $input['password']])) {
-        $request->session()->regenerate();
-        $id = auth()->user()->id;
-
-        if ($user->first_login == 'Yes') {
-            return redirect('/first-login')->with('message', 'Login success.')->with('id', $id);
-        } else {
-            return redirect('/dashboard')->with('message', 'Login success.');
+        if (!$user) {
+                return redirect('/login')->withErrors(['username' => 'Username does not exist.']);
         }
 
-       
-    }
+        //authentication success - checks if first time user or not
+        elseif (auth()->attempt(['username' => $validated['username'], 'password' => $validated['password']])) {
+            // User is inactive, cannot login
+            if ($user->status == 'Inactive') {
+                return redirect('/login')->withErrors(['status' => 'Your account is inactive.']);
+            } else {
+                if ($user->first_login == 'Yes') {
+                    return redirect('/first-login')->with('message', 'Login success.')->with('id', $user->id);
+                } else {
+                    $request->session()->regenerate();
+                    // $id = auth()->user()->id;
+                    return redirect('/dashboard')->with('message', 'Login success.');
+                }
+            }
+        }
 
-    else { 
-        //authentication failed
-        if (!User::where('username', $input['username'])->exists()) {
-            return redirect('/login')->withErrors(['username' => 'Username does not exist.']);
-        } else {
+        else {
             return redirect('/login')->withErrors(['password' => 'Incorrect password.']);
         }
+        
     }
-
-}
 
 
 
