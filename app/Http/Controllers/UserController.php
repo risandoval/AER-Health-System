@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\PasswordRequest;
 use App\Http\Requests\UserRequest;
 use App\Rules\Alpha_spaces;
@@ -143,7 +145,6 @@ class UserController extends Controller {
             // Handle the case when the user does not exist
         }
        
-
         return back()->with('message', 'Data was successfully updated');
     }
 
@@ -316,7 +317,6 @@ class UserController extends Controller {
         // ]);
     }
     
-
     public function validateStepThree(Request $request, $id) {   
         $validated = $request->validate([
             'password' => 'required',
@@ -352,4 +352,10 @@ class UserController extends Controller {
             return redirect('/dashboard')->with('success', 'Password successfully changed.');
         }
     }
+
+    public function export() 
+    {
+        return Excel::download(new UsersExport, 'users.csv');
+    }
+
 }

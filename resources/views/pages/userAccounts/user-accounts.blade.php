@@ -16,106 +16,6 @@
             </div>
         </div>
 
-        {{-- EDIT MODAL
-        <div id="edit-modal-body" class="modal hidden fixed top-[15%] bg-white rounded-xl w-[600px] min-h-[600px] drop-shadow-lg overflow-hidden">
-            <div class="relative px-6 py-4">
-                <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-[10%] hover:cursor-pointer'></i>
-                <h2 class="text-xl"><strong>Edit Account Details</strong></h2>
-            </div>
-
-            <div class="grid grid-cols-4 border-y p-10 gap-6 items-center">                  
-                <label for="first_name" class="col-span-1 whitespace-nowrap">First Name:</label>
-                <input type="text" name="first_name" id="first_name" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3">
-
-                <label for="middle_name" class="col-span-1 whitespace-nowrap">Middle Name:</label>
-                <input type="text" name="middle_name" id="middle_name" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3">
-
-                <label for="last_name" class="col-span-1 whitespace-nowrap">Last Name:</label>
-                <input type="text" name="last_name" id="last_name" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3">
-
-                <label for="username" class="col-span-1 whitespace-nowrap">Username:</label>
-                <input type="text" name="username" id="username" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3">
-
-                <label for="role" class="col-span-1 whitespace-nowrap">Role:</label>
-                <select name="role" id="role" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3">
-                    <option value="Admin" selected="selected">Admin</option>
-                    <option value="Doctor">Doctor</option>
-                    <option value="Barangay Health Workers">Barangay Health Workers (BHW)</option>
-                </select>
-
-                <label for="specialization" class="col-span-1 whitespace-nowrap">Specialization:</label>
-                <select name="specialization" id="specialization" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3">
-                    <option value="N/A">N/A</option>
-                    <option value="Pediatrician">Pediatrician</option>
-                    <option value="Psychiatrist">Psychiatrist</option>
-                    <option value="Physician">Physician</option>
-                </select>
-
-                <label for="birthdate" class="col-span-1 whitespace-nowrap">Birthdate:</label>
-                <input type="date" name="birthdate" id="birthdate" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3" max="9999-12-31">
-
-                <label for="contact" class="col-span-1 whitespace-nowrap">Contact No:</label>
-                <input type="number" name="contact" id="contact" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3" max="99999999999">
-
-                <label for="email" class="col-span-1 whitespace-nowrap">Email Address:</label>
-                <input type="text" name="email" id="email" class="rounded-xl border outline-[0.5px] w-full focus:ring-0 border-gray-300 col-span-3">
-            </div>
-            
-            <div class="flex gap-2 justify-end p-3">
-                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-2 hover:bg-black hover:text-white duration-100">Cancel</button>
-                <button type="button" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">Save</button>
-            </div>
-        </div> --}}
-
-        {{-- VIEW MODAL --}}
-        {{-- <div id="view-modal-body" class="modal hidden fixed top-[15%] bg-white rounded-xl w-[600px] min-h-[600px] drop-shadow-lg overflow-hidden">
-            <div class="relative px-6 py-4">
-                <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-[10%] hover:cursor-pointer'></i>
-                <h2 class="text-xl"><strong>View Account Details</strong></h2>
-            </div>
-    
-            <div class="grid grid-cols-4 border-y p-10 pt-6 gap-6 items-center">
-                <div class="col-span-4">
-                    <img class="w-40 h-40 border-4 border-primary rounded-full mx-auto" src="https://i.pinimg.com/564x/81/79/8d/81798d8b882d04f4ab59ba9c39fc5244.jpg" alt="Profile picture">
-                </div>                  
-                <label for="first_name" class="col-span-1 whitespace-nowrap">First Name:</label>
-                <input type="text" name="first_name" value="Hello" class="rounded-xl border w-full focus:ring-0 focus:ring-secondary border-gray-300 col-span-3">
-
-                <label for="last_name" class="col-span-1 whitespace-nowrap">Last Name:</label>
-                <input type="text" name="last_name" id="last_name" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg" disabled value="Dela Cruz">
-    
-                <label for="username" class="col-span-1 whitespace-nowrap">Username:</label>
-                <input type="text" name="username" id="username" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg" disabled value="J001">
-    
-                <label for="role" class="col-span-1 whitespace-nowrap">Role:</label>
-                <select name="role" id="role" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-black bg-disabled-bg" disabled>
-                    <option value="Admin" selected="selected">Admin</option>
-                    <option value="Doctor">Doctor</option>
-                    <option value="Barangay Health Workers">Barangay Health Workers (BHW)</option>
-                </select>
-    
-                <label for="specialization" class="col-span-1 whitespace-nowrap">Specialization:</label>
-                <select name="specialization" id="specialization" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 bg-disabled-bg" disabled>
-                    <option value="N/A" selected="selected">N/A</option>
-                    <option value="Doctor">Doctor</option>
-                    <option value="Barangay Health Workers">Barangay Health Workers (BHW)</option>
-                </select>
-    
-                <label for="birthdate" class="col-span-1 whitespace-nowrap">Birthdate:</label>
-                <input type="date" name="birthdate" id="birthdate" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg" max="9999-12-31" disabled value="2000-04-02">
-    
-                <label for="contact" class="col-span-1 whitespace-nowrap">Contact No:</label>
-                <input type="number" name="contact" id="contact" class="rounded-xl border w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg" max="99999999999" disabled value="09927418581">
-    
-                <label for="email" class="col-span-1 whitespace-nowrap">Email Address:</label>
-                <input type="text" name="email" id="email" class="rounded-xl border outline-[0.5px] w-full focus:ring-0 border-gray-300 col-span-3 text-disabled-text bg-disabled-bg" disabled value="admin@gmail.com">
-            </div>
-  
-            
-            <div class="flex gap-2 justify-end p-3">
-                <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-5 py-2 hover:bg-black hover:text-white duration-100">Close</button>
-            </div>
-        </div> --}}
     </div>
     
     {{-- MAIN CONTAINER --}}
@@ -131,9 +31,17 @@
                         </a>
                     </div>
                 </div>
-                <a href="{{url('users/add')}}" class="flex justify-center items-center bg-primary rounded-full text-white py-[7px] px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary">
-                    <i class='bx bxs-plus-circle text-xl'></i><p class="whitespace-nowrap hidden md:inline-block duration-100">Add New User</p>
-                </a>
+                <div class="flex gap-2">
+                    <a href="{{url('users/export')}}" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap duration-100">
+                        <i class='bx bx-export text-xl'></i>
+                        Export Users
+                    </a>
+                    <a href="{{url('users/add')}}" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap duration-100">
+                        <i class='bx bxs-plus-circle text-xl'></i>
+                        Add New User
+                    </a>
+                </div>
+                
             </div>
         </div>
           
@@ -141,8 +49,8 @@
         <div class="bg-white flex flex-col h-fit rounded-xl drop-shadow-lg justify-center overflow-x-auto lg:w-3/4 w-[95%] px-6 py-4 gap-8">          
             <div class="w-full">
                 {{-- table tabs --}}
-                <div class="border-b border-gray-200 dark:border-gray-700 mb-4">
-                    <ul class="flex flex-wrap -mb-px" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+                <div class="flex items-center w-full border-b border-gray-200 dark:border-gray-700 mb-4">
+                    <ul class="flex w-full flex-wrap -mb-px" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
                         <li class="mr-2" role="presentation">
                             <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300 active" id="active-users-tab" data-tabs-target="#active-users" type="button" role="tab" aria-controls="active-users" aria-selected="true">Active Users</button>
                         </li>
@@ -153,6 +61,7 @@
                             <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="pass-reset-request-tab" data-tabs-target="#pass-reset-request" type="button" role="tab" aria-controls="pass-reset-request" aria-selected="false">Password Reset Request</button>
                         </li>
                     </ul>
+                    
                 </div>
                 <div id="myTabContent">
                     {{-- ACTIVE USERS TAB --}}
