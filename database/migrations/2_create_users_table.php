@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('middle_name')->nullable();
             $table->string('last_name');
             $table->string('role');
-            $table->string('position')->nullable(); //admin
             $table->string('specialization')->nullable(); //doctor
             $table->string('barangay')->nullable(); //BHW
             $table->date('birthday');

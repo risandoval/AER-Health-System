@@ -40,16 +40,6 @@
                         </select>
                         @error ('role') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror
                     </div>
-
-                    {{-- <div id="specialization-field" class="hidden max-h-0 flex-wrap items-center md:grid md:grid-cols-12 w-full">
-
-                        @error ('specialization') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror
-                    </div>
-
-                    <div id="barangay-field" class="hidden flex-wrap items-center md:grid md:grid-cols-12 w-full">
-                        
-                        @error ('barangay') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror
-                    </div> --}}
                     
                     <div id="birthday-field" class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
                         <label for="birthday" class="md:col-span-2 whitespace-nowrap">Birthday: <span class="text-red">*</span></label>
@@ -80,7 +70,6 @@
     
     </section>
    
-
 </x-layout>
 
 @vite('resources/js/roleToggle.js')

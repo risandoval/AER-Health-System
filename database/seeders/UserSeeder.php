@@ -23,7 +23,6 @@ class UserSeeder extends Seeder
                 'last_name' => 'Herrera',
                 'role_id' => '1',
                 'role' => 'Admin',
-                'position' => 'Head Admin',
                 'birthday' => '1999-05-05',
                 'contact' => '09123456789',
                 'email' => 'admin@gmail.com',
