@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Redirect;
 */
 
 //route for login view page
-Route::get('/', function () { return view('pages/login'); });
 Route::get('/first-login/{id}', [UserController::class, 'firstLogin'])->name('first-login');
 Route::post('/validateFirstLogin/{id}', [UserController::class, 'validateFirstLogin'])->name('validateFirstLogin');
 
@@ -34,8 +33,7 @@ Route::post('/validateStepThree/{id}', [UserController::class, 'validateStepThre
 
 
 //route for dashboard
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('dashboard', function () { return view('pages/dashboard'); })->middleware('auth');
+Route::get('dashboard', [HomeController::class, 'index'])->middleware('auth')->name('home');
 
 // User Accounts routes
 Route::prefix('users')->middleware('auth')->group(function () {
@@ -53,6 +51,11 @@ Route::prefix('users')->middleware('auth')->group(function () {
 });
 
 // Login Routes
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login/process', [LoginController::class, 'process'])->name('process');
+Route::middleware('guest')->group(function() {
+    Route::get('/', [LoginController::class, 'index'])->name('login');
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login/process', [LoginController::class, 'process'])->name('process');
+});
+
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+

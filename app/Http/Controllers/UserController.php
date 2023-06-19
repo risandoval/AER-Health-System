@@ -184,7 +184,6 @@ class UserController extends Controller {
             // Validation failed
             return redirect()->back()->withErrors($validator)->withInput()->with('id', $id);
         }
-    
         $user = User::find($id);
     
         $user->password = bcrypt($request->input('password'));
@@ -195,7 +194,7 @@ class UserController extends Controller {
 
         $request->session()->flash('id', $id);
     
-        return redirect('/dashboard'); 
+        return redirect('/login')->with('message', 'Change password successful. Please login to your account.'); 
     }
 
     
@@ -244,28 +243,6 @@ class UserController extends Controller {
         
         // return redirect("/security-question")->with('userId', $userId);
     }
-
-    // public function validateStepTwo(Request $request, $id) {   
-        
-    //     $validated = $request->validate([
-    //         'answer' => ['required']
-    //     ]);
-
-    //     $user = User::find($id);
-
-    //     if( $user->security_answer == $validated['answer']){
-
-    //         return view('pages/forgotPassword/step-three', ['userId' => $id]);
-    //         // return redirect('/change-password');
-    //     }
-
-    //     else{
-
-    //         return view('pages.forgotPassword.step-two')->with(['userId' => $id])->withErrors(['answer' => 'Answer does not exist.']);
-
-    //     }
-           
-    // }
 
     public function validateStepTwo(Request $request, $id)
     {

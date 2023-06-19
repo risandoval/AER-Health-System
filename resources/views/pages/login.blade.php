@@ -11,11 +11,10 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>AER Health System</title>
-    <script> // const BASE_PATH = '{{ url("/") }}'; </script>
     @vite('resources/css/app.css')
     @vite('resources/js/main.js')
-
 </head>
+<body>
     <section class="bg-light bg-cover min-h-screen flex items-center justify-center " style="background-image:url('/images/bg-login.png')">
         <!-- login container -->
         <div class="bg-white rounded-lg shadow-lg m-4">
@@ -60,5 +59,5 @@
             </div>
         </div>
     </section>
-
-  </html>
+</body>
+</html>

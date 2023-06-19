@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -44,80 +44,28 @@ class LoginController extends Controller
     }
 
     public function process(Request $request) {
-        $input = $request->all();
-
         $validated = $request->validate([
             'username' => ['required'],
             'password' => ['required']
         ]);
-
+    
         $user = User::where('username', $validated['username'])->first();
-        // dd($user);
-
-        if (!$user) {
-                return redirect('/login')->withErrors(['username' => 'Username does not exist.']);
+    
+        if (!$user || !Hash::check($validated['password'], $user->password)) {
+            return redirect('/login')->withErrors(['username' => 'Invalid username or password.']);
         }
-
-        $id = null;
-        //authentication success - checks if first time user or not
-        if (auth()->attempt(['username' => $validated['username'], 'password' => $validated['password']])) {
-            $id = auth()->user()->id;
-            // User is inactive, cannot login
-            if ($user->status == 'Inactive') {
-                return redirect('/login')->withErrors(['status' => 'Your account is inactive.']);
-            } else {
-                if ($user->first_login == 'Yes') {
-                    return redirect()->route('first-login', ['id' => $id])->with('message', 'Login success.');
-                } else {
-                    $request->session()->regenerate();
-                    // $id = auth()->user()->id;
-                    return redirect('/dashboard')->with('message', 'Login success.');
-                }
-            }
+    
+        if ($user->first_login == 'Yes') {
+            return redirect()->route('first-login', ['id' => $user->id])->with('message', 'Login success.');
         }
-
-        else {
-            return redirect('/login')->withErrors(['password' => 'Incorrect password.']);
+    
+        if ($user->status == 'Inactive') {
+            return redirect('/login')->withErrors(['status' => 'Your account is inactive.']);
         }
-        
+    
+        auth()->login($user);
+        $request->session()->regenerate();
+    
+        return redirect('/dashboard')->with('message', 'Login success.');
     }
-
-
-
-
-
-//-------------------- DEFAULT LOGIN -------------------------
-    // public function process(Request $request){
-    //     $input = $request->all();
-
-    //     $validated = $request->validate([
-    //         'username' => ['required'],
-    //         'password' => ['required']
-    //     ]); 
-
-    //     if (auth()->attempt(['username' => $input['username'], 'password' => $input['password'], 'first_login' => 'Yes'])) {
-    //         $request->session()->regenerate();
-
-
-    //     //accessing the value of the id
-    //     //  dd(auth()->user()->id);
-        
-    //     $id = auth()->user()->id;
-    //     return redirect('/first-login')->with('message', 'Login success.')->with('id', $id);
-
-    //     //  return view('pages/first-login',  compact('id'));
-        
-    //         // return redirect('/first-login')->with('message', 'Login success.');
-    //     } 
-        
-    //     else if(auth()->attempt(['username' => $input['username'], 'password' => $input['password'], 'first_login' => 'No'])){
-    //         $request->session()->regenerate();
-    //         return redirect('/dashboard')->with('message', 'Login success.');
-
-    //     }
-
-    //     else {
-    //         return redirect('/login');
-    //     }
-    // }
 }
