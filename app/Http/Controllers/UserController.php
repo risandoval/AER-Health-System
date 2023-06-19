@@ -14,6 +14,7 @@ use App\Models\User; // Import the User model
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller {
 
@@ -166,29 +167,37 @@ class UserController extends Controller {
     }
 
     //FIRST TIME LOGIN VIEW
-    public function firstLogin() {   
-        return view('pages/first-login');
+    public function firstLogin($id) {   
+        return view('pages/first-login', compact('id'));
+        
     }
 
     public function validateFirstLogin(Request $request, $id) {
-        $validated = $request->validate([
+        $validator = Validator::make($request->all(), [
             'password' => 'required',
             'confirm_password' => ['required', 'same:password'],
             'question' => 'required',
             'answer' => 'required',
         ]);
     
+        if ($validator->fails()) {
+            // Validation failed
+            return redirect()->back()->withErrors($validator)->withInput()->with('id', $id);
+        }
+    
         $user = User::find($id);
     
-        $user->password = bcrypt($validated['password']);
-        $user->security_question = $validated['question'];
-        $user->security_answer = ($validated['answer']);
+        $user->password = bcrypt($request->input('password'));
+        $user->security_question = $request->input('question');
+        $user->security_answer = $request->input('answer');
         $user->first_login = 'No';
         $user->save();
+
+        $request->session()->flash('id', $id);
     
-        // return back()->with('message', 'Data was successfully updated');
         return redirect('/dashboard'); 
     }
+
     
     //STEP 1-3 VIEW (forgot password)
     public function stepOne(Request $request) {   

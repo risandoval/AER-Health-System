@@ -6,7 +6,7 @@
         </div>
         
         {{-- FIRST TIME LOGIN FORM --}}
-        <form action="{{ url('/validateFirstLogin/' . session('id')) }}" method="POST" class="flex flex-col mt-3">
+        <form action="{{ url('/validateFirstLogin/' . $id) }}" method="POST" class="flex flex-col mt-3">
             @csrf
 
             {{-- <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('reset'){{$message}} @enderror </p> --}}

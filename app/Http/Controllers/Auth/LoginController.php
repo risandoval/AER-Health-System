@@ -58,14 +58,16 @@ class LoginController extends Controller
                 return redirect('/login')->withErrors(['username' => 'Username does not exist.']);
         }
 
+        $id = null;
         //authentication success - checks if first time user or not
-        elseif (auth()->attempt(['username' => $validated['username'], 'password' => $validated['password']])) {
+        if (auth()->attempt(['username' => $validated['username'], 'password' => $validated['password']])) {
+            $id = auth()->user()->id;
             // User is inactive, cannot login
             if ($user->status == 'Inactive') {
                 return redirect('/login')->withErrors(['status' => 'Your account is inactive.']);
             } else {
                 if ($user->first_login == 'Yes') {
-                    return redirect('/first-login')->with('message', 'Login success.')->with('id', $user->id);
+                    return redirect()->route('first-login', ['id' => $id])->with('message', 'Login success.');
                 } else {
                     $request->session()->regenerate();
                     // $id = auth()->user()->id;

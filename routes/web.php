@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Redirect;
 
 //route for login view page
 Route::get('/', function () { return view('pages/login'); });
-Route::get('/first-login', [UserController::class, 'firstLogin']);
+Route::get('/first-login/{id}', [UserController::class, 'firstLogin'])->name('first-login');
 Route::post('/validateFirstLogin/{id}', [UserController::class, 'validateFirstLogin'])->name('validateFirstLogin');
 
 //route for forgot password
