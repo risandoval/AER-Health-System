@@ -52,10 +52,10 @@ Route::prefix('users')->middleware('auth')->group(function () {
 
 // Login Routes
 Route::middleware('guest')->group(function() {
-    Route::get('/', [LoginController::class, 'index'])->name('login');
+    Route::get('', [LoginController::class, 'index'])->name('login');
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login/process', [LoginController::class, 'process'])->name('process');
 });
 
-Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth')->name('logout');
 

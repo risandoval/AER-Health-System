@@ -50,19 +50,21 @@ class LoginController extends Controller
         ]);
     
         $user = User::where('username', $validated['username'])->first();
-    
+        
         if (!$user || !Hash::check($validated['password'], $user->password)) {
             return redirect('/login')->withErrors(['username' => 'Invalid username or password.']);
-        }
-    
-        if ($user->first_login == 'Yes') {
-            return redirect()->route('first-login', ['id' => $user->id])->with('message', 'Login success.');
-        }
+        } 
     
         if ($user->status == 'Inactive') {
             return redirect('/login')->withErrors(['status' => 'Your account is inactive.']);
         }
-    
+         
+        if ($user->first_login == 'Yes') {
+            auth()->login($user);
+            $request->session()->regenerate();
+            return redirect()->route('first-login', ['id' => $user->id])->with('message', 'Login success.');
+        }
+
         auth()->login($user);
         $request->session()->regenerate();
     

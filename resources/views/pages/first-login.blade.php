@@ -1,8 +1,15 @@
 <x-noNavbar-layout>
+    <form class="absolute left-0 top-0 w-full h-16 bg-primary" action="/logout" method="POST">
+        @csrf
+        <button class="absolute right-5 top-4 bg-secondary text-white text-lg rounded-full px-6 py-1 hover:bg-white hover:text-secondary">
+            Logout
+        </button>
+    </form>
+
     <x-form>
         <div class="max-w-md">
             <p class="text-xl text-black text-left font-bold mt-1 ">Change Password</p>
-            <p class="text-xs text-justify mt-1 text-black text-left mb-4">To make your account secured, please create a new password to replace your default password given by your administrator. You are also required to create a security question. It will help you reset your password in case you forgot it. Make sure to always remember your answer.</p>
+            <p class="text-xs text-justify mt-1 text-black mb-4">To make your account secured, please create a new password to replace your default password given by your administrator. You are also required to create a security question. It will help you reset your password in case you forgot it. Make sure to always remember your answer.</p>
         </div>
         
         {{-- FIRST TIME LOGIN FORM --}}
@@ -36,7 +43,7 @@
             <input class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" id="answer" name="answer" placeholder="Enter your answer" required>
             <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('username'){{$message}} @enderror </p>
 
-            <div class="flex gap-2 justify-end p-3 mt-6">
+            <div class="flex gap-2 justify-end py-3 mt-6">
                 <button type="submit" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-primary hover:ring-1">Confirm</button>
             </div>
         </form>

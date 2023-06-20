@@ -19,7 +19,6 @@
 </head>
 
 <body class="relative font-poppins">
-    
     {{ $slot }}
 </body>
 

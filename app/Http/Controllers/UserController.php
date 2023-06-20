@@ -266,14 +266,15 @@ class UserController extends Controller {
         
         }
     
-      
         $user = User::find($id);
+
+        $question = $user->security_question;
     
-        if ($user->security_question && $user->security_answer == $validated['answer']) {
+        if ($user->security_answer == $validated['answer']) {
             return view('pages/forgotPassword/step-three', ['userId' => $id]);
             // return redirect('/change-password');
         }
-    
+      
         // Increment the answer_attempts counter
         $attemptedAnswers++;
         $request->session()->put('answer_attempts', $attemptedAnswers);
@@ -288,6 +289,7 @@ class UserController extends Controller {
 
         $data = [
             'userId' => $id,
+            'security_question' => $question,
             'remainingAttempts' => $maxAttempts - $attemptedAnswers,
             'errorMessage' => 'Answer does not exist.',
             'answer' => 'Answer does not exist.',
@@ -295,28 +297,29 @@ class UserController extends Controller {
         ];
         
         return view('pages/forgotPassword/step-two', $data);
-
-        // return view('pages/forgotPassword/step-two')->with([
-        //     'userId' => $id,
-        //     'remainingAttempts' => $maxAttempts - $attemptedAnswers,
-        //     'errorMessage' => 'Answer does not exist.'
-        // ]);
     }
     
-    public function validateStepThree(Request $request, $id) {   
+
+    public function validateStepThree(Request $request, $id)
+    {
         $validated = $request->validate([
             'password' => 'required',
-            'confirm_password' => ['required', 'same:password'], 
+            'confirm_password' => ['required'],
         ]);
 
-        $user = User::find($id);
-    
-        $user->password = bcrypt($validated['password']);
-        
-        $user->first_login = 'No';
-        $user->save();
+        if ($validated['password'] === $validated['confirm_password']) {
+            $user = User::find($id);
 
-        return redirect('/login'); 
+            $user->password = bcrypt($validated['password']);
+            $user->first_login = 'No';
+            $user->save();
+
+            return redirect('/login');
+        } else {
+
+            return redirect('pages/forgotPassword/step-three', ['userId' => $id])->withErrors(['confirm_password' => 'The password and confirm password must match.']);
+
+        }
     }
 
     // update password function
