@@ -20,7 +20,7 @@ class UserController extends Controller {
         $activeUser = User::where('status', 'active')->paginate(5);
         $inactiveUser = User::where('status', 'inactive')->paginate(5);
         $passwordRequest = User::where('password_request', 'Yes')->paginate(5);
-        // dd($data);
+        
         return view('pages/userAccounts/user-accounts',  compact('activeUser', 'inactiveUser', 'passwordRequest'));
     }
 
