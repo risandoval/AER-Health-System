@@ -23,7 +23,7 @@ class UserController extends Controller {
         $activeUser = User::where('status', 'active')->paginate(5);
         $inactiveUser = User::where('status', 'inactive')->paginate(5);
         $passwordRequest = User::where('password_request', 'Yes')->paginate(5);
-        // dd($data);
+        
         return view('pages/userAccounts/user-accounts',  compact('activeUser', 'inactiveUser', 'passwordRequest'));
     }
 
@@ -34,6 +34,25 @@ class UserController extends Controller {
         $request->session()->regenerateToken();
 
         return redirect('/login')->with('message', 'Logout Successful');
+    }
+
+    //SEARCH USERS
+    public function searchUsers(Request $request) {
+        $search = $request->get('search');
+
+        if ($search) {
+            $allUser = User::where('first_name', 'like', '%'.$search.'%')
+            ->orWhere('middle_name', 'like', '%'.$search.'%')
+            ->orWhere('last_name', 'like', '%'.$search.'%')
+            ->orWhere('username', 'like', '%'.$search.'%')
+            ->paginate(5);
+
+            // dd($allUser);
+            return view('pages/userAccounts/search-result', compact('allUser', 'search'));
+        } 
+        else {
+            return view('pages/userAccounts/search-result', compact('search'))->with('noResult', 'No results found');
+        }
     }
 
     //ADD USER ACCOUNT

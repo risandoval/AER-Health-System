@@ -4,7 +4,6 @@
   
     {{-- MODAL --}}
     <div id="modal-background" class="hidden absolute z-10 top-0 left-0 h-full w-full bg-black bg-opacity-30 items-center justify-center">
-        {{-- ARCHIVE MODAL --}}
         <div id="archive-modal-body" class="modal hidden fixed top-[40%] bg-white rounded-xl w-[400px] drop-shadow-lg px-10 pt-6 pb-4">
             <div class="flex flex-col">
                 <h2><strong>Confirm Action</strong></h2>
@@ -15,35 +14,33 @@
                 <button type="button" class="bg-red text-white text-sm rounded-full px-4 py-2 font-bold hover:bg-white hover:text-red hover:ring-red hover:ring-1 duration-100 ease-in-out">Archive </button>
             </div>
         </div>
-
     </div>
     
     {{-- MAIN CONTAINER --}}
-    <section class="flex flex-col gap-12 bg-light w-full min-h-screen items-center pt-navbar pb-10">
+    <section class="flex flex-col gap-10 bg-light w-full min-h-screen items-center pt-navbar pb-10">
         {{-- search and add button --}}
         <div class="flex flex-row justify-center items-center mt-12 w-[95%] lg:w-3/4">
             <div class="flex flex-row rounded-lg items-center text-right w-full">
                 <div class="flex w-full"> 
-                    <div class="relative flex flex-row w-[60%]">
-                        <input class="rounded-l-full focus:ring-0 border border-gray-400 pl-4 pr-2 w-full" type="text" placeholder="Search">
-                        <a href="" class="absolute -right-[50px] text-white ring-0 ring-gray-400 h-full flex justify-center items-center rounded-r-full bg-primary hover:text-secondary w-[50px] duration-100">
+                    {{-- <div class="relative flex flex-row w-[60%]"> --}}
+                        {{-- <input id="searchInput" class="rounded-l-full focus:ring-0 border border-gray-400 pl-4 pr-2 w-full" type="text" placeholder="Search by name or username">
+                        <a href="" id="searchButton" class="absolute -right-[50px] text-white ring-0 ring-gray-400 h-full flex justify-center items-center rounded-r-full bg-primary hover:text-secondary w-[50px] duration-100">
+                            <i class='bx bx-search-alt-2 text-xl'></i>
+                        </a> --}}
+                    {{-- </div> --}}
+                    <form action="{{url('users/search')}}" method="GET" class="relative flex flex-row w-[60%]">
+                        <input name="search" value="" class="rounded-l-full focus:ring-0 border border-gray-400 pl-4 pr-2 w-full" type="text" placeholder="Search by name or username">
+                        <button type="submit" class="absolute -right-[50px] text-white ring-0 ring-gray-400 h-full flex justify-center items-center rounded-r-full bg-primary hover:text-secondary w-[50px] duration-100">
                             <i class='bx bx-search-alt-2 text-xl'></i>
                         </a>
                     </div>
                 </div>
-                <div class="flex gap-2">
-                    <a href="{{url('users/export')}}" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap duration-100">
-                        <i class='bx bx-export text-xl'></i>
-                        Export Users
-                    </a>
-                    <a href="{{url('users/add')}}" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap duration-100">
-                        <i class='bx bxs-plus-circle text-xl'></i>
-                        Add New User
-                    </a>
-                </div>
-                
+                <a href="{{url('users/add')}}" class="flex justify-center items-center bg-primary rounded-full text-white py-[7px] px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary">
+                    <i class='bx bxs-plus-circle text-xl'></i><p class="whitespace-nowrap hidden md:inline-block duration-100">Add New User</p>
+                </a>
             </div>
         </div>
+        
           
         {{-- table container--}}
         <div class="bg-white flex flex-col h-fit rounded-xl drop-shadow-lg justify-center overflow-x-auto lg:w-3/4 w-[95%] px-6 py-4 gap-8">          
@@ -155,7 +152,6 @@
 
                     {{-- PASSWORD RESET REQUEST TAB --}}
                     <div class="bg-white -mt-2 rounded-lg dark:bg-gray-800 hidden" id="pass-reset-request" role="tabpanel" aria-labelledby="pass-reset-request-tab">
-                       
                         <table class="w-full">
                             <thead>
                                 <tr class="border-2 border-transparent border-b-light-gray">
@@ -179,12 +175,6 @@
                                         <td class="text-left px-6 py-3">{{$users->status}}</td>
                                         <td class="text-left px-6 py-3">
                                             <div class="flex gap-[6px]">
-                                                {{-- <a href="{{url("/users/view/$users->id")}}">
-                                                    <button class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">View</button>
-                                                </a>
-                                                <a href="{{url("/users/edit/$users->id")}}">
-                                                    <button class="text-white bg-secondary px-4 py-2 rounded-full hover:bg-white hover:text-secondary hover:ring-secondary hover:ring-1 duration-100">Edit</button>
-                                                </a> --}}
                                                 <form action="{{url("/users/reset/$users->id")}}" method="POST" class="flex flex-col">
                                                     @method('put')   
                                                     @csrf
@@ -202,12 +192,9 @@
                             {{ $passwordRequest->links('pagination::tailwind') }}
                         </div>
                     </div>
-
-                    </div>
                 </div>
             </div>
         </div>
     </section>
-</x-layout>
 
-@vite('resources/js/modal.js')
+</x-layout>

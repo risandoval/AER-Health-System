@@ -48,6 +48,7 @@ Route::prefix('users')->middleware('auth')->group(function () {
     Route::put('/reset/{id}', [UserController::class, 'reset'])->name('reset');
     Route::put('/update/password/{id}', [UserController::class, 'updatePassword'])->name('password');
     Route::get('/export', [UserController::class, 'export'])->name('export');
+    Route::get('search', [UserController::class, 'searchUsers']);
 });
 
 // Login Routes
