@@ -15,9 +15,11 @@
       <li class="mx-4 my-6 md:my-0">
         <a href="{{url('/dashboard')}}" class="nav-link">Home</a>
       </li>
-      <li class="mx-4 my-6 md:my-0">
-        <a href="{{url('/users')}}" class="nav-link">User Accounts</a>
-      </li>
+      @if (auth()->user()->role == 'Admin')
+        <li class="mx-4 my-6 md:my-0">
+          <a href="{{url('/users')}}" class="nav-link">User Accounts</a>
+        </li>
+      @endif
       <li class="mx-4 my-6 md:my-0">
         <a href="#" class="nav-link">1st Encounter</a>
       </li>

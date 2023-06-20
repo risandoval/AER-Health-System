@@ -2,7 +2,7 @@
     <x-form>
         <div class="max-w-md text-center mt-1 mb-4">
             <p class="text-md text-black text-center font-bold mt-1 ">Follow the three steps to recover your account.</p>
-            <p class="text-xs mt-1 text-black text-center">Answer your security question to change your password. You only have {{ $remainingAttempts }} attempt(s). In case you used up all your attempts, we will automatically request a password reset from your admin.</p>
+            <p class="text-xs mt-1 text-black text-center">Answer your security question to change your password. You only have <strong class="text-red">{{ $remainingAttempts }}</strong> attempt(s). In case you used up all your attempts, we will automatically request a password reset from your admin.</p>
 
         </div>
         
