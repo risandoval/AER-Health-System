@@ -33,6 +33,25 @@ class UserController extends Controller {
         return redirect('/login')->with('message', 'Logout Successful');
     }
 
+    //SEARCH USERS
+    public function searchUsers(Request $request) {
+        $search = $request->get('search');
+
+        if ($search) {
+            $allUser = User::where('first_name', 'like', '%'.$search.'%')
+            ->orWhere('middle_name', 'like', '%'.$search.'%')
+            ->orWhere('last_name', 'like', '%'.$search.'%')
+            ->orWhere('username', 'like', '%'.$search.'%')
+            ->paginate(5);
+
+            // dd($allUser);
+            return view('pages/userAccounts/search-result', compact('allUser', 'search'));
+        } 
+        else {
+            return view('pages/userAccounts/search-result', compact('search'))->with('noResult', 'No results found');
+        }
+    }
+
     //ADD USER ACCOUNT
     public function store(UserRequest $request)
     {
