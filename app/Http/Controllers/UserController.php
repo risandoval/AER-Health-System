@@ -42,7 +42,6 @@ class UserController extends Controller {
 
         if ($search) {
             $allUser = User::where('first_name', 'like', '%'.$search.'%')
-            ->orWhere('middle_name', 'like', '%'.$search.'%')
             ->orWhere('last_name', 'like', '%'.$search.'%')
             ->orWhere('username', 'like', '%'.$search.'%')
             ->paginate(5);

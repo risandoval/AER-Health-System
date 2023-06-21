@@ -25,7 +25,7 @@
             <div class="flex flex-row rounded-lg items-center text-right w-full">
                 <div class="flex w-full"> 
                     <form action="{{url('users/search')}}" method="GET" class="relative flex flex-row w-[60%]">
-                        <input name="search" value="" class="rounded-l-full focus:ring-0 border border-gray-400 pl-4 pr-2 w-full" type="text" placeholder="Search by name or username">
+                        <input name="search" value="" class="rounded-l-full focus:ring-0 border border-gray-400 pl-4 pr-2 w-full" type="text" placeholder="Enter a first name, last name, or username to search">
                         <button type="submit" class="absolute -right-[50px] text-white ring-0 ring-gray-400 h-full flex justify-center items-center rounded-r-full bg-primary hover:text-secondary w-[50px] duration-100">
                             <i class='bx bx-search-alt-2 text-xl'></i>
                         </a>
