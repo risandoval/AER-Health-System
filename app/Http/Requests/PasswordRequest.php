@@ -26,7 +26,16 @@ class PasswordRequest extends FormRequest
             'current_password' => ['required'],
             'new_password' => ['required'],
             'confirm_password' => ['required', 'same:new_password'],
+            // 'confirm_password.required' => 'required to beh'
+            // 'confirm_password.same:new_password' => 'new passwords does not match',
         ];
 
+    }
+
+    public function messages(): array 
+    {
+        return [
+            'confirm_password.same' => 'Password does not match.'
+        ];
     }
 }

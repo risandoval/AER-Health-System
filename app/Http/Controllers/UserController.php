@@ -193,9 +193,12 @@ class UserController extends Controller {
     public function validateFirstLogin(Request $request, $id) {
         $validator = Validator::make($request->all(), [
             'password' => 'required',
-            'confirm_password' => ['required', 'same:password'],
+            'confirm_password' => 'required|same:password',
             'question' => 'required',
             'answer' => 'required',
+        ],
+        [
+            'confirm_password.same' => 'Password does not match.'
         ]);
     
         if ($validator->fails()) {
