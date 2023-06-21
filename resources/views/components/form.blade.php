@@ -4,7 +4,7 @@
     <!-- form container -->
     <div {{$attributes->merge(['class' => 'bg-white max-w-lg md:max-w-2xl rounded-lg shadow-lg'])}}>
         <!-- form content -->
-        <div {{$attributes->merge(['class' => 'p-5 mx-2'])}}>
+        <div class="p-5 mx-2">
             {{ $slot }}
         </div>
     </div>

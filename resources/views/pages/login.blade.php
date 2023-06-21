@@ -39,16 +39,23 @@
                     
                     <div class="relative mt-3">
                         <label for="username" class="block text-xs font-semibold">Username</label>
-                        <input class="mt-1 p-2 rounded-xl w-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" id="username" name="username" placeholder="Enter your username">
-                        <p class="col-start-2 col-span-3 text-sm text-red -mb-2"> @error('username') {{ $message }} @enderror </p>
-                        
+                        <input class="form-input" type="text" id="username" name="username" placeholder="Enter your username">
+                        <p class="col-start-2 col-span-3 text-sm text-red -mb-2"> @error('username') {{ $message }} @enderror </p> 
+                    </div>
+
+                    <div class="relative mt-5">
+                        <label class="block text-xs font-semibold" for="password">Password</label>
+                        <div class="flex justify-end items-center relative w-full">
+                            <input class="js-password pr-[53px] form-input" type="password" id="password" name="password" placeholder="*****" autocomplete="off">
+                            <div class="absolute px-3">
+                                <input class="hidden js-password-toggle" id="toggle" type="checkbox" />
+                                <label class="text-sm text-primary cursor-pointer js-password-label" for="toggle">Show</label>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="relative mt-5">
-                        <label for="password" class="block text-xs font-semibold">Password</label>
-                        <input class="mt-1 p-2 rounded-xl w-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" id="password" name="password" placeholder="*****">
-                        <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('password'){{$message}} @enderror </p>
-                    </div>
+
+                    
 
                     <div class="text-xs text-primary mt-2">
                         <a href="{{url('/validation')}}">Forgot password?</a>
@@ -61,3 +68,5 @@
     </section>
 </body>
 </html>
+
+@vite('resources/js/password.js')

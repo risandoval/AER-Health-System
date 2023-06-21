@@ -16,20 +16,38 @@
                 @method('PUT')
                 <div class="flex flex-col px-6 py-8 border-y">
                     <div class="items-center grid grid-cols-8 mt-3">
-                        <label for="current_password" class="col-span-8 sm:col-span-3">Current Password:</label>
-                        <input type="password" name="current_password" class="form-input col-span-8 sm:col-span-5" placeholder="********">
+                        <label for="current_password" class="col-span-8 sm:col-span-3" >Current Password:</label>
+                        <div class="col-span-8 sm:col-span-5 flex justify-end items-center relative w-full">
+                            <input type="password" name="current_password" placeholder="*****" autocomplete="off" class="js-password pr-[53px] form-input">
+                            <div class="absolute px-3">
+                                <input class="hidden js-password-toggle" id="toggle" type="checkbox" />
+                                <label class="text-sm text-primary cursor-pointer js-password-label" for="toggle">Show</label>
+                            </div>
+                        </div>
                         @error ('password') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                     </div>
 
                     <div class="items-center grid grid-cols-8 mt-3">
-                        <label for="new_password" class="col-span-8 sm:col-span-3">New Password:</label>
-                        <input type="password" name="new_password" class="form-input col-span-8 sm:col-span-5" placeholder="********">
+                        <label for="new_password" class="col-span-8 sm:col-span-3" >New Password:</label>
+                        <div class="col-span-8 sm:col-span-5 flex justify-end items-center relative w-full">
+                            <input type="password" id="new_password" name="new_password" placeholder="*****" autocomplete="off" class="pr-[53px] form-input">
+                            <div class="absolute px-3">
+                                <input class="hidden" id="new_password_toggle" type="checkbox" />
+                                <label id="new_password_label" class="text-sm text-primary cursor-pointer" for="new_password_toggle">Show</label>
+                            </div>
+                        </div>
                         @error ('new_password') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                     </div>
-                    
-                    <div class="items-center grid grid-cols-8 mt-3 mb-1">
-                        <label for="confirm_password" class="col-span-8 sm:col-span-3">Confirm Password:</label>
-                        <input type="password" name="confirm_password" class="form-input col-span-8 sm:col-span-5" placeholder="********">
+            
+                    <div class="items-center grid grid-cols-8 mt-3">
+                        <label for="confirm_password" class="col-span-8 sm:col-span-3" >Current Password:</label>
+                        <div class="col-span-8 sm:col-span-5 flex justify-end items-center relative w-full">
+                            <input type="password" id="confirm_password" name="confirm_password" placeholder="*****" autocomplete="off" class="pr-[53px] form-input">
+                            <div class="absolute px-3">
+                                <input class="hidden" id="confirm_password_toggle" type="checkbox" />
+                                <label id="confirm_password_label" class="text-sm text-primary cursor-pointer" for="confirm_password_toggle">Show</label>
+                            </div>
+                        </div>
                         @error ('confirm_password') <p class="col-span-8 sm:col-start-4 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                     </div>
                 </div>
@@ -283,3 +301,4 @@
 </x-layout>
 
 @vite('resources/js/dashboard.js')
+@vite('resources/js/password.js')

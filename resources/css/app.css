@@ -26,4 +26,8 @@
         @apply rounded-xl border w-full border-gray-300 col-span-3
         focus:ring-0;
     }
+
+    ::-ms-reveal {
+        display: none;
+    }
 }

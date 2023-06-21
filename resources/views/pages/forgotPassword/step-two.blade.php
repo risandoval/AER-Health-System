@@ -1,20 +1,9 @@
 <x-noNavbar-layout>
-    <x-form>
+    <x-form class="max-w-sm">
         <div class="max-w-md text-center mt-1 mb-4">
             <p class="text-md text-black text-center font-bold mt-1 ">Follow the three steps to recover your account.</p>
             <p class="text-xs mt-1 text-black text-center">Answer your security question to change your password. You only have <strong class="text-red">{{ $remainingAttempts }}</strong> attempt(s). In case you used up all your attempts, we will automatically request a password reset from your admin.</p>
-
         </div>
-        
-        {{-- lalabas dapat to pag 0 attempt na --}}
-        {{-- <div class="max-w-md">
-            <p class="text-xs mt-1 text-red text-center">
-                You have used up yor attempts. It seems that you do not recall your answer. 
-                Click <a href="#" class="underline">here</a> to request a reset password to the admin.
-                You may also contact your admin that you have requested a reset.
-            </p>
-        </div> --}}
-        
         
         {{-- STEPPER --}}
         <div class="mt-4 mb-4">
