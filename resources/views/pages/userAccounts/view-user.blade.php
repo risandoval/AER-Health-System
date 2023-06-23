@@ -85,6 +85,7 @@
                                 <option value="San Roque" {{$viewUser->barangay == 'San Roque' ? 'selected' : ''}}>San Roque</option>
                                 <option value="San Vicente" {{$viewUser->barangay == 'San Vicente' ? 'selected' : ''}}>San Vicente</option>
                                 <option value="Tanghas" {{$viewUser->barangay == 'Tanghas' ? 'selected' : ''}}>Tanghas</option>
+                                <option value="Telegrafo" {{$viewUser->barangay == 'Telegrafo' ? 'selected' : ''}}>Telegrafo</option>
                             </select>
                             @error ('barangay') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror
                         </div>

@@ -28,7 +28,8 @@ const barangays = {
     b11: "Quilao",
     b12: "San Roque",
     b13: "San Vicente",
-    b14: "Tanghas"
+    b14: "Tanghas",
+    b15: "Telegrafo"
 };
 
 // Function to create a field with label and select element
