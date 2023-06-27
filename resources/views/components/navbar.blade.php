@@ -21,7 +21,7 @@
         </li>
       @endif
       <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="nav-link">1st Encounter</a>
+        <a href="{{url('/first-encounter')}}" class="nav-link">1st Encounter</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
         <a href="#" class="nav-link">2nd Encounter</a>

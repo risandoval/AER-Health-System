@@ -29,16 +29,16 @@
                         <button type="submit" class="absolute -right-[50px] text-white ring-0 ring-gray-400 h-full flex justify-center items-center rounded-r-full bg-primary hover:text-secondary w-[50px] duration-100">
                             <i class='bx bx-search-alt-2 text-xl'></i>
                         </a>
-                    </div>
+                    </form>
                 </div>
                 <div class="flex gap-2">
                     <a href="{{url('users/export')}}" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap duration-100">
                         <i class='bx bx-export text-xl'></i>
-                        Export Users
+                        <p class="hidden md:block">Export Users</p>
                     </a>
                     <a href="{{url('users/add')}}" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap duration-100">
                         <i class='bx bxs-plus-circle text-xl'></i>
-                        Add New User
+                        <p class="hidden md:block">Add New User</p>
                     </a>
                 </div>
                 
@@ -50,7 +50,7 @@
             <div class="w-full">
                 {{-- table tabs --}}
                 <div class="flex items-center w-full border-b border-gray-200 dark:border-gray-700 mb-4">
-                    <ul class="flex w-full flex-wrap -mb-px" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+                    <ul class="flex w-full -mb-px" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
                         <li class="mr-2" role="presentation">
                             <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300 active" id="active-users-tab" data-tabs-target="#active-users" type="button" role="tab" aria-controls="active-users" aria-selected="true">Active Users</button>
                         </li>
@@ -61,7 +61,6 @@
                             <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="pass-reset-request-tab" data-tabs-target="#pass-reset-request" type="button" role="tab" aria-controls="pass-reset-request" aria-selected="false">Password Reset Request</button>
                         </li>
                     </ul>
-                    
                 </div>
                 <div id="myTabContent">
                     {{-- ACTIVE USERS TAB --}}

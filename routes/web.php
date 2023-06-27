@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\FirstEncounterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
@@ -50,6 +51,11 @@ Route::prefix('users')->middleware('auth')->group(function () {
     Route::get('/export', [UserController::class, 'export'])->name('export');
     Route::get('search', [UserController::class, 'searchUsers']);
 });
+
+//1st Encounter routes
+Route::get('/first-encounter', [FirstEncounterController::class, 'index']);
+
+
 
 // Login Routes
 Route::middleware('guest')->group(function() {
