@@ -54,6 +54,7 @@ Route::prefix('users')->middleware('auth')->group(function () {
 
 //1st Encounter routes
 Route::get('/first-encounter', [FirstEncounterController::class, 'index']);
+Route::get('/view-patient', [FirstEncounterController::class, 'viewPatient']);
 
 
 

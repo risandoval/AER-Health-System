@@ -27,6 +27,10 @@
         focus:ring-0;
     }
 
+    .patient-form-input {
+        @apply rounded-lg border w-full border-gray-300 bg-white py-0;
+    }
+
     ::-ms-reveal {
         display: none;
     }
