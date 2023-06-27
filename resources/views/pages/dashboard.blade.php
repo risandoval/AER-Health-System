@@ -136,6 +136,7 @@
                                         <option value="San Roque" {{auth()->user()->barangay == 'San Roque' ? 'selected' : ''}}>San Roque</option>
                                         <option value="San Vicente" {{auth()->user()->barangay == 'San Vicente' ? 'selected' : ''}}>San Vicente</option>
                                         <option value="Tanghas" {{auth()->user()->barangay == 'Tanghas' ? 'selected' : ''}}>Tanghas</option>
+                                        <option value="Telegrafo" {{auth()->user()->barangay == 'Telegrafo' ? 'selected' : ''}}>Telegrafo</option>
                                     </select>
                                     @error ('specialization') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                                 </div>
