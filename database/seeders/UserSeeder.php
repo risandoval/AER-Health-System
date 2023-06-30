@@ -35,7 +35,6 @@ class UserSeeder extends Seeder
                 'first_name' => 'Mayra',
                 'middle_name' => 'Cherry',
                 'last_name' => 'Cruz',
-                'role_id' => '2',
                 'role' => 'Barangay Health Worker',
                 'barangay' => 'Barangay 1',
                 'birthday' => '1969-02-25',

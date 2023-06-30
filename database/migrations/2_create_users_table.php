@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('middle_name')->nullable();
             $table->string('last_name');
             $table->string('role');
+            $table->foreignId('role_id')->nullable()->constrained('roles');
             $table->string('specialization')->nullable(); //doctor
             $table->string('barangay')->nullable(); //BHW
             $table->date('birthday');
@@ -30,7 +31,6 @@ return new class extends Migration
             $table->string('password_request')->default('No');
             $table->string('first_login')->default('Yes');
             $table->string('password')->default(bcrypt('password'));
-            $table->foreignId('role_id')->nullable()->constrained('roles');
             $table->string('status')->nullable();
             $table->softDeletes();
             $table->timestamps();

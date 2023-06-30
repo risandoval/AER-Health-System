@@ -340,7 +340,6 @@ class UserController extends Controller {
         } else {
 
             return view('pages/forgotPassword/step-three', ['userId' => $id])->withErrors(['confirm_password' => 'The password and confirm password must match.']);
-
         }
     }
 
