@@ -53,13 +53,18 @@
                 <div class="w-full lg:w-3/5 order-2 bg-white rounded-xl drop-shadow-lg p-4">
                     <h3 class="text-xl font-bold text-primary border-b pb-2 mb-6">Past Medical History</h3>
                     <div class="px-2">
-                        <div class="flex flex-wrap justify-around mb-6 gap-4">
+                        <div class="flex flex-wrap justify-around gap-4">
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Allergy</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Asthma</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cancer</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular Disease</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular</p>
+                        </div>
+
+                        <div class="inline-flex items-center justify-center w-full -mb-3">
+                            <hr class="w-4/5 h-px my-8 bg-gray-200 border-0">
+                            <span class="absolute px-3 font-medium text-primary -translate-x-1/2 bg-white left-1/2">Specifications</span>
                         </div>
                         <div class="flex flex-wrap justify-center">
                             {{-- 1st column --}}
@@ -166,13 +171,18 @@
                 <div class="w-full lg:w-3/5 order-1 lg:order-2 bg-white rounded-xl drop-shadow-lg p-4">
                     <h3 class="text-xl font-bold text-primary border-b pb-2 mb-6">Family Medical History</h3>
                     <div class="px-2">
-                        <div class="flex flex-wrap justify-around mb-6 gap-4">
+                        <div class="flex flex-wrap justify-around gap-4">
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Allergy</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Asthma</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cancer</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular Disease</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular</p>
+                        </div>
+
+                        <div class="inline-flex items-center justify-center w-full -mb-3">
+                            <hr class="w-4/5 h-px my-8 bg-gray-200 border-0">
+                            <span class="absolute px-3 font-medium text-primary -translate-x-1/2 bg-white left-1/2">Specifications</span>
                         </div>
                         <div class="flex flex-wrap justify-center">
                             {{-- 1st column --}}
