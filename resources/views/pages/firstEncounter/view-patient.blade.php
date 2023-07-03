@@ -10,41 +10,41 @@
                 <h3 class="col-span-12 text-xl font-bold -mb-2">Client Details</h3>
                 <div class="col-span-12 lg:col-span-3 text-sm -mb-2"> {{-- first row --}}
                     <p class="font-semibold">Last Name</p>
-                    <input type="text" value="Doe" class="patient-form-input" readonly>
+                    <input type="text" value="{{$patient->ONE_EF_LASTNAME}}" class="patient-form-input" readonly>
                 </div>
                 <div class="col-span-12 lg:col-span-3 text-sm -mb-2">
                     <p class="font-semibold">First Name</p>
-                    <input type="text" value="John" class="patient-form-input" readonly>
+                    <input type="text" value="{{$patient->ONE_EF_FIRSTNAME}}" class="patient-form-input" readonly>
                 </div>
                 <div class="col-span-12 lg:col-span-3 text-sm -mb-2">
                     <p class="font-semibold">Middle Name</p>
-                    <input type="text" value="Cruz" class="patient-form-input" readonly>
+                    <input type="text" value="{{$patient->ONE_EF_MIDDLENAME}}" class="patient-form-input" readonly>
                 </div>
                 <div class="col-span-12 lg:col-span-3 text-sm -mb-2">
                     <p class="font-semibold">Extension Name</p>
-                    <input type="text" value="Jr." class="patient-form-input" readonly>
+                    <input type="text" value="{{$patient->ONE_EF_EXTENSIONNAME}}" class="patient-form-input" readonly>
                 </div>
 
                 <div class="col-span-12 lg:col-span-4 text-sm -mb-2"> {{-- second row --}}
                     <p class="font-semibold">Barangay</p>
-                    <input type="text" value="Barangay 1" class="patient-form-input" readonly>
+                    <input type="text" value="{{$patient->ONE_EF_BRGY}}" class="patient-form-input" readonly>
                 </div>
                 <div class="col-span-12 lg:col-span-4 text-sm -mb-2">
                     <p class="font-semibold">Sex</p>
-                    <input type="text" value="Male" class="patient-form-input" readonly>
+                    <input type="text" value="{{$patient->ONE_EF_SEX}}" class="patient-form-input" readonly>
                 </div>
                 <div class="col-span-12 lg:col-span-4 text-sm -mb-2">
                     <p class="font-semibold">Health Screening & Assessment Date</p>
-                    <input type="text" value="2023-06-27" class="patient-form-input" readonly>
+                    <input type="text" value="{{$patient->ONE_EF_HSAD}}" class="patient-form-input" readonly>
                 </div>
 
                 <div class="col-span-12 lg:col-span-6 text-sm -mb-2"> {{-- third row --}}
                     <p class="font-semibold">Authorization Transaction Code (ATC)</p>
-                    <input type="text" value="123456789" class="patient-form-input" readonly>
+                    <input type="text" value="{{$patient->ONE_EF_ATC}}" class="patient-form-input" readonly>
                 </div>
                 <div class="col-span-12 lg:col-span-6 text-sm -mb-2">
                     <p class="font-semibold">Philhealth Identification Number</p>
-                    <input type="text" value="111111111111" class="patient-form-input" readonly>
+                    <input type="text" value="{{$patient->ONE_EF_PIN}}" class="patient-form-input" readonly>
                 </div>
 
             </div>

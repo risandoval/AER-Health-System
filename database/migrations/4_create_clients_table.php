@@ -11,15 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('1ef_client', function (Blueprint $table) {
+        Schema::create('one_ef_client', function (Blueprint $table) {
             $table->id();
-            $table->string('1EF_LASTNAME');
-            $table->string('1EF_FIRSTNAME');
-            $table->string('1EF_MIDDLENAME');
-            $table->string('1EF_EXTENSIONNAME');
-            $table->date('1EF_BDAY');
-            $table->string('1EF_SEX');
-            $table->string('1EF_BRGY');
+            $table->date('ONE_EF_HSAD');
+            $table->string('ONE_EF_PIN');
+            $table->string('ONE_EF_ATC');
+            $table->string('ONE_EF_LASTNAME');
+            $table->string('ONE_EF_FIRSTNAME');
+            $table->string('ONE_EF_MIDDLENAME')->nullable();
+            $table->string('ONE_EF_EXTENSIONNAME')->nullable();
+            $table->date('ONE_EF_BDAY');
+            $table->string('ONE_EF_SEX');
+            $table->string('ONE_EF_BRGY');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('1ef_client');
+        Schema::dropIfExists('ONE_ef_client');
     }
 };

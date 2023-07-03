@@ -38,50 +38,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($patients as $patient) --}}
+                        @foreach ($patients as $patient)
+                        {{$patient->id}}
                             <tr class="border border-transparent y-10"> {{-- {{!($loop->last) ? "border-b-light-gray" : ""}} --}}
                                 <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">1</td>
-                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> Mary Angel R. Sandoval </td> {{-- {{$patient->first_name}} {{substr($patient->middle_name, 0, 1)}}. {{$patient->last_name}} {{$patient->extension_name}} --}}
-                                <td class="text-left px-6 py-3">Female</td>
-                                <td class="text-left px-6 py-3">Barangay 1</td>
-                                <td class="text-left px-6 py-3">123456789</td>
+                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$patient->ONE_EF_FIRSTNAME}} {{substr($patient->ONE_EF_MIDDLENAME, 0, 1)}}. {{$patient->ONE_EF_LASTNAME}} {{$patient->ONE_EF_EXTENSIONNAME}} </td>
+                                <td class="text-left px-6 py-3">{{$patient->ONE_EF_SEX}}</td>
+                                <td class="text-left px-6 py-3">{{$patient->ONE_EF_BRGY}}</td>
+                                <td class="text-left px-6 py-3">{{$patient->ONE_EF_PIN}}</td>
                                 <td class="text-left px-6 py-3">
                                     <div class="flex gap-[6px]">
-                                        <a href="{{url('/view-patient')}}">
+                                        <a href="{{url("first-encounter/view/$patient->id")}}">
                                             <button class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">View</button>
                                         </a>
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="border border-transparent y-10"> {{-- {{!($loop->last) ? "border-b-light-gray" : ""}} --}}
-                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">2</td>
-                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> Mary Angel R. Sandoval </td> {{-- {{$patient->first_name}} {{substr($patient->middle_name, 0, 1)}}. {{$patient->last_name}} {{$patient->extension_name}} --}}
-                                <td class="text-left px-6 py-3">Female</td>
-                                <td class="text-left px-6 py-3">Barangay 1</td>
-                                <td class="text-left px-6 py-3">123456789</td>
-                                <td class="text-left px-6 py-3">
-                                    <div class="flex gap-[6px]">
-                                        <a href="{{url('/view-patient')}}">
-                                            <button class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">View</button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="border border-transparent y-10"> {{-- {{!($loop->last) ? "border-b-light-gray" : ""}} --}}
-                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">3</td>
-                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> Mary Angel R. Sandoval </td> {{-- {{$patient->first_name}} {{substr($patient->middle_name, 0, 1)}}. {{$patient->last_name}} {{$patient->extension_name}} --}}
-                                <td class="text-left px-6 py-3">Female</td>
-                                <td class="text-left px-6 py-3">Barangay 1</td>
-                                <td class="text-left px-6 py-3">123456789</td>
-                                <td class="text-left px-6 py-3">
-                                    <div class="flex gap-[6px]">
-                                        <a href="{{url('/view-patient')}}">
-                                            <button class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">View</button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        {{-- @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
 
