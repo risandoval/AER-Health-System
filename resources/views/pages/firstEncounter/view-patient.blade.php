@@ -19,7 +19,7 @@
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Middle Name</p>
-                            <input type="text" value="{{$patient->ONE_EF_MIDDLENAME ? $patient->ONE_EF_MIDDLENNAME : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->ONE_EF_MIDDLENAME ? $patient->ONE_EF_MIDDLENAME : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Extension Name</p>
