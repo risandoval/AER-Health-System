@@ -30,6 +30,10 @@
                             <input type="text" value="{{$patient->ONE_EF_SEX}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
+                            <p class="w-full md:w-[30%] font-semibold">Barangay</p>
+                            <input type="text" value="{{$patient->ONE_EF_BRGY}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                        </div>
+                        <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Birthday</p>
                             <input type="text" value="{{$patient->ONE_EF_BDAY}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
@@ -131,9 +135,9 @@
         {{-- 2nd row --}}
         <div class="self-center w-[95%] lg:w-[80%] mx-2 p-2">
             <div class="flex flex-col lg:flex-row gap-4">
-                {{-- PERSONAL/SOCIAL DETAILS --}}
+                {{-- PERSONAL/SOCIAL HISTORY --}}
                 <div class="w-full lg:w-2/5 order-2 lg:order-1 bg-white rounded-xl drop-shadow-lg p-4">
-                    <h3 class="text-xl font-bold text-primary border-b pb-2 mb-6">Personal/Social Details</h3>
+                    <h3 class="text-xl font-bold text-primary border-b pb-2 mb-6">Personal/Social History</h3>
                     <div class="px-1">
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Smoking</p>

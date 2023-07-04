@@ -4,7 +4,7 @@
         <div class="flex flex-row justify-center items-center mt-12 w-[95%] lg:w-3/4">
             <div class="flex flex-row rounded-lg items-center text-right w-full">
                 <div class="flex w-full"> 
-                    <form action="#" method="GET" class="relative flex flex-row w-[60%]">
+                    <form action="{{url('first-encounter/search')}}" method="GET" class="relative flex flex-row w-[60%]">
                         <input name="search" value="" class="rounded-l-full focus:ring-0 border border-gray-400 pl-4 pr-2 w-full" type="text" placeholder="Enter a first or last name to search">
                         <button type="submit" class="absolute -right-[50px] text-white ring-0 ring-gray-400 h-full flex justify-center items-center rounded-r-full bg-primary hover:text-secondary w-[50px] duration-100">
                             <i class='bx bx-search-alt-2 text-xl'></i>
@@ -58,9 +58,9 @@
                 </table>
 
                 {{-- patients - pagination --}}
-                {{-- <div class="sticky left-0 px-6 mt-8">
+                <div class="sticky left-0 px-6 mt-8">
                     {{ $patients->links('pagination::tailwind') }}
-                </div> --}}
+                </div>
             </div>
         </div>
 
