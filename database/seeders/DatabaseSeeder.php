@@ -21,12 +21,14 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        Client::factory(10)->create();
+
         $this->call([
             RoleSeeder::class,
             UserSeeder::class,
-            ClientSeeder::class,
+            PastMedicalSpecSeeder::class,
+            PastMedicalHistorySeeder::class,
         ]);
 
-        Client::factory(10)->create();
     }
 }

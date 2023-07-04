@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client');
-            $table->string('ONE_PM_PMH');
+            $table->string('ONE_PM_PMH')->nullable();
             $table->timestamps();
         });
     }
