@@ -53,10 +53,10 @@ Route::prefix('users')->middleware('auth')->group(function () {
 });
 
 //1st Encounter routes
-Route::get('/first-encounter', [FirstEncounterController::class, 'index']);
-Route::get('/view-patient', [FirstEncounterController::class, 'viewPatient']);
-
-
+Route::prefix('first-encounter')->middleware('auth')->group(function () {
+    Route::get('', [FirstEncounterController::class, 'index'])->name('index');
+    Route::get('/view/{id}', [FirstEncounterController::class, 'show'])->name('show');
+});
 
 // Login Routes
 Route::middleware('guest')->group(function() {

@@ -11,39 +11,39 @@
                     <div class="px-1">
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Last Name</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->ONE_EF_LASTNAME}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">First Name</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->ONE_EF_FIRSTNAME}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Middle Name</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->ONE_EF_MIDDLENAME ? $patient->ONE_EF_MIDDLENAME : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Extension Name</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->ONE_EF_EXTENSIONNAME ? $patient->ONE_EF_EXTENSIONNAME : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Sex</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->ONE_EF_SEX}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Birthday</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->ONE_EF_BDAY}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Health Screening & Assessment Date</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] h-fit self-center patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->ONE_EF_HSAD}}" class="w-full md:w-[60%] h-fit self-center patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Authorization Transaction Code (ATC)</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] h-fit self-center patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->ONE_EF_ATC}}" class="w-full md:w-[60%] h-fit self-center patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around">
                             <p class="w-full md:w-[30%] font-semibold">Philhealth ID</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] h-fit self-center patient-form-input" readonly>
+                            <input type="text" value="{{$patient->ONE_EF_PIN}}" class="w-full md:w-[60%] h-fit self-center patient-form-input" readonly>
                         </div>
                     </div>
                     
