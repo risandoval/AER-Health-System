@@ -8,6 +8,10 @@ use App\Http\Controllers\FirstEncounterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Database\Seeder;
+use App\Models\Client;
+use App\Models\OneEfClient;
+use Database\Factories\ClientFactory;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +23,27 @@ use Illuminate\Support\Facades\Redirect;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// ---------------------db relationship-----------------------
+
+Route::get('/client', function(){
+
+    
+    // one_pm::factory()->count(3)->create();
+    Client::factory()->count(10)->create();
+    // factory(\App\Model\Client::class, 10)-create();
+
+});
+
+Route::get('/test', [UserController::class, 'test']);
+
+
+Route::get('client/view/{id}', [UserController::class, 'showClient'])->name('showClient'); //individual user view
+
+// ---------------------db relationship-----------------------
+
+
+
 
 //route for login view page
 Route::get('/first-login/{id}', [UserController::class, 'firstLogin'])->name('first-login');
