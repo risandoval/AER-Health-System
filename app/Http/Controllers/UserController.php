@@ -11,12 +11,35 @@ use Illuminate\Http\Request;
 use App\Rules\Validation;
 use Illuminate\Validation\Rule;
 use App\Models\User; // Import the User model
+use App\Models\Client; 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller {
+
+
+    //-----------------------------db relationship-------------------------
+    public function test()
+    {   
+        $client = Client::all();
+      
+        // dd($data);
+        return view('pages/userAccounts/testing',  compact('client'));
+    }
+
+
+    public function showClient($id){
+        $Client = Client::find($id);
+
+        // dd($Client->past_medical_history);
+        //  dd($Client->past_medical_spec->ONE_EF_ALLERGY);
+        return view('pages/userAccounts/testing_view_client', compact('Client'));
+    }
+
+      //-----------------------------db relationship-------------------------
+
 
     public function index()
     {   
