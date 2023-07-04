@@ -80,6 +80,7 @@ Route::prefix('users')->middleware('auth')->group(function () {
 //1st Encounter routes
 Route::prefix('first-encounter')->middleware('auth')->group(function () {
     Route::get('', [FirstEncounterController::class, 'index'])->name('index');
+    Route::get('/export', [UsersController::class, 'export'])->name('export');
     Route::get('/view/{id}', [FirstEncounterController::class, 'show'])->name('show');
     Route::get('search', [FirstEncounterController::class, 'searchPatient']);
 });

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('one_ef_client', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->date('ONE_EF_HSAD');
             $table->string('ONE_EF_PIN');
             $table->string('ONE_EF_ATC');

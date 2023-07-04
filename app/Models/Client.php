@@ -27,17 +27,17 @@ class Client extends Model
 
     //php artisan make:model name-of-model -m
 
-    public function past_medical_history(){
+    public function pastMedicalHistory(){
 
         // return $this->hasMany(OnePm::class, 'one_ef_client_id');
-        return $this->hasMany(past_medical_history::class, 'one_ef_client_id');
+        return $this->hasMany(PastMedicalHistory::class, 'one_ef_client_id');
 
     }
 
-    public function past_medical_spec(){
+    public function pastMedicalSpec(){
 
         // return $this->hasMany(OnePm::class, 'one_ef_client_id');
-        return $this->hasOne(past_medical_spec::class, 'one_ef_client_id');
+        return $this->hasOne(PastMedicalSpec::class, 'one_ef_client_id');
 
     }
 

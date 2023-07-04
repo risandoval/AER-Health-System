@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ClientsExport;
+use App\Imports\ClientsImport;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FirstEncounterController extends Controller
 {
@@ -47,5 +50,17 @@ class FirstEncounterController extends Controller
         else {
             return view('pages/firstEncounter/patient-search-result', compact('search'))->with('noResult', 'No results found');
         }
+    }
+
+    public function export() 
+    {
+        return Excel::download(new ClientsExport, 'clients.csv');
+    }
+
+    public function import(Request $request) 
+    {
+        Excel::import(new ClientsImport, $request->file);
+        
+        return redirect('/')->with('success', 'All good!');
     }
 }
