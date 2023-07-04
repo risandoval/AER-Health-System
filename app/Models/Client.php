@@ -23,4 +23,24 @@ class Client extends Model
     ];
 
     use HasFactory;
+
+
+    //php artisan make:model name-of-model -m
+
+    public function past_medical_history(){
+
+        // return $this->hasMany(OnePm::class, 'one_ef_client_id');
+        return $this->hasMany(past_medical_history::class, 'one_ef_client_id');
+
+    }
+
+    public function past_medical_spec(){
+
+        // return $this->hasMany(OnePm::class, 'one_ef_client_id');
+        return $this->hasOne(past_medical_spec::class, 'one_ef_client_id');
+
+    }
+
+
+
 }
