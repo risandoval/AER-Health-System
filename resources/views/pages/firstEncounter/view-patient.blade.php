@@ -53,7 +53,7 @@
                 <div class="w-full lg:w-3/5 order-2 bg-white rounded-xl drop-shadow-lg p-4">
                     <h3 class="text-xl font-bold text-primary border-b pb-2 mb-6">Past Medical History</h3>
                     <div class="px-2">
-                        <div class="flex flex-wrap justify-around gap-4">
+                        <div class="flex flex-wrap gap-2">
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Allergy</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Asthma</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cancer</p>
@@ -171,7 +171,7 @@
                 <div class="w-full lg:w-3/5 order-1 lg:order-2 bg-white rounded-xl drop-shadow-lg p-4">
                     <h3 class="text-xl font-bold text-primary border-b pb-2 mb-6">Family Medical History</h3>
                     <div class="px-2">
-                        <div class="flex flex-wrap justify-around gap-4">
+                        <div class="flex flex-wrap gap-2">
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Allergy</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Asthma</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cancer</p>

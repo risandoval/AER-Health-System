@@ -13,9 +13,16 @@
                 </div>
             </div>
             <div class="flex gap-2">
-                <a href="#" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap duration-100">
-                    <i class='bx bx-import text-xl'></i>
-                    <p class="hidden md:block">Import Patients</p>
+                    <button class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap cursor-pointer duration-100">
+                        
+                    </button>
+                    <!--default html file upload button-->
+                    <input type="file" id="actual-btn" hidden/>
+                    <!--our custom file upload button-->
+                    <label for="actual-btn" >
+                        <i class='bx bx-import text-xl'></i>
+                        <p class="hidden md:block">Import Patients</p>
+                    </label>  
                 <a href="#" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap duration-100">
                     <i class='bx bx-export text-xl'></i>
                     <p class="hidden md:block">Export Patients</p>
