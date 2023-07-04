@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('past_medical_spec', function (Blueprint $table) {
             $table->id();
-            $table->integer('one_ef_client_id');
+            $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client');
             $table->string('ONE_EF_ALLERGY');
             $table->string('ONE_EF_ORGANCANCER');

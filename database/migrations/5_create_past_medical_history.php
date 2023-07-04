@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('one_pms', function (Blueprint $table) {
+        Schema::create('past_medical_history', function (Blueprint $table) {
             $table->id();
-            $table->integer('one_ef_client_id');
+            $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client');
             $table->string('ONE_PM_PMH');
             $table->timestamps();
