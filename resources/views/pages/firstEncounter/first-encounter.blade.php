@@ -1,6 +1,33 @@
 <x-layout>
+
+    <div id="modal-background" class="hidden absolute z-10 left-0 h-full w-full bg-black bg-opacity-30 items-center justify-center">
+        <div id="upload-modal-body" class="hidden bg-white rounded-xl w-[600px] drop-shadow-lg overflow-hidden m-4 py-4">
+            <div class="items-center px-6 mb-2">
+                <i class='close-btn bx bx-x text-gray-400 absolute text-2xl right-2 top-3 hover:cursor-pointer'></i>
+                <h2 class="text-xl"><strong>Import Patients</strong></h2>
+            </div>
+
+            <form action="{{url('users/update/'.auth()->user()->id)}}" enctype="multipart/form-data" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="flex flex-col w-full h-fit border border-y px-6 py-8">
+                    <div class="flex items-center gap-3 mt-3">
+                        <label for="csv_file" class="whitespace-nowrap">CSV File:</label>
+                        <input type="file" name="csv_file" class="form-input col-span-8 sm:col-span-6" value="">
+                        @error ('csv_file') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
+                    </div>
+                </div>
+                <div class="flex gap-2 justify-end w-full px-3 pt-3">
+                    <button type="button" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Close</button>
+                    <button type="submit" class="upload-btn bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-1 hover:ring-primary">Import</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <section class="flex flex-col gap-12 bg-light w-full min-h-screen items-center pt-navbar pb-10">
         {{-- search and buttons --}}
+        <x-messages />
         <div class="flex flex-row justify-center items-center mt-12 w-[95%] lg:w-3/4">
             <div class="flex flex-row rounded-lg items-center text-right w-full">
                 <div class="flex w-full"> 
@@ -13,16 +40,10 @@
                 </div>
             </div>
             <div class="flex gap-2">
-                    <button class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap cursor-pointer duration-100">
-                        
-                    </button>
-                    <!--default html file upload button-->
-                    <input type="file" id="actual-btn" hidden/>
-                    <!--our custom file upload button-->
-                    <label for="actual-btn" >
-                        <i class='bx bx-import text-xl'></i>
-                        <p class="hidden md:block">Import Patients</p>
-                    </label>  
+                <button id="import" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap cursor-pointer duration-100">
+                    <i class='bx bx-import text-xl'></i>
+                    <p class="hidden md:block">Import Patients</p>
+                </button>
                 <a href="#" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap duration-100">
                     <i class='bx bx-export text-xl'></i>
                     <p class="hidden md:block">Export Patients</p>
@@ -73,3 +94,5 @@
 
     </section>
 </x-layout>
+
+@vite('resources/js/upload.js')
