@@ -8,16 +8,18 @@
 </head>
 <body>
     {{-- {{dd($Client->cbl)}} --}}
-                    
+      
+    {{-- one to one --}}
     <p><strong>Client ID: </strong> {{ $Client->id}}</p>
     <p><strong>Client Name: </strong>{{ $Client->ONE_EF_LASTNAME }}</p>
 
-
+    {{-- one to many --}}
     <strong>Past Medical History:</strong>
     @foreach ($Client->past_medical_history as $onePm)
         <p>{{ $onePm->ONE_PM_PMH }}</p>
     @endforeach
 
+    {{-- one to one (has null value) --}}
     <strong>Past Medical Spec:</strong>
     <p>
         &emsp;<strong>Allergy: </strong>
@@ -35,6 +37,12 @@
             <p>&emsp;&emsp;None</p>
         @endif
     </p>
+
+    {{-- one to many --}}
+    <strong>Heart:</strong>
+    @foreach ($Client->heart as $oneHeart)
+        <p>{{ $oneHeart->ONE_PH_HEART }}</p>
+    @endforeach
 
 
     

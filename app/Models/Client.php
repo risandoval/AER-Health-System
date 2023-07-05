@@ -49,6 +49,10 @@ class Client extends Model
         return $this->hasMany(Cbl::class, 'one_ef_client_id');
     }
 
+    public function heart() {
+        return $this->hasMany(Heart::class, 'one_ef_client_id');
+    }
+
     
 
 }

@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             PpefSeeder::class,
             HeentSeeder::class,
             CblSeeder::class,
+            HeartSeeder::class
         ]);
 
     }
