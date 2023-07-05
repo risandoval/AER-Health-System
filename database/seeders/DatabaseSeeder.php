@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\Client;
+use App\Models\Heent;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,7 +29,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PastMedicalSpecSeeder::class,
             PastMedicalHistorySeeder::class,
-            PpefSeeder::class
+
+            PpefSeeder::class,
+            HeentSeeder::class
         ]);
 
     }

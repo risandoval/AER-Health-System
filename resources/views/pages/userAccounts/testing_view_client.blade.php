@@ -7,21 +7,37 @@
     <title>Document</title>
 </head>
 <body>
-
+    {{-- {{dd($Client->heent)}} --}}
                     
-    <p>Client Name: {{ $Client->ONE_EF_LASTNAME }}</p>
+    <p><strong>Client ID: </strong> {{ $Client->id}}</p>
+    <p><strong>Client Name: </strong>{{ $Client->ONE_EF_LASTNAME }}</p>
 
 
+    <strong>Past Medical History:</strong>
     @foreach ($Client->past_medical_history as $onePm)
-   
-    <p>ONE_PM_PMH: {{ $onePm->ONE_PM_PMH }}</p>
-
+        <p>{{ $onePm->ONE_PM_PMH }}</p>
     @endforeach
 
-    @if (!empty($Client->past_medical_spec->ONE_EF_ALLERGY))
-    <p>Allergy: {{ $Client->past_medical_spec->ONE_EF_ALLERGY }}</p>
-    <p>Cancer: {{ $Client->past_medical_spec->ONE_EF_ORGANCANCER }}</p>
-    @endif
+    <strong>Past Medical Spec:</strong>
+    <p>
+        &emsp;<strong>Allergy: </strong>
+        @if (!empty($Client->past_medical_spec->ONE_EF_ALLERGY))
+            <p>&emsp;&emsp;{{ $Client->past_medical_spec->ONE_EF_ALLERGY }}</p>
+        @else
+            <p>&emsp;&emsp;None</p>
+        @endif
+    </p>
+    <p>
+        &emsp;<strong>Cancer: </strong>
+        @if (!empty($Client->past_medical_spec->ONE_EF_ORGANCANCER))
+            <p>&emsp;&emsp;{{ $Client->past_medical_spec->ONE_EF_ORGANCANCER }}</p>
+        @else
+            <p>&emsp;&emsp;None</p>
+        @endif
+    </p>
+
+
+    
 
 
     {{-- <p>ONE_PM_PMH: {{$Client->one_pm->id }}</p> --}}

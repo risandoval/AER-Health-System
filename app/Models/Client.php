@@ -42,6 +42,10 @@ class Client extends Model
         return $this->hasOne(Ppef::class, 'one_ef_client_id');
     }
 
+    public function heent() {
+        return $this->hasMany(Heent::class, 'one_ef_client_id');
+    }
+
     
 
 }
