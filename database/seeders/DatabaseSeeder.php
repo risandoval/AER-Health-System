@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Abdomen;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\Client;
@@ -30,10 +31,12 @@ class DatabaseSeeder extends Seeder
             PastMedicalSpecSeeder::class,
             PastMedicalHistorySeeder::class,
 
+            // LAGI MAY SEEDER (e.g. ModelNameSeeder)
             PpefSeeder::class,
             HeentSeeder::class,
             CblSeeder::class,
-            HeartSeeder::class
+            HeartSeeder::class,
+            AbdomenSeeder::class,
         ]);
 
     }

@@ -53,6 +53,10 @@ class Client extends Model
         return $this->hasMany(Heart::class, 'one_ef_client_id');
     }
 
+    public function abdomen() {
+        return $this->hasMany(Abdomen::class, 'one_ef_client_id');
+    }
+
     
 
 }

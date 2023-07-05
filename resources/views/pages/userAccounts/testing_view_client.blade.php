@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    {{-- {{dd($Client->cbl)}} --}}
+    {{-- {{dd($Client->abdomen)}} --}}
       
     {{-- one to one --}}
     <p><strong>Client ID: </strong> {{ $Client->id}}</p>
@@ -40,8 +40,8 @@
 
     {{-- one to many --}}
     <strong>Heart:</strong>
-    @foreach ($Client->heart as $oneHeart)
-        <p>{{ $oneHeart->ONE_PH_HEART }}</p>
+    @foreach ($Client->abdomen as $answer)
+        <p>{{ $answer->ONE_PA_ABDOMEN }}</p>
     @endforeach
 
 
