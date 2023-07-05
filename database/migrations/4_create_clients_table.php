@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ONE_ef_client');
+        Schema::dropIfExists('one_ef_client');
     }
 };
