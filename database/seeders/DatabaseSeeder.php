@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PastMedicalSpecSeeder::class,
             PastMedicalHistorySeeder::class,
+            PpefSeeder::class
         ]);
 
     }
