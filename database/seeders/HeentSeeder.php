@@ -22,6 +22,11 @@ class HeentSeeder extends Seeder
                 'one_ef_client_id' => '1',
                 'ONE_HE_HEENT' => 'Icteric sclerae'
             ],
+            [
+                'one_ef_client_id' => '1',
+                'ONE_HE_HEENT' => 'Others'
+            ],
+
 
 
             [

@@ -31,7 +31,8 @@ class DatabaseSeeder extends Seeder
             PastMedicalHistorySeeder::class,
 
             PpefSeeder::class,
-            HeentSeeder::class
+            HeentSeeder::class,
+            CblSeeder::class,
         ]);
 
     }

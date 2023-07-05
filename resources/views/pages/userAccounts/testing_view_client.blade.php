@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    {{-- {{dd($Client->heent)}} --}}
+    {{-- {{dd($Client->cbl)}} --}}
                     
     <p><strong>Client ID: </strong> {{ $Client->id}}</p>
     <p><strong>Client Name: </strong>{{ $Client->ONE_EF_LASTNAME }}</p>

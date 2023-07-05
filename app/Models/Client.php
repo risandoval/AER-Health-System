@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Client extends Model
 {
@@ -44,6 +43,10 @@ class Client extends Model
 
     public function heent() {
         return $this->hasMany(Heent::class, 'one_ef_client_id');
+    }
+
+    public function cbl() {
+        return $this->hasMany(Cbl::class, 'one_ef_client_id');
     }
 
     
