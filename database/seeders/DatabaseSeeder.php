@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PastMedicalSpecSeeder::class,
             PastMedicalHistorySeeder::class,
-            PpefSeeder::class
+           
         ]);
 
         fam_plan::factory(10)->create();

@@ -107,9 +107,7 @@ class Client extends Model
         return $this->hasOne(preg_history::class, 'one_ef_client_id');
     }
 
-    public function dig_rec_exam(){
-
-    }
+   
 
 
 
