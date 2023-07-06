@@ -40,8 +40,8 @@
 
     {{-- one to many --}}
     <strong>Heart:</strong>
-    @foreach ($Client->abdomen as $answer)
-        <p>{{ $answer->ONE_PA_ABDOMEN }}</p>
+    @foreach ($Client->genitourinary as $answer)
+        <p>{{ $answer->ONE_PG_GENIT }}</p>
     @endforeach
 
 
