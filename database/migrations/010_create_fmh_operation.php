@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('fmh_operation', function (Blueprint $table) {
             $table->id();
-            $table->BigInteger('one_ef_client_id');
-            $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client');
+            $table->integer('one_ef_client_id')->unsigned();
+            $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
             $table->string('ONE_FO_FHSH');
             $table->string('ONE_FO_DFSO');
             $table->string('ONE_FO_FSO');

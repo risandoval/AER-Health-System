@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('social_histories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('one_ef_client_id');
-            $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client');
+            $table->integer('one_ef_client_id')->unsigned();
+            $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
             $table->string('ONE_EF_SMOKE');
             $table->string('ONE_EF_PACKS');
             $table->string('ONE_EF_ALC');

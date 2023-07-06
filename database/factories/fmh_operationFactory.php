@@ -18,7 +18,7 @@ class fmh_operationFactory extends Factory
     {
         $faker = FakerFactory::create();
         return [
-            'one_ef_client_id' => $faker->unique()->numberBetween(1, 50),
+            'one_ef_client_id' => $faker->unique()->numberBetween(1, 10),
             'ONE_FO_FHSH' => $faker->word,
             'ONE_FO_DFSO' => $faker->word,
             'ONE_FO_FSO' => $faker->word,

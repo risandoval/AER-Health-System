@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('fam_plan', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('one_ef_client_id');
-            $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client');
+            $table->integer('one_ef_client_id')->unsigned();
+            $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
             $table->string('ONE_EF_FPC');
             $table->timestamps();
         });

@@ -18,7 +18,7 @@ class family_medical_specFactory extends Factory
     {
         $faker = FakerFactory::create();
         return [
-            'one_ef_client_id' => $faker->unique()->numberBetween(1, 50),
+            'one_ef_client_id' => $faker->unique()->numberBetween(1, 10),
             'ONE_EF_FHALLERGY' => $faker->word,
             'ONE_EF_FHORGANCANCER' => $faker->word,
             'ONE_EF_FHHEPATYPE' => $faker->word,

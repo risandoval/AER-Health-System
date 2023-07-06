@@ -20,7 +20,7 @@ class birth_methodFactory extends Factory
         $faker = FakerFactory::create();
         return [
             
-            'one_ef_client_id' => $faker->unique()->numberBetween(1, 50),
+            'one_ef_client_id' => $faker->unique()->numberBetween(1, 10),
             'ONE_BC_BCM' => $faker->word,
             'ONE_BC_CYCLE' => $faker->numberBetween(1, 10),
 
