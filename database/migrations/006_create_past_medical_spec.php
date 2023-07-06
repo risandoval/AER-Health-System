@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('ONE_EF_ALLERGY')->nullable();
             $table->string('ONE_EF_ORGANCANCER')->nullable();
             $table->string('ONE_EF_HEPATYPE')->nullable();
-            $table->string('ONE_EF_HIGHESTSYSTOLIC')->nullable();
-            $table->string('ONE_EF_HIGHESTDIASTOLIC')->nullable();
+            $table->integer('ONE_EF_HIGHESTSYSTOLIC')->nullable();
+            $table->integer('ONE_EF_HIGHESTDIASTOLIC')->nullable();
             $table->string('ONE_EF_PULTUB')->nullable();
             $table->string('ONE_EF_EXPULTUB')->nullable();
             $table->string('ONE_EF_PMHOTHERS')->nullable();

@@ -7,6 +7,8 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\Client;
+use App\Models\PastMedicalHistory;
+use App\Models\PastMedicalSpec;
 use App\Models\fam_plan;
 use App\Models\birth_method;
 use App\Models\family_medical_history;
@@ -18,9 +20,7 @@ use App\Models\Immu_Children;
 use App\Models\Immu_eld;
 use App\Models\Immu_preg;
 use App\Models\Mens_history;
-use App\Models\PastMedicalHistory;
-use App\Models\PastMedicalSpec;
-use App\Models\pmh_operation;
+use App\Models\Pmh_operation;
 use App\Models\preg_history;
 use App\Models\Social_history;
 
@@ -42,11 +42,13 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             UserSeeder::class,
-            PastMedicalSpecSeeder::class,
-            PastMedicalHistorySeeder::class,
-           
+            // PastMedicalSpecSeeder::class,
+            // PastMedicalHistorySeeder::class,
         ]);
 
+        PastMedicalHistory::factory(10)->create();
+        PastMedicalSpec::factory(10)->create();
+        Pmh_operation::factory(10)->create();
         fam_plan::factory(10)->create();
         birth_method::factory(10)->create();
         family_medical_history::factory(10)->create();
@@ -58,9 +60,7 @@ class DatabaseSeeder extends Seeder
         Immu_eld::factory(10)->create();
         Immu_preg::factory(10)->create();
         mens_history::factory(10)->create();
-        PastMedicalHistory::factory(10)->create();
-        PastMedicalSpec::factory(10)->create();
-        pmh_operation::factory(10)->create();
+        
         preg_history::factory(10)->create();
         Social_history::factory(10)->create();
     }
