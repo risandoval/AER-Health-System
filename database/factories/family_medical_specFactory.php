@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\family_medical_spec>
  */
-class family_medical_specFactory extends Factory
+class Family_medical_specFactory extends Factory
 {
     /**
      * Define the model's default state.

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\immu_eld>
  */
-class immu_eldFactory extends Factory
+class Immu_eldFactory extends Factory
 {
     /**
      * Define the model's default state.

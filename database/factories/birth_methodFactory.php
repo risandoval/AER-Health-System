@@ -8,7 +8,7 @@ use Faker\Factory as FakerFactory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\birth_method>
  */
-class birth_methodFactory extends Factory
+class Birth_methodFactory extends Factory
 {
     /**
      * Define the model's default state.

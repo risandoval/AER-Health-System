@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\social_history>
  */
-class social_historyFactory extends Factory
+class Social_historyFactory extends Factory
 {
     /**
      * Define the model's default state.
