@@ -73,6 +73,8 @@ class Client extends Model
         return $this->hasMany(Neuro_Exam::class, 'one_ef_client_id');
     }
 
-    
+    public function pfps_oth() {
+        return $this->hasOne(Pfps_Oth::class, 'one_ef_client_id');
+    }
 
 } 

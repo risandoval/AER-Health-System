@@ -7,7 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    {{-- {{dd($Client->dig_rec_exam)}} --}}
+    {{-- {{dd($Client->pfps_oth->ONE_EF_HEENTOTH)}} --}}
+    {{-- {{dd($Client->past_medical_spec->ONE_EF_ALLERGY)}} --}}
       
     {{-- one to one --}}
     <p><strong>Client ID: </strong> {{ $Client->id}}</p>
@@ -43,6 +44,25 @@
     @foreach ($Client->neuro_exam as $answer)
         <p>{{ $answer->ONE_PN_NEURO }}</p>
     @endforeach
+
+    <strong>Others:</strong>
+    <p>
+        &emsp;<strong>HEENT: </strong>
+        @if (!empty($Client->pfps_oth->ONE_EF_HEENTOTH))
+            <p>&emsp;&emsp;{{ $Client->pfps_oth->ONE_EF_HEENTOTH }}</p>
+        @else
+            <p>&emsp;&emsp;None</p>
+        @endif
+    </p>
+    <p>
+        &emsp;<strong>CBL: </strong>
+        @if (!empty($Client->pfps_oth->ONE_PC_CBLOTH))
+            <p>&emsp;&emsp;{{ $Client->pfps_oth->ONE_PC_CBLOTH }}</p>
+        @else
+            <p>&emsp;&emsp;None</p>
+        @endif
+    </p>
+
 
 
     

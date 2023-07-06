@@ -40,7 +40,8 @@ class DatabaseSeeder extends Seeder
             GenitourinarySeeder::class,
             DreSeeder::class,
             SkinSeeder::class,
-            NeuroExamSeeder::class
+            NeuroExamSeeder::class,
+            PfpsOthSeeder::class
         ]);
 
     }
