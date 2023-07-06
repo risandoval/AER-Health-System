@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class past_medical_spec extends Model
+class Past_medical_spec extends Model
 {
 
     protected $table = 'past_medical_spec';   

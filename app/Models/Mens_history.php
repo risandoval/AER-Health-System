@@ -5,24 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Past_medical_history extends Model
-{   
-    protected $table = 'past_medical_history';   
+class Mens_history extends Model
+{
+
+    protected $table = 'mens_histories';   
 
     protected $fillable = [
         'one_ef_client_id',
-        'ONE_PM_PMH',
-        
+        'ONE_EF_MENARCHE',
+        'ONE_EF_MENARCHEAGE',
+        'ONE_EF_ONSETSEX',
+        'ONE_EF_MENOP',
+        'ONE_EF_MENOPAGE',
+        'ONE_EF_MENSDAYS',
+        'ONE_EF_PADS',
     ];
 
-
     use HasFactory;
-
 
     public function client()
     {
         return $this->belongsTo(Client::class, 'one_ef_client_id');
     }
 
-    
 }
