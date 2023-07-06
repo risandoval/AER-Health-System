@@ -63,6 +63,24 @@
         @endif
     </p>
 
+    <strong>NCD HRA:</strong>
+    <p>
+        &emsp;<strong>Fat Food: </strong>
+        @if (!empty( $Client->ncd_hra->ONE_EF_FATFOOD ))
+            <p>&emsp;&emsp;{{ $Client->ncd_hra->ONE_EF_FATFOOD }}</p>
+        @else
+            <p>&emsp;&emsp;None</p>
+        @endif
+    </p>
+    <p>
+        &emsp;<strong>Symptoms: </strong>
+        @if (!empty( $Client->ncd_hra->ONE_EF_SYMPTOMS ))
+            <p>&emsp;&emsp;{{ $Client->ncd_hra->ONE_EF_SYMPTOMS }}</p>
+        @else
+            <p>&emsp;&emsp;None</p>
+        @endif
+    </p>
+
 
 
     

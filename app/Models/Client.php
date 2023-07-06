@@ -77,4 +77,8 @@ class Client extends Model
         return $this->hasOne(Pfps_Oth::class, 'one_ef_client_id');
     }
 
+    public function ncd_hra() {
+        return $this->hasOne(Ncd_Hra::class, 'one_ef_client_id');
+    }
+
 } 

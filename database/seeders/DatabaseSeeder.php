@@ -41,7 +41,8 @@ class DatabaseSeeder extends Seeder
             DreSeeder::class,
             SkinSeeder::class,
             NeuroExamSeeder::class,
-            PfpsOthSeeder::class
+            PfpsOthSeeder::class,
+            NcdHraSeeder::class
         ]);
 
     }
