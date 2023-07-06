@@ -20,7 +20,7 @@ class Fmh_operationFactory extends Factory
         return [
             'one_ef_client_id' => $faker->unique()->numberBetween(1, 10),
             'ONE_FO_FHSH' => $faker->word,
-            'ONE_FO_DFSO' => $faker->word,
+            'ONE_FO_DFSO' => $faker->date(),
             'ONE_FO_FSO' => $faker->word,
         ];
     }

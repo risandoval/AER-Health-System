@@ -23,7 +23,7 @@ class Social_historyFactory extends Factory
             'ONE_EF_SMOKE' => $faker->randomElement(['Yes', 'No']),
             'ONE_EF_PACKS' => $faker->numberBetween(1, 30),
             'ONE_EF_ALC' => $faker->randomElement(['Yes', 'No']),
-            'ONE_EF_BOT' => $faker->randomElement(['Yes', 'No']),
+            'ONE_EF_BOT' => $faker->numberBetween(1, 30),
             'ONE_EF_DRUGS' => $faker->randomElement(['Yes', 'No']),
             'ONE_EF_SEXACTIVE' => $faker->randomElement(['Yes', 'No']),
             'ONE_EF_IMMUNO' => $faker->randomElement(['Yes', 'No']),

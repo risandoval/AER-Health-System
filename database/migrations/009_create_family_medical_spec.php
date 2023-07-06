@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('ONE_EF_FHORGANCANCER');
             $table->string('ONE_EF_FHHEPATYPE');
             $table->string('ONE_EF_FHHIGH');
-            $table->string('ONE_EF_FHHIGHESTSYSTOLIC');
-            $table->string('ONE_EF_FHHIGHESTDIASTOLIC');
+            $table->integer('ONE_EF_FHHIGHESTSYSTOLIC');
+            $table->integer('ONE_EF_FHHIGHESTDIASTOLIC');
             $table->string('ONE_EF_FHPULTUB');
             $table->string('ONE_EF_FHEXPULTUB');
             $table->string('ONE_EF_FHOTHERS');
