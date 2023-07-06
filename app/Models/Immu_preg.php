@@ -5,24 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Past_medical_history extends Model
-{   
-    protected $table = 'past_medical_history';   
+class Immu_preg extends Model
+{
+
+    protected $table = 'immu_preg';   
 
     protected $fillable = [
         'one_ef_client_id',
-        'ONE_PM_PMH',
-        
+        'ONE_IP_IMMPREG',
     ];
 
-
     use HasFactory;
-
 
     public function client()
     {
         return $this->belongsTo(Client::class, 'one_ef_client_id');
     }
-
-    
 }
