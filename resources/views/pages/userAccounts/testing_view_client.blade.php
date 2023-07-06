@@ -40,8 +40,8 @@
 
     {{-- one to many --}}
     <strong>DRE:</strong>
-    @foreach ($Client->skin as $answer)
-        <p>{{ $answer->ONE_PS_SKIN }}</p>
+    @foreach ($Client->neuro_exam as $answer)
+        <p>{{ $answer->ONE_PN_NEURO }}</p>
     @endforeach
 
 

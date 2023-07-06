@@ -39,7 +39,8 @@ class DatabaseSeeder extends Seeder
             AbdomenSeeder::class,
             GenitourinarySeeder::class,
             DreSeeder::class,
-            SkinSeeder::class
+            SkinSeeder::class,
+            NeuroExamSeeder::class
         ]);
 
     }

@@ -69,6 +69,10 @@ class Client extends Model
         return $this->hasMany(Skin::class, 'one_ef_client_id');
     }
 
+    public function neuro_exam() {
+        return $this->hasMany(Neuro_Exam::class, 'one_ef_client_id');
+    }
+
     
 
 } 
