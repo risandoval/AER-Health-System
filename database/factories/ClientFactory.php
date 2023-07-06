@@ -17,7 +17,9 @@ class ClientFactory extends Factory
      */
 
     //  protected $model = OneEfClient::class;
-     
+    
+    //php artisan make:factory fam_plan
+
     public function definition(): array
     {
 
@@ -36,3 +38,5 @@ class ClientFactory extends Factory
         ];
     }
 }
+
+
