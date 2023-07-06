@@ -35,7 +35,7 @@ class Client extends Model
     public function past_medical_spec() {
         return $this->hasOne(PastMedicalSpec::class, 'one_ef_client_id');
     }
-    }
+    
 
     public function pmh_operation(){
 
