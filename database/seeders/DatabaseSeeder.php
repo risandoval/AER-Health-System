@@ -37,15 +37,16 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        // $this->call([
-        //     RoleSeeder::class,
-        //     UserSeeder::class,
-        //     ClientSeeder::class,
-        // ]);
-
-
-        //php artisan db:seed
         Client::factory(10)->create();
+
+        $this->call([
+            RoleSeeder::class,
+            UserSeeder::class,
+            PastMedicalSpecSeeder::class,
+            PastMedicalHistorySeeder::class,
+            PpefSeeder::class
+        ]);
+
         fam_plan::factory(10)->create();
         birth_method::factory(10)->create();
         family_medical_history::factory(10)->create();

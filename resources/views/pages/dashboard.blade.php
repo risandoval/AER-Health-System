@@ -180,8 +180,7 @@
     {{-- HOME PAGE --}}
     <div class="flex flex-wrap justify-around mt-20 p-2 bg-light">
         {{-- success/fail message --}}
-        <x-messages>
-        </x-messages>
+        <x-messages />
 
         {{-- profile card --}}
         <div class="w-full min-h-screen lg:w-[25%] bg-white rounded-lg drop-shadow-lg m-2">

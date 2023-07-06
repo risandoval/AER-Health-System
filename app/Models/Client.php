@@ -27,14 +27,14 @@ class Client extends Model
 
     //php artisan make:model name-of-model -m
 
-    public function past_medical_history(){
-
-        return $this->hasMany(past_medical_history::class, 'one_ef_client_id');
+    public function past_medical_history() {
+        // return $this->hasMany(OnePm::class, 'one_ef_client_id');
+        return $this->hasMany(PastMedicalHistory::class, 'one_ef_client_id');
     }
 
-    public function past_medical_spec(){
-
-        return $this->hasOne(past_medical_spec::class, 'one_ef_client_id');
+    public function past_medical_spec() {
+        return $this->hasOne(PastMedicalSpec::class, 'one_ef_client_id');
+    }
     }
 
     public function pmh_operation(){
@@ -109,8 +109,8 @@ class Client extends Model
 
     public function dig_rec_exam(){
 
-        return $this->hasMany(dig_rec_exam::class, 'one_ef_client_id');
     }
+
 
 
 }

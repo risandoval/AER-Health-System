@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('past_medical_spec', function (Blueprint $table) {
             $table->id();
-            $table->integer('one_ef_client_id');
+            $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client');
-            $table->string('ONE_EF_ALLERGY');
-            $table->string('ONE_EF_ORGANCANCER');
-            $table->string('ONE_EF_HEPATYPE');
-            $table->string('ONE_EF_HIGHESTSYSTOLIC');
-            $table->string('ONE_EF_HIGHESTDIASTOLIC');
-            $table->string('ONE_EF_PULTUB');
-            $table->string('ONE_EF_EXPULTUB');
-            $table->string('ONE_EF_PMHOTHERS');
+            $table->string('ONE_EF_ALLERGY')->nullable();
+            $table->string('ONE_EF_ORGANCANCER')->nullable();
+            $table->string('ONE_EF_HEPATYPE')->nullable();
+            $table->string('ONE_EF_HIGHESTSYSTOLIC')->nullable();
+            $table->string('ONE_EF_HIGHESTDIASTOLIC')->nullable();
+            $table->string('ONE_EF_PULTUB')->nullable();
+            $table->string('ONE_EF_EXPULTUB')->nullable();
+            $table->string('ONE_EF_PMHOTHERS')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('past_medical_specs');
+        Schema::dropIfExists('past_medical_spec');
     }
 };

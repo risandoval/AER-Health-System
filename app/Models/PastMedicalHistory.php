@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Past_medical_history extends Model
+class PastMedicalHistory extends Model
 {   
     protected $table = 'past_medical_history';   
 
     protected $fillable = [
         'one_ef_client_id',
         'ONE_PM_PMH',
-        
     ];
 
 

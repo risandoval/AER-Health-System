@@ -2,66 +2,65 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ClientsExport;
+use App\Imports\ClientsImport;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FirstEncounterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $patients = Client::all();
+    // display table of 1st encounter
+    public function index() {
+        // $patients = Client::all();
+        $patients = Client::paginate(5);
         return view('pages/firstEncounter/first-encounter', compact('patients'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
+    // Store a newly created resource in storage.
+    public function store(Request $request) {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
+    // Display patient individual details
+    public function show($id) {
         $patient = Client::findOrFail($id);
         return view('pages/firstEncounter/view-patient', compact('patient'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+    // Display search result
+    public function search(Request $request) {
+        $search = $request->get('search');
+        $patients = Client::where('name', 'like', '%'.$search.'%')->paginate(5);
+        return view('pages/firstEncounter/first-encounter', compact('patients'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function searchPatient(Request $request) {
+        $search = $request->get('search');
+
+        if ($search) {
+            $allPatient = Client::where('ONE_EF_FIRSTNAME', 'like', '%'.$search.'%')
+            ->orWhere('ONE_EF_LASTNAME', 'like', '%'.$search.'%')
+            ->orWhere('ONE_EF_PIN', 'like', '%'.$search.'%')
+            ->paginate(5);
+
+            // dd($allUser);
+            return view('pages/firstEncounter/patient-search-result', compact('allPatient', 'search'));
+        } 
+        else {
+            return view('pages/firstEncounter/patient-search-result', compact('search'))->with('noResult', 'No results found');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function export() 
     {
-        //
+        return Excel::download(new ClientsExport, 'clients.csv');
+    }
+
+    public function import(Request $request) 
+    {
+        Excel::import(new ClientsImport, $request->file);
+        
+        return redirect('/')->with('success', 'All good!');
     }
 }

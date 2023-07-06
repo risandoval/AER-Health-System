@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Past_medical_spec extends Model
+class PastMedicalSpec extends Model
 {
 
     protected $table = 'past_medical_spec';   
@@ -20,7 +20,6 @@ class Past_medical_spec extends Model
         'ONE_EF_PULTUB',
         'ONE_EF_EXPULTUB',
         'ONE_EF_PMHOTHERS',
-
     ];
 
     use HasFactory;
