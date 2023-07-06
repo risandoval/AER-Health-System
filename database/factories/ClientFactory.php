@@ -26,7 +26,7 @@ class ClientFactory extends Factory
         $faker = FakerFactory::create();
         return [
             'ONE_EF_HSAD' => $faker->date(),
-            'ONE_EF_PIN' => $faker->randomNumber(12),
+            'ONE_EF_PIN' => $faker->numberBetween(100000000000, 999999999999),
             'ONE_EF_ATC' => $faker->randomNumber(),
             'ONE_EF_LASTNAME' => $faker->lastName,
             'ONE_EF_FIRSTNAME' => $faker->firstName,
