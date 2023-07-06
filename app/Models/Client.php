@@ -61,6 +61,10 @@ class Client extends Model
         return $this->hasMany(Genitourinary::class, 'one_ef_client_id');
     }
 
+    public function dre() {
+        return $this->hasMany(Dre::class, 'one_ef_client_id');
+    }
+
     
 
 } 

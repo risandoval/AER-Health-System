@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    {{-- {{dd($Client->abdomen)}} --}}
+    {{-- {{dd($Client->dig_rec_exam)}} --}}
       
     {{-- one to one --}}
     <p><strong>Client ID: </strong> {{ $Client->id}}</p>
@@ -39,9 +39,9 @@
     </p>
 
     {{-- one to many --}}
-    <strong>Heart:</strong>
-    @foreach ($Client->genitourinary as $answer)
-        <p>{{ $answer->ONE_PG_GENIT }}</p>
+    <strong>DRE:</strong>
+    @foreach ($Client->dre as $answer)
+        <p>{{ $answer->ONE_PD_RECTAL }}</p>
     @endforeach
 
 
