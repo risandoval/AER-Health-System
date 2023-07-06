@@ -38,7 +38,8 @@ class DatabaseSeeder extends Seeder
             HeartSeeder::class,
             AbdomenSeeder::class,
             GenitourinarySeeder::class,
-            DreSeeder::class
+            DreSeeder::class,
+            SkinSeeder::class
         ]);
 
     }

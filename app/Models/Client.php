@@ -65,6 +65,10 @@ class Client extends Model
         return $this->hasMany(Dre::class, 'one_ef_client_id');
     }
 
+    public function skin() {
+        return $this->hasMany(Skin::class, 'one_ef_client_id');
+    }
+
     
 
 } 
