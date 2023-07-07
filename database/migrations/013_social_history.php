@@ -16,9 +16,9 @@ return new class extends Migration
             $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
             $table->string('ONE_EF_SMOKE');
-            $table->string('ONE_EF_PACKS');
+            $table->integer('ONE_EF_PACKS');
             $table->string('ONE_EF_ALC');
-            $table->string('ONE_EF_BOT');
+            $table->integer('ONE_EF_BOT');
             $table->string('ONE_EF_DRUGS');
             $table->string('ONE_EF_SEXACTIVE');
             $table->string('ONE_EF_IMMUNO');

@@ -11,19 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('family_medical_spec', function (Blueprint $table) {
+        Schema::create('heent', function (Blueprint $table) {
             $table->id();
             $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
-            $table->string('ONE_EF_FHALLERGY');
-            $table->string('ONE_EF_FHORGANCANCER');
-            $table->string('ONE_EF_FHHEPATYPE');
-            $table->string('ONE_EF_FHHIGH');
-            $table->integer('ONE_EF_FHHIGHESTSYSTOLIC');
-            $table->integer('ONE_EF_FHHIGHESTDIASTOLIC');
-            $table->string('ONE_EF_FHPULTUB');
-            $table->string('ONE_EF_FHEXPULTUB');
-            $table->string('ONE_EF_FHOTHERS');
+            $table->string('ONE_HE_HEENT')->nullable();
+
             $table->timestamps();
         });
     }
@@ -33,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('family_medical_spec');
+        Schema::dropIfExists('heent');
     }
 };

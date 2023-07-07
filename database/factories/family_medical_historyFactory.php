@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\family_medical_history>
  */
-class family_medical_historyFactory extends Factory
+class Family_medical_historyFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,7 +20,7 @@ class family_medical_historyFactory extends Factory
         return [
 
             'one_ef_client_id' => $faker->unique()->numberBetween(1, 10),
-            'ONE_FM_PMH' => $faker->text(),
+            'ONE_FM_PMH' => $faker->word(),
             
         ];
     }
