@@ -41,9 +41,9 @@
 
     {{-- one to many --}}
     <strong>DRE:</strong>
-    @foreach ($Client->neuro_exam as $answer)
+    {{-- @foreach ($Client->neuro_exam as $answer)
         <p>{{ $answer->ONE_PN_NEURO }}</p>
-    @endforeach
+    @endforeach --}}
 
     <strong>Others:</strong>
     <p>
