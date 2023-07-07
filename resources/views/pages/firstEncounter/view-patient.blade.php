@@ -58,12 +58,15 @@
                     <h3 class="text-xl font-bold text-primary border-b pb-2 mb-6">Past Medical History</h3>
                     <div class="px-2">
                         <div class="flex flex-wrap gap-2">
-                            <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Allergy</p>
+                            @foreach ($patient->past_medical_history as $onePm)
+                                <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">{{ $onePm->ONE_PM_PMH }}</p>
+                            @endforeach
+                            {{-- <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Allergy</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Asthma</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cancer</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular Disease</p>
                             <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular</p>
-                            <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular</p>
+                            <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular</p> --}}
                         </div>
 
                         <div class="inline-flex items-center justify-center w-full -mb-3">
@@ -75,7 +78,7 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/2">
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Allergy</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->past_medical_spec->ONE_EF_ALLERGY ? $patient->past_medical_spec->ONE_EF_ALLERGY : 'N/A'}}</textarea>
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Hepatitis</p>
