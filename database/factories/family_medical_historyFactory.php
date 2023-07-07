@@ -20,7 +20,7 @@ class Family_medical_historyFactory extends Factory
         return [
 
             'one_ef_client_id' => $faker->unique()->numberBetween(1, 10),
-            'ONE_FM_PMH' => $faker->text(),
+            'ONE_FM_PMH' => $faker->word(),
             
         ];
     }

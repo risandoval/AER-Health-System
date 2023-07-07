@@ -61,12 +61,6 @@
                             @foreach ($patient->past_medical_history as $onePm)
                                 <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">{{ $onePm->ONE_PM_PMH }}</p>
                             @endforeach
-                            {{-- <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Allergy</p>
-                            <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Asthma</p>
-                            <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cancer</p>
-                            <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular Disease</p>
-                            <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular</p>
-                            <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular</p> --}}
                         </div>
 
                         <div class="inline-flex items-center justify-center w-full -mb-3">
@@ -82,32 +76,32 @@
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Hepatitis</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->past_medical_spec->ONE_EF_HEPATYPE ? $patient->past_medical_spec->ONE_EF_HEPATYPE : 'N/A'}}</textarea>
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Pulmonary Tuberculosis Category</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->past_medical_spec->ONE_EF_PULTUB ? $patient->past_medical_spec->ONE_EF_PULTUB : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             {{-- 2nd column --}}
                             <div class="sm:flex-col lg:px-4 w-full lg:w-1/2">
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Specific organ(s) with Cancer</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->past_medical_spec->ONE_EF_ORGANCANCER ? $patient->past_medical_spec->ONE_EF_ORGANCANCER : 'N/A'}}</textarea>
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Highest Blood Pressure</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->past_medical_spec->ONE_EF_HIGHESTSYSTOLIC && $patient->past_medical_spec->ONE_EF_HIGHESTDIASTOLIC   ? $patient->past_medical_spec->ONE_EF_HIGHESTSYSTOLIC . '/'. $patient->past_medical_spec->ONE_EF_HIGHESTDIASTOLIC : 'N/A'}}</textarea>
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Extrapulmonary Tuberculosis Category</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->past_medical_spec->ONE_EF_EXPULTUB ? $patient->past_medical_spec->ONE_EF_EXPULTUB : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             {{-- others --}}
                             <div class="sm:flex-col lg:px-4 w-full">
                                 <p class="w-full font-semibold">Others</p>
-                                <textarea class="w-[100%] patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->past_medical_spec->ONE_EF_PMHOTHERS ? $patient->past_medical_spec->ONE_EF_PMHOTHERS : 'N/A'}}</textarea>
                             </div>
                             {{-- past surgical history --}}
                             <div class="inline-flex items-center justify-center w-full -mb-3">
@@ -117,13 +111,17 @@
                             <div class="lg:px-4 w-full lg:w-3/5">
                                 <div class="flex flex-col justify-around mb-3">
                                     <p class="w-full font-semibold">Operation</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    @foreach ($patient->pmh_operation as $one_po)
+                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_po->ONE_EF_PSO}}</textarea>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="sm:flex-col lg:px-4 w-full lg:w-2/5">
                                 <div class="flex flex-col justify-around mb-3">
                                     <p class="w-full font-semibold">Date</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    @foreach ($patient->pmh_operation as $one_po)
+                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_po->ONE_EF_DPSO}}</textarea>
+                                    @endforeach
                                 </div>
                             </div>
 
@@ -175,16 +173,13 @@
                 </div>
                     
                 {{-- FAMILY MEDICAL HISTORY --}}
-                <div class="w-full lg:w-3/5 order-1 lg:order-2 bg-white rounded-xl drop-shadow-lg p-4">
+                <div class="w-full lg:w-3/5 order-2 bg-white rounded-xl drop-shadow-lg p-4">
                     <h3 class="text-xl font-bold text-primary border-b pb-2 mb-6">Family Medical History</h3>
                     <div class="px-2">
                         <div class="flex flex-wrap gap-2">
-                            <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Allergy</p>
-                            <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Asthma</p>
-                            <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cancer</p>
-                            <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular Disease</p>
-                            <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular</p>
-                            <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">Cerebrovascular</p>
+                            @foreach ($patient->family_medical_history as $oneFm)
+                                <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">{{ $oneFm->ONE_FM_PMH }}</p>
+                            @endforeach
                         </div>
 
                         <div class="inline-flex items-center justify-center w-full -mb-3">
@@ -195,53 +190,57 @@
                             {{-- 1st column --}}
                             <div class="px-2 lg:px-4 w-full lg:w-1/2">
                                 <div class="flex flex-col justify-around mb-2">
-                                    <p class="w-full font-semibold">Allergy</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <p class="w-full font-semibold">Allergy</p>              
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->family_medical_spec->ONE_EF_FHALLERGY ? $patient->family_medical_spec->ONE_EF_FHALLERGY : 'N/A'}}</textarea>
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Hepatitis</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->family_medical_spec->ONE_EF_FHHEPATYPE ? $patient->family_medical_spec->ONE_EF_FHHEPATYPE : 'N/A'}}</textarea>
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Pulmonary Tuberculosis Category</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->family_medical_spec->ONE_EF_FHPULTUB ? $patient->family_medical_spec->ONE_EF_FHPULTUB : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             {{-- 2nd column --}}
                             <div class="sm:flex-col lg:px-4 w-full lg:w-1/2">
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Specific organ(s) with Cancer</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->family_medical_spec->ONE_EF_FHORGANCANCER ? $patient->family_medical_spec->ONE_EF_FHORGANCANCER : 'N/A'}}</textarea>
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Highest Blood Pressure</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->family_medical_spec->ONE_EF_FHHIGHESTSYSTOLIC && $patient->family_medical_spec->ONE_EF_FHHIGHESTDIASTOLIC   ? $patient->family_medical_spec->ONE_EF_FHHIGHESTSYSTOLIC . '/'. $patient->family_medical_spec->ONE_EF_FHHIGHESTDIASTOLIC : 'N/A'}}</textarea>
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Extrapulmonary Tuberculosis Category</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->family_medical_spec->ONE_EF_FHEXPULTUB ? $patient->family_medical_spec->ONE_EF_FHEXPULTUB : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             {{-- others --}}
                             <div class="sm:flex-col lg:px-4 w-full">
                                 <p class="w-full font-semibold">Others</p>
-                                <textarea class="w-[100%] patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->family_medical_spec->ONE_EF_FHOTHERS ? $patient->family_medical_spec->ONE_EF_FHOTHERS : 'N/A'}}</textarea>
                             </div>
                             {{-- past surgical history --}}
                             <div class="inline-flex items-center justify-center w-full -mb-3">
                                 <hr class="w-4/5 h-px my-8 bg-gray-200 border-0">
-                                <span class="absolute px-3 font-medium text-primary -translate-x-1/2 bg-white left-1/2">Family Surgical History</span>
+                                <span class="absolute px-3 font-medium text-primary -translate-x-1/2 bg-white left-1/2">Past Surgical History</span>
                             </div>
-                            <div class="px-2 lg:px-4 w-full lg:w-3/5">
+                            <div class="lg:px-4 w-full lg:w-3/5">
                                 <div class="flex flex-col justify-around mb-3">
                                     <p class="w-full font-semibold">Operation</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    @foreach ($patient->fmh_operation as $one_fo)
+                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_fo->ONE_EF_FSO}}</textarea>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="sm:flex-col lg:px-4 w-full lg:w-2/5">
                                 <div class="flex flex-col justify-around mb-3">
                                     <p class="w-full font-semibold">Date</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    @foreach ($patient->fmh_operation as $one_fo)
+                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_fo->ONE_EF_DFSO}}</textarea>
+                                    @endforeach
                                 </div>
                             </div>
 
