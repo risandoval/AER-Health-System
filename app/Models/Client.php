@@ -67,7 +67,7 @@ class Client extends Model
 
     public function social_history(){
 
-        return $this->hasMany(Social_history::class, 'one_ef_client_id');
+        return $this->hasOne(Social_history::class, 'one_ef_client_id');
     }
 
     public function immu_preg(){

@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
-            $table->string('ONE_EF_PSH');
-            $table->date('ONE_EF_DPSO');
-            $table->string('ONE_EF_PSO');
+            $table->string('ONE_EF_PSH')->nullable();
+            $table->date('ONE_EF_DPSO')->nullable();
+            $table->string('ONE_EF_PSO')->nullable();
             $table->timestamps();
         });
     }

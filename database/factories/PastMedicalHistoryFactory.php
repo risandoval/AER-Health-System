@@ -19,7 +19,7 @@ class PastMedicalHistoryFactory extends Factory
         $faker = FakerFactory::create();
         return [
             'one_ef_client_id' => $faker->unique()->numberBetween(1, 10),
-            'ONE_PM_PMH' => $faker->sentence,
+            'ONE_PM_PMH' => $faker->word,
         ];
     }
 }

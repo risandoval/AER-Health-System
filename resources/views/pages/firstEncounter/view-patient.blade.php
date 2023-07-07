@@ -111,17 +111,25 @@
                             <div class="lg:px-4 w-full lg:w-3/5">
                                 <div class="flex flex-col justify-around mb-3">
                                     <p class="w-full font-semibold">Operation</p>
-                                    @foreach ($patient->pmh_operation as $one_po)
-                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_po->ONE_EF_PSO}}</textarea>
-                                    @endforeach
+                                    @if (!$patient->pmh_operation->isEmpty())
+                                        @foreach ($patient->pmh_operation as $one_po)
+                                            <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_po->ONE_EF_PSO ? $one_po->ONE_EF_PSO : 'N/A'}}</textarea>
+                                        @endforeach
+                                    @else
+                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>N/A</textarea>
+                                    @endif
                                 </div>
                             </div>
                             <div class="sm:flex-col lg:px-4 w-full lg:w-2/5">
                                 <div class="flex flex-col justify-around mb-3">
                                     <p class="w-full font-semibold">Date</p>
-                                    @foreach ($patient->pmh_operation as $one_po)
-                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_po->ONE_EF_DPSO}}</textarea>
-                                    @endforeach
+                                    @if (!$patient->pmh_operation->isEmpty())
+                                        @foreach ($patient->pmh_operation as $one_po)
+                                            <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_po->ONE_EF_DPSO ? $one_po->ONE_EF_DPSO : 'N/A'}}</textarea>
+                                        @endforeach
+                                    @else
+                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>N/A</textarea>
+                                    @endif
                                 </div>
                             </div>
 
@@ -142,31 +150,31 @@
                     <div class="px-1">
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Smoking</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->social_history->ONE_EF_SMOKE ? $patient->social_history->ONE_EF_SMOKE : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">No. of packs/year</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->social_history->ONE_EF_PACKS ? $patient->social_history->ONE_EF_PACKS : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Alcohol</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->social_history->ONE_EF_ALC ? $patient->social_history->ONE_EF_ALC : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">No. bottles/day</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->social_history->ONE_EF_BOT ? $patient->social_history->ONE_EF_BOT : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Illicit Drugs</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->social_history->ONE_EF_DRUGS ? $patient->social_history->ONE_EF_DRUGS : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Sexual History Screening</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->social_history->ONE_EF_SEXACTIVE ? $patient->social_history->ONE_EF_SEXACTIVE : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Immunocompromised</p>
-                            <input type="text" value="Patient Data" class="w-full md:w-[60%] h-fit self-center patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->social_history->ONE_EF_IMMUNO ? $patient->social_history->ONE_EF_IMMUNO : 'N/A'}}" class="w-full md:w-[60%] h-fit self-center patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                     </div>
                     
@@ -230,17 +238,25 @@
                             <div class="lg:px-4 w-full lg:w-3/5">
                                 <div class="flex flex-col justify-around mb-3">
                                     <p class="w-full font-semibold">Operation</p>
-                                    @foreach ($patient->fmh_operation as $one_fo)
-                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_fo->ONE_EF_FSO}}</textarea>
-                                    @endforeach
+                                    @if (!$patient->fmh_operation->isEmpty())
+                                        @foreach ($patient->fmh_operation as $one_fo)
+                                            <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_fo->ONE_FO_FSO ? $one_fo->ONE_FO_FSO : 'N/A'}}</textarea>
+                                        @endforeach
+                                    @else
+                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>DONT EXIST</textarea>
+                                    @endif
                                 </div>
                             </div>
                             <div class="sm:flex-col lg:px-4 w-full lg:w-2/5">
                                 <div class="flex flex-col justify-around mb-3">
                                     <p class="w-full font-semibold">Date</p>
-                                    @foreach ($patient->fmh_operation as $one_fo)
-                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_fo->ONE_EF_DFSO}}</textarea>
-                                    @endforeach
+                                    @if (!$patient->fmh_operation->isEmpty())
+                                        @foreach ($patient->fmh_operation as $one_fo)
+                                            <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_fo->ONE_FO_DFSO ? $one_fo->ONE_FO_DFSO : 'N/A'}}</textarea>
+                                        @endforeach
+                                    @else
+                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>N/A</textarea>
+                                    @endif
                                 </div>
                             </div>
 
@@ -261,47 +277,71 @@
                     <div class="px-2">
                         <div class="flex flex-wrap justify-center">
                             {{-- 1st column - children --}}
-                            <div class="px-2 lg:px-4 w-full lg:w-1/4 pb-2 border-b lg:border-none">
+                            <div class="px-2 lg:px-4 w-full lg:w-1/4 pb-2 border-b lg:border-r lg:border-b-0">
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">For Children</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    @if (!$patient->immu_children->isEmpty())
+                                        @foreach ($patient->immu_children as $one_ic)
+                                            <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_ic->ONE_IC_IMMCHILD ? $one_ic->ONE_IC_IMMCHILD : 'N/A'}}</textarea>
+                                        @endforeach
+                                    @else
+                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>N/A</textarea>
+                                    @endif
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->immothers->ONE_EF_IMMCHILDOTH ? $patient->immothers->ONE_EF_IMMCHILDOTH : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             {{-- 2nd column - adult --}}
                             <div class="px-2 lg:px-4 w-full lg:w-1/4 mt-3 lg:mt-0 pb-2 border-b lg:border-none">
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">For Adult</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    @if (!$patient->immu_adult->isEmpty())
+                                        @foreach ($patient->immu_adult as $one_ia)
+                                            <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_ia->ONE_IA_IMMADULT ? $one_ia->ONE_IA_IMMADULT : 'N/A'}}</textarea>
+                                        @endforeach
+                                    @else
+                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>N/A</textarea>
+                                    @endif
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->immothers->ONE_EF_IMMADULTOTH ? $patient->immothers->ONE_EF_IMMADULTOTH : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             {{-- 3rd column - pregnant woman --}}
                             <div class="px-2 lg:px-4 w-full lg:w-1/4 mt-3 lg:mt-0 pb-2 border-b lg:border-none">
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">For Pregnant Women</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    @if (!$patient->immu_preg->isEmpty())
+                                        @foreach ($patient->immu_preg as $one_ip)
+                                            <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_ip->ONE_IP_IMMPREG ? $one_ip->ONE_IP_IMMPREG : 'N/A'}}</textarea>
+                                        @endforeach
+                                    @else
+                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>N/A</textarea>
+                                    @endif
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->immothers->ONE_EF_IMMPREGOTH ? $patient->immothers->ONE_EF_IMMPREGOTH : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             {{-- 4th column - elderly and immunocompromised  --}}
                             <div class="px-2 lg:px-4 w-full lg:w-1/4 mt-3 lg:mt-0 pb-2">
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">For Elderly and Immunocompromised</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    @if (!$patient->immu_eld->isEmpty())
+                                        @foreach ($patient->immu_eld as $one_ie)
+                                            <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_ie->ONE_IE_IMMELD ? $one_ie->ONE_IE_IMMELDERLY : 'N/A'}}</textarea>
+                                        @endforeach
+                                    @else
+                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>N/A</textarea>
+                                    @endif
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->immothers->ONE_EF_IMMELDOTH ? $patient->immothers->ONE_EF_IMMELDOTH : 'N/A'}}</textarea>
                                 </div>
                             </div>
 

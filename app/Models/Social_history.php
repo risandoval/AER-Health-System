@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Social_history extends Model
 {
 
-    protected $table = 'social_histories';   
+    protected $table = 'social_history';   
 
     protected $fillable = [
 

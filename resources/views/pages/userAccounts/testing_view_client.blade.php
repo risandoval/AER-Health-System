@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    {{-- {{dd($Client->pfps_oth->ONE_EF_HEENTOTH)}} --}}
+    {{-- {{dd($Client->social_history)}} --}}
     {{-- {{dd($Client->past_medical_spec->ONE_EF_ALLERGY)}} --}}
       
     {{-- one to one --}}
@@ -137,12 +137,14 @@
 
 @endforeach
 
-@foreach ($Client->social_history as $social)
+{{-- @foreach ($Client->social_history as $social)
 
 <p>SMOKE: {{ $social->ONE_EF_SMOKE }}</p>
 <p>PACKS: {{ $social->ONE_EF_PACKS }}</p>
 
-@endforeach
+@endforeach --}}
+
+<p>SMOKE: {{ $Client->social_history->ONE_EF_SMOKE }}</p>
 
 @foreach ($Client->immu_preg as $preg)
 
