@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Abdomen;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\Client;
@@ -23,6 +24,7 @@ use App\Models\Mens_history;
 use App\Models\Pmh_operation;
 use App\Models\Preg_history;
 use App\Models\Social_history;
+use App\Models\Heent;
 
 class DatabaseSeeder extends Seeder
 {
@@ -42,8 +44,19 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             UserSeeder::class,
-            // PastMedicalSpecSeeder::class,
-            // PastMedicalHistorySeeder::class,
+            PastMedicalSpecSeeder::class,
+            PastMedicalHistorySeeder::class,
+            PpefSeeder::class,
+            HeentSeeder::class,
+            CblSeeder::class,
+            HeartSeeder::class,
+            AbdomenSeeder::class,
+            GenitourinarySeeder::class,
+            DreSeeder::class,
+            SkinSeeder::class,
+            NeuroExamSeeder::class,
+            PfpsOthSeeder::class,
+            NcdHraSeeder::class
         ]);
 
         PastMedicalHistory::factory(10)->create();

@@ -105,8 +105,6 @@ class Client extends Model
         return $this->hasOne(Preg_history::class, 'one_ef_client_id');
     }
 
-   
-
-
+    
 
 }
