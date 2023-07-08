@@ -756,7 +756,7 @@
                         <div class="px-2 lg:px-4 w-full">
                             <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                 <p class="w-full font-semibold">Eats processed/fast foods (e.g. instant noodles, hamburgers, fries, fried chicken skin, etc.) and ihaw-ihaw (e.g. isaw, adidas, etc.)</span></p>
-                                <input type="text" value="Patient Data" class="w-full lg:w-fit patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{$patient->ncd_hra->ONE_EF_FATFOOD ? $patient->ncd_hra->ONE_EF_FATFOOD : 'N/A'}}" class="w-full lg:w-fit patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
                         </div>
 
@@ -768,13 +768,13 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/2 mb-4 lg:mb-2">
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">3 servings of vegetables daily</p>
-                                    <input type="text" value="Patient Data" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{$patient->ncd_hra->ONE_EF_VEG ? $patient->ncd_hra->ONE_EF_VEG : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/2 pb-2">
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">2-3 servings of fruits daily</p>
-                                    <input type="text" value="Patient Data" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{$patient->ncd_hra->ONE_EF_FRUIT ? $patient->ncd_hra->ONE_EF_FRUIT : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                         </div>
@@ -786,7 +786,7 @@
                         <div class="px-2 lg:px-4 w-full">
                             <div class="flex flex-col justify-around mb-5 lg:mb-2">
                                 <p class="w-full font-semibold">Does at least 2.5 hours a week of moderate-intensity physical activity</p>
-                                <input type="text" value="Patient Data" class="w-full lg:w-fit patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{$patient->ncd_hra->ONE_EF_PHYACTIV ? $patient->ncd_hra->ONE_EF_PHYACTIV : 'N/A'}}" class="w-full lg:w-fit patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
                         </div>
 
@@ -798,13 +798,13 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/2 mb-5 lg:mb-2">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Was patient diagnosed as having diabetes?</p>
-                                    <input type="text" value="Patient Data" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{$patient->ncd_hra->ONE_EF_DIABETES ? $patient->ncd_hra->ONE_EF_DIABETES : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/2">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Medication <span class="text-sm font-medium italic">(if yes)</span></p>
-                                    <input type="text" value="Patient Data" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{$patient->ncd_hra->ONE_EF_DIABETESYES ? $patient->ncd_hra->ONE_EF_DIABETESYES : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                         </div>
@@ -812,9 +812,7 @@
                             <div class="flex flex-col justify-around">
                                 <p class="w-full font-semibold">Diabetes Symptoms <span class="text-sm font-medium italic">(if no)</span></p>
                                 <div class="flex flex-col md:flex-row justify-between">
-                                    <input type="text" value="Patient Data" class="w-full lg:w-[30%] patient-form-input mb-2 lg:mb-0" readonly>
-                                    <input type="text" value="Patient Data" class="w-full lg:w-[30%] patient-form-input mb-2 lg:mb-0" readonly>
-                                    <input type="text" value="Patient Data" class="w-full lg:w-[30%] patient-form-input mb-2 lg:mb-0" readonly>
+                                    <input type="text" value="{{$patient->ncd_hra->ONE_EF_SYMPTOMS ? $patient->ncd_hra->ONE_EF_SYMPTOMS : 'N/A'}}" class="w-full lg:w-[30%] patient-form-input mb-2 lg:mb-0" readonly>
                                 </div>
                             </div>
                         </div>
@@ -827,25 +825,25 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Raised Blood Glucose</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_RBG ? $patient->ncd_hra->ONE_EF_RBG : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">FBS/RBS</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_FBSRBS ? $patient->ncd_hra->ONE_EF_FBSRBS : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Raised Blood Glucose Level</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_RBGL ? $patient->ncd_hra->ONE_EF_RBGL : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Date Taken</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_RBGDATE ? $patient->ncd_hra->ONE_EF_RBGDATE : 'N/A'}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -858,19 +856,19 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Raised Blood Lipids</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_RBL ? $patient->ncd_hra->ONE_EF_RBL : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Total Cholesterol</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_CHOLESTEROL ? $patient->ncd_hra->ONE_EF_CHOLESTEROL : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around ">
                                     <p class="w-full font-semibold">Date Taken</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_RBLDATE ? $patient->ncd_hra->ONE_EF_RBLDATE : 'N/A'}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -883,19 +881,19 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Presence of Urine Ketones</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_KETONESPRES ? $patient->ncd_hra->ONE_EF_KETONESPRES : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Urine Ketones</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_KETONES ? $patient->ncd_hra->ONE_EF_KETONES : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Date Taken</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_KETONESDATE ? $patient->ncd_hra->ONE_EF_KETONESDATE : 'N/A'}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -908,19 +906,19 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Presence of Urine Protein</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_PROTEINPRES ? $patient->ncd_hra->ONE_EF_PROTEINPRES : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Urine Protein</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_PROTEIN ? $patient->ncd_hra->ONE_EF_PROTEIN : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around ">
                                     <p class="w-full font-semibold">Date Taken</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_PROTEINDATE ? $patient->ncd_hra->ONE_EF_PROTEINDATE : 'N/A'}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -933,44 +931,44 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Angina or Heart Attack</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_AHA ? $patient->ncd_hra->ONE_EF_AHA : 'N/A'}}</textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-3 lg:gap-8 justify-between px-2 lg:px-4 mb-2 lg:mb-3">
                             <div class="flex flex-col w-full lg:w-1/2">
                                 <p class="w-full font-semibold">1. Have you had any pain or discomfort or any pressure or heaviness in your chest? <span class="text-sm font-medium italic">(if no, go to no. 8)</span></p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_CHESTPAIN ? $patient->ncd_hra->ONE_EF_CHESTPAIN : 'N/A'}}</textarea>
                             </div>
                             <div class="flex flex-col w-full lg:w-1/2">
                                 <p class="w-full font-semibold">2. Have you had any pain or discomfort or any pressure or heaviness in your chest? <span class="text-sm font-medium italic">(if no, go to no. 8)</span></p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_CENTERPAIN ? $patient->ncd_hra->ONE_EF_CENTERPAIN : 'N/A'}}</textarea>
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-3 lg:gap-8 justify-between px-2 lg:px-4 mb-2 lg:mb-3">
                             <div class="flex flex-col w-full lg:w-1/2">
                                 <p class="w-full font-semibold">3. Do you get it when you walk uphill or hurry?</p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_UPHILL ? $patient->ncd_hra->ONE_EF_UPHILL : 'N/A'}}</textarea>
                             </div>
                             <div class="flex flex-col w-full lg:w-1/2">
                                 <p class="w-full font-semibold">4. Do you slowdown if you get the pain while walking?</p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_WALKING ? $patient->ncd_hra->ONE_EF_WALKING : 'N/A'}}</textarea>
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-3 lg:gap-8 justify-between px-2 lg:px-4 mb-2 lg:mb-3">
                             <div class="flex flex-col w-full lg:w-1/2">
                                 <p class="w-full font-semibold">5. Does the pain go away if you stand still or if you take a tablet under the tongue?</p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_TONGUE ? $patient->ncd_hra->ONE_EF_TONGUE : 'N/A'}}</textarea>
                             </div>
                             <div class="flex flex-col w-full lg:w-1/2">
                                 <p class="w-full font-semibold">6. Does the pain away in less than 10 minutes?</p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_10M ? $patient->ncd_hra->ONE_EF_10M : 'N/A'}}</textarea>
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-3 lg:gap-8 justify-between px-2 lg:px-4 mb-6 lg:mb-3">
                             <div class="flex flex-col w-full">
                                 <p class="w-full font-semibold">7. Have you ever had a severe chest pain across the front of your chest lasting for half an hour or more?</p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_CHESTFRONT ? $patient->ncd_hra->ONE_EF_CHESTFRONT : 'N/A'}}</textarea>
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-3 lg:gap-8 justify-between px-2 lg:px-4">
@@ -985,13 +983,13 @@
                         <div class="px-2 lg:px-4 w-full lg:w-[26%] mb-2">
                             <div class="flex flex-col justify-around">
                                 <p class="w-full font-semibold">Stroke and TIA (Transient Ischemic Attack)</p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_SATIA ? $patient->ncd_hra->ONE_EF_SATIA : 'N/A'}}</textarea>
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-3 lg:gap-8 justify-between px-2 lg:px-4 mb-2 lg:mb-3">
                             <div class="flex flex-col w-full">
                                 <p class="w-full font-semibold">8. Have you ever had any of the following: difficulty in talking, weakness of arm and/or leg </p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_DIFF ? $patient->ncd_hra->ONE_EF_DIFF : 'N/A'}}</textarea>
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-3 lg:gap-8 justify-between px-2 lg:px-4">
@@ -1007,32 +1005,8 @@
                         <div class="flex flex-col lg:flex-row gap-4 mb-2">
                             <div class="px-2 lg:px-4 w-full lg:w-1/5">
                                 <div class="flex flex-col justify-around">
-                                    <p class="w-full font-semibold">&lt;10%</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
-                                </div>
-                            </div>
-                            <div class="px-2 lg:px-4 w-full lg:w-1/5">
-                                <div class="flex flex-col justify-around">
-                                    <p class="w-full font-semibold">10% to &lt;20%</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
-                                </div>
-                            </div>
-                            <div class="px-2 lg:px-4 w-full lg:w-1/5">
-                                <div class="flex flex-col justify-around">
-                                    <p class="w-full font-semibold">20% to &lt;30%</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
-                                </div>
-                            </div>
-                            <div class="px-2 lg:px-4 w-full lg:w-1/5">
-                                <div class="flex flex-col justify-around">
-                                    <p class="w-full font-semibold">30% to &lt;40%</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
-                                </div>
-                            </div>
-                            <div class="px-2 lg:px-4 w-full lg:w-1/5">
-                                <div class="flex flex-col justify-around">
-                                    <p class="w-full font-semibold">&le;40%</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>Patient Data</textarea>
+                                    <p class="w-full font-semibold">Risk Level</p>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_RISK ? $patient->ncd_hra->ONE_EF_RISK : 'N/A'}}</textarea>
                                 </div>
                             </div>
                         </div>
