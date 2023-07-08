@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('ONE_EF_FHORGANCANCER')->nullable();
             $table->string('ONE_EF_FHHEPATYPE')->nullable();
             $table->string('ONE_EF_FHHIGH')->nullable();
-            $table->string('ONE_EF_FHHIGHESTSYSTOLIC')->nullable();
-            $table->string('ONE_EF_FHHIGHESTDIASTOLIC')->nullable();
+            $table->integer('ONE_EF_FHHIGHESTSYSTOLIC')->nullable();
+            $table->integer('ONE_EF_FHHIGHESTDIASTOLIC')->nullable();
             $table->string('ONE_EF_FHPULTUB')->nullable();
             $table->string('ONE_EF_FHEXPULTUB')->nullable();
             $table->string('ONE_EF_FHOTHERS')->nullable();

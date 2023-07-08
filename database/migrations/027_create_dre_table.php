@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fmh_operation', function (Blueprint $table) {
+        Schema::create('dre', function (Blueprint $table) {
             $table->id();
             $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
-            $table->string('ONE_FO_FHSH')->nullable();
-            $table->date('ONE_FO_DFSO')->nullable();
-            $table->string('ONE_FO_FSO')->nullable();
+            $table->string('ONE_PD_RECTAL')->nullable();
+            
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fmh_operation');
+        Schema::dropIfExists('dre');
     }
 };

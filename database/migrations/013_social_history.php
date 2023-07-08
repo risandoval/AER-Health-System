@@ -16,9 +16,9 @@ return new class extends Migration
             $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
             $table->string('ONE_EF_SMOKE')->nullable();
-            $table->string('ONE_EF_PACKS')->nullable();
+            $table->integer('ONE_EF_PACKS')->nullable();
             $table->string('ONE_EF_ALC')->nullable();
-            $table->string('ONE_EF_BOT')->nullable();
+            $table->integer('ONE_EF_BOT')->nullable();
             $table->string('ONE_EF_DRUGS')->nullable();
             $table->string('ONE_EF_SEXACTIVE')->nullable();
             $table->string('ONE_EF_IMMUNO')->nullable();

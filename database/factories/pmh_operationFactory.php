@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\pmh_operation>
  */
-class pmh_operationFactory extends Factory
+class Pmh_operationFactory extends Factory
 {
     /**
      * Define the model's default state.

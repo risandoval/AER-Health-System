@@ -68,7 +68,7 @@
                     <tbody>
                         @foreach ($patients as $patient)
                             <tr class="border border-transparent y-10"> {{-- {{!($loop->last) ? "border-b-light-gray" : ""}} --}}
-                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">1</td>
+                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">{{$patient->id}}</td>
                                 <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$patient->ONE_EF_FIRSTNAME}} {{substr($patient->ONE_EF_MIDDLENAME, 0, 1)}}. {{$patient->ONE_EF_LASTNAME}} {{$patient->ONE_EF_EXTENSIONNAME}} </td>
                                 <td class="text-left px-6 py-3">{{$patient->ONE_EF_SEX}}</td>
                                 <td class="text-left px-6 py-3">{{$patient->ONE_EF_BRGY}}</td>
