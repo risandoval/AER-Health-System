@@ -15,13 +15,13 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
-            $table->string('ONE_EF_MENARCHE');
-            $table->integer('ONE_EF_MENARCHEAGE');
-            $table->integer('ONE_EF_ONSETSEX');
-            $table->string('ONE_EF_MENOP');
-            $table->integer('ONE_EF_MENOPAGE');
-            $table->integer('ONE_EF_MENSDAYS');
-            $table->integer('ONE_EF_PADS');
+            $table->string('ONE_EF_MENARCHE')->nullable();
+            $table->integer('ONE_EF_MENARCHEAGE')->nullable();
+            $table->integer('ONE_EF_ONSETSEX')->nullable();
+            $table->string('ONE_EF_MENOP')->nullable();
+            $table->integer('ONE_EF_MENOPAGE')->nullable();
+            $table->integer('ONE_EF_MENSDAYS')->nullable();
+            $table->integer('ONE_EF_PADS')->nullable();
             $table->timestamps();
         });
     }

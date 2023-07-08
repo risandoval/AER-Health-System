@@ -15,10 +15,10 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
-            $table->string('ONE_EF_IMMCHILDOTH');
-            $table->string('ONE_EF_IMMADULTOTH');
-            $table->string('ONE_EF_IMMPREGOTH');
-            $table->string('ONE_EF_IMMELDOTH');
+            $table->string('ONE_EF_IMMCHILDOTH')->nullable();
+            $table->string('ONE_EF_IMMADULTOTH')->nullable();
+            $table->string('ONE_EF_IMMPREGOTH')->nullable();
+            $table->string('ONE_EF_IMMELDOTH')->nullable();
             $table->timestamps();
         });
     }
