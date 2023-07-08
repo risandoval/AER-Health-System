@@ -41,70 +41,99 @@ class Client extends Model
     }
 
     public function family_medical_history(){
-
         return $this->hasMany(Family_medical_history::class, 'one_ef_client_id');
     }
 
     public function family_medical_spec(){
-
         return $this->hasOne(Family_medical_spec::class, 'one_ef_client_id');
     }
 
     public function fmh_operation(){
-
         return $this->hasMany(Fmh_operation::class, 'one_ef_client_id');
     }
 
     public function Immu_Children(){
-
         return $this->hasMany(Immu_Children::class, 'one_ef_client_id');
     }
 
     public function immu_adult(){
-
         return $this->hasMany(Immu_adult::class, 'one_ef_client_id');
     }
 
     public function social_history(){
-
         return $this->hasOne(Social_history::class, 'one_ef_client_id');
     }
 
     public function immu_preg(){
-
         return $this->hasMany(Immu_preg::class, 'one_ef_client_id');
     }
 
     public function immu_eld(){
-
         return $this->hasMany(Immu_eld::class, 'one_ef_client_id');
     }
 
     public function immothers(){
-
         return $this->hasOne(Immothers::class, 'one_ef_client_id');
     }
 
     public function fam_plan(){
-
         return $this->hasOne(Fam_plan::class, 'one_ef_client_id');
     }
 
     public function mens_history(){
-
         return $this->hasOne(Mens_history::class, 'one_ef_client_id');
     }
 
     public function birth_method(){
-
         return $this->hasOne(Birth_method::class, 'one_ef_client_id');
     }
 
     public function preg_history(){
-
         return $this->hasOne(Preg_history::class, 'one_ef_client_id');
     }
 
-    
+    public function ppef() {
+        return $this->hasOne(Ppef::class, 'one_ef_client_id');
+    }
+
+    public function heent() {
+        return $this->hasMany(Heent::class, 'one_ef_client_id');
+    }
+
+    public function cbl() {
+        return $this->hasMany(Cbl::class, 'one_ef_client_id');
+    }
+
+    public function heart() {
+        return $this->hasMany(Heart::class, 'one_ef_client_id');
+    }
+
+    public function abdomen() {
+        return $this->hasMany(Abdomen::class, 'one_ef_client_id');
+    }
+
+    public function genitourinary() {
+        return $this->hasMany(Genitourinary::class, 'one_ef_client_id');
+    }
+
+    public function dre() {
+        return $this->hasMany(Dre::class, 'one_ef_client_id');
+    }
+
+    public function skin() {
+        return $this->hasMany(Skin::class, 'one_ef_client_id');
+    }
+
+    public function neuro_exam() {
+        return $this->hasMany(Neuro_exam::class, 'one_ef_client_id');
+    }
+
+    public function pfps_oth() {
+        return $this->hasOne(Pfps_oth::class, 'one_ef_client_id');
+    }
+
+    public function ncd_hra() {
+        return $this->hasOne(Ncd_hra::class, 'one_ef_client_id');
+    }
 
 }

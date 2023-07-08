@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mens_histories', function (Blueprint $table) {
+        Schema::create('mens_history', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mens_histories');
+        Schema::dropIfExists('mens_history');
     }
 };
