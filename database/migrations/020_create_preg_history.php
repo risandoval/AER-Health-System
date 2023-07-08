@@ -16,14 +16,14 @@ return new class extends Migration
             // $table->unsignedBigInteger('one_ef_client_id');
             $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
-            $table->integer('ONE_EF_LIVCHILD');
-            $table->integer('ONE_EF_ABORT');
-            $table->integer('ONE_EF_PREMATURE');
-            $table->integer('ONE_EF_FULLTERM');
-            $table->string('ONE_EF_DELIVERYTYPE');
-            $table->integer('ONE_EF_PARI');
-            $table->integer('ONE_EF_GRAV');
-            $table->string('ONE_EF_ECLAMPSIA');
+            $table->integer('ONE_EF_LIVCHILD')->nullable();
+            $table->integer('ONE_EF_ABORT')->nullable();
+            $table->integer('ONE_EF_PREMATURE')->nullable();
+            $table->integer('ONE_EF_FULLTERM')->nullable();
+            $table->string('ONE_EF_DELIVERYTYPE')->nullable();
+            $table->integer('ONE_EF_PARI')->nullable();
+            $table->integer('ONE_EF_GRAV')->nullable();
+            $table->string('ONE_EF_ECLAMPSIA')->nullable();
             $table->timestamps();
         });
     }

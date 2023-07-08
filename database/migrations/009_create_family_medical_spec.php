@@ -15,15 +15,15 @@ return new class extends Migration
             $table->id();
             $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
-            $table->string('ONE_EF_FHALLERGY');
-            $table->string('ONE_EF_FHORGANCANCER');
-            $table->string('ONE_EF_FHHEPATYPE');
-            $table->string('ONE_EF_FHHIGH');
-            $table->string('ONE_EF_FHHIGHESTSYSTOLIC');
-            $table->string('ONE_EF_FHHIGHESTDIASTOLIC');
-            $table->string('ONE_EF_FHPULTUB');
-            $table->string('ONE_EF_FHEXPULTUB');
-            $table->string('ONE_EF_FHOTHERS');
+            $table->string('ONE_EF_FHALLERGY')->nullable();
+            $table->string('ONE_EF_FHORGANCANCER')->nullable();
+            $table->string('ONE_EF_FHHEPATYPE')->nullable();
+            $table->string('ONE_EF_FHHIGH')->nullable();
+            $table->string('ONE_EF_FHHIGHESTSYSTOLIC')->nullable();
+            $table->string('ONE_EF_FHHIGHESTDIASTOLIC')->nullable();
+            $table->string('ONE_EF_FHPULTUB')->nullable();
+            $table->string('ONE_EF_FHEXPULTUB')->nullable();
+            $table->string('ONE_EF_FHOTHERS')->nullable();
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
-            $table->string('ONE_IE_IMMELD');
+            $table->string('ONE_IE_IMMELD')->nullable();
             $table->timestamps();
         });
     }

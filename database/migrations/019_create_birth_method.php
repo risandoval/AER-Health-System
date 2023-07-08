@@ -15,8 +15,8 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('one_ef_client_id')->unsigned();
             $table->foreign('one_ef_client_id')->references('id')->on('one_ef_client')->onDelete('cascade');
-            $table->string('ONE_BC_BCM');
-            $table->integer('ONE_BC_CYCLE');
+            $table->string('ONE_BC_BCM')->nullable();
+            $table->integer('ONE_BC_CYCLE')->nullable();
             $table->timestamps();
         });
     }
