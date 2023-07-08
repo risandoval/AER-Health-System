@@ -7,9 +7,8 @@
                 <h2 class="text-xl"><strong>Import Patients</strong></h2>
             </div>
 
-            <form action="{{url('users/update/'.auth()->user()->id)}}" enctype="multipart/form-data" method="POST">
+            <form action="{{url("first-encounter/import")}}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
                 <div class="flex flex-col w-full h-fit border border-y px-6 py-8">
                     <div class="flex items-center gap-3 mt-3">
                         <label for="csv_file" class="whitespace-nowrap">CSV File:</label>
@@ -40,13 +39,17 @@
                 </div>
             </div>
             <div class="flex gap-2">
-                <button id="import" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap cursor-pointer duration-100">
-                    <i class='bx bx-import text-xl'></i>
-                    <p class="hidden md:block">Import Patients</p>
-                </button>
-                <a href="#" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap duration-100">
+                    <button id="import" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap cursor-pointer duration-100">
+                        <i class='bx bx-import text-xl'></i>
+                        <p class="hidden md:block">Import Patients</p>
+                    </button>
+                <a href="{{url("first-encounter/exportClients")}}" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap duration-100">
                     <i class='bx bx-export text-xl'></i>
                     <p class="hidden md:block">Export Patients</p>
+                </a>
+                <a href="{{url("first-encounter/exportCSVTemplate")}}" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap duration-100">
+                    <i class='bx bx-export text-xl'></i>
+                    <p class="hidden md:block">Export CSV Template</p>
                 </a>
             </div>
         </div>

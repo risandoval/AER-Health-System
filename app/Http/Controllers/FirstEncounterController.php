@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ClientsExport;
+use App\Exports\CSVTemplateExport;
 use App\Imports\ClientsImport;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Excel as ExcelExcel;
 use Maatwebsite\Excel\Facades\Excel;
+
 
 class FirstEncounterController extends Controller
 {
@@ -52,15 +55,23 @@ class FirstEncounterController extends Controller
         }
     }
 
-    public function export() 
+    public function exportClient() 
     {
         return Excel::download(new ClientsExport, 'clients.csv');
     }
 
+    public function exportCSVTemplate() 
+    {
+        return Excel::download(new CSVTemplateExport(), 'clientsTemplate.csv');
+    }
+    
     public function import(Request $request) 
     {
-        Excel::import(new ClientsImport, $request->file);
-        
-        return redirect('/')->with('success', 'All good!');
+        if ($request->hasFile('csv_file')) {
+            Excel::import(new ClientsImport, $request->file('csv_file'));
+        }
+
+        return redirect()->back()->with('success', 'Import completed!');
     }
 }
+ 
