@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('one_ef_client', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('ONE_EF_HSAD');
-            $table->bigInteger('ONE_EF_PIN');
-            $table->integer('ONE_EF_ATC');
-            $table->string('ONE_EF_LASTNAME');
-            $table->string('ONE_EF_FIRSTNAME');
+            $table->date('ONE_EF_HSAD')->nullable();
+            $table->bigInteger('ONE_EF_PIN')->nullable();
+            $table->integer('ONE_EF_ATC')->nullable();
+            $table->string('ONE_EF_LASTNAME')->nullable();
+            $table->string('ONE_EF_FIRSTNAME')->nullable();
             $table->string('ONE_EF_MIDDLENAME')->nullable();
             $table->string('ONE_EF_EXTENSIONNAME')->nullable();
-            $table->date('ONE_EF_BDAY');
-            $table->string('ONE_EF_SEX');
-            $table->string('ONE_EF_BRGY');
+            $table->date('ONE_EF_BDAY')->nullable();
+            $table->string('ONE_EF_SEX')->nullable();
+            $table->string('ONE_EF_BRGY')->nullable();
             $table->timestamps();
         });
     }
