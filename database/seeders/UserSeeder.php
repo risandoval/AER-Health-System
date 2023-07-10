@@ -25,13 +25,28 @@ class UserSeeder extends Seeder
                 'role' => 'Admin',
                 'birthday' => '1999-05-05',
                 'contact' => '09123456789',
-                'email' => 'admin@gmail.com',
+                'email' => 'adminemelia@gmail.com',
+                'profile_picture' => 'default-profile.jpg',
+                'status' => 'Active',
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password                
+            ],
+
+            [
+                'username' => 'O0002',
+                'first_name' => 'Stacey',
+                'middle_name' => '',
+                'last_name' => 'Owens',
+                'role_id' => '1',
+                'role' => 'Admin',
+                'birthday' => '1996-01-23',
+                'contact' => '09123456789',
+                'email' => 'adminstacey@gmail.com',
                 'profile_picture' => 'default-profile.jpg',
                 'status' => 'Active',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password                
             ],
             [
-                'username' => 'C0002',
+                'username' => 'C0003',
                 'first_name' => 'Mayra',
                 'middle_name' => 'Cherry',
                 'last_name' => 'Cruz',
@@ -45,7 +60,7 @@ class UserSeeder extends Seeder
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', //password                
             ],
             [
-                'username' => 'D0003',
+                'username' => 'D0004',
                 'first_name' => 'John',
                 'middle_name' => 'Will',
                 'last_name' => 'Doe',

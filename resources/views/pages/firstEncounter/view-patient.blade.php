@@ -93,7 +93,8 @@
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Highest Blood Pressure</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{optional($patient->past_medical_spec)->ONE_EF_HIGHESTDIASTOLIC ? $patient->past_medical_spec->ONE_EF_HIGHESTDIASTOLIC : 'N/A'}}</textarea>
+                                                                                                            {{-- {{ optional($patient->ppef)->ONE_EF_BPSYSTOLIC && optional($patient->ppef)->ONE_EF_BPDIASTOLIC ? $patient->ppef->ONE_EF_BPSYSTOLIC. '/' .$patient->ppef->ONE_EF_BPDIASTOLIC : 'N/A'}} --}}
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{ optional($patient->past_medical_spec)->ONE_EF_HIGHESTSYSTOLIC && optional($patient->past_medical_spec)->ONE_EF_HIGHESTDIASTOLIC ? optional($patient->past_medical_spec)->ONE_EF_HIGHESTSYSTOLIC. '/' .$patient->past_medical_spec->ONE_EF_HIGHESTDIASTOLIC : 'N/A'}}</textarea>
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Extrapulmonary Tuberculosis Category</p>
@@ -152,31 +153,31 @@
                     <div class="px-1">
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Smoking</p>
-                            <input type="text" value="{{$patient->social_history->ONE_EF_SMOKE ? $patient->social_history->ONE_EF_SMOKE : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{ optional($patient->social_history)->ONE_EF_SMOKE ? $patient->social_history->ONE_EF_SMOKE : 'N/A' }}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">No. of packs/year</p>
-                            <input type="text" value="{{$patient->social_history->ONE_EF_PACKS ? $patient->social_history->ONE_EF_PACKS : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{ optional($patient->social_history)->ONE_EF_PACKS ? $patient->social_history->ONE_EF_PACKS : 'N/A' }}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Alcohol</p>
-                            <input type="text" value="{{$patient->social_history->ONE_EF_ALC ? $patient->social_history->ONE_EF_ALC : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{ optional($patient->social_history)->ONE_EF_ALC ? $patient->social_history->ONE_EF_ALC : 'N/A' }}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">No. bottles/day</p>
-                            <input type="text" value="{{$patient->social_history->ONE_EF_BOT ? $patient->social_history->ONE_EF_BOT : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{ optional($patient->social_history)->ONE_EF_BOT ? $patient->social_history->ONE_EF_BOT : 'N/A' }}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Illicit Drugs</p>
-                            <input type="text" value="{{$patient->social_history->ONE_EF_DRUGS ? $patient->social_history->ONE_EF_DRUGS : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{ optional($patient->social_history)->ONE_EF_DRUGS ? $patient->social_history->ONE_EF_DRUGS : 'N/A' }}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Sexual History Screening</p>
-                            <input type="text" value="{{$patient->social_history->ONE_EF_SEXACTIVE ? $patient->social_history->ONE_EF_SEXACTIVE : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{ optional($patient->social_history)->ONE_EF_SEXACTIVE ? $patient->social_history->ONE_EF_SEXACTIVE : 'N/A' }}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Immunocompromised</p>
-                            <input type="text" value="{{$patient->social_history->ONE_EF_IMMUNO ? $patient->social_history->ONE_EF_IMMUNO : 'N/A'}}" class="w-full md:w-[60%] h-fit self-center patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{ optional($patient->social_history)->ONE_EF_IMMUNO ? $patient->social_history->ONE_EF_IMMUNO : 'N/A' }}" class="w-full md:w-[60%] h-fit self-center patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                     </div>
                     
@@ -188,7 +189,9 @@
                     <div class="px-2">
                         <div class="flex flex-wrap gap-2">
                             @foreach ($patient->family_medical_history as $oneFm)
-                                <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">{{ $oneFm->ONE_FM_PMH }}</p>
+                                @if($oneFm->ONE_FM_PMH != null)
+                                    <p class="bg-disabled-bg rounded-full w-fit px-3 py-1">@foreach (explode("_", $oneFm->ONE_FM_PMH) as $word) {{$word}} @endforeach </p>
+                                @endif
                             @endforeach
                         </div>
 
@@ -245,7 +248,7 @@
                                             <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>{{$one_fo->ONE_FO_FSO ? $one_fo->ONE_FO_FSO : 'N/A'}}</textarea>
                                         @endforeach
                                     @else
-                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>DONT EXIST</textarea>
+                                        <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="2" readonly>N/A</textarea>
                                     @endif
                                 </div>
                             </div>
@@ -292,7 +295,7 @@
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->immothers->ONE_EF_IMMCHILDOTH ? $patient->immothers->ONE_EF_IMMCHILDOTH : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{ optional($patient->immothers)->ONE_EF_IMMCHILDOTH ? $patient->immothers->ONE_EF_IMMCHILDOTH : 'N/A' }}</textarea>
                                 </div>
                             </div>
                             {{-- 2nd column - adult --}}
@@ -309,7 +312,7 @@
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->immothers->ONE_EF_IMMADULTOTH ? $patient->immothers->ONE_EF_IMMADULTOTH : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{ optional($patient->immothers)->ONE_EF_IMMADULTOTH ? $patient->immothers->ONE_EF_IMMADULTOTH : 'N/A' }}</textarea>
                                 </div>
                             </div>
                             {{-- 3rd column - pregnant woman --}}
@@ -326,7 +329,7 @@
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->immothers->ONE_EF_IMMPREGOTH ? $patient->immothers->ONE_EF_IMMPREGOTH : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{ optional($patient->immothers)->ONE_EF_IMMPREGOTH ? $patient->immothers->ONE_EF_IMMPREGOTH : 'N/A' }}</textarea>
                                 </div>
                             </div>
                             {{-- 4th column - elderly and immunocompromised  --}}
@@ -343,7 +346,7 @@
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{$patient->immothers->ONE_EF_IMMELDOTH ? $patient->immothers->ONE_EF_IMMELDOTH : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="2" readonly>{{ optional($patient->immothers)->ONE_EF_IMMELDOTH ? $patient->immothers->ONE_EF_IMMELDOTH : 'N/A' }}</textarea>
                                 </div>
                             </div>
 
@@ -367,7 +370,7 @@
                             <p class="w-full text-primary font-semibold">Family Planning</p>
                             <div class="flex flex-col md:flex-row justify-around mb-3">
                                 <p class="w-full md:w-[60%] font-semibold">With access to family planning counseling?</p>
-                                <input type="text" value="{{$patient->fam_plan->ONE_EF_FPC ? $patient->fam_plan->ONE_EF_FPC : 'N/A'}}" class="w-full md:w-[30%] patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{ optional($patient->fam_plan)->ONE_EF_FPC ? $patient->fam_plan->ONE_EF_FPC : 'N/A' }}" class="w-full md:w-[30%] patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
                         </div>
                         {{-- menstrual history --}}
@@ -375,23 +378,23 @@
                             <p class="w-full text-primary font-semibold">Menstrual History</p>
                             <div class="flex flex-col md:flex-row justify-around mb-5 lg:mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">Menarche</p>
-                                <input type="text" value="{{$patient->mens_history->ONE_EF_MENARCHE ? $patient->mens_history->ONE_EF_MENARCHE : 'N/A'}}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{ optional($patient->mens_history)->ONE_EF_MENARCHE ? $patient->mens_history->ONE_EF_MENARCHE : 'N/A' }}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
                             <div class="flex flex-col md:flex-row justify-around mb-5 lg:mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">Menarche Age</p>
-                                <input type="text" value="{{$patient->mens_history->ONE_EF_MENARCHEAGE ? $patient->mens_history->ONE_EF_MENARCHEAGE : 'N/A'}}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{ optional($patient->mens_history)->ONE_EF_MENARCHEAGE ? $patient->mens_history->ONE_EF_MENARCHEAGE : 'N/A' }}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
                             <div class="flex flex-col md:flex-row justify-around mb-5 lg:mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">Onset of sexual intercourse</p>
-                                <input type="text" value="{{$patient->mens_history->ONE_EF_ONSETSEX ? $patient->mens_history->ONE_EF_ONSETSEX : 'N/A'}}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{ optional($patient->mens_history)->ONE_EF_ONSETSEX ? $patient->mens_history->ONE_EF_ONSETSEX : 'N/A' }}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
                             <div class="flex flex-col md:flex-row justify-around mb-5 lg:mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">Menopause</p>
-                                <input type="text" value="{{$patient->mens_history->ONE_EF_MENOP ? $patient->mens_history->ONE_EF_MENOP : 'N/A'}}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{ optional($patient->mens_history)->ONE_EF_MENOP ? $patient->mens_history->ONE_EF_MENOP : 'N/A' }}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
                             <div class="flex flex-col md:flex-row justify-around mb-5 lg:mb-0">
                                 <p class="w-full md:w-[40%] font-semibold">Menopause Age <span class="text-sm font-medium italic">(if yes)</span></p>
-                                <input type="text" value="{{$patient->mens_history->ONE_EF_MENOPAGE ? $patient->mens_history->ONE_EF_MENOPAGE : 'N/A'}}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{ optional($patient->mens_history)->ONE_EF_MENOPAGE ? $patient->mens_history->ONE_EF_MENOPAGE : 'N/A' }}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
 
                             <div class="inline-flex items-center justify-center w-full">
@@ -400,11 +403,11 @@
                             </div>
                             <div class="flex flex-col md:flex-row justify-around mb-5 lg:mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">Period Duration</p>
-                                <input type="text" value="{{$patient->mens_history->ONE_EF_MENSDAYS ? $patient->mens_history->ONE_EF_MENSDAYS : 'N/A'}}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{ optional($patient->mens_history)->ONE_EF_MENSDAYS ? $patient->mens_history->ONE_EF_MENSDAYS : 'N/A' }}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
                             <div class="flex flex-col md:flex-row justify-around mb-5 lg:mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">No. pads/day during menstruation</p>
-                                <input type="text" value="{{$patient->mens_history->ONE_EF_PADS ? $patient->mens_history->ONE_EF_PADS : 'N/A'}}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{ optional($patient->mens_history)->ONE_EF_PADS ? $patient->mens_history->ONE_EF_PADS : 'N/A' }}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
 
                             <div class="inline-flex items-center justify-center w-full">
@@ -413,11 +416,11 @@
                             </div>
                             <div class="flex flex-col md:flex-row justify-around mb-5 lg:mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">Birth Control Method</p>
-                                <input type="text" value="{{$patient->birth_method->ONE_BC_BCM ? $patient->birth_method->ONE_BC_BCM : 'N/A'}}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{ optional($patient->birth_method)->ONE_BC_BCM ? $patient->birth_method->ONE_BC_BCM : 'N/A' }}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
                             <div class="flex flex-col md:flex-row justify-around mb-5 lg:mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">Interval Cycle</p>
-                                <input type="text" value="{{$patient->birth_method->ONE_BC_CYCLE ? $patient->birth_method->ONE_BC_CYCLE : 'N/A'}}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{ optional($patient->birth_method)->ONE_BC_CYCLE ? $patient->birth_method->ONE_BC_CYCLE : 'N/A'}}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
 
                         </div>
@@ -426,35 +429,35 @@
                             <p class="w-full text-primary font-semibold">Pregnancy History</p>
                             <div class="flex flex-col md:flex-row justify-around mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">Gravidity (no. of pregnancy)</p>
-                                <input type="text" value="{{$patient->preg_history->ONE_EF_GRAV ? $patient->preg_history->ONE_EF_GRAV : 'N/A'}}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{ optional($patient->preg_history)->ONE_EF_GRAV ? $patient->preg_history->ONE_EF_GRAV : 'N/A' }}" class="w-full md:w-[50%] patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
                             <div class="flex flex-col md:flex-row justify-around mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">Parity (no. of delivery)</p>
-                                <input type="text" value="{{$patient->preg_history->ONE_EF_PARI ? $patient->preg_history->ONE_EF_PARI : 'N/A'}}" class="w-full md:w-[50%] patient-form-input" readonly>
+                                <input type="text" value="{{ optional($patient->preg_history)->ONE_EF_PARI ? $patient->preg_history->ONE_EF_PARI : 'N/A' }}" class="w-full md:w-[50%] patient-form-input" readonly>
                             </div>
                             <div class="flex flex-col md:flex-row justify-around mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">Type of Delivery</p>
-                                <input type="text" value="{{$patient->preg_history->ONE_EF_DELIVERYTYPE ? $patient->preg_history->ONE_EF_DELIVERYTYPE : 'N/A'}}" class="w-full md:w-[50%] patient-form-input" readonly>
+                                <input type="text" value="{{ optional($patient->preg_history)->ONE_EF_DELIVERYTYPE ? $patient->preg_history->ONE_EF_DELIVERYTYPE : 'N/A' }}" class="w-full md:w-[50%] patient-form-input" readonly>
                             </div>
                             <div class="flex flex-col md:flex-row justify-around mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">No. of full term</p>
-                                <input type="text" value="{{$patient->preg_history->ONE_EF_FULLTERM ? $patient->preg_history->ONE_EF_FULLTERM : 'N/A'}}" class="w-full md:w-[50%] patient-form-input" readonly>
+                                <input type="text" value="{{ optional($patient->preg_history)->ONE_EF_FULLTERM ? $patient->preg_history->ONE_EF_FULLTERM : 'N/A' }}" class="w-full md:w-[50%] patient-form-input" readonly>
                             </div>
                             <div class="flex flex-col md:flex-row justify-around mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">No. of premature</p>
-                                <input type="text" value="{{$patient->preg_history->ONE_EF_PREMATURE ? $patient->preg_history->ONE_EF_PREMATURE : 'N/A'}}" class="w-full md:w-[50%] patient-form-input" readonly>
+                                <input type="text" value="{{ optional($patient->preg_history)->ONE_EF_PREMATURE ? $patient->preg_history->ONE_EF_PREMATURE : 'N/A' }}" class="w-full md:w-[50%] patient-form-input" readonly>
                             </div>
                             <div class="flex flex-col md:flex-row justify-around mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">No. of abortion</p>
-                                <input type="text" value="{{$patient->preg_history->ONE_EF_ABORT ? $patient->preg_history->ONE_EF_ABORT : 'N/A'}}" class="w-full md:w-[50%] patient-form-input" readonly>
+                                <input type="text" value="{{ optional($patient->preg_history)->ONE_EF_ABORT ? $patient->preg_history->ONE_EF_ABORT : 'N/A' }}" class="w-full md:w-[50%] patient-form-input" readonly>
                             </div>
                             <div class="flex flex-col md:flex-row justify-around mb-3">
                                 <p class="w-full md:w-[40%] font-semibold">No. of living children</p>
-                                <input type="text" value="{{$patient->preg_history->ONE_EF_LIVCHILD ? $patient->preg_history->ONE_EF_LIVCHILD : 'N/A'}}" class="w-full md:w-[50%] patient-form-input" readonly>
+                                <input type="text" value="{{ optional($patient->preg_history)->ONE_EF_LIVCHILD ? $patient->preg_history->ONE_EF_LIVCHILD : 'N/A' }}" class="w-full md:w-[50%] patient-form-input" readonly>
                             </div>
                             <div class="flex flex-col md:flex-row justify-around ">
                                 <p class="w-full md:w-[40%] font-semibold">Pregnancy-included hypertension (Pre-eclampsia)</p>
-                                <input type="text" value="{{$patient->preg_history->ONE_EF_ECLAMPSIA ? $patient->preg_history->ONE_EF_ECLAMPSIA : 'N/A'}}" class="w-full md:w-[50%] patient-form-input" readonly>
+                                <input type="text" value="{{ optional($patient->preg_history)->ONE_EF_ECLAMPSIA ? $patient->preg_history->ONE_EF_ECLAMPSIA : 'N/A' }}" class="w-full md:w-[50%] patient-form-input" readonly>
                             </div>
 
                         </div>
@@ -472,34 +475,34 @@
                             <div class="w-full lg:w-1/2">
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Blood Pressure</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_BPSYSTOLIC && $patient->ppef->ONE_EF_BPDIASTOLIC ? $patient->ppef->ONE_EF_BPSYSTOLIC. '/' .$patient->ppef->ONE_EF_BPDIASTOLIC : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_BPSYSTOLIC && optional($patient->ppef)->ONE_EF_BPDIASTOLIC ? $patient->ppef->ONE_EF_BPSYSTOLIC. '/' .$patient->ppef->ONE_EF_BPDIASTOLIC : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Weight</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_WEIGHT ? $patient->ppef->ONE_EF_WEIGHT : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_WEIGHT ? $patient->ppef->ONE_EF_WEIGHT : 'N/A' }}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Height</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_HEIGHT ? $patient->ppef->ONE_EF_HEIGHT : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_HEIGHT ? $patient->ppef->ONE_EF_HEIGHT : 'N/A' }}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">BMI</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_BMI ? $patient->ppef->ONE_EF_BMI : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_BMI ? $patient->ppef->ONE_EF_BMI : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                             {{-- 2nd column --}}
                             <div class="sm:flex-col lg:px-4 w-full lg:w-1/2">
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Respiratory Rate</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_RESPRATE ? $patient->ppef->ONE_EF_RESPRATE : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_RESPRATE ? $patient->ppef->ONE_EF_RESPRATE : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Visual Acuity</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_VAL && $patient->ppef->ONE_EF_VAR ? $patient->ppef->ONE_EF_VAL. '/' .$patient->ppef->ONE_EF_VAR : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_VAL && optional($patient->ppef)->ONE_EF_VAR ? $patient->ppef->ONE_EF_VAL. '/' .$patient->ppef->ONE_EF_VAR : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Temperature</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_TEMP ? $patient->ppef->ONE_EF_TEMP : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_TEMP ? $patient->ppef->ONE_EF_TEMP : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                             {{-- Piadtric Client aged 0-24 months --}}
@@ -510,17 +513,17 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/2">
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Length</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_LENGTH ? $patient->ppef->ONE_EF_LENGTH : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_LENGTH ? $patient->ppef->ONE_EF_LENGTH : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Thickness</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_SKINFOLD ? $patient->ppef->ONE_EF_SKINFOLD : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_SKINFOLD ? $patient->ppef->ONE_EF_SKINFOLD : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/2">
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Head Circumference</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_HCIRCUM ? $patient->ppef->ONE_EF_HCIRCUM : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_HCIRCUM ? $patient->ppef->ONE_EF_HCIRCUM : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                             {{-- body circumference --}}
@@ -531,21 +534,21 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/2">
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Waist</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_WAIST ? $patient->ppef->ONE_EF_WAIST : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_WAIST ? $patient->ppef->ONE_EF_WAIST : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Hip</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_HIP ? $patient->ppef->ONE_EF_HIP : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_HIP ? $patient->ppef->ONE_EF_HIP : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/2">
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Limbs</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_LIMBS ? $patient->ppef->ONE_EF_LIMBS : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_LIMBS ? $patient->ppef->ONE_EF_LIMBS : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Middle and Upper Arm Circumference</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_MAUACIRCUM ? $patient->ppef->ONE_EF_MAUACIRCUM : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_MAUACIRCUM ? $patient->ppef->ONE_EF_MAUACIRCUM : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                             {{-- Pediatric Client aged 0-60 months --}}
@@ -568,7 +571,7 @@
                             <div class="px-2 lg:px-4 w-full">
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Blood Type</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_BLOODTYPE ? $patient->ppef->ONE_EF_BLOODTYPE : 'N/A'}}" class="w-fit patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_BLOODTYPE ? $patient->ppef->ONE_EF_BLOODTYPE : 'N/A'}}" class="w-fit patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                             {{-- General Survery --}}
@@ -579,13 +582,13 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/2">
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Awake and Alert</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_AAA ? $patient->ppef->ONE_EF_AAA : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_AAA ? $patient->ppef->ONE_EF_AAA : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/2">
                                 <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                     <p class="w-full font-semibold">Altered Sensorium</p>
-                                    <input type="text" value="{{$patient->ppef->ONE_EF_AS ? $patient->ppef->ONE_EF_AS : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ppef)->ONE_EF_AS ? $patient->ppef->ONE_EF_AS : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
 
@@ -618,7 +621,7 @@
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others - HEENT</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{$patient->pfps_oth->ONE_EF_HEENTOTH ? $patient->pfps_oth->ONE_EF_HEENTOTH : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{ optional($patient->pfps_oth)->ONE_EF_HEENTOTH ? $patient->pfps_oth->ONE_EF_HEENTOTH : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4 pb-2 border-b lg:border-r lg:border-b-0">
@@ -634,7 +637,7 @@
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others - CBL</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{$patient->pfps_oth->ONE_PC_CBLOTH ? $patient->pfps_oth->ONE_PC_CBLOTH : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{ optional($patient->pfps_oth)->ONE_PC_CBLOTH ? $patient->pfps_oth->ONE_PC_CBLOTH : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4 pb-2 border-b lg:border-r lg:border-b-0">
@@ -650,7 +653,7 @@
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others - Heart</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{$patient->pfps_oth->ONE_PH_HEARTOTH ? $patient->pfps_oth->ONE_PH_HEARTOTH : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{ optional($patient->pfps_oth)->ONE_PH_HEARTOTH ? $patient->pfps_oth->ONE_PH_HEARTOTH : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4 pb-2 border-b lg:border-none">
@@ -666,7 +669,7 @@
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others - Heart</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{$patient->pfps_oth->ONE_PA_ABDOMENOTH ? $patient->pfps_oth->ONE_PA_ABDOMENOTH : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{ optional($patient->pfps_oth)->ONE_PA_ABDOMENOTH ? $patient->pfps_oth->ONE_PA_ABDOMENOTH : 'N/A'}}</textarea>
                                 </div>
                             </div>
 
@@ -685,7 +688,7 @@
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others - Genitourinary</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{$patient->pfps_oth->ONE_PG_GENITOTH ? $patient->pfps_oth->ONE_PG_GENITOTH : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{ optional($patient->pfps_oth)->ONE_PG_GENITOTH ? $patient->pfps_oth->ONE_PG_GENITOTH : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4 pb-2 border-b lg:border-r lg:border-b-0">
@@ -701,7 +704,7 @@
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others - DRE</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{$patient->pfps_oth->ONE_PD_RECTALOTH ? $patient->pfps_oth->ONE_PD_RECTALOTH : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{ optional($patient->pfps_oth)->ONE_PD_RECTALOTH ? $patient->pfps_oth->ONE_PD_RECTALOTH : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4 pb-2 border-b lg:border-r lg:border-b-0">
@@ -717,7 +720,7 @@
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others - Skin/Extremities</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{$patient->pfps_oth->ONE_PS_SKINOTH ? $patient->pfps_oth->ONE_PS_SKINOTH : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{ optional($patient->pfps_oth)->ONE_PS_SKINOTH ? $patient->pfps_oth->ONE_PS_SKINOTH : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4 pb-2 border-b lg:border-none">
@@ -733,7 +736,7 @@
                                 </div>
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">Others - NE</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{$patient->pfps_oth->ONE_PN_NEUROOTH ? $patient->pfps_oth->ONE_PN_NEUROOTH : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg mb-2" rows="1" readonly>{{ optional($patient->pfps_oth)->ONE_PN_NEUROOTH ? $patient->pfps_oth->ONE_PN_NEUROOTH : 'N/A'}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -758,7 +761,7 @@
                         <div class="px-2 lg:px-4 w-full">
                             <div class="flex flex-col justify-around mb-5 lg:mb-3">
                                 <p class="w-full font-semibold">Eats processed/fast foods (e.g. instant noodles, hamburgers, fries, fried chicken skin, etc.) and ihaw-ihaw (e.g. isaw, adidas, etc.)</span></p>
-                                <input type="text" value="{{$patient->ncd_hra->ONE_EF_FATFOOD ? $patient->ncd_hra->ONE_EF_FATFOOD : 'N/A'}}" class="w-full lg:w-fit patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{ optional($patient->ncd_hra)->ONE_EF_FATFOOD ? $patient->ncd_hra->ONE_EF_FATFOOD : 'N/A'}}" class="w-full lg:w-fit patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
                         </div>
 
@@ -770,13 +773,13 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/2 mb-4 lg:mb-2">
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">3 servings of vegetables daily</p>
-                                    <input type="text" value="{{$patient->ncd_hra->ONE_EF_VEG ? $patient->ncd_hra->ONE_EF_VEG : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ncd_hra)->ONE_EF_VEG ? $patient->ncd_hra->ONE_EF_VEG : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/2 pb-2">
                                 <div class="flex flex-col justify-around mb-2">
                                     <p class="w-full font-semibold">2-3 servings of fruits daily</p>
-                                    <input type="text" value="{{$patient->ncd_hra->ONE_EF_FRUIT ? $patient->ncd_hra->ONE_EF_FRUIT : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ncd_hra)->ONE_EF_FRUIT ? $patient->ncd_hra->ONE_EF_FRUIT : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                         </div>
@@ -788,7 +791,7 @@
                         <div class="px-2 lg:px-4 w-full">
                             <div class="flex flex-col justify-around mb-5 lg:mb-2">
                                 <p class="w-full font-semibold">Does at least 2.5 hours a week of moderate-intensity physical activity</p>
-                                <input type="text" value="{{$patient->ncd_hra->ONE_EF_PHYACTIV ? $patient->ncd_hra->ONE_EF_PHYACTIV : 'N/A'}}" class="w-full lg:w-fit patient-form-input -mb-3 md:mb-0" readonly>
+                                <input type="text" value="{{ optional($patient->ncd_hra)->ONE_EF_PHYACTIV ? $patient->ncd_hra->ONE_EF_PHYACTIV : 'N/A'}}" class="w-full lg:w-fit patient-form-input -mb-3 md:mb-0" readonly>
                             </div>
                         </div>
 
@@ -800,13 +803,13 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/2 mb-5 lg:mb-2">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Was patient diagnosed as having diabetes?</p>
-                                    <input type="text" value="{{$patient->ncd_hra->ONE_EF_DIABETES ? $patient->ncd_hra->ONE_EF_DIABETES : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ncd_hra)->ONE_EF_DIABETES ? $patient->ncd_hra->ONE_EF_DIABETES : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/2">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Medication <span class="text-sm font-medium italic">(if yes)</span></p>
-                                    <input type="text" value="{{$patient->ncd_hra->ONE_EF_DIABETESYES ? $patient->ncd_hra->ONE_EF_DIABETESYES : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ncd_hra)->ONE_EF_DIABETESYES ? $patient->ncd_hra->ONE_EF_DIABETESYES : 'N/A'}}" class="w-full patient-form-input -mb-3 md:mb-0" readonly>
                                 </div>
                             </div>
                         </div>
@@ -814,7 +817,7 @@
                             <div class="flex flex-col justify-around">
                                 <p class="w-full font-semibold">Diabetes Symptoms <span class="text-sm font-medium italic">(if no)</span></p>
                                 <div class="flex flex-col md:flex-row justify-between">
-                                    <input type="text" value="{{$patient->ncd_hra->ONE_EF_SYMPTOMS ? $patient->ncd_hra->ONE_EF_SYMPTOMS : 'N/A'}}" class="w-full lg:w-[30%] patient-form-input mb-2 lg:mb-0" readonly>
+                                    <input type="text" value="{{ optional($patient->ncd_hra)->ONE_EF_SYMPTOMS ? $patient->ncd_hra->ONE_EF_SYMPTOMS : 'N/A'}}" class="w-full lg:w-[30%] patient-form-input mb-2 lg:mb-0" readonly>
                                 </div>
                             </div>
                         </div>
@@ -827,25 +830,25 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Raised Blood Glucose</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_RBG ? $patient->ncd_hra->ONE_EF_RBG : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_RBG ? $patient->ncd_hra->ONE_EF_RBG : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">FBS/RBS</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_FBSRBS ? $patient->ncd_hra->ONE_EF_FBSRBS : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_FBSRBS ? $patient->ncd_hra->ONE_EF_FBSRBS : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Raised Blood Glucose Level</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_RBGL ? $patient->ncd_hra->ONE_EF_RBGL : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_RBGL ? $patient->ncd_hra->ONE_EF_RBGL : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Date Taken</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_RBGDATE ? $patient->ncd_hra->ONE_EF_RBGDATE : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_RBGDATE ? $patient->ncd_hra->ONE_EF_RBGDATE : 'N/A'}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -858,19 +861,19 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Raised Blood Lipids</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_RBL ? $patient->ncd_hra->ONE_EF_RBL : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_RBL ? $patient->ncd_hra->ONE_EF_RBL : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Total Cholesterol</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_CHOLESTEROL ? $patient->ncd_hra->ONE_EF_CHOLESTEROL : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_CHOLESTEROL ? $patient->ncd_hra->ONE_EF_CHOLESTEROL : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around ">
                                     <p class="w-full font-semibold">Date Taken</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_RBLDATE ? $patient->ncd_hra->ONE_EF_RBLDATE : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_RBLDATE ? $patient->ncd_hra->ONE_EF_RBLDATE : 'N/A'}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -883,19 +886,19 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Presence of Urine Ketones</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_KETONESPRES ? $patient->ncd_hra->ONE_EF_KETONESPRES : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_KETONESPRES ? $patient->ncd_hra->ONE_EF_KETONESPRES : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Urine Ketones</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_KETONES ? $patient->ncd_hra->ONE_EF_KETONES : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_KETONES ? $patient->ncd_hra->ONE_EF_KETONES : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Date Taken</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_KETONESDATE ? $patient->ncd_hra->ONE_EF_KETONESDATE : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_KETONESDATE ? $patient->ncd_hra->ONE_EF_KETONESDATE : 'N/A'}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -908,19 +911,19 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Presence of Urine Protein</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_PROTEINPRES ? $patient->ncd_hra->ONE_EF_PROTEINPRES : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_PROTEINPRES ? $patient->ncd_hra->ONE_EF_PROTEINPRES : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Urine Protein</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_PROTEIN ? $patient->ncd_hra->ONE_EF_PROTEIN : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_PROTEIN ? $patient->ncd_hra->ONE_EF_PROTEIN : 'N/A'}}</textarea>
                                 </div>
                             </div>
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around ">
                                     <p class="w-full font-semibold">Date Taken</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_PROTEINDATE ? $patient->ncd_hra->ONE_EF_PROTEINDATE : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_PROTEINDATE ? $patient->ncd_hra->ONE_EF_PROTEINDATE : 'N/A'}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -933,44 +936,44 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/4">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Angina or Heart Attack</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_AHA ? $patient->ncd_hra->ONE_EF_AHA : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_AHA ? $patient->ncd_hra->ONE_EF_AHA : 'N/A'}}</textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-3 lg:gap-8 justify-between px-2 lg:px-4 mb-2 lg:mb-3">
                             <div class="flex flex-col w-full lg:w-1/2">
                                 <p class="w-full font-semibold">1. Have you had any pain or discomfort or any pressure or heaviness in your chest? <span class="text-sm font-medium italic">(if no, go to no. 8)</span></p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_CHESTPAIN ? $patient->ncd_hra->ONE_EF_CHESTPAIN : 'N/A'}}</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_CHESTPAIN ? $patient->ncd_hra->ONE_EF_CHESTPAIN : 'N/A'}}</textarea>
                             </div>
                             <div class="flex flex-col w-full lg:w-1/2">
                                 <p class="w-full font-semibold">2. Have you had any pain or discomfort or any pressure or heaviness in your chest? <span class="text-sm font-medium italic">(if no, go to no. 8)</span></p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_CENTERPAIN ? $patient->ncd_hra->ONE_EF_CENTERPAIN : 'N/A'}}</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_CENTERPAIN ? $patient->ncd_hra->ONE_EF_CENTERPAIN : 'N/A'}}</textarea>
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-3 lg:gap-8 justify-between px-2 lg:px-4 mb-2 lg:mb-3">
                             <div class="flex flex-col w-full lg:w-1/2">
                                 <p class="w-full font-semibold">3. Do you get it when you walk uphill or hurry?</p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_UPHILL ? $patient->ncd_hra->ONE_EF_UPHILL : 'N/A'}}</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_UPHILL ? $patient->ncd_hra->ONE_EF_UPHILL : 'N/A'}}</textarea>
                             </div>
                             <div class="flex flex-col w-full lg:w-1/2">
                                 <p class="w-full font-semibold">4. Do you slowdown if you get the pain while walking?</p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_WALKING ? $patient->ncd_hra->ONE_EF_WALKING : 'N/A'}}</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_WALKING ? $patient->ncd_hra->ONE_EF_WALKING : 'N/A'}}</textarea>
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-3 lg:gap-8 justify-between px-2 lg:px-4 mb-2 lg:mb-3">
                             <div class="flex flex-col w-full lg:w-1/2">
                                 <p class="w-full font-semibold">5. Does the pain go away if you stand still or if you take a tablet under the tongue?</p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_TONGUE ? $patient->ncd_hra->ONE_EF_TONGUE : 'N/A'}}</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_TONGUE ? $patient->ncd_hra->ONE_EF_TONGUE : 'N/A'}}</textarea>
                             </div>
                             <div class="flex flex-col w-full lg:w-1/2">
                                 <p class="w-full font-semibold">6. Does the pain away in less than 10 minutes?</p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_10M ? $patient->ncd_hra->ONE_EF_10M : 'N/A'}}</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_10M ? $patient->ncd_hra->ONE_EF_10M : 'N/A'}}</textarea>
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-3 lg:gap-8 justify-between px-2 lg:px-4 mb-6 lg:mb-3">
                             <div class="flex flex-col w-full">
                                 <p class="w-full font-semibold">7. Have you ever had a severe chest pain across the front of your chest lasting for half an hour or more?</p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_CHESTFRONT ? $patient->ncd_hra->ONE_EF_CHESTFRONT : 'N/A'}}</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_CHESTFRONT ? $patient->ncd_hra->ONE_EF_CHESTFRONT : 'N/A'}}</textarea>
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-3 lg:gap-8 justify-between px-2 lg:px-4">
@@ -985,13 +988,13 @@
                         <div class="px-2 lg:px-4 w-full lg:w-[26%] mb-2">
                             <div class="flex flex-col justify-around">
                                 <p class="w-full font-semibold">Stroke and TIA (Transient Ischemic Attack)</p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_SATIA ? $patient->ncd_hra->ONE_EF_SATIA : 'N/A'}}</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_SATIA ? $patient->ncd_hra->ONE_EF_SATIA : 'N/A'}}</textarea>
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-3 lg:gap-8 justify-between px-2 lg:px-4 mb-2 lg:mb-3">
                             <div class="flex flex-col w-full">
                                 <p class="w-full font-semibold">8. Have you ever had any of the following: difficulty in talking, weakness of arm and/or leg </p>
-                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_DIFF ? $patient->ncd_hra->ONE_EF_DIFF : 'N/A'}}</textarea>
+                                <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_DIFF ? $patient->ncd_hra->ONE_EF_DIFF : 'N/A'}}</textarea>
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-3 lg:gap-8 justify-between px-2 lg:px-4">
@@ -1008,7 +1011,7 @@
                             <div class="px-2 lg:px-4 w-full lg:w-1/5">
                                 <div class="flex flex-col justify-around">
                                     <p class="w-full font-semibold">Risk Level</p>
-                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{$patient->ncd_hra->ONE_EF_RISK ? $patient->ncd_hra->ONE_EF_RISK : 'N/A'}}</textarea>
+                                    <textarea class="w-full patient-form-input bg-disabled-bg" rows="1" readonly>{{ optional($patient->ncd_hra)->ONE_EF_RISK ? $patient->ncd_hra->ONE_EF_RISK : 'N/A'}}</textarea>
                                 </div>
                             </div>
                         </div>
