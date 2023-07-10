@@ -11,15 +11,15 @@
                     <div class="px-1">
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Last Name</p>
-                            <input type="text" value="{{$patient->ONE_EF_LASTNAME}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{str_replace('�', 'ñ', $patient->ONE_EF_LASTNAME)}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">First Name</p>
-                            <input type="text" value="{{$patient->ONE_EF_FIRSTNAME}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{str_replace('�', 'ñ', $patient->ONE_EF_FIRSTNAME)}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Middle Name</p>
-                            <input type="text" value="{{$patient->ONE_EF_MIDDLENAME ? $patient->ONE_EF_MIDDLENAME : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{$patient->ONE_EF_MIDDLENAME ? str_replace('�', 'ñ', $patient->ONE_EF_MIDDLENAME) : 'N/A'}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Extension Name</p>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Barangay</p>
-                            <input type="text" value="{{$patient->ONE_EF_BRGY}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
+                            <input type="text" value="{{str_replace('�','ñ', $patient->ONE_EF_BRGY)}}" class="w-full md:w-[60%] patient-form-input -mb-3 md:mb-0" readonly>
                         </div>
                         <div class="flex flex-col md:flex-row justify-around mb-6">
                             <p class="w-full md:w-[30%] font-semibold">Birthday</p>
