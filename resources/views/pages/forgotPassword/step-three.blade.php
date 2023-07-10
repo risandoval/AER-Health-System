@@ -55,18 +55,34 @@
         <form action="{{ url('validateStepThree/' . $userId) }}" method="POST" class="flex flex-col mt-3">
             @csrf
             
-            <div class="relative mt-3">
+            {{-- <div class="relative mt-3">
                 <label for="password" class="block text-xs font-semibold">New Password</label>
                 <input class="mt-1 p-2 rounded-xl w-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" id="password" name="password" placeholder="****" required>
                 <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('password'){{$message}} @enderror </p>
+            </div> --}}
+
+            <div class="relative mt-3">
+                <label class="block text-xs font-semibold" for="password">Password</label>
+                <div class="flex justify-end items-center relative w-full">
+                    <input class="js-password pr-[53px] form-input" type="password" id="password" name="password" placeholder="*****" autocomplete="off">
+                    <div class="absolute px-3">
+                        <input class="hidden js-password-toggle" id="toggle" type="checkbox" />
+                        <label class="text-sm text-primary cursor-pointer js-password-label" for="toggle">Show</label>
+                    </div>
+                </div>
             </div>
             
-            <div class="relative mt-5">
-                <label for="confirm_password" class="block text-xs font-semibold">Confirm Password</label>
-                <input class="mt-1 p-2 rounded-xl w-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" id="confirm_password" name="confirm_password" placeholder="****" required>
-                <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('confirm_password'){{$message}} @enderror </p>
+            <div class="relative mt-3">
+                <label for="confirm_password" class="block text-xs font-semibold" >Confirm Password:</label>
+                <div class="flex justify-end items-center relative w-full">
+                    <input type="password" id="new_password" name="confirm_password" placeholder="*****" autocomplete="off" class="pr-[53px] form-input" required>
+                    <div class="absolute px-3">
+                        <input class="hidden" id="new_password_toggle" type="checkbox" />
+                        <label id="new_password_label" class="text-sm text-primary cursor-pointer" for="new_password_toggle">Show</label>
+                    </div>
+                </div>
+                @error ('confirm_password') <p class="text-sm text-red"> {{$message}} </p> @enderror
             </div>
-            
 
             <div class="flex gap-2 justify-end p-3 mt-6">
                 <a href="/" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Cancel</a>
@@ -75,3 +91,4 @@
         </form>
     </x-form>
 </x-noNavbar-layout>
+@vite('resources/js/password.js')

@@ -2,7 +2,7 @@
     <x-form class="max-w-sm">
         <div class="max-w-md text-center mt-1 mb-4">
             <p class="text-md text-black text-center font-bold mt-1 ">Follow the three steps to recover your account.</p>
-            <p class="text-xs mt-1 text-black text-center">Answer your security question to change your password. You only have <strong class="text-red">{{ $remainingAttempts }}</strong> attempt(s). In case you used up all your attempts, we will automatically request a password reset from your admin.</p>
+            <p class="text-xs mt-1 text-black text-center">Answer your security question to change your password. <span class="text-red">You only have <strong class="font-extrabold text-md text-red">{{ $remainingAttempts }}</strong> attempt(s).</span> In case you used up all your attempts, we will automatically request a password reset from your admin.</p>
         </div>
         
         {{-- STEPPER --}}
@@ -76,9 +76,7 @@
                 <label for="question" class="block text-sm font-semibold">{{ $security_question }}</label>
                 <input class="mt-1 p-2 rounded-xl w-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="text" id="answer" name="answer" placeholder="Enter your answer" required>
                 <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2">
-                    @error('answer')
-                        {{ $message }}
-                    @enderror
+                    @error('answer') {{ $message }} @enderror
                 </p>
             </div>
         
