@@ -74,7 +74,7 @@
                                 <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">{{$patient->id}}</td>
                                 <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$patient->ONE_EF_FIRSTNAME}} {{substr($patient->ONE_EF_MIDDLENAME, 0, 1)}}. {{$patient->ONE_EF_LASTNAME}} {{$patient->ONE_EF_EXTENSIONNAME}} </td>
                                 <td class="text-left px-6 py-3">{{$patient->ONE_EF_SEX}}</td>
-                                <td class="text-left px-6 py-3">{{$patient->ONE_EF_BRGY}}</td>
+                                <td class="text-left px-6 py-3">{{str_replace('�', 'ñ', $patient->ONE_EF_BRGY)}}</td>
                                 <td class="text-left px-6 py-3">{{$patient->ONE_EF_PIN}}</td>
                                 <td class="text-left px-6 py-3">
                                     <div class="flex gap-[6px]">
