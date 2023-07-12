@@ -391,4 +391,8 @@ class UserController extends Controller {
         return Excel::download(new UsersExport, 'users.csv');
     }
 
+    //audit login
+    public function auditLog() {
+        return view('pages/auditLog/audit-log');
+    }
 }
