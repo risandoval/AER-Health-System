@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
-                        <label for="email" class="md:col-span-2 whitespace-nowrap">Email Address: <span class="text-red">*</span></label>
+                        <label for="email" class="md:col-span-2 whitespace-nowrap">Email Address:</label>
                         <input type="text" name="email" class="form-input md:col-start-4 md:col-span-10" placeholder="ex. juandelacruz@example.com">
                         @error ('email') <p class="md:col-start-4 md:col-span-10 text-sm text-red -mb-3"> {{$message}} </p> @enderror
                     </div>

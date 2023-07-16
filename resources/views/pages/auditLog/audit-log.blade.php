@@ -36,9 +36,9 @@
                     <tbody>
                         {{-- @foreach ($audits as $audit) --}}
                             <tr class="border border-transparent y-10"> {{-- {{!($loop->last) ? "border-b-light-gray" : ""}} --}}
-                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">S0001</td>
+                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">H0001</td>
                                 <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> Emilia Herrera </td> {{-- first and last name --}}
-                                <td class="text-left px-6 py-3">Added new user</td> 
+                                <td class="text-left px-6 py-3">Added new user</td>
                                 {{-- 
                                     Add new user [username]
                                     Edited a user [username]
@@ -52,6 +52,12 @@
                                     Imported 1st encounter table
                                 --}}
                                 <td class="text-left px-6 py-3">2023-07-12 4:29 PM</td>
+                            </tr>
+                            <tr class="border border-transparent y-10"> {{-- {{!($loop->last) ? "border-b-light-gray" : ""}} --}}
+                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">M0025</td>
+                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> Rian Manuel </td>
+                                <td class="text-left px-6 py-3">Archived a user</td>
+                                <td class="text-left px-6 py-3">2023-07-12 2:15 PM</td>
                             </tr>
                         {{-- @endforeach --}}
                     </tbody>
