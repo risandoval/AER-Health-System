@@ -9,6 +9,7 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Excel as ExcelExcel;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Audit_history; 
 
 
 class FirstEncounterController extends Controller
@@ -56,17 +57,44 @@ class FirstEncounterController extends Controller
     }
 
     public function exportClient() 
-    {
+    {   
+        $username = auth()->user()->username;
+        $fullName = auth()->user()->first_name . ' ' . auth()->user()->last_name;
+        $action = 'Export Client';
+        $history = new audit_history();
+        $history->username = $username;
+        $history->full_name = $fullName;
+        $history->action = $action;
+        $history->save();
+
         return Excel::download(new ClientsExport, 'clients.csv');
     }
 
     public function exportCSVTemplate() 
     {
+        $username = auth()->user()->username;
+        $fullName = auth()->user()->first_name . ' ' . auth()->user()->last_name;
+        $action = 'Export CSV Client Template';
+        $history = new audit_history();
+        $history->username = $username;
+        $history->full_name = $fullName;
+        $history->action = $action;
+        $history->save();
+
         return Excel::download(new CSVTemplateExport(), 'clientsTemplate.csv');
     }
     
     public function import(Request $request) 
     {
+        $username = auth()->user()->username;
+        $fullName = auth()->user()->first_name . ' ' . auth()->user()->last_name;
+        $action = 'Import 1st Encounter';
+        $history = new audit_history();
+        $history->username = $username;
+        $history->full_name = $fullName;
+        $history->action = $action;
+        $history->save();
+
         if ($request->hasFile('csv_file')) {
             Excel::import(new ClientsImport, $request->file('csv_file'));
         }

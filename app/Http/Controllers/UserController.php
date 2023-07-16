@@ -11,11 +11,13 @@ use Illuminate\Http\Request;
 use App\Rules\Validation;
 use Illuminate\Validation\Rule;
 use App\Models\User; // Import the User model
-use App\Models\Client; 
+use App\Models\Client;
+use App\Models\Audit_history; 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class UserController extends Controller {
 
@@ -79,9 +81,9 @@ class UserController extends Controller {
 
     //ADD USER ACCOUNT
     public function store(UserRequest $request)
-    {
+    {    
         $validated = $request->validated();
-
+    
         $validated['profile_picture'] = 'default-profile.jpg';
         $validated['first_name'] = ucfirst($validated['first_name']);
         $validated['middle_name'] = ucfirst($validated['middle_name']);
@@ -109,9 +111,22 @@ class UserController extends Controller {
         
         // Combine the letter and the incremented number to form the final username
         $validated['username'] = $validated['last_name'][0] . $nextNumber;
-    
+
         $user = new User($validated);
         $user->save();
+
+
+        $username = auth()->user()->username;
+        $fullName = auth()->user()->first_name . ' ' . auth()->user()->last_name;
+        $action = 'Add new user -'.' '.  $validated['username'];
+       
+        $history = new audit_history();
+        $history->username = $username;
+        $history->full_name = $fullName;
+        $history->action = $action;
+        // $history->created_at = Carbon::now(); // Assign the current timestamp
+        // $history->updated_at = Carbon::now(); // Assign the current timestamp
+        $history->save();
         
         return redirect('/users/add')->with('success', 'New User Added Successfully');
     }
@@ -139,6 +154,19 @@ class UserController extends Controller {
         $user = User::find($id);
         $user->update($validated);
 
+
+        $username = auth()->user()->username;
+        $fullName = auth()->user()->first_name . ' ' . auth()->user()->last_name;
+        $action = 'Edited a user -'.' '.  $validated['username'];
+       
+        $history = new audit_history();
+        $history->username = $username;
+        $history->full_name = $fullName;
+        $history->action = $action;
+        $history->save();
+
+
+
         return redirect()->back()->withInput()->with('success', 'Data was successfully updated');
     }
 
@@ -165,6 +193,15 @@ class UserController extends Controller {
         if ($user) {
             $user->status = 'Inactive';
             $user->save();
+            $username = auth()->user()->username;
+            $fullName = auth()->user()->first_name . ' ' . auth()->user()->last_name;
+            $action = 'Archived a user -'.' '.$user->username;
+           
+            $history = new audit_history();
+            $history->username = $username;
+            $history->full_name = $fullName;
+            $history->action = $action;
+            $history->save();
             // Optionally, you can perform any additional actions here
             // For example, you can return a success message
         } else {
@@ -182,6 +219,17 @@ class UserController extends Controller {
         $user->password = bcrypt($new_pw);
         $user->password_request = 'No';
         $user->save();
+        
+        $username = auth()->user()->username;
+        $fullName = auth()->user()->first_name . ' ' . auth()->user()->last_name;
+        $action = 'Reset a password -'.' '.$user->username;
+       
+        $history = new audit_history();
+        $history->username = $username;
+        $history->full_name = $fullName;
+        $history->action = $action;
+        $history->save();
+        
 
         } else {
             // Handle the case when the user does not exist
@@ -199,6 +247,16 @@ class UserController extends Controller {
         if ($user) {
             $user->status = 'Active';
             $user->save();
+
+            $username = auth()->user()->username;
+            $fullName = auth()->user()->first_name . ' ' . auth()->user()->last_name;
+            $action = 'Restored an inactive user -'.' '.$user->username;
+           
+            $history = new audit_history();
+            $history->username = $username;
+            $history->full_name = $fullName;
+            $history->action = $action;
+            $history->save();
 
         } else {
             // Handle the case when the user does not exist
@@ -387,12 +445,28 @@ class UserController extends Controller {
     }
 
     public function export() 
-    {
+    {   
+        $username = auth()->user()->username;
+        $fullName = auth()->user()->first_name . ' ' . auth()->user()->last_name;
+        $action = 'Exported users table';
+       
+        $history = new audit_history();
+        $history->username = $username;
+        $history->full_name = $fullName;
+        $history->action = $action;
+        $history->save();
+
         return Excel::download(new UsersExport, 'users.csv');
     }
 
     //audit login
     public function auditLog() {
-        return view('pages/auditLog/audit-log');
+
+        $audit = Audit_history::all();
+      
+        // dd($audit);
+       
+
+        return view('pages/auditLog/audit-log',  compact('audit'));
     }
 }

@@ -34,26 +34,27 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($audit as $history)
                         {{-- @foreach ($audits as $audit) --}}
                             <tr class="border border-transparent y-10"> {{-- {{!($loop->last) ? "border-b-light-gray" : ""}} --}}
-                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">S0001</td>
-                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> Emilia Herrera </td> {{-- first and last name --}}
-                                <td class="text-left px-6 py-3">Added new user</td> 
+                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">{{$history->username}}</td>
+                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$history->full_name}}</td> {{-- first and last name --}}
+                                <td class="text-left px-6 py-3">{{$history->action}}</td> 
                                 {{-- 
-                                    Add new user [username]
-                                    Edited a user [username]
-                                    Archived a user [username]
-                                    Restored an inactive user [username]
-                                    Reset a password [username]
-                                    Exported users table
+                                    Add new user [username] ------DONE------
+                                    Edited a user [username] ------DONE------
+                                    Archived a user [username] ------DONE------
+                                    Restored an inactive user [username] ------DONE------
+                                    Reset a password [username] ------DONE------
+                                    Exported users table ------DONE------    
 
                                     Exported 1st encounter template
                                     Exported 1st encounter table
                                     Imported 1st encounter table
                                 --}}
-                                <td class="text-left px-6 py-3">2023-07-12 4:29 PM</td>
+                                <td class="text-left px-6 py-3">{{$history->created_at}}</td>
                             </tr>
-                        {{-- @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
 
