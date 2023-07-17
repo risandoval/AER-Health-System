@@ -15,31 +15,24 @@ use Maatwebsite\Excel\Excel as ExcelExcel;
 
 class FirstEncounterController extends Controller
 {
-    // display table of 1st encounter
+    //---------- First encounter tab ----------
     public function index() {
-        // $patients = Client::all();
-        $patients = Client::paginate(5);
+        $patients = Client::paginate(10);
         return view('pages/firstEncounter/first-encounter', compact('patients'));
     }
 
-    // Store a newly created resource in storage.
-    public function store(Request $request) {
-        //
-    }
-
-    // Display patient individual details
+    //---------- Display patient's detailed information ----------
     public function show($id) {
         $patient = Client::findOrFail($id);
         return view('pages/firstEncounter/view-patient', compact('patient'));
     }
 
-    // Display search result
+    //---------- Patient search result ----------
     public function search(Request $request) {
         $search = $request->get('search');
         $patients = Client::where('name', 'like', '%'.$search.'%')->paginate(5);
         return view('pages/firstEncounter/first-encounter', compact('patients'));
     }
-
     public function searchPatient(Request $request) {
         $search = $request->get('search');
 
@@ -47,9 +40,12 @@ class FirstEncounterController extends Controller
             $allPatient = Client::where('ONE_EF_FIRSTNAME', 'like', '%'.$search.'%')
             ->orWhere('ONE_EF_LASTNAME', 'like', '%'.$search.'%')
             ->orWhere('ONE_EF_PIN', 'like', '%'.$search.'%')
-            ->paginate(5);
+            ->paginate(10);
 
-            // dd($allUser);
+            if ($search) {
+                $allPatient->appends(['search' => $search]); // Append 'search' to pagination links
+            }
+
             return view('pages/firstEncounter/patient-search-result', compact('allPatient', 'search'));
         } 
         else {
@@ -57,49 +53,34 @@ class FirstEncounterController extends Controller
         }
     }
 
-    public function exportClient() 
-    {   
-        $username = auth()->user()->username;
-        $fullName = auth()->user()->first_name . ' ' . auth()->user()->last_name;
-        $action = 'Export client table';
+    //---------- Export client table ----------
+    public function exportClient() {  
         $history = new audit_history();
-        $history->username = $username;
-        $history->full_name = $fullName;
-        $history->action = $action;
-        $history->created_at = Carbon::now('Asia/Manila');
-        $history->updated_at = Carbon::now('Asia/Manila');
+        $history->username = auth()->user()->username;
+        $history->full_name = auth()->user()->first_name . ' ' . auth()->user()->last_name;
+        $history->action ='Export client table';
         $history->save();
 
         return Excel::download(new ClientsExport, 'clients.csv');
     }
 
-    public function exportCSVTemplate() 
-    {
-        $username = auth()->user()->username;
-        $fullName = auth()->user()->first_name . ' ' . auth()->user()->last_name;
-        $action = 'Export CSV Client Template';
+    //---------- Export CSV Template ----------
+    public function exportCSVTemplate() {
         $history = new audit_history();
-        $history->username = $username;
-        $history->full_name = $fullName;
-        $history->action = $action;
-        $history->created_at = Carbon::now('Asia/Manila');
-        $history->updated_at = Carbon::now('Asia/Manila');
+        $history->username = auth()->user()->username;
+        $history->full_name = auth()->user()->first_name . ' ' . auth()->user()->last_name;
+        $history->action = 'Export CSV Client Template';
         $history->save();
 
         return Excel::download(new CSVTemplateExport(), 'clientsTemplate.csv');
     }
     
-    public function import(Request $request) 
-    {
-        $username = auth()->user()->username;
-        $fullName = auth()->user()->first_name . ' ' . auth()->user()->last_name;
-        $action = 'Import 1st Encounter';
+    //---------- Import CSV file ----------
+    public function import(Request $request) {
         $history = new audit_history();
-        $history->username = $username;
-        $history->full_name = $fullName;
-        $history->action = $action;
-        $history->created_at = Carbon::now('Asia/Manila');
-        $history->updated_at = Carbon::now('Asia/Manila');
+        $history->username = auth()->user()->username;
+        $history->full_name = auth()->user()->first_name . ' ' . auth()->user()->last_name;
+        $history->action = 'Import 1st Encounter';
         $history->save();
 
         if ($request->hasFile('csv_file')) {

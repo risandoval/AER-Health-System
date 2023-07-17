@@ -42,7 +42,7 @@ class UserRequest extends FormRequest
             "barangay" => 'sometimes|required',
             "birthday" => ['required'],
             "contact" => 'required|numeric|digits:11|starts_with:09',
-            "email" => "email|unique:users,email,$id",
+            "email" => "nullable|email|unique:users,email,$id",
             "profile_pic" => 'image|mimes:jpg,png,jpeg|max:2048',
         ];
     }

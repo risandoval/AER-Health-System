@@ -10,7 +10,6 @@
             </div>
             <form action="{{url('users/store')}}" method="POST">
                 @csrf
-                {{-- @method('POST') --}}
                 <div id="main-container" class="flex flex-wrap border-y gap-5 px-6 py-8">    
                     <div class="flex-wrap items-center md:grid md:grid-cols-12 w-full">
                         <label for="first_name" class="md:col-span-2 whitespace-nowrap">First Name: <span class="text-red">*</span></label>

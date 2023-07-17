@@ -120,9 +120,9 @@
                                     </tbody>
                                 </table>
                                 {{-- search results - pagination --}}
-                                {{-- <div class="sticky left-0 px-6 mt-8">
+                                <div class="sticky left-0 px-6 mt-8">
                                     {{ $allUser->links('pagination::tailwind') }}
-                                </div> --}}
+                                </div>
                             @endif
                        
                         @else

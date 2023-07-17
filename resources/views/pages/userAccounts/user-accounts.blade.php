@@ -81,7 +81,7 @@
                                 @foreach ($activeUser as $users)
                                     <tr class="border border-transparent y-10 {{!($loop->last) ? "border-b-light-gray" : ""}}">
                                         <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">{{$users->id}}</td>
-                                        <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$users->first_name}} {{substr($users->middle_name, 0, 1)}}. {{$users->last_name}} </td>
+                                        <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$users->first_name}} @if($users->middle_name != null){{substr($users->middle_name, 0, 1). "."}}@endif {{$users->last_name}} </td>
                                         <td class="text-left px-6 py-3">{{$users->username}}</td>
                                         <td class="text-left px-6 py-3">{{$users->created_at}}</td>
                                         <td class="text-left px-6 py-3">{{$users->role}}</td>
@@ -127,7 +127,7 @@
                                 @foreach ($inactiveUser as $users)
                                     <tr class="border border-transparent y-10 {{!($loop->last) ? "border-b-light-gray" : ""}}">
                                         <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">{{$users->id}}</td>
-                                        <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$users->first_name}} {{substr($users->middle_name, 0, 1)}}. {{$users->last_name}} </td>
+                                        <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$users->first_name}} @if($users->middle_name != null){{substr($users->middle_name, 0, 1). "."}}@endif {{$users->last_name}} </td>
                                         <td class="text-left px-6 py-3">{{$users->username}}</td>
                                         <td class="text-left px-6 py-3">{{$users->created_at}}</td>
                                         <td class="text-left px-6 py-3">{{$users->role}}</td>
@@ -171,7 +171,7 @@
                                 @foreach ($passwordRequest as $users)
                                     <tr class="border border-transparent y-10 {{!($loop->last) ? "border-b-light-gray" : ""}}">
                                         <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">{{$users->id}}</td>
-                                        <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$users->first_name}} {{substr($users->middle_name, 0, 1)}}. {{$users->last_name}} </td>
+                                        <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$users->first_name}} @if($users->middle_name != null){{substr($users->middle_name, 0, 1). "."}}@endif {{$users->last_name}} </td>
                                         <td class="text-left px-6 py-3">{{$users->username}}</td>
                                         <td class="text-left px-6 py-3">{{$users->created_at}}</td>
                                         <td class="text-left px-6 py-3">{{$users->role}}</td>

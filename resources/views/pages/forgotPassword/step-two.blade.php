@@ -50,27 +50,9 @@
             </ol>
         </div>
       
-    
         {{-- STEP FORM --}}
         <form action="{{ url('/validateStepTwo/' . $userId) }}" method="POST" class="flex flex-col mt-3">
             @csrf
-        
-            {{-- <div class="relative mt-3">
-                <label for="question" class="mt-6 block text-xs font-semibold">Security Question:</label>
-                <select name="question" class="mt-[3px] p-2 rounded-xl border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" required>
-                    <option value="" selected hidden>select your question..</option>
-                    <option value="What is the street name of the house you grew up in?">What is the street name of the house you grew up in?</option>
-                    <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
-                    <option value="What was the name of your first school?">What was the name of your first school?</option>
-                    <option value="What is the first name of your oldest sibling?">What is the first name of your oldest sibling?</option>
-                    <option value="What is the name of a college you applied to but did not attend?">What is the name of a college you applied to but did not attend?</option>
-                </select>
-                <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2">
-                    @error('question')
-                        {{ $message }}
-                    @enderror
-                </p>
-            </div> --}}
         
             <div class="relative mt-3">
                 <label for="question" class="block text-sm font-semibold">{{ $security_question }}</label>
@@ -79,7 +61,6 @@
                     @error('answer') {{ $message }} @enderror
                 </p>
             </div>
-        
         
             <div class="flex gap-2 justify-end p-3 mt-6">
                 <a href="/validation" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Previous</a>

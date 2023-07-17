@@ -5,7 +5,6 @@
             <p class="text-xs mt-1 text-black text-center mb-4">Enter a new and strong password to protect your account.</p>
         </div>
         
-        
         {{-- STEPPER --}}
         <div class="mb-4">
             <div class="overflow-hidden rounded-full bg-gray-200">
@@ -54,12 +53,6 @@
         {{-- STEP FORM --}}
         <form action="{{ url('validateStepThree/' . $userId) }}" method="POST" class="flex flex-col mt-3">
             @csrf
-            
-            {{-- <div class="relative mt-3">
-                <label for="password" class="block text-xs font-semibold">New Password</label>
-                <input class="mt-1 p-2 rounded-xl w-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" type="password" id="password" name="password" placeholder="****" required>
-                <p class="col-start-2 col-span-3 text-sm text-red mb-2 lg:-mb-2"> @error ('password'){{$message}} @enderror </p>
-            </div> --}}
 
             <div class="relative mt-3">
                 <label class="block text-xs font-semibold" for="password">Password</label>
