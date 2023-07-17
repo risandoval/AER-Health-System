@@ -13,12 +13,6 @@
                     </form>
                 </div>
             </div>
-            <div class="flex gap-2">
-                <a href="#" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap duration-100">
-                    <i class='bx bx-export text-xl'></i>
-                    <p class="hidden md:block">Export Patients</p>
-                </a>
-            </div>
         </div>
 
         {{-- table --}}
@@ -35,7 +29,6 @@
                     </thead>
                     <tbody>
                         @foreach ($audit as $history)
-                        {{-- @foreach ($audits as $audit) --}}
                             <tr class="border border-transparent y-10"> {{-- {{!($loop->last) ? "border-b-light-gray" : ""}} --}}
                                 <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">{{$history->username}}</td>
                                 <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$history->full_name}}</td> {{-- first and last name --}}
@@ -60,7 +53,7 @@
 
                 {{-- audit log - pagination --}}
                 {{-- <div class="sticky left-0 px-6 mt-8">
-                    {{ $audits->links('pagination::tailwind') }}
+                    {{ $audit->links('pagination::tailwind') }}
                 </div> --}}
             </div>
         </div>

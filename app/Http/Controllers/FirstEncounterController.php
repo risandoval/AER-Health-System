@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\ClientsExport;
-use App\Exports\CSVTemplateExport;
-use App\Imports\ClientsImport;
+use Carbon\Carbon;
 use App\Models\Client;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Excel as ExcelExcel;
-use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ClientsExport;
+use App\Imports\ClientsImport;
 use App\Models\Audit_history; 
+use App\Exports\CSVTemplateExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Excel as ExcelExcel;
 
 
 class FirstEncounterController extends Controller
@@ -60,11 +61,13 @@ class FirstEncounterController extends Controller
     {   
         $username = auth()->user()->username;
         $fullName = auth()->user()->first_name . ' ' . auth()->user()->last_name;
-        $action = 'Export Client';
+        $action = 'Export client table';
         $history = new audit_history();
         $history->username = $username;
         $history->full_name = $fullName;
         $history->action = $action;
+        $history->created_at = Carbon::now('Asia/Manila');
+        $history->updated_at = Carbon::now('Asia/Manila');
         $history->save();
 
         return Excel::download(new ClientsExport, 'clients.csv');
@@ -79,6 +82,8 @@ class FirstEncounterController extends Controller
         $history->username = $username;
         $history->full_name = $fullName;
         $history->action = $action;
+        $history->created_at = Carbon::now('Asia/Manila');
+        $history->updated_at = Carbon::now('Asia/Manila');
         $history->save();
 
         return Excel::download(new CSVTemplateExport(), 'clientsTemplate.csv');
@@ -93,6 +98,8 @@ class FirstEncounterController extends Controller
         $history->username = $username;
         $history->full_name = $fullName;
         $history->action = $action;
+        $history->created_at = Carbon::now('Asia/Manila');
+        $history->updated_at = Carbon::now('Asia/Manila');
         $history->save();
 
         if ($request->hasFile('csv_file')) {

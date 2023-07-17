@@ -118,14 +118,14 @@ class UserController extends Controller {
 
         $username = auth()->user()->username;
         $fullName = auth()->user()->first_name . ' ' . auth()->user()->last_name;
-        $action = 'Add new user -'.' '.  $validated['username'];
+        $action = 'Added a new user -'.' '.  $validated['username'];
        
         $history = new audit_history();
         $history->username = $username;
         $history->full_name = $fullName;
         $history->action = $action;
-        // $history->created_at = Carbon::now(); // Assign the current timestamp
-        // $history->updated_at = Carbon::now(); // Assign the current timestamp
+        $history->created_at = Carbon::now('Asia/Manila');
+        $history->updated_at = Carbon::now('Asia/Manila');
         $history->save();
         
         return redirect('/users/add')->with('success', 'New User Added Successfully');
@@ -163,6 +163,8 @@ class UserController extends Controller {
         $history->username = $username;
         $history->full_name = $fullName;
         $history->action = $action;
+        $history->created_at = Carbon::now('Asia/Manila');
+        $history->updated_at = Carbon::now('Asia/Manila');
         $history->save();
 
 
@@ -201,6 +203,8 @@ class UserController extends Controller {
             $history->username = $username;
             $history->full_name = $fullName;
             $history->action = $action;
+            $history->created_at = Carbon::now('Asia/Manila');
+            $history->updated_at = Carbon::now('Asia/Manila');
             $history->save();
             // Optionally, you can perform any additional actions here
             // For example, you can return a success message
@@ -228,6 +232,8 @@ class UserController extends Controller {
         $history->username = $username;
         $history->full_name = $fullName;
         $history->action = $action;
+        $history->created_at = Carbon::now('Asia/Manila');
+        $history->updated_at = Carbon::now('Asia/Manila');
         $history->save();
         
 
@@ -256,6 +262,8 @@ class UserController extends Controller {
             $history->username = $username;
             $history->full_name = $fullName;
             $history->action = $action;
+            $history->created_at = Carbon::now('Asia/Manila');
+            $history->updated_at = Carbon::now('Asia/Manila');
             $history->save();
 
         } else {
@@ -454,6 +462,8 @@ class UserController extends Controller {
         $history->username = $username;
         $history->full_name = $fullName;
         $history->action = $action;
+        $history->created_at = Carbon::now('Asia/Manila');
+        $history->updated_at = Carbon::now('Asia/Manila');
         $history->save();
 
         return Excel::download(new UsersExport, 'users.csv');
