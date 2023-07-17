@@ -12,6 +12,7 @@ const specializations = {
     s7: 'Urology',
     s8: 'Neurology',
     s9: 'Radiology',
+    s10: 'Other',
 };
 
 const barangays = {

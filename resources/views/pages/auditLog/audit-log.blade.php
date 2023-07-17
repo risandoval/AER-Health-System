@@ -13,12 +13,6 @@
                     </form>
                 </div>
             </div>
-            <div class="flex gap-2">
-                <a href="#" class="flex justify-center items-center bg-primary rounded-full text-white py-2 px-4 gap-1 hover:text-primary hover:bg-white hover:ring-1 hover:ring-primary whitespace-nowrap duration-100">
-                    <i class='bx bx-export text-xl'></i>
-                    <p class="hidden md:block">Export Patients</p>
-                </a>
-            </div>
         </div>
 
         {{-- table --}}
@@ -34,38 +28,32 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($audits as $audit) --}}
+                        @foreach ($audit as $history)
                             <tr class="border border-transparent y-10"> {{-- {{!($loop->last) ? "border-b-light-gray" : ""}} --}}
-                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">H0001</td>
-                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> Emilia Herrera </td> {{-- first and last name --}}
-                                <td class="text-left px-6 py-3">Added new user</td>
+                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">{{$history->username}}</td>
+                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> {{$history->full_name}}</td> {{-- first and last name --}}
+                                <td class="text-left px-6 py-3">{{$history->action}}</td> 
                                 {{-- 
-                                    Add new user [username]
-                                    Edited a user [username]
-                                    Archived a user [username]
-                                    Restored an inactive user [username]
-                                    Reset a password [username]
-                                    Exported users table
+                                    Add new user [username] ------DONE------
+                                    Edited a user [username] ------DONE------
+                                    Archived a user [username] ------DONE------
+                                    Restored an inactive user [username] ------DONE------
+                                    Reset a password [username] ------DONE------
+                                    Exported users table ------DONE------    
 
                                     Exported 1st encounter template
                                     Exported 1st encounter table
                                     Imported 1st encounter table
                                 --}}
-                                <td class="text-left px-6 py-3">2023-07-12 4:29 PM</td>
+                                <td class="text-left px-6 py-3">{{$history->created_at}}</td>
                             </tr>
-                            <tr class="border border-transparent y-10"> {{-- {{!($loop->last) ? "border-b-light-gray" : ""}} --}}
-                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap">M0025</td>
-                                <td class="text-left lg:px-6 py-3 sticky left-0 bg-white px-6 whitespace-nowrap"> Rian Manuel </td>
-                                <td class="text-left px-6 py-3">Archived a user</td>
-                                <td class="text-left px-6 py-3">2023-07-12 2:15 PM</td>
-                            </tr>
-                        {{-- @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
 
                 {{-- audit log - pagination --}}
                 {{-- <div class="sticky left-0 px-6 mt-8">
-                    {{ $audits->links('pagination::tailwind') }}
+                    {{ $audit->links('pagination::tailwind') }}
                 </div> --}}
             </div>
         </div>

@@ -114,7 +114,8 @@
                                         <option value="Dermatology" {{auth()->user()->specialization == 'Dermatology' ? 'selected' : ''}}>Dermatology</option>
                                         <option value="Urology" {{auth()->user()->specialization == 'Urology' ? 'selected' : ''}}>Urology</option>
                                         <option value="Neurology" {{auth()->user()->specialization == 'Neurology' ? 'selected' : ''}}>Neurology</option>
-                                        <option value="Radiology" {{auth()->user()->specialization == 'Neurology' ? 'selected' : ''}}>Radiology</option>
+                                        <option value="Radiology" {{auth()->user()->specialization == 'Radiology' ? 'selected' : ''}}>Radiology</option>
+                                        <option value="Other" {{auth()->user()->specialization == 'Other' ? 'selected' : ''}}>Other</option>
                                     </select>
                                     @error ('specialization') <p class="col-span-8 sm:col-start-3 sm:col-span-5 text-sm text-red"> {{$message}} </p> @enderror
                                 </div>

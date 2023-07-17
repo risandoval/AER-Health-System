@@ -31,6 +31,9 @@ class UserRequest extends FormRequest
             "first_name" => ['required', new Alpha_spaces],
             'middle_name' => [new Alpha_spaces],
             "last_name" => ['required', new Alpha_spaces],
+
+            //eto inadd ko para sa Edit User ng audit logs
+            "username" => 'sometimes|required',
             // "username" => ['sometimes', 'required', Rule::unique('users', 'username')],
             // 'password' => ['sometimes', 'required'],
             // 'confirm_password' => ['sometimes', 'required', 'same:password'],
