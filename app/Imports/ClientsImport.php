@@ -26,7 +26,7 @@ class ClientsImport implements ToCollection, WithHeadingRow, WithBatchInserts, W
     {
         foreach ($rows as $row) 
         {   
-            $client = Client::updateOrCreate(['ONE_EF_LASTNAME' => $row['one_ef_lastname'], 'ONE_EF_FIRSTNAME' => $row['one_ef_firstname']], [
+            $client = Client::updateOrCreate((['ONE_EF_PIN' => $row['one_ef_pin']] != null ? ['ONE_EF_PIN' => $row['one_ef_pin']] : ['ONE_EF_LASTNAME' => $row['one_ef_lastname'], 'ONE_EF_FIRSTNAME' => $row['one_ef_firstname'], 'ONE_EF_BDAY' => $row['one_ef_bday']]), [
                 'ONE_EF_HSAD' => $row['one_ef_hsad'],
                 'ONE_EF_PIN' => $row['one_ef_pin'],
                 'ONE_EF_ATC' => $row['one_ef_atc'],

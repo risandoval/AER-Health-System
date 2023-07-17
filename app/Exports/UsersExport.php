@@ -28,8 +28,6 @@ class UsersExport extends DefaultValueBinder implements FromCollection, WithHead
                 'birthday',
                 'contact',
                 'email', 
-                'security_question',
-                'security_answer',
                 'status',
                 'created_at',
                 'updated_at'
@@ -50,8 +48,6 @@ class UsersExport extends DefaultValueBinder implements FromCollection, WithHead
             'birthday',
             'contact',
             'email', 
-            'security_question',
-            'security_answer',
             'status',
             'created_at',
             'updated_at'
