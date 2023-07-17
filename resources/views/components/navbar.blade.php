@@ -24,8 +24,13 @@
         <a href="{{url('/first-encounter')}}" class="nav-link">1st Encounter</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="nav-link">2nd Encounter</a>
+        <a href="#" class="nav-link">Doctor Consultation</a>
       </li>
+      @if (auth()->user()->role == 'Admin')
+        <li class="mx-4 my-6 md:my-0">
+          <a href="{{url('/audit-log')}}" class="nav-link">Audit Log</a>
+        </li>
+      @endif
       {{-- <li class="mx-4 my-6 md:my-0">
         <a href="/profile" class="text-xl hover:border-b-2 hover:pb-1 duration-400">Profile</a>
       </li> --}}

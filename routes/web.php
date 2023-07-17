@@ -87,6 +87,12 @@ Route::prefix('first-encounter')->middleware('auth')->group(function () {
     Route::post('/import', [FirstEncounterController::class, 'import']);
 });
 
+//Route for Audit Log
+Route::prefix('audit-log')->middleware('auth')->group(function () {
+    Route::get('', [UserController::class, 'auditLog'])->name('auditLog');
+});
+
+
 // Login Routes
 Route::middleware('guest')->group(function() {
     Route::get('', [LoginController::class, 'index'])->name('login');
