@@ -79,7 +79,7 @@
                                                 <td class="text-left px-6 py-3">{{$patient->ONE_EF_PIN}}</td>
                                                 <td class="text-left px-6 py-3">
                                                     <div class="flex gap-[6px]">
-                                                        <a href="#">
+                                                        <a href="{{url("first-encounter/view/$patient->id")}}">
                                                             <button class="text-white bg-primary px-4 py-2 rounded-full hover:bg-white hover:text-primary hover:ring-primary hover:ring-1 duration-100">View</button>
                                                         </a>
                                                     </div>

@@ -380,7 +380,9 @@ class UserController extends Controller {
 
     //---------- Audit log page ----------
     public function auditLog() {
-        $audit = Audit_history::paginate(10);
+        // $audit = Audit_history::paginate(10);
+        //get Audit_history from bottom to top
+        $audit = Audit_history::orderBy('id', 'desc')->paginate(10);
         return view('pages/auditLog/audit-log',  compact('audit'));
     }
 }

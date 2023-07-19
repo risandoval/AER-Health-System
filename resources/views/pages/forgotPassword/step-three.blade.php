@@ -79,7 +79,7 @@
 
             <div class="flex gap-2 justify-end p-3 mt-6">
                 <a href="/" class="close-btn bg-gray-200 text-black text-sm rounded-full px-4 py-2 hover:bg-black hover:text-white">Cancel</a>
-                <button type="submit" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-primary hover:ring-1">Next</button>
+                <button type="submit" class="bg-primary text-white text-sm rounded-full px-5 py-2 font-bold hover:bg-white hover:text-primary hover:ring-primary hover:ring-1">Done</button>
             </div>
         </form>
     </x-form>

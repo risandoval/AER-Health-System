@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('one_ef_client', function (Blueprint $table) {
             $table->increments('id');
             $table->date('ONE_EF_HSAD')->nullable();
-            $table->bigInteger('ONE_EF_PIN')->nullable();
+            $table->string('ONE_EF_PIN')->nullable();
             $table->integer('ONE_EF_ATC')->nullable();
             $table->string('ONE_EF_LASTNAME')->nullable();
             $table->string('ONE_EF_FIRSTNAME')->nullable();

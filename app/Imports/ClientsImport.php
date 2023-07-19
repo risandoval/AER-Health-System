@@ -26,17 +26,17 @@ class ClientsImport implements ToCollection, WithHeadingRow, WithBatchInserts, W
     {
         foreach ($rows as $row) 
         {   
-            $client = Client::updateOrCreate((['ONE_EF_PIN' => $row['one_ef_pin']] != null ? ['ONE_EF_PIN' => $row['one_ef_pin']] : ['ONE_EF_LASTNAME' => $row['one_ef_lastname'], 'ONE_EF_FIRSTNAME' => $row['one_ef_firstname'], 'ONE_EF_BDAY' => $row['one_ef_bday']]), [
+            $client = Client::updateOrCreate(($row['one_ef_pin'] ? ['ONE_EF_PIN' => $row['one_ef_pin']] : ['ONE_EF_LASTNAME' => $row['one_ef_lastname'], 'ONE_EF_FIRSTNAME' => $row['one_ef_firstname'], 'ONE_EF_BDAY' => $row['one_ef_bday']]), [
                 'ONE_EF_HSAD' => $row['one_ef_hsad'],
-                'ONE_EF_PIN' => $row['one_ef_pin'],
+                'ONE_EF_PIN' => $row['one_ef_pin'] ? $row['one_ef_pin'] : null,
                 'ONE_EF_ATC' => $row['one_ef_atc'],
-                'ONE_EF_LASTNAME' => $row['one_ef_lastname'],
-                'ONE_EF_FIRSTNAME' => $row['one_ef_firstname'],
-                'ONE_EF_MIDDLENAME' => $row['one_ef_middlename'],
-                'ONE_EF_EXTENSIONNAME' => $row['one_ef_extensionname'],
+                'ONE_EF_LASTNAME' => str_replace('�', 'ñ', $row['one_ef_lastname']),
+                'ONE_EF_FIRSTNAME' => str_replace('�', 'ñ', $row['one_ef_firstname']),
+                'ONE_EF_MIDDLENAME' => str_replace('�', 'ñ', $row['one_ef_middlename']),
+                'ONE_EF_EXTENSIONNAME' => str_replace('�', 'ñ', $row['one_ef_extensionname']),
                 'ONE_EF_BDAY' => $row['one_ef_bday'],
                 'ONE_EF_SEX' => $row['one_ef_sex'],
-                'ONE_EF_BRGY' => $row['one_ef_brgy']
+                'ONE_EF_BRGY' => str_replace('�', 'ñ', $row['one_ef_brgy'])
             ]);
 
             $pmhs = explode(' ', $row['one_pm_pmh']);
