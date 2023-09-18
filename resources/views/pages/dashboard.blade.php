@@ -1,3 +1,4 @@
+{{-- dashboard - this is where the embed from looker studio should be places --}}
 <x-layout>
     {{-- MODAL --}}
     <div id="modal-background" class="{{$errors->any() ? 'flex' : 'hidden'}} absolute z-10 top-[-10%] left-0 h-full w-full bg-black bg-opacity-30 items-center justify-center">

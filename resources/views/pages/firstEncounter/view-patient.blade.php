@@ -1,3 +1,4 @@
+{{-- individual view of FE  --}}
 <x-layout class="bg-light">
     <section class="flex flex-col justify-center w-full pt-navbar pb-10">
         <h2 class="text-2xl md:text-3xl text-center font-bold py-4 pt-6 md:py-8">Individual Health Information</h2>

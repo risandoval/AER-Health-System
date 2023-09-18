@@ -1,3 +1,4 @@
+{{-- search result page  --}}
 <x-layout>
     {{-- wag ililipat kasi naboboang yung table --}}
     <link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.min.css" />

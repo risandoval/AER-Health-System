@@ -1,3 +1,4 @@
+{{-- first encounter main page --}}
 <x-layout>
     {{-- import modal --}}
     <div id="modal-background" class="hidden absolute z-10 left-0 h-full w-full bg-black bg-opacity-30 items-center justify-center">

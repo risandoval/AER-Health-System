@@ -1,3 +1,4 @@
+{{-- second page of forgot pass --}}
 <x-noNavbar-layout>
     <x-form class="max-w-sm">
         <div class="max-w-md text-center mt-1 mb-4">

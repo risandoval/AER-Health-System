@@ -1,3 +1,4 @@
+{{-- layout for pages after login (yung mga nasa navbar) - e.g. user accounts, first encounter, audit log --}}
 <!DOCTYPE html>
 <html lang="en">
 

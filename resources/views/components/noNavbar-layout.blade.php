@@ -1,3 +1,4 @@
+{{-- layout.blade.php but without navbar (for forgot pass pages) --}}
 <!DOCTYPE html>
 <html lang="en">
 

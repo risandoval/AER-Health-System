@@ -1,3 +1,4 @@
+{{-- navbar --}}
 <nav class="fixed top-0 z-10 w-full p-5 bg-primary shadow md:flex md:items-center md:justify-between text-light">
     <div class="flex justify-between items-center">
       <span class="text-2xl">

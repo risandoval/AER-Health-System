@@ -1,3 +1,4 @@
+{{-- displays if the user logs in for the first time --}}
 <x-noNavbar-layout>
     <form class="absolute left-0 top-0 w-full h-16 bg-primary" action="/logout" method="POST">
         @csrf
